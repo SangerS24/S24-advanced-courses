@@ -29,7 +29,7 @@ define('LOGGED_IN_SALT',   'KR.t1QW2^am_0L0cvcN4vh2`f-q>uirs$NS}s7-g*R/^ga3|7z |
 define('NONCE_SALT',       ',sY-SxMme6!B1:*eJbeCdxSV-05V4 -54k7j8.Z*>z>m;`M9f#BAI c<*PEf4=|=');
 
 
-$table_prefix = 'wp_';
+$table_prefix = 'woeuhf8_';
 
 /**
  * WordPress Localized Language, defaults to English.
