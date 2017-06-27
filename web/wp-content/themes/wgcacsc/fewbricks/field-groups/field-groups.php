@@ -17,21 +17,7 @@ $location = [
         [
             'param' => 'post_type',
             'operator' => '==',
-            'value' => 'room'
-        ],
-    ],
-    [
-        [
-            'param' => 'post_type',
-            'operator' => '==',
             'value' => 'post'
-        ],
-    ],
-    [
-        [
-            'param' => 'post_type',
-            'operator' => '==',
-            'value' => 'event'
         ],
     ],
     [
@@ -40,34 +26,6 @@ $location = [
             'operator' => '==',
             'value' => 'default'
         ],
-    ],
-    [
-        [
-            'param' => 'page_template',
-            'operator' => '==',
-            'value' => 'page-templates/page-room-listing.php'
-        ],
-    ],
-    [
-        [
-            'param' => 'page_template',
-            'operator' => '==',
-            'value' => 'page-templates/page-news-listing.php'
-        ],
-    ],
-    [
-        [
-            'param' => 'page_template',
-            'operator' => '==',
-            'value' => 'page-templates/page-contact.php'
-        ],
-    ],
-    [
-        [
-            'param' => 'post_type',
-            'operator' => '==',
-            'value' => 'client',
-        ]
     ]
 ];
 
@@ -101,35 +59,6 @@ $fg1->add_brick(new bricks\group_flexible_content('standard_components', '150911
 
 // Register the field group
 $fg1->register();
-
-
-$location = [
-    [
-        [
-            'param' => 'post_type',
-            'operator' => '==',
-            'value' => 'room'
-        ],
-    ]
-];
-
-
-// Create field group
-$fg2 = (new fewacf\field_group('Room Layouts', '180820161559a', $location, 12));
-
-$fg2->add_brick(new bricks\component_room_capacity('room_capacity', '180820161600a'));
-
-// Register the field group
-$fg2->register();
-
-
-// Create field group
-$fg3 = (new fewacf\field_group('Room Image Carousel', '190820161713a', $location, 11));
-
-$fg3->add_brick(new bricks\component_image_list('room_image_carousel', '190820161713b'));
-
-// Register the field group
-$fg3->register();
 
 
 
@@ -236,58 +165,3 @@ $fg8->add_field(new acf_fields\text('Listing Summary', 'listing_summary', '21092
     'instructions' => 'Add a summary to show on listing pages/the homepage. For events, if this isn\'t filled in, then the event details are used to populate the listing page. If you populate this field for an event, a read more link will be displayed linking through to further details regarding the event.'
 ]));
 $fg8->register();
-
-
-$location = [
-    [
-        [
-            'param' => 'post_category',
-            'operator' => '==',
-            'value' => 'category:events',
-        ]
-    ],
-    [
-        [
-            'param' => 'post_type',
-            'operator' => '==',
-            'value' => 'event'
-        ],
-    ],
-];
-
-
-$fg6 = (new fewacf\field_group('Event Details', '300820160901a', $location, 14));
-
-$fg6->add_field(new acf_fields\text('Organiser', 'organiser', '300820160902a'));
-$fg6->add_field(new acf_fields\date_picker('Event start date', 'event_date', '300820160902b', [
-    'instructions' => 'This date is used to determine the order of the event in the news/events listing. It is also displayed above the event title on the website.'
-]));
-$fg6->add_field(new acf_fields\text('Event Date Details', 'event_date_details', '220920161537a', [
-    'instructions' => 'This is displayed under the event details, and should be used to highlight which dates the conference runs, e.g. 22-24 September etc.'
-]));
-$fg6->add_field(new acf_fields\url('Event website', 'event_website', '300820160902c'));
-
-$fg6->register();
-
-
-
-
-$location = [
-    [
-        [
-            'param' => 'post_type',
-            'operator' => '==',
-            'value' => 'client',
-        ]
-    ]
-];
-
-$fg9 = (new fewacf\field_group('Client Details', '181120161802a', $location, 10));
-$fg9->add_field(new acf_fields\image('Client Logo', 'client_logo', '181120161802b', [
-    'instructions' => 'Add a logo for the client.'
-]));
-$fg9->add_field(new acf_fields\true_false('Does the client have a testimonial?', 'client_testimonial', '211120161321a', [
-    'instructions' => 'If this checkbox is checked it means the logo will link through to a page containing the generic page components populated below.'
-]));
-
-$fg9->register();
