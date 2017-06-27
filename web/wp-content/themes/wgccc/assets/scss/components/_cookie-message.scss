@@ -1,0 +1,17 @@
+.js_enabled #cookie-message {
+    display: none;
+}
+
+#cookie-message {
+
+    background: #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    padding: rem-calc(15);
+
+    p {
+
+        margin-bottom: 0;
+
+    }
+
+}

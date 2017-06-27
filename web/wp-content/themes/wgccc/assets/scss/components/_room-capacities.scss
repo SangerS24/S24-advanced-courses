@@ -1,0 +1,48 @@
+
+
+.room-capacity {
+
+    font-size: rem-calc(12);
+    text-align: center;
+    width: 20%;
+
+    img {
+
+        width: rem-calc(52);
+
+    }
+
+    p {
+
+        margin-bottom: 0;
+
+    }
+
+}
+
+.room-capcities {
+
+    li.room-capacity {
+
+        margin-right: 0;
+        vertical-align: top;
+
+    }
+
+}
+
+
+.room-capacity--empty {
+
+    opacity: 0.25;
+
+}
+
+
+.component-room-capacity__inner {
+
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    padding: rem-calc(20) 0;
+
+}

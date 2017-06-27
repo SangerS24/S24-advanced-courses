@@ -1,0 +1,27 @@
+.sites-button {
+    background: #FF6908;
+    font-size: 1.25rem;
+    font-weight: bold;
+    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
+    border-radius: 3px;
+    border: none;
+}
+
+
+.button-cta,
+.room-search__submit,
+.wpcf7-submit  {
+    font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.button--inline {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.button--small {
+    padding: rem-calc(5 6);
+}

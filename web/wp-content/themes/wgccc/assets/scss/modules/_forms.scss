@@ -1,0 +1,30 @@
+
+// set legend font-size to same as form labels
+legend {
+
+    color: $form-label-color;
+    font-size: $form-label-font-size;
+
+}
+
+
+span.wpcf7-list-item {
+
+    display: block;
+
+}
+
+
+.wpcf7-select {
+
+    margin-bottom: 0;
+
+}
+
+
+// hide the ajax success message as we redirect users ... not ideal
+.wpcf7-mail-sent-ok {
+
+    display: none !important;
+
+}

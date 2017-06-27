@@ -1,0 +1,23 @@
+
+.acf-map {
+
+    //border: #ccc solid 1px;
+    clear: both;
+    height: rem-calc(400);
+    margin: 0 0 rem-calc(40) 0;
+    width: 100%;
+
+    @include breakpoint(large) {
+
+        height: rem-calc(550);
+
+    }
+
+}
+
+/* fixes potential theme css conflict */
+.acf-map img {
+
+    max-width: inherit !important;
+
+}

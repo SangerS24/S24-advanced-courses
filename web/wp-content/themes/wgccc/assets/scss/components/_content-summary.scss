@@ -1,0 +1,42 @@
+/**
+ * Provides styles for a block (content-item) that contains
+ * summary information about most types of content.
+ *
+ * Often used to list summary content, within an element that
+ * has the class `content-list`
+ */
+
+
+
+.content-item {
+
+    //border-bottom: 1px solid #CCCCCC;
+    padding-bottom: rem-calc(12);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: rem-calc(12);
+
+}
+
+
+.content-item__title {
+
+    color: #222222;
+    font-size: rem-calc(22);
+
+}
+
+
+.content-item__visual {
+
+    padding: 0 rem-calc(20) 0 0;
+
+}
+
+
+.content-item__image {
+
+    display: block;
+    margin-bottom: rem-calc(20);
+
+}

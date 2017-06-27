@@ -1,0 +1,18 @@
+
+.pagination-links,
+.pagination {
+
+    clear: both;
+
+    padding: rem-calc(14);
+    text-align: center;
+
+    a,
+    span {
+
+        display: inline-block;
+        padding: rem-calc(5);
+
+    }
+    
+}

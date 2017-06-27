@@ -1,0 +1,76 @@
+
+.main-menu {
+
+
+    @include breakpoint(medium) {
+
+        margin-top: rem-calc(10);
+
+    }
+
+
+    li:first-child {
+
+        a {
+
+            @include breakpoint(medium down) {
+
+                padding-left: 0;
+
+            }
+
+        }
+
+    }
+
+
+    li:last-child {
+
+        a {
+
+            padding-right: 0;
+
+        }
+
+    }
+
+
+    a {
+
+        color: #CB2C30;
+        font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+        font-size: rem-calc(14);
+        padding: rem-calc(8 10);
+        text-transform: uppercase;
+
+        &:hover {
+
+            color: #222222;
+
+        }
+
+    }
+
+    // unfortunately necessary to trump the specificity in Foundation
+    > li {
+
+        > a {
+
+            padding: rem-calc(8 10);
+
+        }
+
+    }
+
+    .menu-item--search {
+
+        a {
+
+            padding: rem-calc(6 0 6 8);
+
+        }
+
+    }
+
+
+}

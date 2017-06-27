@@ -1,0 +1,42 @@
+
+.page__inner {
+
+    @include breakpoint(large) {
+
+        padding-right: 0;
+
+    }
+
+}
+
+
+
+.page-full {
+
+    .page__inner {
+
+        @include breakpoint(large) {
+
+            padding-left: 0;
+            padding-right: 0;
+
+        }
+
+    }
+
+}
+
+
+
+.page__inner__content {
+
+    padding: rem-calc(10) 0 0 0;
+
+
+    @include breakpoint(medium) {
+
+        padding: rem-calc(28) 0 0 0;
+
+    }
+
+}

@@ -1,0 +1,49 @@
+
+
+.room-search {
+    border-bottom: solid 1px $medium-gray;
+    .row {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: rem-calc(5);
+    }
+}
+
+
+.room-search__notification {
+    padding: rem-calc(10);
+    background-color: #fcfdc6;
+    border: solid 1px #fee51f;
+    margin-bottom: rem-calc(15);
+}
+
+
+.room-search__group {
+    @include breakpoint(medium) {
+        padding: 0 rem-calc(10) 0 0;
+    }
+}
+
+
+.room-search__submit {
+    width:100%;
+    @include breakpoint(medium) {
+        width: auto;
+        margin-top: rem-calc(29);
+    }
+
+}
+
+
+
+.rooms-list {
+
+    margin-bottom: rem-calc(30);
+
+    @include breakpoint(medium) {
+
+        margin-bottom: rem-calc(40);
+
+    }
+
+}

@@ -1,0 +1,38 @@
+
+.event.content-item {
+
+    border-bottom: 0;
+    padding-left: rem-calc(10);
+    padding-right: rem-calc(10);
+
+}
+
+.latest-events-row {
+
+    .event-item {
+
+        @include breakpoint(small) {
+
+            &:nth-child(2n+1) {
+
+                clear: left;
+                float: left;
+
+            }
+
+        }
+
+        @include breakpoint(medium) {
+
+            &:nth-child(2n+1) {
+
+                clear: none;
+
+            }
+
+        }
+
+    }
+
+
+}

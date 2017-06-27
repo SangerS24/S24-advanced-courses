@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="10px" height="15px" viewBox="0 0 10 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>chevron</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="OFF-CANVAS-MENU" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="OFF-CANVAS-MENU---level-2" transform="translate(-92.000000, -11.000000)" fill="#666666">
+            <g id="Off-canvas---back" transform="translate(72.000000, 0.000000)">
+                <polygon id="chevron" transform="translate(24.978690, 18.500000) rotate(180.000000) translate(-24.978690, -18.500000) " points="22.4435809 11 20 13.4394205 25.0697792 18.500586 20 23.5609897 22.4435809 26 29.9573805 18.500586"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

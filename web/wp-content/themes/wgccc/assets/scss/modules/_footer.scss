@@ -1,0 +1,319 @@
+
+.back-to-top {
+
+	clear: both;
+	float: right;
+	margin: rem-calc(30 10 24 0);
+
+	img {
+		display: inline-block;
+		margin: 5px 0 0 0;
+		vertical-align: text-top;
+// 		width: 12px;
+	}
+
+}
+
+
+.footer-container {
+	//margin-top: rem-calc(50);
+
+	@include breakpoint(large) {
+
+		//margin-top: rem-calc(70);
+
+	}
+
+}
+
+
+.footer {
+
+	background: url('../images/footer_bg.svg') no-repeat center -40px;
+	background-size: 2000px 375px;
+
+	padding: rem-calc(80) 0 0 0;
+
+	@include breakpoint(medium) {
+
+		background-position: center top;
+		padding: rem-calc(100) 0 0 0;
+
+	}
+
+	@include breakpoint(large) {
+
+		padding: rem-calc(130) 0 0 0;
+
+	}
+
+	@include breakpoint(2000) {
+		background-size: 4000px 750px;
+	}
+
+}
+
+
+.footer__inner {
+
+	background: #fff;
+	padding: rem-calc(15) 0 rem-calc(12) 0;
+	text-align: center;
+	width: 100%;
+
+	@include breakpoint(600) {
+
+		padding: rem-calc(10) 0 rem-calc(7) 0;
+
+	}
+
+}
+
+.footer__inner__highlight {
+
+	background: #333333;
+	color: #E5E5E5;
+	padding: rem-calc(10) 0 rem-calc(15) 0;
+
+	@include breakpoint(600) {
+
+		padding: rem-calc(20) 0;
+
+	}
+
+}
+
+
+
+.mailing-signup__message {
+
+	margin-bottom: 0;
+
+}
+
+
+.mailing-signup__group {
+
+	display: block;
+	margin-bottom: 0;
+	vertical-align: top;
+
+	@include breakpoint(600) {
+
+		display: inline-block;
+
+	}
+
+}
+
+
+.mailing-signup__label {
+
+	color: inherit;
+	display: block;
+	margin-right: rem-calc(5);
+
+	@include breakpoint(600) {
+
+		display: inline-block;
+
+	}
+
+}
+
+.mailing-signup__input {
+
+	border-color: #fff;
+	display: block;
+	margin: 0 auto rem-calc(10) auto;
+	min-width: rem-calc(173);
+	width: auto;
+
+	// these placeholder selectors need to be separate to work
+	// don't ask me why
+	&::-webkit-input-placeholder {
+		color: #666666;
+	}
+
+	&::-moz-placeholder {
+		color: #666666;
+	}
+
+	&:-ms-input-placeholder {
+		color: #666666;
+	}
+
+	@include breakpoint(600) {
+
+		margin-right: rem-calc(3);
+		margin-bottom: 0;
+		display: inline-block;
+
+	}
+
+}
+
+.mailing-signup__button {
+
+	line-height: rem-calc(17);
+	margin-bottom: 0;
+
+}
+
+
+.accreditations {
+
+	margin-bottom: 0;
+	margin-left: 0;
+	padding: rem-calc(5) 0;
+	text-align: center;
+
+	li {
+
+		display: block;
+		margin: 0 rem-calc(10);
+
+		+ li {
+
+			margin-top: rem-calc(22);
+
+		}
+
+	}
+
+	a {
+		display: block;
+	}
+	
+	img {
+
+		max-height: rem-calc(46);
+
+	}
+
+	@include breakpoint(500) {
+
+		li {
+
+			display: inline-block;
+
+			+ li {
+
+				margin-top: 0;
+
+			}
+
+		}
+
+	}
+
+}
+
+
+.social-media {
+
+	line-height: 1;
+	margin-bottom: 0;
+	margin-left: 0;
+
+	li {
+
+		display: inline-block;
+		margin: 0 rem-calc(8);
+
+	}
+
+	a {
+
+		display: block;
+
+		@include breakpoint(large) {
+			transition: opacity .25s ease-in-out;
+			opacity: 0.8;
+
+			&:hover {
+
+				opacity: 1;
+
+			}
+
+		}
+
+	}
+	
+	img {
+
+		display: block;
+		
+	}
+
+}
+
+
+
+.footer__outer {
+
+	background: rgba(255, 255, 255, 0.8);
+	color: #333333;
+	font-size: rem-calc(12);
+	padding: rem-calc(15) 0;
+	text-align: center;
+	width: 100%;
+
+	p {
+
+		margin-bottom: rem-calc(10);
+
+	}
+
+
+	a {
+		font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+		color: inherit;
+
+		&:hover {
+			color: #000;
+		}
+	}
+
+	@include breakpoint(medium) {
+
+		text-align: left;
+
+		p {
+
+			margin-bottom: 0;
+
+		}
+
+	}
+}
+
+
+.footer__outer--padded {
+
+	padding: rem-calc(18) 0;
+
+}
+
+
+p.copyright {
+
+	margin-bottom: 0;
+
+	@include breakpoint(medium) {
+
+		text-align: right;
+
+	}
+}
+
+@include breakpoint(medium) {
+
+	.copyright {
+
+		text-align: right;
+
+	}
+
+}

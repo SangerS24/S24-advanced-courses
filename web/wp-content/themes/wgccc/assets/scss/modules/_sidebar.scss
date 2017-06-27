@@ -1,0 +1,55 @@
+.sidebar {
+
+    @include breakpoint(large) {
+
+        padding-left: rem-calc(40);
+        padding-right: rem-calc(24);
+
+    }
+
+
+    .menu {
+
+        li {
+
+            display: block;
+
+        }
+
+        a {
+
+            padding-left: 0;
+
+        }
+
+    }
+
+
+}
+
+
+.widget_categories {
+
+    ul {
+
+        list-style: none;
+        margin: 0;
+
+    }
+
+    li {
+
+        padding-left: 0;
+
+    }
+
+    a {
+
+        display: block;
+        line-height: rem-calc(18);
+        padding: rem-calc(10);
+        padding-left: 0;
+
+    }
+
+}

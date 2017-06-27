@@ -1,0 +1,159 @@
+
+.latest-news-row {
+
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+
+.news-item--compact {
+
+    padding: rem-calc(12);
+
+    @include breakpoint(560) {
+        .news-item__image {
+            margin-right: rem-calc(20);
+            max-width: 44%;
+        }
+    }
+
+    @include breakpoint(large) {
+        .news-item__image {
+            margin-right: 0;
+            max-width: 100%;
+        }
+    }
+
+}
+
+
+.news-item--half {
+
+    @include breakpoint(medium) {
+
+        padding: rem-calc(12);
+
+    }
+
+    @include breakpoint(medium only) {
+
+        @include grid-column(10);
+        clear: both;
+        float: none !important;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+}
+
+
+.news-item--wide {}
+
+
+
+.news-item__image {
+
+    border: 1px solid #E5E5E5;
+    display: block;
+    float: left;
+    margin-bottom: rem-calc(10);
+    max-width: 100%;
+    
+    picture {
+        display: block;
+    }
+
+}
+
+
+.news-item__details {
+
+    overflow: hidden;
+
+
+    @include breakpoint(large) {
+
+        clear: both;
+
+    }
+
+    @include breakpoint(560px down) {
+        clear: both;
+    }
+
+}
+
+
+.news-item__date {
+
+    border-bottom: 1px solid #CCCCCC;
+    display: block;
+    font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+    font-size: rem-calc(12);
+    margin-bottom: rem-calc(6);
+    padding: 0 0 rem-calc(2) 0;
+    text-transform: uppercase;
+
+}
+
+
+//.news-item__date--plain {
+//
+//    border-bottom: 0;
+//
+//}
+
+
+.news-item__title {
+
+    color: #222222;
+    font-size: rem-calc(22);
+    line-height: rem-calc(26);
+    margin-bottom: rem-calc(10);
+
+}
+
+
+.news-item__excerpt {
+
+    font-size: rem-calc(16);
+    line-height: rem-calc(24);
+
+    a {
+
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: bottom;
+        white-space: nowrap;
+
+    }
+
+}
+
+
+.category-events {
+
+    .news-item__excerpt {
+
+        line-height: rem-calc(28);
+
+    }
+    
+    .button--inline {
+
+        vertical-align: middle;
+        
+    }
+
+}
+
+
+.component-latest-news {
+
+    margin-bottom: rem-calc(10);
+
+}

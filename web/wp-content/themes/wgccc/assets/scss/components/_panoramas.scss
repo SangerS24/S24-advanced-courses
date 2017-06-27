@@ -1,0 +1,16 @@
+.container-360 {
+    height: rem-calc(250);
+    width: 100%;
+
+    @include breakpoint(medium) {
+        height: rem-calc(350);
+    }
+
+    @include breakpoint(large) {
+        height: rem-calc(500);
+    }
+
+    @include breakpoint(1300) {
+        height: rem-calc(580);
+    }
+}

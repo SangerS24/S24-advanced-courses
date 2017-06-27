@@ -1,0 +1,33 @@
+.breadcrumbs {
+
+
+    li {
+
+        font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+
+    }
+
+
+    // unfortunately the specificity is required to override
+    // the foundation defaults
+    li:not(:last-child)::after {
+
+        color: #333333;
+        top: 0;
+
+    }
+
+    
+    a {
+        
+        &:hover {
+
+            color: #333333;
+            text-decoration: none;
+            
+        }
+        
+    }
+
+
+}

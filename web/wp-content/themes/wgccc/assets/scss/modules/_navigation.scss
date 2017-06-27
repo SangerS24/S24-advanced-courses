@@ -1,0 +1,282 @@
+/* Navigation breakpoints */
+
+//.desktop-menu, .top-bar-left {
+//  @include show-for(large);
+//}
+
+
+.breadcrumbs {
+
+    li {
+
+        padding-left: 0;
+
+    }
+
+}
+
+
+.main-menu {
+
+    display: none;
+    
+    @include breakpoint(large) {
+
+        display: block;
+        
+    }
+    
+}
+
+
+.mobile-navigation-toggle {
+
+    display: block;
+    margin-left: rem-calc(10);
+    width: rem-calc(32);
+
+    img {
+
+        width: 100%;
+
+    }
+
+    @include breakpoint(500) {
+
+        width: rem-calc(40);
+
+    }
+
+    @include breakpoint(large) {
+
+        display: none;
+
+    }
+
+}
+
+
+.no-js .mobile-navigation-toggle--js {
+
+    display: none !important;
+    
+}
+
+
+.mobile-navigation {
+    background: #000000;
+    //@include hide-for(large);
+    z-index: auto;
+}
+
+/* Mobile menu */
+
+.off-canvas {
+    > ul.menu {
+        height: 100vh;
+        padding: 1rem;
+    }
+}
+
+
+.mobile-nav {
+
+    .nested {
+
+        margin-left: 0;
+
+    }
+
+    li {
+
+        > a {
+
+            border-bottom: 1px solid #666666;
+            color: #E5E5E5;
+            font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+            font-size: rem-calc(14);
+            //padding: rem-calc(12) rem-calc(20);
+            position: relative;
+            text-transform: uppercase;
+
+        }
+
+    }
+
+    .menu-item-has-children {
+
+        > a {
+
+            padding-right: rem-calc(50);
+
+            &:after {
+
+                background: url('../images/next_arrow_highlight.svg') no-repeat 0 0;
+                background-size: 100%;
+                content: '';
+                height: rem-calc(15);
+                position: absolute;
+                right: rem-calc(30);
+                top: rem-calc(11);
+                width: rem-calc(10);
+
+            }
+
+        }
+
+    }
+
+
+    .active {
+
+        > a {
+
+            color: #E5E5E5;
+
+        }
+
+    }
+
+
+    .js-drilldown-back {
+
+        a {
+
+            padding-left: rem-calc(40);
+
+            &:before {
+
+                background: url('../images/previous_arrow_neutral.svg') no-repeat 0 0;
+                background-size: 100%;
+                content: '';
+                height: rem-calc(15);
+                left: rem-calc(20);
+                position: absolute;
+                top: rem-calc(11);
+                width: rem-calc(10);
+
+            }
+
+            border-bottom-color: #666666;
+            color: #CCCCCC;
+            font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+            font-size: rem-calc(12);
+
+        }
+
+    }
+
+
+}
+
+
+.mobile-search-form {
+
+    padding: 0 rem-calc(20) rem-calc(4) rem-calc(20);
+
+}
+
+
+.enquire-cta--mobile {
+
+    padding: rem-calc(12) rem-calc(23);
+    text-align: left;
+
+    &:after {
+        
+        background: url('../images/next_arrow.svg') no-repeat 8px 1px;
+        background-size: rem-calc(10) rem-calc(15);
+        content: "";
+        display: inline-block;
+        height: rem-calc(16);
+        vertical-align: bottom;
+        width: rem-calc(20);
+
+    }
+
+}
+
+
+
+.noscript-navigation {
+
+    margin-bottom: rem-calc(30);
+
+    @include breakpoint(870) {
+
+        display: none;
+
+    }
+
+    .menu-item-has-children {
+
+        > a {
+
+            padding-right: rem-calc(20);
+
+        }
+
+    }
+
+    .nested {
+
+        background: #111111;
+
+    }
+
+}
+
+
+
+/* Basic styles for post navigation. Nicolas Gallagher's "Micro clearfix" https://css-tricks.com/snippets/css/clear-fix/ */
+.post-navigation:before,
+.post-navigation:after {
+    content: "";
+    display: table;
+}
+
+.post-navigation:after {
+    clear: both;
+}
+
+/* Text meant only for screen readers. Addresses part of theme-check issue #840. https://github.com/Automattic/_s/blob/master/style.css */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+}
+
+.nav-previous {
+    float: left;
+}
+
+.nav-next {
+    float: right;
+}
+
+
+// this is to fix a bug in Foundation, not ideal but we didn't have time to make a proper fix and submit a PR
+.mobile-navigation .is-drilldown {
+    min-height: rem-calc(340) !important;
+}
