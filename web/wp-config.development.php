@@ -13,7 +13,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'wgccc_dev');
+define('DB_NAME', 'wgacsc_dev');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -33,6 +33,6 @@ define('DB_HOST', 'localhost');
  */
 define('WP_DEBUG', false);
 
-define('FUTURA_FONT_STYLE_SHEET', '/wp-content/themes/wgccc/assets/stylesheets/fonts.css');
+define('FUTURA_FONT_STYLE_SHEET', '/wp-content/themes/wgcacsc/assets/stylesheets/fonts.css');
 
 define( 'GOOGLE_MAPS_API_KEY', 'AIzaSyBi8Bxoiohw_mD02MZ2q2myULBjV_w4IqM' );
