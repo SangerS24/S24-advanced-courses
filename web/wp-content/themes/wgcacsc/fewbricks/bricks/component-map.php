@@ -49,8 +49,8 @@ class component_map extends project_brick
 
         $html .= '</div>';
 
-        wp_enqueue_script('wgccc_google_maps_api', 'https://maps.googleapis.com/maps/api/js?key=' . GOOGLE_MAPS_API_KEY);
-        wp_enqueue_script('wgccc_google_maps_custom', get_template_directory_uri() . '/assets/javascript/acf-map.js', array('jquery'), '2.6.1', true);
+        wp_enqueue_script('wgcacsc_google_maps_api', 'https://maps.googleapis.com/maps/api/js?key=' . GOOGLE_MAPS_API_KEY);
+        wp_enqueue_script('wgcacsc_google_maps_custom', get_template_directory_uri() . '/assets/javascript/acf-map.js', array('jquery'), '2.6.1', true);
 
         return $html;
 

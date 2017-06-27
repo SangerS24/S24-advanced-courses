@@ -1,6 +1,6 @@
 <?php
 
-function wgccc_format_editor($settings) {
+function wgcacsc_format_editor($settings) {
 
     $style_formats = array(
         array(
@@ -36,6 +36,6 @@ function wgccc_format_editor($settings) {
 
 }
 
-add_filter( 'tiny_mce_before_init' , 'wgccc_format_editor'  );
+add_filter( 'tiny_mce_before_init' , 'wgcacsc_format_editor'  );
 
-//add_filter( 'acf/fields/wysiwyg/toolbars' , 'wgccc_format_editor'  );
+//add_filter( 'acf/fields/wysiwyg/toolbars' , 'wgcacsc_format_editor'  );

@@ -63,7 +63,7 @@ add_filter( 'get_the_archive_title', 'custom_archive_title' );
 
 // when a news item/event is updated, we need to add the event_date if one exists, or if not the publish date
 // to the post meta table, this is so we have one unified field we can use to sort these posts on
-function wgccc_add_post_date( $post_id ) {
+function wgcacsc_add_post_date( $post_id ) {
 
     $postType = get_post_type();
 
@@ -85,14 +85,14 @@ function wgccc_add_post_date( $post_id ) {
 
     }
 }
-add_action( 'save_post', 'wgccc_add_post_date' );
+add_action( 'save_post', 'wgcacsc_add_post_date' );
 
 // don't load the Contact Form 7 JS and CSS on all pages
 add_filter( 'wpcf7_load_js', '__return_false' );
 add_filter( 'wpcf7_load_css', '__return_false' );
 
 
-function wgccc_sort_archive($query) {
+function wgcacsc_sort_archive($query) {
     $postType = get_query_var('post_type');
     if(!is_admin() && ($postType != 'client') && ($query->is_archive() || $query->category())) {
         $query->set('meta_key', 'post_sort_date');
@@ -106,10 +106,10 @@ function wgccc_sort_archive($query) {
         $query->set('posts_per_page', 100);
     }
 }
-add_action('pre_get_posts', 'wgccc_sort_archive');
+add_action('pre_get_posts', 'wgcacsc_sort_archive');
 
 
-function wgccc_add_cookie_compliance_message() {
+function wgcacsc_add_cookie_compliance_message() {
     // output the cookie message
     echo '<div id="cookie-message"><div class="row" id="cookie-message__inner"><p>We use cookies to ensure we give you the best experience on our website. If you continue, we\'ll assume that you are happy to receive all cookies. Please refer to our <a href="/cookies-policy/">Cookies Policy</a> for more information, including how to disable them.</p></div></div>';
 
@@ -118,12 +118,12 @@ function wgccc_add_cookie_compliance_message() {
 
     wp_enqueue_script( 'cookie-message', get_template_directory_uri() . '/assets/javascript/custom/cookie-message.js', array(), '1.0', true );
 }
-add_action('foundationpress_after_body', 'wgccc_add_cookie_compliance_message');
+add_action('foundationpress_after_body', 'wgcacsc_add_cookie_compliance_message');
 
 
-function wgccc_add_tracking_code() {
+function wgcacsc_add_tracking_code() {
     if(defined('ADDITIONAL_TRACKER_JS')) {
         echo ADDITIONAL_TRACKER_JS;
     }
 }
-add_action('foundationpress_before_closing_body', 'wgccc_add_tracking_code');
+add_action('foundationpress_before_closing_body', 'wgcacsc_add_tracking_code');
