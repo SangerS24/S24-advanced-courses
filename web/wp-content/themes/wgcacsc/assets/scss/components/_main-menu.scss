@@ -67,7 +67,23 @@
         a {
 
             padding: rem-calc(6 0 6 8);
-
+            width: rem-calc(26);
+            height: rem-calc(30);
+            background-image: url('../images/magnifier-hover.svg');
+            background-position: rem-calc(8) rem-calc(6);
+            -webkit-background-size: rem-calc(18) rem-calc(18);
+            background-size: rem-calc(18) rem-calc(18);
+            background-repeat: no-repeat;
+            img {
+                width: rem-calc(18);
+                height: rem-calc(18);
+            }
+            &:hover {
+                img {
+                    width: 0;
+                    height: 0;
+                }
+            }
         }
 
     }

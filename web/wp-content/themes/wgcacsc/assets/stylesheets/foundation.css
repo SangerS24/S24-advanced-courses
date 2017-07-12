@@ -6033,19 +6033,6 @@ span.wpcf7-list-item {
 .mobile-search-form {
   padding: 0 1.11111rem 0.22222rem 1.11111rem; }
 
-.enquire-cta--mobile {
-  padding: 0.66667rem 1.27778rem;
-  text-align: left; }
-  .enquire-cta--mobile:after {
-    background: url("../images/next_arrow.svg") no-repeat 8px 1px;
-    -webkit-background-size: 0.55556rem 0.83333rem;
-            background-size: 0.55556rem 0.83333rem;
-    content: "";
-    display: inline-block;
-    height: 0.88889rem;
-    vertical-align: bottom;
-    width: 1.11111rem; }
-
 .noscript-navigation {
   margin-bottom: 1.66667rem; }
   @media screen and (min-width: 54.375em) {
@@ -6558,7 +6545,20 @@ body#tinymce {
   padding: 0.44444rem 0.55556rem; }
 
 .main-menu .menu-item--search a {
-  padding: 0.33333rem 0 0.33333rem 0.44444rem; }
+  padding: 0.33333rem 0 0.33333rem 0.44444rem;
+  width: 1.44444rem;
+  height: 1.66667rem;
+  background-image: url("../images/magnifier-hover.svg");
+  background-position: 0.44444rem 0.33333rem;
+  -webkit-background-size: 1rem 1rem;
+  background-size: 1rem 1rem;
+  background-repeat: no-repeat; }
+  .main-menu .menu-item--search a img {
+    width: 1rem;
+    height: 1rem; }
+  .main-menu .menu-item--search a:hover img {
+    width: 0;
+    height: 0; }
 
 #featured-hero {
   -webkit-background-size: cover;
