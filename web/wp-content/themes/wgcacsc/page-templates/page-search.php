@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Search Page
+Template Name_ori: Search Page
 */
 get_header(); ?>
 
