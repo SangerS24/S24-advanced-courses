@@ -3608,7 +3608,7 @@ h6 {
     font-size: 0.88889rem; } }
 
 a {
-  color: #CB2C30;
+  color: #9B26B6;
   text-decoration: none;
   line-height: inherit;
   cursor: pointer; }
@@ -3825,7 +3825,7 @@ kbd {
   padding: 0.55556rem 1.11111rem;
   margin: 0 0 1.55556rem 0;
   font-size: 0.9rem;
-  background-color: #CB2C30;
+  background-color: #9B26B6;
   color: #fff; }
   [data-whatinput='mouse'] .button {
     outline: 0; }
@@ -3844,10 +3844,10 @@ kbd {
     margin-left: 0;
     margin-right: 0; }
   .button.primary {
-    background-color: #CB2C30;
+    background-color: #9B26B6;
     color: #fff; }
     .button.primary:hover, .button.primary:focus {
-      background-color: #a22326;
+      background-color: #7c1e92;
       color: #fff; }
   .button.secondary {
     background-color: #777;
@@ -3874,19 +3874,19 @@ kbd {
       background-color: #da3116;
       color: #fff; }
   .button.hollow {
-    border: 1px solid #CB2C30;
-    color: #CB2C30; }
+    border: 1px solid #9B26B6;
+    color: #9B26B6; }
     .button.hollow, .button.hollow:hover, .button.hollow:focus {
       background-color: transparent; }
     .button.hollow:hover, .button.hollow:focus {
-      border-color: #661618;
-      color: #661618; }
+      border-color: #4e135b;
+      color: #4e135b; }
     .button.hollow.primary {
-      border: 1px solid #CB2C30;
-      color: #CB2C30; }
+      border: 1px solid #9B26B6;
+      color: #9B26B6; }
       .button.hollow.primary:hover, .button.hollow.primary:focus {
-        border-color: #661618;
-        color: #661618; }
+        border-color: #4e135b;
+        color: #4e135b; }
     .button.hollow.secondary {
       border: 1px solid #777;
       color: #777; }
@@ -3915,13 +3915,13 @@ kbd {
     opacity: 0.25;
     cursor: not-allowed; }
     .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #CB2C30;
+      background-color: #9B26B6;
       color: #fff; }
     .button.disabled.primary, .button[disabled].primary {
       opacity: 0.25;
       cursor: not-allowed; }
       .button.disabled.primary:hover, .button.disabled.primary:focus, .button[disabled].primary:hover, .button[disabled].primary:focus {
-        background-color: #CB2C30;
+        background-color: #9B26B6;
         color: #fff; }
     .button.disabled.secondary, .button[disabled].secondary {
       opacity: 0.25;
@@ -4267,7 +4267,7 @@ select {
   white-space: nowrap;
   cursor: default;
   border-radius: 0;
-  background: #CB2C30;
+  background: #9B26B6;
   color: #fefefe; }
   .label.secondary {
     background: #777;
@@ -4548,7 +4548,7 @@ body {
         display: inline-block; } }
   .pagination a,
   .pagination button {
-    color: #CB2C30;
+    color: #9B26B6;
     display: block;
     padding: 0;
     border-radius: 0; }
@@ -4654,7 +4654,7 @@ body {
             transform: translate3d(0, 0, 0);
     border-radius: 0; }
   input:checked ~ .switch-paddle {
-    background: #CB2C30; }
+    background: #9B26B6; }
     input:checked ~ .switch-paddle::after {
       left: 2.25rem; }
   [data-whatinput='mouse'] input:focus ~ .switch-paddle {
@@ -4796,8 +4796,8 @@ table.hover tbody tr:nth-of-type(even):hover {
   border-radius: 0;
   margin-bottom: 1.55556rem; }
   .thumbnail:hover, .thumbnail:focus {
-    -webkit-box-shadow: 0 0 6px 1px rgba(203, 44, 48, 0.5);
-            box-shadow: 0 0 6px 1px rgba(203, 44, 48, 0.5); }
+    -webkit-box-shadow: 0 0 6px 1px rgba(155, 38, 182, 0.5);
+            box-shadow: 0 0 6px 1px rgba(155, 38, 182, 0.5); }
 
 .title-bar {
   background: #0a0a0a;
@@ -6172,7 +6172,7 @@ span.wpcf7-list-item {
     outline: 1px solid #333; }
 
 .search__submit {
-  background-color: #CB2C30;
+  background-color: #9B26B6;
   background-image: url("../images/next_arrow.svg");
   background-position: center;
   background-repeat: no-repeat;
@@ -6547,7 +6547,6 @@ body#tinymce {
   padding-right: 0; }
 
 .main-menu a {
-  color: #CB2C30;
   font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
   font-size: 0.77778rem;
   padding: 0.44444rem 0.55556rem;

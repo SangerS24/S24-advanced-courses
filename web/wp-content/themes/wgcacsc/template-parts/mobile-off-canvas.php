@@ -15,7 +15,6 @@
     <?php echo get_search_form(); ?>
   </div>
 
-  <a class="button expanded button-cta enquire-cta--mobile" href="/contact/">Enquire Now</a>
 </nav>
 
 <div class="off-canvas-content" data-off-canvas-content>

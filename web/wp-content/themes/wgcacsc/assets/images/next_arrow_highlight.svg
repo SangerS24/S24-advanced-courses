@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="17px" height="25px" viewBox="0 0 17 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
-    <title>next copy</title>
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>next-copy</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Promotion-2-up-v2" transform="translate(-349.000000, -108.000000)" fill="#CB2C30">
-            <g id="Text-Copy-2" transform="translate(119.000000, 107.000000)">
-                <polygon id="next-copy" points="234.072635 1 230 5.06570086 238.449632 13.5009766 230 21.9349828 234.072635 26 246.595634 13.5009766"></polygon>
-            </g>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="next_arrow_highlight" fill-rule="nonzero" fill="#9B26B6">
+            <polygon id="next-copy" points="4.072635 0 0 4.06570086 8.449632 12.5009766 0 20.9349828 4.072635 25 16.595634 12.5009766"></polygon>
         </g>
     </g>
 </svg>
