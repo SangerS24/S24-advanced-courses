@@ -5929,26 +5929,21 @@ span.wpcf7-list-item {
 
 .site-header__inner {
   padding: 1.38889rem 0.55556rem; }
-  @media screen and (min-width: 31.25em) {
+  @media screen and (min-width: 48em) {
     .site-header__inner {
-      padding: 1.11111rem; } }
+      padding: 1.38889rem 1.11111rem; } }
   @media screen and (min-width: 65em) {
     .site-header__inner {
-      padding: 0.55556rem 1.11111rem; } }
+      padding: 1.38889rem 1.11111rem 1.11111rem; } }
 
 .site-logo {
   display: inline-block;
   width: 10.66667rem; }
   .site-logo img {
-    max-height: 100%;
     max-width: 100%; }
   @media screen and (min-width: 31.25em) {
     .site-logo {
       width: 16rem; } }
-  @media screen and (min-width: 65em) {
-    .site-logo {
-      margin-top: 0.55556rem;
-      max-height: none; } }
 
 .enquire-cta {
   display: none; }
@@ -6540,9 +6535,9 @@ body#tinymce {
 .button--small {
   padding: 0.27778rem 0.33333rem; }
 
-@media screen and (min-width: 48em) {
+@media screen and (min-width: 65em) {
   .main-menu {
-    margin-top: 0.55556rem; } }
+    margin-top: 0.83333rem; } }
 
 @media screen and (max-width: 64.9375em) {
   .main-menu li:first-child a {

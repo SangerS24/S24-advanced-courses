@@ -48,7 +48,6 @@
 								<span class="show-for-sr">Access the main menu</span>
 							</a>
 						</noscript>
-						<a href="/contact/" class="enquire-cta button button-cta float-right">Enquire Now</a>
 					</div>
 
 					<?php foundationpress_top_bar_r(); ?>

@@ -2,9 +2,9 @@
 .main-menu {
 
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
 
-        margin-top: rem-calc(10);
+        margin-top: rem-calc(15);
 
     }
 
