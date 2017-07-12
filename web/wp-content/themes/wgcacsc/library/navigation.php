@@ -35,7 +35,7 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 add_filter( 'wp_nav_menu_items', 'your_custom_menu_item', 10, 2 );
 function your_custom_menu_item ( $items, $args ) {
     if ($args->theme_location == 'top-bar-r') {
-        $items .= '<li class="menu-item--search"><a href="/search"><img src="' . get_template_directory_uri() . '/assets/images/magnifier.svg" alt="" /><span class="show-for-sr">Search</span></a></li>';
+        $items .= '<li class="menu-item--search"><a href="/?s="><img src="' . get_template_directory_uri() . '/assets/images/magnifier.svg" alt="" /><span class="show-for-sr">Search</span></a></li>';
     }
 
     return $items;
