@@ -16,7 +16,7 @@
 
 
 .footer-container {
-	//margin-top: rem-calc(50);
+	margin-top: rem-calc(30);
 
 	@include breakpoint(large) {
 
@@ -212,7 +212,7 @@
 	li {
 
 		display: inline-block;
-		margin: 0 rem-calc(8);
+		margin: 0 rem-calc(6);
 
 	}
 
@@ -246,7 +246,7 @@
 
 .footer__outer {
 
-	//background: rgba(255, 255, 255, 0.8);
+	background: rgba(0, 0, 0, 0.5);
 	color: #ffffff;
 	font-size: rem-calc(12);
 	padding: rem-calc(15) 0;
@@ -283,11 +283,11 @@
 }
 
 
-.footer__outer--padded {
-
-	padding: rem-calc(18) 0;
-
-}
+//.footer__outer--padded {
+//
+//	padding: rem-calc(18) 0;
+//
+//}
 
 
 p.copyright {

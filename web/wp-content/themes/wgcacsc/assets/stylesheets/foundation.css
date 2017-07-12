@@ -6312,6 +6312,9 @@ span.wpcf7-list-item {
     margin: 5px 0 0 0;
     vertical-align: text-top; }
 
+.footer-container {
+  margin-top: 1.66667rem; }
+
 .footer {
   padding-top: 1.11111rem;
   background: url("../images/footer_bg.svg") no-repeat center center;
@@ -6369,7 +6372,7 @@ span.wpcf7-list-item {
   margin-left: 0; }
   .social-media li {
     display: inline-block;
-    margin: 0 0.44444rem; }
+    margin: 0 0.33333rem; }
   .social-media a {
     display: block; }
     @media screen and (min-width: 65em) {
@@ -6383,6 +6386,7 @@ span.wpcf7-list-item {
     display: block; }
 
 .footer__outer {
+  background: rgba(0, 0, 0, 0.5);
   color: #ffffff;
   font-size: 0.66667rem;
   padding: 0.83333rem 0;
@@ -6400,9 +6404,6 @@ span.wpcf7-list-item {
       text-align: left; }
       .footer__outer p {
         margin-bottom: 0; } }
-
-.footer__outer--padded {
-  padding: 1rem 0; }
 
 p.copyright {
   margin-bottom: 0; }

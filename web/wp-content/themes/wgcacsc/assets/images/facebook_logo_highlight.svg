@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
-    <title>facebook</title>
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>facebook_logo_highlight</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="DEFAULT---Accommodation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="DEFAULT---Accommodation---L-1024+-(1280-max-width)" transform="translate(-735.000000, -2548.000000)" fill="#CB2C30">
-            <g id="FOOTER-v8-Copy-2" transform="translate(-375.000000, 2328.000000)">
-                <g id="Social-Media" transform="translate(375.000000, 210.000000)">
-                    <path d="M755,13.3333333 C755,11.5819444 753.419167,10 751.666667,10 L738.333333,10 C736.580833,10 735,11.5819444 735,13.3333333 L735,26.6666667 C735,28.4180556 736.580833,30 738.333333,30 L745,30 L745,22.4447222 L742.555278,22.4447222 L742.555278,19.1113889 L745,19.1113889 L745,17.8125 C745,15.5727778 746.681944,13.5558333 748.75,13.5558333 L751.444167,13.5558333 L751.444167,16.8891667 L748.75,16.8891667 C748.455,16.8891667 748.110833,17.2472222 748.110833,17.7833333 L748.110833,19.1113889 L751.444167,19.1113889 L751.444167,22.4447222 L748.110833,22.4447222 L748.110833,30 L751.666667,30 C753.419167,30 755,28.4180556 755,26.6666667 L755,13.3333333 Z" id="facebook"></path>
-                </g>
-            </g>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="facebook_logo_highlight" fill-rule="nonzero" fill="#FFFFFF">
+            <path d="M20,3.3333333 C20,1.5819444 18.419167,0 16.666667,0 L3.333333,0 C1.580833,0 0,1.5819444 0,3.3333333 L0,16.6666667 C0,18.4180556 1.580833,20 3.333333,20 L10,20 L10,12.4447222 L7.555278,12.4447222 L7.555278,9.1113889 L10,9.1113889 L10,7.8125 C10,5.5727778 11.681944,3.5558333 13.75,3.5558333 L16.444167,3.5558333 L16.444167,6.8891667 L13.75,6.8891667 C13.455,6.8891667 13.110833,7.2472222 13.110833,7.7833333 L13.110833,9.1113889 L16.444167,9.1113889 L16.444167,12.4447222 L13.110833,12.4447222 L13.110833,20 L16.666667,20 C18.419167,20 20,18.4180556 20,16.6666667 L20,3.3333333 Z" id="facebook"></path>
         </g>
     </g>
 </svg>

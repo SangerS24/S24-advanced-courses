@@ -19,8 +19,10 @@
 						<div class="small-12 columns">
 
 							<ol class="social-media">
-								<li><a href="https://twitter.com/WGCConfCentre"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/twitter_logo_highlight.svg" alt="Twitter Logo"></a></li>
-								<li><a href="https://www.facebook.com/WGCConfCentre"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook_logo_highlight.svg" alt="Facebook Logo"></a></li>
+								<li><a href="https://www.facebook.com/ACSCevents"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook_logo_highlight.svg" alt="Facebook Logo"></a></li>
+								<li><a href="https://www.youtube.com/c/WellcomeGenomeCampusCoursesandConferences"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/youtube_logo_highlight.svg" alt="YouTube Logo"></a></li>
+								<li><a href="https://twitter.com/ACSCevents"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/twitter_logo_highlight.svg" alt="Twitter Logo"></a></li>
+								<li><a href="http://www.linkedin.com/company/wellcomegenomecampuscoursesandconferences"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/linkedin_logo_highlight.svg" alt="LinkedIn Logo"></a></li>
 							</ol>
 
 						</div>
