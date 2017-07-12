@@ -8,11 +8,25 @@
     }
 
 
+    .side-menu-container {
+        h6 {
+            a, a:visited {
+                color: $body_font_color;
+            }
+        }
+    }
     .menu {
 
         li {
 
             display: block;
+            &.h6 {
+                padding-top: rem-calc(5);
+                a, a:visited {
+                    padding: 0;
+                    color: $body-font-color;
+                }
+            }
 
         }
 

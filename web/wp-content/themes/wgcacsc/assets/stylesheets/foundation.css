@@ -2238,7 +2238,7 @@ dfn {
    * Address variable `h1` font-size and margin within `section` and `article`
    * contexts in Firefox 4+, Safari, and Chrome.
    */
-h1 {
+h1, .h1 {
   font-size: 2em;
   margin: 0.67em 0; }
 
@@ -3518,11 +3518,17 @@ ul,
 ol,
 li,
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
+.h5,
 h6,
+.h6,
 pre,
 form,
 p,
@@ -3552,12 +3558,17 @@ small {
   font-size: 80%;
   line-height: inherit; }
 
-h1,
+h1, .h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
-h6 {
+.h5,
+h6,
+.h6 {
   font-family: "futura-medium-bold";
   font-weight: normal;
   font-style: normal;
@@ -3566,45 +3577,45 @@ h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 1.4; }
-  h1 small,
-  h2 small,
-  h3 small,
-  h4 small,
-  h5 small,
-  h6 small {
+  h1 small, .h1 small,
+  h2 small, .h2 small,
+  h3 small, .h3 small,
+  h4 small, .h4 small,
+  h5 small, .h5 small,
+  h6 small, .h6 small {
     color: #cacaca;
     line-height: 0; }
 
-h1 {
+h1, .h1 {
   font-size: 1.33333rem; }
 
-h2 {
+h2, .h2 {
   font-size: 1.11111rem; }
 
-h3 {
+h3, .h3 {
   font-size: 1.05556rem; }
 
-h4 {
+h4, .h4 {
   font-size: 1rem; }
 
-h5 {
+h5, .h5 {
   font-size: 0.94444rem; }
 
-h6 {
+h6, .h6 {
   font-size: 0.88889rem; }
 
 @media screen and (min-width: 48em) {
-  h1 {
+  h1, .h1 {
     font-size: 2.66667rem; }
-  h2 {
+  h2, .h2 {
     font-size: 2.22222rem; }
-  h3 {
+  h3, .h3 {
     font-size: 1.72222rem; }
-  h4 {
+  h4, .h4 {
     font-size: 1.38889rem; }
-  h5 {
+  h5, .h5 {
     font-size: 1.11111rem; }
-  h6 {
+  h6, .h6 {
     font-size: 0.88889rem; } }
 
 a {
@@ -3804,11 +3815,14 @@ kbd {
     margin: 0.5cm; }
   p,
   h2,
-  h3 {
+  .h2,
+  h3,
+  .h3 {
     orphans: 3;
     widows: 3; }
-  h2,
-  h3 {
+  h2, .h2,
+  h3,
+  .h3 {
     page-break-after: avoid; } }
 
 .button {
@@ -5803,7 +5817,7 @@ table.hover tbody tr:nth-of-type(even):hover {
   My custom styles:
   Add your scss files below to structure your project styles
 */
-h1, h2, h3, h4, h5, h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   text-transform: uppercase; }
 
 bold, strong {
@@ -6420,8 +6434,16 @@ p.copyright {
     padding-left: 2.22222rem;
     padding-right: 1.33333rem; } }
 
+.sidebar .side-menu-container h6 a, .sidebar .side-menu-container .h6 a, .sidebar .side-menu-container h6 a:visited, .sidebar .side-menu-container .h6 a:visited {
+  color: #333333; }
+
 .sidebar .menu li {
   display: block; }
+  .sidebar .menu li.h6 {
+    padding-top: 0.27778rem; }
+    .sidebar .menu li.h6 a, .sidebar .menu li.h6 a:visited {
+      padding: 0;
+      color: #333333; }
 
 .sidebar .menu a {
   padding-left: 0; }
