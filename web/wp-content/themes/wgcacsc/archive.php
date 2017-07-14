@@ -27,7 +27,7 @@ get_header(); ?>
 			<div class="main-content small-12 large-9 columns" id="main-content">
 
 				<div class="offset-content">
-					<?php foundationpress_breadcrumb(); ?>
+					<?php s24_breadcrumb(); ?>
 				</div>
 
 				<div class="main-content" id="main-content">

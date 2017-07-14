@@ -17,6 +17,9 @@ get_header(); ?>
 
 <div id="page" role="main">
 	<article class="main-content" id="main-content">
+        <div class="offset-content">
+            <?php s24_breadcrumb(); ?>
+        </div>
 	<?php if ( have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>

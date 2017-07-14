@@ -264,30 +264,29 @@ add_action('foundationpress_before_sidebar' , 's24_list_child_pages' , 10 , 0 );
 
 //list child pages of a section
 function s24_list_child_pages() {
-    //looks for current page in the main menu first
-    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() ) ) {
+
+    $current_object_id = s24_get_current_object_id();
+    $current_object_type = s24_get_current_object_type();
+
+    $side_menu_items = s24_menu_tree_array( $current_object_id , $current_object_type );
+
+    if ( empty($side_menu_items[0]['children']) ) {
         return;
     }
 
-    //id of the page we are at
-    $current_object_id = 0;
+    //menu html
+    $menu_string = '<article class="widget widget_nav_menu s24-side-menu"><div class="side-menu-container">';
+    $menu_string .= s24_build_menu_list( $side_menu_items[0] , $current_object_id , true );
+    $menu_string .= '</div></article>';
+    echo $menu_string;
+}
 
-    global $post;
-
-    if (is_home() ) {
-        $current_object_id = get_option( 'page_for_posts' );
-        $current_object_type = 'post_type';
-    } elseif ( is_tax() || is_category() || is_tag() ) {
-        $current_object_id = get_queried_object()->term_id;
-        $current_object_type = 'taxonomy';
-    }elseif ( !empty($post) ) {
-        $current_object_id = $post->ID;
-        $current_object_type = 'post_type';
-    }
+function s24_menu_tree_array( $current_object_id , $current_object_type ) {
+    $menu_tree_array = array();
 
     if ( empty($current_object_id) ) {
         //can't find this page in the system
-        return;
+        return $menu_tree_array;
     }
 
     //Check whether it is in the main menu
@@ -311,7 +310,7 @@ function s24_list_child_pages() {
     $top_menu_item = wp_get_nav_menu_items( 'main-menu' , $args);
 
     if ( empty( $top_menu_item) ) {
-        return; //we could not find this in the main menu
+        return $menu_tree_array; //we could not find this in the main menu
     }
 
 
@@ -334,18 +333,55 @@ function s24_list_child_pages() {
         }
     }
 
-    array_push( $side_menu_items , s24_menu_item_array( $top_menu_item ) );
+    array_push( $menu_tree_array , s24_menu_item_array( $top_menu_item ) );
 
-    //builds the menu html
-    if ( empty($side_menu_items[0]['children']) ) {
-        return; //no menu items except the current page
+    return $menu_tree_array;
+}
+
+function s24_get_current_object_id() {
+
+    $item_id = false;
+
+    //looks for current page in the main menu first
+    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() ) ) {
+        return $item_id;
     }
 
-    //menu html
-    $menu_string = '<article class="widget widget_nav_menu s24-side-menu"><div class="side-menu-container">';
-    $menu_string .= s24_build_menu_list( $side_menu_items[0] , $current_object_id , true );
-    $menu_string .= '</div></article>';
-    echo $menu_string;
+    global $post;
+
+    if (is_home() ) {
+        $item_id = get_option( 'page_for_posts' );
+    } elseif ( is_tax() || is_category() || is_tag() ) {
+        $item_id = get_queried_object()->term_id;
+    }elseif ( !empty($post) ) {
+        $item_id = $post->ID;
+    }
+
+    return $item_id;
+}
+
+function s24_get_current_object_type() {
+    $item_type = '';
+
+    //looks for current page in the main menu first
+    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() ) ) {
+        return $item_type;
+    }
+
+    //id of the page we are at
+    $current_object_id = 0;
+
+    global $post;
+
+    if (is_home() ) {
+        $item_type = 'post_type';
+    } elseif ( is_tax() || is_category() || is_tag() ) {
+        $item_type = 'taxonomy';
+    }elseif ( !empty($post) ) {
+        $item_type = 'post_type';
+    }
+
+    return $item_type;
 }
 
 //creates and returns menu item array (item itself and children - recursively )
@@ -413,4 +449,143 @@ function s24_build_menu_list( $side_menu_item , $current_id , $topmost = false )
     }
 
     return $list_html;
+}
+
+function s24_breadcrumb( $showhome = true, $separatorclass = false ) {
+
+    // Settings
+    $separator  = '&gt;';
+    $id         = 'breadcrumbs';
+    $class      = 'breadcrumbs';
+    $home_title = 'Home';
+
+    //if home page
+    if ( is_front_page() && ( $showhome == true ) ) {
+        echo '<ul id="' . $id . '" class="' . $class . '"><li class="item-home current">' . $home_title . '</li></ul>';
+    }
+
+    $current_object_id = s24_get_current_object_id();
+    $current_object_type = s24_get_current_object_type();
+
+    $trail_array = s24_trail_array( $current_object_id , $current_object_type );
+
+    if ( empty($trail_array ) ) {
+        //if not not catered for in s24 trail
+        foundationpress_breadcrumb();
+    } else {
+        //if catered for in s24 trail
+echo '<pre>'.print_r( $trail_array , 1 ).'</pre>';
+        //building the breadcrumb from the trail array
+        $breadcrumb_html = '';
+
+        //current page - tail of trail
+        if ( get_query_var('paged') ) {
+            //paged entry
+            $breadcrumb_html = '<li class="current item-current-' . get_query_var('paged') . '">' . __('Page', 'foundationpress' ) . ' ' . get_query_var('paged') . '</li>';
+            $last_bit = array_shift( $trail_array );
+            $breadcrumb_html = '<li>'.s24_build_breadcrumb_link( $last_bit ).'</li>'.$breadcrumb_html;
+        } else {
+            $last_bit = array_shift( $trail_array );
+            $breadcrumb_html = '<li class="current">'.s24_build_breadcrumb_link( $last_bit , true ).'</li>';
+        }
+        //going up rest of the trail
+        foreach ( $trail_array  as $trail_item ) {
+            $breadcrumb_html = '<li>'.s24_build_breadcrumb_link( $trail_item ).'</li>'.$breadcrumb_html;
+        }
+
+        if ( empty( $breadcrumb_html ) ) {
+            return;
+        }
+        echo '<ul id="' . $id . '" class="' . $class . '"><li><a href="'.get_home_url().'">' . $home_title . '</a></li>'.$breadcrumb_html.'</ul>';
+
+    }
+}
+
+function s24_trail_array( $current_object_id , $current_object_type ) {
+    $trail_array = array();
+
+    if ( empty($current_object_id) ) {
+        //can't find this page in the system
+        return $trail_array;
+    }
+
+
+    //Check whether it is in the main menu
+    $args = array(
+        'meta_query' => array(
+            'relationship' => 'AND',
+            array(
+                'key' => '_menu_item_object_id',
+                'value' => $current_object_id,
+                'compare' => '='
+            ),
+            array(
+                'key' => '_menu_item_type',
+                'value' => $current_object_type,
+                'compare' => '='
+            )
+        )
+    );
+
+    //we assume it is the topmost menu item for now - will fo up the hierarchy just after to get the topmost item
+    $current_menu_item_object = wp_get_nav_menu_items( 'main-menu' , $args);
+
+    if ( empty( $current_menu_item_object ) ) {
+        return $trail_array; //we could not find this in the main menu
+    }
+
+    $current_menu_item = array();
+    $current_menu_item['object'] = $current_menu_item_object[0];
+    $current_menu_item['type'] = 'nav_menu_item';
+
+    //if we are here, we found the current page in the main menu - we are going to build an array of menu items for the side menu
+
+    array_push( $trail_array ,  $current_menu_item ); //trail items from current up to topmost ancestor - here initiated with current item
+
+    //let's find these ancestors!
+    $current_menu_item_object = $current_menu_item_object[0];
+    if ( !empty( $current_menu_item_object->menu_item_parent ) ) {
+        //get the topmost menu item
+        while ( !empty($current_menu_item_object->menu_item_parent) ) {
+            $args = array(
+                'posts_per_page' => 1,
+                'p' => $current_menu_item_object->menu_item_parent
+            );
+            $current_menu_item_object = wp_get_nav_menu_items('main-menu', $args);
+            $current_menu_item_object = $current_menu_item_object[0];
+
+            $current_menu_item['object'] = $current_menu_item_object;
+            $current_menu_item['type'] = 'nav_menu_item';
+            array_push( $trail_array , $current_menu_item );
+        }
+    }
+
+    return $trail_array;
+}
+
+function s24_build_breadcrumb_link( $link_object , $current = false ) {
+    $href = '';
+    $label = '';
+    switch ( $link_object['type'] ) {
+        case 'nav_menu_item':
+            $menu_item_object = s24_set_single_menu_item( $link_object['object'] );
+            $href = $menu_item_object->url;
+            $label = $menu_item_object->title;
+            break;
+        case 'taxonomy':
+            $href = get_term_link( $link_object['object'] );
+            $label = $link_object['object']->name;
+            break;
+        case 'post_type':
+            $href = get_permalink( $link_object['object']->ID  );
+            $label = $link_object['object']->post_title;
+            break;
+    }
+
+    if ( $current ) {
+        $link_html = $label;
+    } else {
+        $link_html = '<a href="'.$href.'">'.$label.'</a>';
+    }
+    return $link_html;
 }

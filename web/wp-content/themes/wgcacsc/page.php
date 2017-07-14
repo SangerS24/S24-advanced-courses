@@ -28,7 +28,7 @@
          <div class="main-content small-12 large-9 columns" id="main-content">
 
              <div class="offset-content">
-                 <?php foundationpress_breadcrumb(); ?>
+                 <?php s24_breadcrumb(); ?>
              </div>
 
              <?php while ( have_posts() ) : the_post(); ?>
