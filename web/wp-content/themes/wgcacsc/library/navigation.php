@@ -265,7 +265,7 @@ add_action('foundationpress_before_sidebar' , 's24_list_child_pages' , 10 , 0 );
 //list child pages of a section
 function s24_list_child_pages() {
     //looks for current page in the main menu first
-    if ( ! (is_singular() || is_tax() || is_home() ) ) {
+    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() ) ) {
         return;
     }
 
@@ -277,12 +277,12 @@ function s24_list_child_pages() {
     if (is_home() ) {
         $current_object_id = get_option( 'page_for_posts' );
         $current_object_type = 'post_type';
-    } elseif ( !empty($post) ) {
+    } elseif ( is_tax() || is_category() || is_tag() ) {
+        $current_object_id = get_queried_object()->term_id;
+        $current_object_type = 'taxonomy';
+    }elseif ( !empty($post) ) {
         $current_object_id = $post->ID;
         $current_object_type = 'post_type';
-    } elseif ( is_tax() ) {
-        $current_object_id = get_queried_object()->term_id;
-        $current_object_type = get_queried_object()->taxonomy;
     }
 
     if ( empty($current_object_id) ) {
@@ -313,6 +313,7 @@ function s24_list_child_pages() {
     if ( empty( $top_menu_item) ) {
         return; //we could not find this in the main menu
     }
+
 
     $top_menu_item = $top_menu_item[0];
 

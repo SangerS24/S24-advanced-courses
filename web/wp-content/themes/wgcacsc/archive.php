@@ -35,11 +35,7 @@ get_header(); ?>
 					<div class="offset-content">
 						<?php
 						$archiveTitle = get_the_archive_title();
-						if($archiveTitle == '[Do not select this]') {
-							echo '<h1 class="page-title">News &amp; Events</h1>';
-						} else {
 							echo '<h1 class="page-title">' . $archiveTitle . '</h1>';
-						}
 						?>
 					</div>
 
