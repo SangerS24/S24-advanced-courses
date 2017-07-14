@@ -22,17 +22,23 @@ $location = [
     ],
     [
         [
-            'param' => 'page_template',
+            'param' => 'post_type',
             'operator' => '==',
-            'value' => 'default'
+            'value' => 'page'
         ],
+        [
+            'param' => 'page_type',
+            'operator' => '!=',
+            'value' => 'front_page'
+        ]
     ]
 ];
 
 
 // Create field group
 $fg = (new fewacf\field_group('Sub Heading', '180820161345a', $location, 5, [
-    'position' => 'acf_after_title'
+    'position' => 'acf_after_title',
+    'items_to_hide_on_screen' => []
 ]));
 
 $fg->add_brick(new bricks\component_section_heading('page_sub_heading', '150820161606a'));
@@ -43,7 +49,8 @@ $fg->register();
 
 // Create field group
 $fg0 = (new fewacf\field_group('Hero', '150820161607a', $location, 3, [
-    'position' => 'acf_after_title'
+    'position' => 'acf_after_title',
+    'items_to_hide_on_screen' => []
 ]));
 
 $fg0->add_brick(new bricks\component_hero_list('page_heroes', '150820161606a'));
@@ -74,7 +81,8 @@ $location = [
 
 // Create field group
 $fg35 = (new fewacf\field_group('Hero', '220820161421a', $location, 8, [
-    'position' => 'acf_after_title'
+    'position' => 'acf_after_title',
+    'items_to_hide_on_screen' => []
 ]));
 
 $fg35->add_brick(new bricks\component_hero_list('page_heroes', '220820161421b'));
@@ -135,19 +143,7 @@ $location = [
 
 $fg8 = (new fewacf\field_group('Base Settings', '210920161440a', $location, 4, [
     'position' => 'acf_after_title',
-    'hide_on_screen' => [
-        0 => 'the_content',
-        2 => 'custom_fields',
-        3 => 'discussion',
-        4 => 'comments',
-        5 => 'revisions',
-        6 => 'slug',
-        7 => 'author',
-        8 => 'format',
-        10 => 'featured_image',
-        12 => 'tags',
-        13 => 'send-trackbacks',
-    ]
+    'items_to_hide_on_screen' => []
 ]));
 
 $fg8->add_field(new acf_fields\radio('Promote to homepage', 'promoted_to_homepage', '300820160918a', [

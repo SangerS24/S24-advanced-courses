@@ -55,9 +55,13 @@ class group_flexible_content extends project_brick
         $l->add_brick(new component_map('map_component', '150820161456a'));
         $fc->add_layout($l);
 
-        $l = new layout('', 'l10', '150920161343b');
-        $l->add_brick(new component_360('component_360', '150920161344a'));
+        $l = new layout('', 'l11', '201707141707a');
+        $l->add_brick(new component_bio('bio_component', '201707141708a'));
         $fc->add_layout($l);
+
+//        $l = new layout('', 'l10', '150920161343b');
+//        $l->add_brick(new component_360('component_360', '150920161344a'));
+//        $fc->add_layout($l);
 
         $this->add_flexible_content($fc);
 
