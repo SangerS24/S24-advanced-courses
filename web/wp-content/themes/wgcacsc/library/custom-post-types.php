@@ -38,4 +38,28 @@ function wgcacsc_register_my_cpts()
     );
     register_post_type("event", $args);
 
+    $labels = array(
+        'name'              => _x( 'Event Categories', '' ),
+        'singular_name'     => _x( 'Event Category', '' ),
+        'search_items'      => __( 'Search Event Categories', '' ),
+        'all_items'         => __( 'All Event Categories', '' ),
+        'parent_item'       => __( 'Parent Event Category', '' ),
+        'parent_item_colon' => __( 'Parent Event Category:', '' ),
+        'edit_item'         => __( 'Edit Event Category', '' ),
+        'update_item'       => __( 'Update Event Category', '' ),
+        'add_new_item'      => __( 'Add New Event Category', '' ),
+        'new_item_name'     => __( 'New Event Category Name', '' ),
+        'menu_name'         => __( 'Event Category', '' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'event-type' ),
+    );
+
+    register_taxonomy( 'event-category', array( 'event' ), $args );
 }
