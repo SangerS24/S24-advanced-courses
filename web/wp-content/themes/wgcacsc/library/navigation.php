@@ -290,31 +290,11 @@ function s24_menu_tree_array( $current_object_id , $current_object_type ) {
     }
 
     //Check whether it is in the main menu
-    $args = array(
-        'meta_query' => array(
-            'relationship' => 'AND',
-            array(
-                'key' => '_menu_item_object_id',
-                'value' => $current_object_id,
-                'compare' => '='
-            ),
-            array(
-                'key' => '_menu_item_type',
-                'value' => $current_object_type,
-                'compare' => '='
-            )
-        )
-    );
-
-    //we assume it is the topmost menu item for now - will fo up the hierarchy just after to get the topmost item
-    $top_menu_item = wp_get_nav_menu_items( 'main-menu' , $args);
+    $top_menu_item = s24_get_menu_item( $current_object_id , $current_object_type);
 
     if ( empty( $top_menu_item) ) {
         return $menu_tree_array; //we could not find this in the main menu
     }
-
-
-    $top_menu_item = $top_menu_item[0];
 
     //if we are here, we found the current page in the main menu - we are going to build an array of menu items for the side menu
 
@@ -511,94 +491,143 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
 
 
     //Check whether it is in the main menu
-    $args = array(
-        'meta_query' => array(
-            'relationship' => 'AND',
-            array(
-                'key' => '_menu_item_object_id',
-                'value' => $current_object_id,
-                'compare' => '='
-            ),
-            array(
-                'key' => '_menu_item_type',
-                'value' => $current_object_type,
-                'compare' => '='
-            )
-        )
-    );
-
-    //we assume it is the topmost menu item for now - will fo up the hierarchy just after to get the topmost item
-    $current_menu_item_object = wp_get_nav_menu_items( 'main-menu' , $args);
-    $current_menu_item_object = $current_menu_item_object[0];
+    $current_menu_item_object = s24_get_menu_item( $current_object_id , $current_object_type );
 
     $current_working_menu_item = array();
 
-    if ( empty( $current_menu_item_object ) ) {
-        //we could not find this in the main menu so let's check if it's a single post or event and build the trail until we hit a menu item
-        if ( ! ( is_single() || is_singular('event') ) ) {
-            return $trail_array;
-        }
-
-        //this is a single post or event
-        $current_working_menu_item['type'] = 'post_type';
-        $current_working_menu_item['object'] = get_post( $current_object_id );
-        array_push( $trail_array , $current_working_menu_item );
-
-        if ( is_single() ) {
-            //this is a single post
-            $post_categories = wp_get_post_categories( $current_object_id );
-            if ( empty( $post_categories) ) {
-                //post not assigned to a category
-                $trail_array = array();
-                return $trail_array;
-            }
-            $post_main_category = $post_categories[0];
-            //Check whether it is in the main menu
-            $args = array(
-                'meta_query' => array(
-                    'relationship' => 'AND',
-                    array(
-                        'key' => '_menu_item_object_id',
-                        'value' => $post_main_category,
-                        'compare' => '='
-                    ),
-                    array(
-                        'key' => '_menu_item_type',
-                        'value' => 'taxonomy',
-                        'compare' => '='
-                    )
-                )
-            );
-
-            //we assume it is the topmost menu item for now - will fo up the hierarchy just after to get the topmost item
-            $current_menu_item_object = wp_get_nav_menu_items( 'main-menu' , $args);
-
-            if ( empty( $current_menu_item_object) ) {
-                $trail_array = array();
-                return $trail_array;
-                //we could not find that category in the menu
-            } else {
-                $current_menu_item_object = $current_menu_item_object[0];
-                $current_working_menu_item['object'] = $current_menu_item_object;
-                $current_working_menu_item['type'] = 'nav_menu_item';
-                array_push( $trail_array , $current_working_menu_item );
-            }
-
-
-        } elseif (is_singular( 'event' ) ) {
-            //this is a single event
-        }
-    } else {
+    if  ( !empty( $current_working_menu_item ) ) {
         $current_working_menu_item['object'] = $current_menu_item_object;
         $current_working_menu_item['type'] = 'nav_menu_item';
 
         //if we are here, we found the current page in the main menu - we are going to build an array of menu items for the side menu
 
         array_push( $trail_array ,  $current_working_menu_item ); //trail items from current up to topmost ancestor - here initiated with current item
+    } else {
+        //let's go up the ancestry to hist a menu item
+
+        //let's not bother if it's not a news item or an event
+        if ( ! ( is_single() || is_singular('event') ) ) {
+            return $trail_array;
+        }
+
+        //this is a single post or event - let's add it to the trail
+        $post_item = array();
+        $post_item['type'] = 'post_type';
+        $post_item['object'] = get_post( $current_object_id );
+        array_push( $trail_array , $post_item );
+
+        if ( is_singular( 'post' ) ) {
+            $post_cat = wp_get_post_categories( $current_object_id );
+            if ( !empty( $post_cat ) ) {
+                $post_cat = $post_cat[0];
+                $post_cat_object = get_term( $post_cat , 'category' );
+                $post_cat_menu_item = s24_get_menu_item( $post_cat , 'taxonomy');
+                while( ( $post_cat_menu_item == false ) && ( $post_cat_object->parent != 0 ) ) {
+                    //as long as it's not a menu item and it has parents
+                    $cat_menu_item = array();
+                    $cat_menu_item['object'] = $post_cat_object;
+                    $cat_menu_item['type'] = 'taxonomy';
+                    array_push( $trail_array , $cat_menu_item );
+                    $post_cat = $post_cat_object->parent;
+                    $post_cat_object = get_term( $post_cat , 'category' );
+                    $post_cat_menu_item = s24_get_menu_item( $post_cat , 'taxonomy' );
+                }
+
+                //it's either a menu item or we hit the topmost category in the ancestry
+                if ( !empty( $post_cat_menu_item ) ) {
+                    $current_working_menu_item['object'] = $post_cat_menu_item;
+                    $current_working_menu_item['type'] = 'nav_menu_item';
+                    array_push( $trail_array , $current_working_menu_item );
+
+                    $current_menu_item_object = $post_cat_menu_item;
+                } else {
+                    $cat_menu_item = array();
+                    $cat_menu_item['object'] = $post_cat_object;
+                    $cat_menu_item['type'] = 'taxonomy';
+                    array_push( $trail_array , $cat_menu_item );
+
+                    //it has no parent cat
+                    $posts_page_menu_item = s24_get_menu_item( get_option( 'page_for_posts') , 'post_type' );
+
+                    if ( $post_cat_menu_item == false ) {
+                        //main post page is not in menu
+                        $post_page_item = array();
+                        $post_page_item['object'] = get_post( get_option( 'page_for_posts') );
+                        $post_page_item['type'] = 'post_type';
+
+                        array_push( $trail_array , $post_page_item );
+                        return $trail_array;
+                    } else {
+                        //post page is in the menu
+                        $current_working_menu_item['object'] = $posts_page_menu_item;
+                        $current_working_menu_item['type'] = 'nav_menu_item';
+                        array_push( $trail_array , $current_working_menu_item );
+
+                        $current_menu_item_object = $posts_page_menu_item;
+                    }
+                }
+
+            }
+
+        } elseif( is_singular( 'event' ) ) {
+            $event_cat = wp_get_post_terms( $current_object_id , 'event-category' );
+            if ( !empty( $event_cat ) ) {
+                $event_cat = $event_cat[0];
+                $event_cat_object = get_term( $event_cat , 'event-category' );
+                $event_cat_menu_item = s24_get_menu_item( $event_cat , 'taxonomy');
+                while( ( $event_cat_menu_item == false ) && ( $event_cat_object->parent != 0 ) ) {
+                    //as long as it's not a menu item and it has parents
+                    $cat_menu_item = array();
+                    $cat_menu_item['object'] = $event_cat_object;
+                    $cat_menu_item['type'] = 'taxonomy';
+                    array_push( $trail_array , $cat_menu_item );
+                    $event_cat = $event_cat_object->parent;
+                    $event_cat_object = get_term( $event_cat , 'event-category' );
+                    $event_cat_menu_item = s24_get_menu_item( $event_cat , 'taxonomy' );
+                }
+
+                //it's either a menu item or we hit the topmost event-category in the ancestry
+                if ( !empty( $event_cat_menu_item ) ) {
+                    $current_working_menu_item['object'] = $event_cat_menu_item;
+                    $current_working_menu_item['type'] = 'nav_menu_item';
+                    array_push( $trail_array , $current_working_menu_item );
+
+                    $current_menu_item_object = $event_cat_menu_item;
+                } else {
+                    $cat_menu_item = array();
+                    $cat_menu_item['object'] = $event_cat_object;
+                    $cat_menu_item['type'] = 'taxonomy';
+                    array_push( $trail_array , $cat_menu_item );
+
+                    //it has no parent cat
+                    $events_archive_page_object = get_page_by_path( 'our-events' );
+
+                    $events_page_menu_item = s24_get_menu_item( $events_archive_page_object->ID , 'post_type' );
+
+                    if ( $events_page_menu_item == false ) {
+                        //main post page is not in menu
+                        $events_page_item = array();
+                        $events_page_item['object'] = get_post( $events_archive_page_object->ID );
+                        $events_page_item['type'] = 'post_type';
+
+                        array_push( $trail_array , $events_page_item );
+                        return $trail_array;
+                    } else {
+                        //post page is in the menu
+                        $current_working_menu_item['object'] = $events_page_menu_item;
+                        $current_working_menu_item['type'] = 'nav_menu_item';
+                        array_push( $trail_array , $current_working_menu_item );
+
+                        $current_menu_item_object = $events_page_menu_item;
+                    }
+                }
+
+            }
+
+        }
     }
 
-
-    //let's find these ancestors!
+    //let's find these menu ancestors!
     if ( !empty( $current_menu_item_object->menu_item_parent ) ) {
         //get the topmost menu item
         while ( !empty($current_menu_item_object->menu_item_parent) ) {
@@ -643,4 +672,29 @@ function s24_build_breadcrumb_link( $link_object , $current = false ) {
         $link_html = '<a href="'.$href.'">'.$label.'</a>';
     }
     return $link_html;
+}
+
+//returns menu item object or false if not in menu
+function s24_get_menu_item( $item_id , $item_type ) {
+    $args = array(
+        'meta_query' => array(
+            'relationship' => 'AND',
+            array(
+                'key' => '_menu_item_object_id',
+                'value' => $item_id,
+                'compare' => '='
+            ),
+            array(
+                'key' => '_menu_item_type',
+                'value' => $item_type,
+                'compare' => '='
+            )
+        )
+    );
+    $menu_item_object = wp_get_nav_menu_items( 'main-menu' , $args);
+    if ( empty($menu_item_object) ) {
+        return false;
+    } else {
+        return $menu_item_object[0];
+    }
 }
