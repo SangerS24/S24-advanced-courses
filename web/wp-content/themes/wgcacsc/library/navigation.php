@@ -529,21 +529,76 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
 
     //we assume it is the topmost menu item for now - will fo up the hierarchy just after to get the topmost item
     $current_menu_item_object = wp_get_nav_menu_items( 'main-menu' , $args);
+    $current_menu_item_object = $current_menu_item_object[0];
+
+    $current_working_menu_item = array();
 
     if ( empty( $current_menu_item_object ) ) {
-        return $trail_array; //we could not find this in the main menu
+        //we could not find this in the main menu so let's check if it's a single post or event and build the trail until we hit a menu item
+        if ( ! ( is_single() || is_singular('event') ) ) {
+            return $trail_array;
+        }
+
+        //this is a single post or event
+        $current_working_menu_item['type'] = 'post_type';
+        $current_working_menu_item['object'] = get_post( $current_object_id );
+        array_push( $trail_array , $current_working_menu_item );
+
+        if ( is_single() ) {
+            //this is a single post
+            $post_categories = wp_get_post_categories( $current_object_id );
+            if ( empty( $post_categories) ) {
+                //post not assigned to a category
+                $trail_array = array();
+                return $trail_array;
+            }
+            $post_main_category = $post_categories[0];
+            //Check whether it is in the main menu
+            $args = array(
+                'meta_query' => array(
+                    'relationship' => 'AND',
+                    array(
+                        'key' => '_menu_item_object_id',
+                        'value' => $post_main_category,
+                        'compare' => '='
+                    ),
+                    array(
+                        'key' => '_menu_item_type',
+                        'value' => 'taxonomy',
+                        'compare' => '='
+                    )
+                )
+            );
+
+            //we assume it is the topmost menu item for now - will fo up the hierarchy just after to get the topmost item
+            $current_menu_item_object = wp_get_nav_menu_items( 'main-menu' , $args);
+
+            if ( empty( $current_menu_item_object) ) {
+                $trail_array = array();
+                return $trail_array;
+                //we could not find that category in the menu
+            } else {
+                $current_menu_item_object = $current_menu_item_object[0];
+                $current_working_menu_item['object'] = $current_menu_item_object;
+                $current_working_menu_item['type'] = 'nav_menu_item';
+                array_push( $trail_array , $current_working_menu_item );
+            }
+
+
+        } elseif (is_singular( 'event' ) ) {
+            //this is a single event
+        }
+    } else {
+        $current_working_menu_item['object'] = $current_menu_item_object;
+        $current_working_menu_item['type'] = 'nav_menu_item';
+
+        //if we are here, we found the current page in the main menu - we are going to build an array of menu items for the side menu
+
+        array_push( $trail_array ,  $current_working_menu_item ); //trail items from current up to topmost ancestor - here initiated with current item
     }
 
-    $current_menu_item = array();
-    $current_menu_item['object'] = $current_menu_item_object[0];
-    $current_menu_item['type'] = 'nav_menu_item';
-
-    //if we are here, we found the current page in the main menu - we are going to build an array of menu items for the side menu
-
-    array_push( $trail_array ,  $current_menu_item ); //trail items from current up to topmost ancestor - here initiated with current item
 
     //let's find these ancestors!
-    $current_menu_item_object = $current_menu_item_object[0];
     if ( !empty( $current_menu_item_object->menu_item_parent ) ) {
         //get the topmost menu item
         while ( !empty($current_menu_item_object->menu_item_parent) ) {
@@ -554,9 +609,9 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
             $current_menu_item_object = wp_get_nav_menu_items('main-menu', $args);
             $current_menu_item_object = $current_menu_item_object[0];
 
-            $current_menu_item['object'] = $current_menu_item_object;
-            $current_menu_item['type'] = 'nav_menu_item';
-            array_push( $trail_array , $current_menu_item );
+            $current_working_menu_item['object'] = $current_menu_item_object;
+            $current_working_menu_item['type'] = 'nav_menu_item';
+            array_push( $trail_array , $current_working_menu_item );
         }
     }
 
