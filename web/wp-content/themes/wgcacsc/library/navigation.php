@@ -462,6 +462,7 @@ function s24_breadcrumb( $showhome = true, $separatorclass = false ) {
     //if home page
     if ( is_front_page() && ( $showhome == true ) ) {
         echo '<ul id="' . $id . '" class="' . $class . '"><li class="item-home current">' . $home_title . '</li></ul>';
+        return;
     }
 
     $current_object_id = s24_get_current_object_id();
@@ -474,7 +475,6 @@ function s24_breadcrumb( $showhome = true, $separatorclass = false ) {
         foundationpress_breadcrumb();
     } else {
         //if catered for in s24 trail
-echo '<pre>'.print_r( $trail_array , 1 ).'</pre>';
         //building the breadcrumb from the trail array
         $breadcrumb_html = '';
 
