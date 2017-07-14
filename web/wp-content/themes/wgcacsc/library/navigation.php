@@ -327,13 +327,13 @@ function s24_get_current_object_id() {
         return $item_id;
     }
 
-    global $post;
 
     if (is_home() ) {
         $item_id = get_option( 'page_for_posts' );
     } elseif ( is_tax() || is_category() || is_tag() ) {
         $item_id = get_queried_object()->term_id;
     }elseif ( !empty($post) ) {
+        global $post;
         $item_id = $post->ID;
     }
 
@@ -351,13 +351,13 @@ function s24_get_current_object_type() {
     //id of the page we are at
     $current_object_id = 0;
 
-    global $post;
 
     if (is_home() ) {
         $item_type = 'post_type';
     } elseif ( is_tax() || is_category() || is_tag() ) {
         $item_type = 'taxonomy';
-    }elseif ( !empty($post) ) {
+    }elseif ( is_single() || is_singular('event') || is_page() ) {
+        global $post;
         $item_type = 'post_type';
     }
 
@@ -506,17 +506,17 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
         //let's go up the ancestry to hist a menu item
 
         //let's not bother if it's not a news item or an event
-        if ( ! ( is_single() || is_singular('event') ) ) {
+        if ( ! ( is_single() || is_singular('event') || is_category() || is_tax( 'event-category') ) ) {
             return $trail_array;
         }
 
-        //this is a single post or event - let's add it to the trail
-        $post_item = array();
-        $post_item['type'] = 'post_type';
-        $post_item['object'] = get_post( $current_object_id );
-        array_push( $trail_array , $post_item );
 
         if ( is_singular( 'post' ) ) {
+            //this is a single post or event - let's add it to the trail
+            $post_item = array();
+            $post_item['type'] = 'post_type';
+            $post_item['object'] = get_post( $current_object_id );
+            array_push( $trail_array , $post_item );
             $post_cat = wp_get_post_categories( $current_object_id );
             if ( !empty( $post_cat ) ) {
                 $post_cat = $post_cat[0];
@@ -570,6 +570,11 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
             }
 
         } elseif( is_singular( 'event' ) ) {
+            //this is a single post or event - let's add it to the trail
+            $post_item = array();
+            $post_item['type'] = 'post_type';
+            $post_item['object'] = get_post( $current_object_id );
+            array_push( $trail_array , $post_item );
             $event_cat = wp_get_post_terms( $current_object_id , 'event-category' );
             if ( !empty( $event_cat ) ) {
                 $event_cat = $event_cat[0];
@@ -624,6 +629,67 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
 
             }
 
+        } elseif ( is_category() || is_tax() ) {
+            if ( is_category() ) {
+                $taxonomy_type = 'category';
+            } else {
+                $taxonomy_type = 'event-category';
+            }
+
+            $term_id = $current_object_id;
+            $term_object = get_term( $term_id , $taxonomy_type );
+            $term_menu_item = s24_get_menu_item( $term_id , 'taxonomy');
+            while( ( $term_menu_item == false ) && ( $term_object->parent != 0 ) ) {
+                //as long as it's not a menu item and it has parents
+                $cat_menu_item = array();
+                $cat_menu_item['object'] = $term_object;
+                $cat_menu_item['type'] = 'taxonomy';
+                array_push( $trail_array , $cat_menu_item );
+                $term_id = $term_object->parent;
+                $term_object = get_term( $term_id , $taxonomy_type );
+                $term_menu_item = s24_get_menu_item( $term_id , 'taxonomy' );
+            }
+
+            //it's either a menu item or we hit the topmost category in the ancestry
+            if ( !empty( $term_menu_item ) ) {
+                $current_working_menu_item['object'] = $term_menu_item;
+                $current_working_menu_item['type'] = 'nav_menu_item';
+                array_push( $trail_array , $current_working_menu_item );
+
+                $current_menu_item_object = $term_menu_item;
+            } else {
+                $cat_menu_item = array();
+                $cat_menu_item['object'] = $term_object;
+                $cat_menu_item['type'] = 'taxonomy';
+                array_push( $trail_array , $cat_menu_item );
+
+                //it has no parent cat
+                $archive_page_id = get_option( 'page_for_posts' );
+                if ( $taxonomy_type == 'event-category' ) {
+                    $archive_page_object = get_page_by_path( 'our-events' );
+                    $archive_page_id = $archive_page_object->ID;
+                }
+
+                $posts_page_menu_item = s24_get_menu_item( $archive_page_id , 'post_type' );
+
+                if ( $term_menu_item == false ) {
+                    //main post page is not in menu
+                    $post_page_item = array();
+                    $post_page_item['object'] = get_post( $archive_page_id );
+                    $post_page_item['type'] = 'post_type';
+
+                    array_push( $trail_array , $post_page_item );
+                    return $trail_array;
+                } else {
+                    //post page is in the menu
+                    $current_working_menu_item['object'] = $posts_page_menu_item;
+                    $current_working_menu_item['type'] = 'nav_menu_item';
+                    array_push( $trail_array , $current_working_menu_item );
+
+                    $current_menu_item_object = $posts_page_menu_item;
+                }
+            }
+            //////////////////////////////
         }
     }
 

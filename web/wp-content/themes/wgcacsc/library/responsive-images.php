@@ -78,6 +78,11 @@ add_image_size ( 'client-logo--small', 200, 120, false );
 add_image_size ( 'news-listing', 420, 220, array('center', 'center') );
 add_image_size ( 'news-listing-retina', 840, 440, array('center', 'center') );
 
+/**
+ * Bio Image Styles
+ */
+
+add_image_size ( 'bio-listing', 240, 240, array('center', 'center') );
 
 // Register the new image sizes for use in the add media modal in wp-admin
 add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
