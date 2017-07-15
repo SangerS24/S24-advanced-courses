@@ -29,7 +29,7 @@ class component_collapsibles extends project_brick
         ] ))
         ->add_sub_field(new acf_fields\text( 'Title' , 'title' , '201707141511d' ))
         ->add_sub_field(new acf_fields\text( 'Direct link' , 'direct_link' , '201707141511c' , [
-            'prepend' => '<em>URL_to_this_page</em>#'
+            'prepend' => '<em>URL_to_this_page/</em>#'
         ]))
         ->add_sub_field( new acf_fields\wysiwyg( 'Content' , 'content' , '201707141511b' , [
             'toolbar' => 'full'
