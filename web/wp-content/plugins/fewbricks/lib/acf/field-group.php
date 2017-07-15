@@ -369,7 +369,7 @@ class field_group
 
     /**
      * This function hides and/or removes items on the edit screen for where the field group is present.
-     * Note that hide and showare mutually exclusive. If you pass anything but false to hide, show will be ignored.
+     * Note that hide and show are mutually exclusive. If you pass anything but false to hide, show will be ignored.
      * Pass (false, []) to apply the values in show.
      * @param bool|array $names_of_items_to_hide
      * @param bool|array $names_of_items_to_show
