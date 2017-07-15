@@ -1,4 +1,5 @@
 acf.add_action('ready', function( $el ){
+    loadCollapsibleURLMonitoring($el);
     addCollapsibleURLMonitoring($el);
 });
 
@@ -7,20 +8,40 @@ acf.add_action('append', function( $el ){
     addCollapsibleURLMonitoring($el);
 });
 
-function addCollapsibleURLMonitoring( $el ) {
-    //Title and URL fields
-    var $titleField = $el.find('[data-name="collapsible_panels_title"] input[type="text"]');
+function loadCollapsibleURLMonitoring( $el ) {
     var $UrlField = $el.find('[data-name="collapsible_panels_direct_link"] input[type="text"]');
 
     //add copy pastable URL if url already exists on loading
     jQuery($UrlField).each(function(){
         var $UrlFieldWrap = jQuery(this).closest('div.acf-input');
-        var $copySpan = jQuery('<input/>').addClass('url-copy-input').attr('type', 'text').attr('readonly' , 'readonly');
+        var $copySpan;
+        if ( jQuery($UrlFieldWrap).find('.url-copy-input').length == 0 ) {
+            $copySpan = jQuery('<input/>').addClass('url-copy-input').attr('type', 'text').attr('readonly' , 'readonly');
 
-        jQuery($copySpan).appendTo( $UrlFieldWrap );
+            jQuery($copySpan).appendTo( $UrlFieldWrap );
+        } else {
+            $copySpan = jQuery($UrlFieldWrap).find('.url-copy-input');
+        }
+
         jQuery($copySpan).val( globalData.page_url + '#' + jQuery(this).val());
 
     });
+}
+
+function addCollapsibleURLMonitoring( $el ) {
+    //Title and URL fields
+    var $titleField = $el.find('[data-name="collapsible_panels_title"] input[type="text"]');
+    var $UrlField = $el.find('[data-name="collapsible_panels_direct_link"] input[type="text"]');
+
+    // //add copy pastable URL if url already exists on loading
+    // jQuery($UrlField).each(function(){
+    //     var $UrlFieldWrap = jQuery(this).closest('div.acf-input');
+    //     var $copySpan = jQuery('<input/>').addClass('url-copy-input').attr('type', 'text').attr('readonly' , 'readonly');
+    //
+    //     jQuery($copySpan).appendTo( $UrlFieldWrap );
+    //     jQuery($copySpan).val( globalData.page_url + '#' + jQuery(this).val());
+    //
+    // });
 
 
     //pre-populate url if title changes
