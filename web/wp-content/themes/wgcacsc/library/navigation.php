@@ -332,7 +332,7 @@ function s24_get_current_object_id() {
         $item_id = get_option( 'page_for_posts' );
     } elseif ( is_tax() || is_category() || is_tag() ) {
         $item_id = get_queried_object()->term_id;
-    }elseif ( !empty($post) ) {
+    }elseif ( is_single() || is_singular('event') || is_page() ) {
         global $post;
         $item_id = $post->ID;
     }
