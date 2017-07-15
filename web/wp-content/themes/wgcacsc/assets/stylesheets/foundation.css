@@ -6855,24 +6855,38 @@ p + ul,
 p + ol {
   margin-top: -1.2rem; }
 
-.component-bio .component-bio__staff .component-bio__staff__picture {
-  max-width: 6.66667rem;
-  margin: 0 auto 1.11111rem; }
-  .component-bio .component-bio__staff .component-bio__staff__picture img {
-    max-width: 100%;
-    width: auto;
-    height: auto; }
+.component-bio .component-bio__staff {
+  position: relative;
+  border-bottom: 0.05556rem solid #e5e5e5;
+  margin-bottom: 1.94444rem;
+  padding-bottom: 0.27778rem; }
   @media screen and (min-width: 37.5em) {
-    .component-bio .component-bio__staff .component-bio__staff__picture {
-      float: left;
-      margin-right: 1.11111rem; } }
-
-.component-bio .component-bio__staff .component-bio__staff__text-content .component-bio__staff__text-content__job-title {
-  color: #777; }
-
-@media screen and (min-width: 37.5em) {
-  .component-bio .component-bio__staff .component-bio__staff__text-content {
-    margin-left: 7.77778rem; } }
+    .component-bio .component-bio__staff {
+      min-height: 9.16667rem; } }
+  .component-bio .component-bio__staff .component-bio__staff__job-title {
+    color: #777;
+    margin-bottom: 0.55556rem; }
+  .component-bio .component-bio__staff .component-bio__staff__name-title .h4 {
+    margin-bottom: 0; }
+  @media screen and (min-width: 37.5em) {
+    .component-bio .component-bio__staff .component-bio__staff__name-title {
+      margin-left: 7.77778rem; } }
+  .component-bio .component-bio__staff .component-bio__staff__picture {
+    max-width: 6.66667rem;
+    margin-bottom: 1.66667rem; }
+    .component-bio .component-bio__staff .component-bio__staff__picture img {
+      max-width: 100%;
+      width: auto;
+      height: auto; }
+    @media screen and (min-width: 37.5em) {
+      .component-bio .component-bio__staff .component-bio__staff__picture {
+        position: absolute;
+        top: 0.27778rem;
+        left: 0; } }
+  @media screen and (min-width: 37.5em) {
+    .component-bio .component-bio__staff .component-bio__staff__bio {
+      clear: right;
+      margin-left: 7.77778rem; } }
 
 /* Slider */
 .slick-slider {

@@ -63,16 +63,22 @@ class component_bio extends project_brick
                 $staff_bio = apply_filters( 'the_content' , $this->get_field_in_repeater( 'staff_bios' , 'bio') );
 
                 $html .= '<div class="component-bio__staff">';
-                $html .= '<div class="component-bio__staff__picture"><img src="'.$staff_picture_src.'" alt="'.$staff_name.'" /></div>';
-                $html .= '<div class="component-bio__staff__text-content">';
+
+                $html .= '<div class="component-bio__staff__name-title">';
                 if ( !empty( $staff_name) ) {
                     $html .= '<h4>'.$staff_name.'</h4>';
                 }
                 if ( !empty( $staff_title ) ) {
-                    $html .= '<p class="component-bio__staff__text-content__job-title">'.$staff_title.'</p>';
+                    $html .= '<p class="component-bio__staff__job-title">'.$staff_title.'</p>';
                 }
+                $html .= '</div>';
+
+                $html .= '<div class="component-bio__staff__picture"><img src="'.$staff_picture_src.'" alt="'.$staff_name.'" /></div>';
+
+                $html .= '<div class="component-bio__staff__bio">';
                 if ( !empty( $staff_bio ) ) {
                     $html .= $staff_bio;
+
                 }
                 $html .= '</div>';
                 $html .= '</div>';

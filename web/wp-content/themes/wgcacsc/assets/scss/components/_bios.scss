@@ -1,9 +1,30 @@
 .component-bio {
   .component-bio__staff {
+    position: relative;
+    border-bottom: rem-calc(1) solid #e5e5e5;
+    margin-bottom: rem-calc(35);
+    padding-bottom: rem-calc(5);
+    @include breakpoint( 600px ) {
+      min-height: rem-calc(165);
+    }
 
+    .component-bio__staff__job-title {
+      color: $secondary-color;
+      margin-bottom: rem-calc(10);
+    }
+    
+    .component-bio__staff__name-title {
+      .h4 {
+        margin-bottom: 0;
+      }
+      @include breakpoint(600px) {
+        margin-left: rem-calc(140);
+      }
+    }
+    
     .component-bio__staff__picture {
       max-width: rem-calc(120);
-      margin: 0 auto rem-calc(20);
+      margin-bottom: rem-calc(30);
       img {
         max-width: 100%;
         width: auto;
@@ -11,19 +32,18 @@
       }
 
       @include breakpoint(600px) {
-        float: left;
-        margin-right: rem-calc(20);
+        position: absolute;
+        top: rem-calc(5);
+        left: 0;
       }
     }
-
-    .component-bio__staff__text-content {
-      .component-bio__staff__text-content__job-title {
-        color: $secondary-color;
-      }
+    
+    .component-bio__staff__bio {
       @include breakpoint(600px) {
+        clear: right;
         margin-left: rem-calc(140);
       }
     }
-
+    
   }
 }
