@@ -5817,9 +5817,6 @@ table.hover tbody tr:nth-of-type(even):hover {
   My custom styles:
   Add your scss files below to structure your project styles
 */
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  text-transform: uppercase; }
-
 bold, strong {
   font-weight: normal;
   font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif; }
@@ -6857,6 +6854,25 @@ a {
 p + ul,
 p + ol {
   margin-top: -1.2rem; }
+
+.component-bio .component-bio__staff .component-bio__staff__picture {
+  max-width: 6.66667rem;
+  margin: 0 auto 1.11111rem; }
+  .component-bio .component-bio__staff .component-bio__staff__picture img {
+    max-width: 100%;
+    width: auto;
+    height: auto; }
+  @media screen and (min-width: 37.5em) {
+    .component-bio .component-bio__staff .component-bio__staff__picture {
+      float: left;
+      margin-right: 1.11111rem; } }
+
+.component-bio .component-bio__staff .component-bio__staff__text-content .component-bio__staff__text-content__job-title {
+  color: #777; }
+
+@media screen and (min-width: 37.5em) {
+  .component-bio .component-bio__staff .component-bio__staff__text-content {
+    margin-left: 7.77778rem; } }
 
 /* Slider */
 .slick-slider {

@@ -1,0 +1,29 @@
+.component-bio {
+  .component-bio__staff {
+
+    .component-bio__staff__picture {
+      max-width: rem-calc(120);
+      margin: 0 auto rem-calc(20);
+      img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+      }
+
+      @include breakpoint(600px) {
+        float: left;
+        margin-right: rem-calc(20);
+      }
+    }
+
+    .component-bio__staff__text-content {
+      .component-bio__staff__text-content__job-title {
+        color: $secondary-color;
+      }
+      @include breakpoint(600px) {
+        margin-left: rem-calc(140);
+      }
+    }
+
+  }
+}
