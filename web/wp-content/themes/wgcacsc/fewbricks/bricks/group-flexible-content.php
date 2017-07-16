@@ -68,6 +68,11 @@ class group_flexible_content extends project_brick
         $l->add_brick(new component_collapsibles('collapsibles_component', '201707141515a'));
         $fc->add_layout($l);
 
+        $l = new layout('', 'l13', '201707151607a');
+        $l->add_brick(new component_newsletter('newsletter_component', '201707151607b'));
+        $fc->add_layout($l);
+
+
         $this->add_flexible_content($fc);
 
     }
