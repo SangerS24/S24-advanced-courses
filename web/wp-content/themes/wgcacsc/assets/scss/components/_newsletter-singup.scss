@@ -1,0 +1,50 @@
+.component-newsletter{
+  background-color: $body-font-color;
+  color: $light-gray;
+  padding: rem-calc(40) rem-calc(10);
+  overflow: hidden;
+  label {
+    color: $light-gray;
+    margin-bottom: rem-calc(5);
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  a, a:visited {
+    color: #3EB1C8;
+  }
+  .button,
+  button,
+  input[type="submit"] {
+    background-color: #3EB1C8;
+    color: $body-font-color;
+  }
+
+  form {
+    margin-bottom: rem-calc(30);
+  }
+
+  form p {
+    margin-bottom: rem-calc(20);
+  }
+
+  input {
+    max-width: rem-calc(355);
+  }
+
+  .component-newsletter__title {
+    @include breakpoint(medium) {
+      font-size: rem-calc(22);
+      line-height: rem-calc(26);
+    }
+  }
+
+  .component-newsletter__archive-link {
+    display: inline-block;
+    padding-left: rem-calc(20);
+    background-image: url('../images/next_newsletter.svg');
+    background-repeat:no-repeat;
+    background-position: 0 center;
+    -webkit-background-size: rem-calc(10) rem-calc(15);
+    background-size: rem-calc(10) rem-calc(15);
+  }
+}

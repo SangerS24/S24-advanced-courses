@@ -6952,6 +6952,41 @@ p + ol {
   overflow: hidden;
   border-bottom: 0.05556rem solid #e5e5e5; }
 
+.component-newsletter {
+  background-color: #333333;
+  color: #e5e5e5;
+  padding: 2.22222rem 0.55556rem;
+  overflow: hidden; }
+  .component-newsletter label {
+    color: #e5e5e5;
+    margin-bottom: 0.27778rem; }
+  .component-newsletter h1, .component-newsletter .h1, .component-newsletter h2, .component-newsletter .h2, .component-newsletter h3, .component-newsletter .h3, .component-newsletter h4, .component-newsletter .h4, .component-newsletter h5, .component-newsletter .h5, .component-newsletter .accordion-title, .component-newsletter h6, .component-newsletter .h6,
+  .component-newsletter a, .component-newsletter a:visited {
+    color: #3EB1C8; }
+  .component-newsletter .button,
+  .component-newsletter button,
+  .component-newsletter input[type="submit"] {
+    background-color: #3EB1C8;
+    color: #333333; }
+  .component-newsletter form {
+    margin-bottom: 1.66667rem; }
+  .component-newsletter form p {
+    margin-bottom: 1.11111rem; }
+  .component-newsletter input {
+    max-width: 19.72222rem; }
+  @media screen and (min-width: 48em) {
+    .component-newsletter .component-newsletter__title {
+      font-size: 1.22222rem;
+      line-height: 1.44444rem; } }
+  .component-newsletter .component-newsletter__archive-link {
+    display: inline-block;
+    padding-left: 1.11111rem;
+    background-image: url("../images/next_newsletter.svg");
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    -webkit-background-size: 0.55556rem 0.83333rem;
+    background-size: 0.55556rem 0.83333rem; }
+
 /* Slider */
 .slick-slider {
   position: relative;
