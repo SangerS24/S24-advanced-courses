@@ -109,16 +109,16 @@ function wgcacsc_sort_archive($query) {
 add_action('pre_get_posts', 'wgcacsc_sort_archive');
 
 
-function wgcacsc_add_cookie_compliance_message() {
-    // output the cookie message
-    echo '<div id="cookie-message"><div class="row" id="cookie-message__inner"><p>We use cookies to ensure we give you the best experience on our website. If you continue, we\'ll assume that you are happy to receive all cookies. Please refer to our <a href="/cookies-policy/">Cookies Policy</a> for more information, including how to disable them.</p></div></div>';
-
-    // add a class to the body if javascript is enabled
-    echo '<script>/* Detect JS support*/ document.body.className = document.body.className + " js_enabled";</script>';
-
-    wp_enqueue_script( 'cookie-message', get_template_directory_uri() . '/assets/javascript/custom/cookie-message.js', array(), '1.0', true );
-}
-add_action('foundationpress_after_body', 'wgcacsc_add_cookie_compliance_message');
+//function wgcacsc_add_cookie_compliance_message() {
+//    // output the cookie message
+//    echo '<div id="cookie-message"><div class="row" id="cookie-message__inner"><p>We use cookies to ensure we give you the best experience on our website. If you continue, we\'ll assume that you are happy to receive all cookies. Please refer to our <a href="/cookies-policy/">Cookies Policy</a> for more information, including how to disable them.</p></div></div>';
+//
+//    // add a class to the body if javascript is enabled
+//    echo '<script>/* Detect JS support*/ document.body.className = document.body.className + " js_enabled";</script>';
+//
+//    wp_enqueue_script( 'cookie-message', get_template_directory_uri() . '/assets/javascript/custom/cookie-message.js', array(), '1.0', true );
+//}
+//add_action('foundationpress_after_body', 'wgcacsc_add_cookie_compliance_message');
 
 
 function wgcacsc_add_tracking_code() {
