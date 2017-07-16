@@ -16,6 +16,9 @@ function loadCollapsibleURLMonitoring( $el ) {
         var $UrlFieldWrap = jQuery(this).closest('div.acf-input');
         var $copySpan;
         if ( jQuery($UrlFieldWrap).find('.url-copy-input').length == 0 ) {
+            var $copyPaste = jQuery('<p>Full URL to Copy and paste:</p>');
+            jQuery($copyPaste).appendTo( $UrlFieldWrap);
+
             $copySpan = jQuery('<input/>').addClass('url-copy-input').attr('type', 'text').attr('readonly' , 'readonly');
 
             jQuery($copySpan).appendTo( $UrlFieldWrap );
