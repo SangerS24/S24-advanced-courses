@@ -43,16 +43,31 @@ class component_collapsibles extends project_brick
     public function get_brick_html($args = array())
     {
         $html = '';
-//
-//        if( $this->have_rows( 'staff_bios' ) ) {
-//            $html .= '<div class="component component-collapsibles offset-content">';
-//
-//            while ( $this->have_rows( 'staff_bios' ) ) {
-//                $this->the_row();
-//            }
-//
-//            $html .= '</div>';
-//        }
+
+        if( $this->have_rows( 'collapsible_panels' ) ) {
+            $html .= '<div class="component component-collapsibles offset-content"><ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">';
+
+            $panel_count = 0;
+            while ( $this->have_rows( 'collapsible_panels' ) ) {
+                $this->the_row();
+
+                $panel_title = $this->get_field_in_repeater( 'collapsible_panels' , 'title');
+                $panel_anchor_name = $this->get_field_in_repeater( 'collapsible_panels' , 'direct_link');
+                $panel_content = apply_filters( 'the_content' , $this->get_field_in_repeater( 'collapsible_panels' , 'content') );
+
+                if ( $panel_count == 0 ) {
+                    $html .= '<li class="accordion-item" data-accordion-item>';
+                } else {
+                    $html .= '<li class="accordion-item" data-accordion-item>';
+                }
+                $html .= '<a href="#'.$panel_anchor_name.'" class="accordion-title">'.$panel_title.'</a>';
+                $html .= '<div class="accordion-content" data-tab-content id="'.$panel_anchor_name.'">'.$panel_content.'</div>';
+                $html .= '</li>';
+                $panel_count += 1;
+            }
+
+            $html .= '</ul></div>';
+        }
 
 
         return $html;

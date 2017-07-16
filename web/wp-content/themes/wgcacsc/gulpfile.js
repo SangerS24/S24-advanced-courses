@@ -39,7 +39,7 @@ var PATHS = {
 
     // Paths to individual JS components defined below
     'assets/components/foundation-sites/js/foundation.abide.js',
-    //'assets/components/foundation-sites/js/foundation.accordion.js',
+    'assets/components/foundation-sites/js/foundation.accordion.js',
     //'assets/components/foundation-sites/js/foundation.accordionMenu.js',
     'assets/components/foundation-sites/js/foundation.drilldown.js',
     //'assets/components/foundation-sites/js/foundation.dropdown.js',
