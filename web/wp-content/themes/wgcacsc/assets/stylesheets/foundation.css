@@ -7062,6 +7062,11 @@ p + ol {
     position: absolute;
     bottom: 1.11111rem;
     left: 0.55556rem; }
+  @media screen and (min-width: 48em) {
+    .component-teasers__teaser__text-wrapper {
+      padding: 1.11111rem 1.11111rem 2.77778rem; }
+      .component-teasers__teaser__text-wrapper .component-teasers__read-more {
+        left: 1.11111rem; } }
 
 .component-teasers--1 {
   position: relative; }
@@ -7076,6 +7081,26 @@ p + ol {
       left: 0;
       bottom: 2.22222rem; }
     .component-teasers--1 .component-teasers__teaser__text-wrapper {
+      min-height: 13.33333rem;
+      width: 50%;
+      margin-left: 50%; } }
+
+@media screen and (min-width: 34.375em) {
+  .component-teasers--2 .component-teasers__teaser {
+    width: 50%;
+    float: left; } }
+
+@media screen and (min-width: 65em) {
+  .component-teasers--2 .component-teasers__teaser {
+    position: relative; }
+    .component-teasers--2 .component-teasers__teaser .component-teasers__teaser__thumbnail-wrapper {
+      width: 50%;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 2.22222rem; }
+    .component-teasers--2 .component-teasers__teaser .component-teasers__teaser__text-wrapper {
       min-height: 13.33333rem;
       width: 50%;
       margin-left: 50%; } }
