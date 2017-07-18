@@ -76,6 +76,10 @@ class group_flexible_content extends project_brick
         $l->add_brick(new component_sponsors('sponsors_component', '201707171023b'));
         $fc->add_layout($l);
 
+        $l = new layout('', 'l15', '201707181535a');
+        $l->add_brick(new component_teasers('teasers_component', '201707181535b'));
+        $fc->add_layout($l);
+
 
         $this->add_flexible_content($fc);
 

@@ -79,6 +79,13 @@ add_image_size ( 'news-listing', 420, 220, array('center', 'center') );
 add_image_size ( 'news-listing-retina', 840, 440, array('center', 'center') );
 
 /**
+ * Teaser Image Styles
+ */
+
+add_image_size ( 'teaser-thumbnail', 460, 460, true );
+add_image_size ( 'teaser-thumbnail-retina', 920, 920, true );
+
+/**
  * Bio Image Styles
  */
 

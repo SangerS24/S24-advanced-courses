@@ -7020,6 +7020,49 @@ p + ol {
     -webkit-background-size: 0.55556rem 0.83333rem;
     background-size: 0.55556rem 0.83333rem; }
 
+.component-teasers {
+  overflow: hidden;
+  margin-bottom: 0; }
+
+.component-teasers__teaser {
+  padding: 0 0.55556rem 2.22222rem 0.55556rem; }
+
+.component-teasers__teaser__thumbnail-wrapper {
+  width: 100%;
+  padding-top: 73.3333%;
+  position: relative;
+  overflow: hidden; }
+  .component-teasers__teaser__thumbnail-wrapper a {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+  .component-teasers__teaser__thumbnail-wrapper img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -555.5rem;
+    bottom: -555.5rem;
+    margin: auto 0; }
+
+.component-teasers__teaser__text-wrapper {
+  background-color: #e5e5e5;
+  font-size: 0.88889rem;
+  padding: 1.11111rem 0.55556rem 2.61111rem;
+  position: relative; }
+  .component-teasers__teaser__text-wrapper .component-teasers__read-more {
+    display: block;
+    position: absolute;
+    bottom: 1.11111rem;
+    left: 0.55556rem; }
+
+.component-teasers--1 .component-teasers__teaser__text-wrapper {
+  font-size: 1rem; }
+
 /* Slider */
 .slick-slider {
   position: relative;

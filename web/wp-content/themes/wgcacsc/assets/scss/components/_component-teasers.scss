@@ -1,0 +1,54 @@
+.component-teasers {
+  overflow: hidden; //clear floats
+  margin-bottom: 0;
+}
+
+.component-teasers__teaser {
+  padding: 0 rem-calc(10) rem-calc(40) rem-calc(10);
+}
+
+.component-teasers__teaser__thumbnail-wrapper {
+  width: 100%;
+  padding-top: 73.3333%;
+  position: relative;
+  overflow: hidden;
+  a {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: rem-calc(-9999);
+    bottom: rem-calc(-9999);
+    margin: auto 0 ;
+  }
+}
+
+.component-teasers__teaser__text-wrapper {
+  background-color: $light-gray;
+  font-size: rem-calc(16);
+  padding: rem-calc(20) rem-calc(10) rem-calc(47);
+  position: relative;
+  .component-teasers__read-more {
+    display: block;
+    position: absolute;
+    bottom: rem-calc(20);
+    left: rem-calc(10);
+  }
+}
+
+.component-teasers--1 {
+  .component-teasers__teaser__text-wrapper {
+    font-size: rem-calc(18);
+  }
+}
