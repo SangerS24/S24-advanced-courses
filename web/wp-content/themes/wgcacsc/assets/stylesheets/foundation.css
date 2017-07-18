@@ -7055,16 +7055,16 @@ p + ol {
 .component-teasers__teaser__text-wrapper {
   background-color: #e5e5e5;
   font-size: 0.88889rem;
-  padding: 1.11111rem 0.55556rem 2.61111rem;
+  padding: 1.11111rem 0.55556rem 3.16667rem;
   position: relative; }
   .component-teasers__teaser__text-wrapper .component-teasers__read-more {
     display: block;
     position: absolute;
-    bottom: 1.11111rem;
+    bottom: 1.66667rem;
     left: 0.55556rem; }
   @media screen and (min-width: 48em) {
     .component-teasers__teaser__text-wrapper {
-      padding: 1.11111rem 1.11111rem 2.77778rem; }
+      padding: 1.11111rem 1.11111rem 3.33333rem; }
       .component-teasers__teaser__text-wrapper .component-teasers__read-more {
         left: 1.11111rem; } }
 
@@ -7104,6 +7104,15 @@ p + ol {
       min-height: 13.33333rem;
       width: 50%;
       margin-left: 50%; } }
+
+@media screen and (min-width: 34.375em) {
+  .component-teasers--3 .component-teasers__teaser {
+    width: 50%;
+    float: left; } }
+
+@media screen and (min-width: 62.5em) {
+  .component-teasers--3 .component-teasers__teaser {
+    width: 33.33333%; } }
 
 /* Slider */
 .slick-slider {

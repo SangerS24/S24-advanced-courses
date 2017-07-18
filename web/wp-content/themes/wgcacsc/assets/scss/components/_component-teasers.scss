@@ -40,17 +40,17 @@
 .component-teasers__teaser__text-wrapper {
   background-color: $light-gray;
   font-size: rem-calc(16);
-  padding: rem-calc(20) rem-calc(10) rem-calc(47);
+  padding: rem-calc(20) rem-calc(10) rem-calc(57);
   position: relative;
   .component-teasers__read-more {
     display: block;
     position: absolute;
-    bottom: rem-calc(20);
+    bottom: rem-calc(30);
     left: rem-calc(10);
   }
 
   @include breakpoint('medium') {
-    padding: rem-calc(20) rem-calc(20) rem-calc(50);
+    padding: rem-calc(20) rem-calc(20) rem-calc(60);
     .component-teasers__read-more {
       left: rem-calc(20);
     }
@@ -104,6 +104,21 @@
         width: 50%;
         margin-left: 50%;
       }
+    }
+  }
+}
+
+.component-teasers--3 {
+  @include breakpoint(550px) {
+    .component-teasers__teaser {
+      width: 50%;
+      float: left;
+    }
+  }
+
+  @include breakpoint(1000px) {
+    .component-teasers__teaser {
+      width: percentage(1/3);
     }
   }
 }
