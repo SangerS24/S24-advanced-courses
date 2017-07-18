@@ -68,7 +68,7 @@ add_image_size ( 'cta-third-retina--wide', 820, 480, array('center', 'center') )
  * Client Image Styles
  */
 
-add_image_size ( 'client-logo--small', 200, 120, false );
+add_image_size ( 'client-logo--small', 390, 160, false );
 
 
 /**

@@ -6628,33 +6628,35 @@ body#tinymce {
   text-align: center; }
 
 .clients-list {
+  text-align: center;
   list-style: none;
-  margin: 0 0 0.55556rem 0;
-  padding: 0; }
+  margin: 0;
+  padding: 1.66667rem 0;
+  border-top: 0.05556rem solid #e5e5e5;
+  border-bottom: 0.05556rem solid #e5e5e5; }
 
 .client-item {
-  height: 6.66667rem;
-  padding: 0.55556rem; }
-  .client-item img {
-    display: inline-block;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-    max-height: 100%;
-    position: relative;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-    top: 50%; }
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
 
 .client-item__inner {
-  border: 1px solid #E5E5E5;
   display: inline-block;
-  height: 100%;
   padding: 0.55556rem;
-  width: 100%; }
+  text-align: center; }
+  .client-item__inner:before {
+    display: inline-block;
+    vertical-align: center;
+    width: 0;
+    height: 5.55556rem; }
+  .client-item__inner img {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+    max-height: 5.55556rem; }
 
-.client-item--linked .client-item__inner {
-  border-color: rgba(203, 44, 48, 0.45); }
+a.client-item__inner {
+  width: 100%; }
 
 .component-images {
   list-style: none;

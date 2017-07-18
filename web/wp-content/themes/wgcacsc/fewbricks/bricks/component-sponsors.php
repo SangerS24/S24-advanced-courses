@@ -28,15 +28,15 @@ class component_sponsors extends project_brick
             'instructions' => 'An optional heading that would appear centered above the sponsors list'
         ]));
 
-//        $this->add_field(new acf_fields\relationship('Clients', 'clients', '181120161739a', [
-//            'allow_null' => 0,
-//            'max' => 6,
-//            'instructions' => 'lorem ipsum',
-//            'post_type' => 'client',
-//            'filters' => array(
-//                0 => 'search'
-//            )
-//        ]));
+        $this->add_repeater(( new acf_fields\repeater( 'Sponsors' , 'sponsors' , '201707181026a' , [
+            'button_label' => 'Add sponsor'
+        ]) )
+
+        ->add_sub_field(new acf_fields\image( 'Logo' , 'logo' , '201707181026b') )
+        ->add_sub_field(new acf_fields\text( 'Name' , 'name' , '201707181026c') )
+        ->add_sub_field(new acf_fields\text( 'Link' , 'link' , '201707181026d') , [
+            'instructions' => 'Full URL starting with http://'
+        ] ) );
 
     }
 
@@ -47,6 +47,43 @@ class component_sponsors extends project_brick
     {
 
         $html = '';
+
+        $component_title = $this->get_field( 'title' );
+
+        if ( !empty($component_title) && $this->have_rows( 'sponsors' ) ) {
+            $html .= '<div class="component component-sponsors">';
+
+            if ( !empty($component_title) ) {
+                $html .= '<h3 class="section-heading section-heading--centered">'.$component_title.'</h3>';
+            }
+
+            $html .= '<ol class="clients-list row">';
+
+            while ( $this->have_rows( 'sponsors' ) ) {
+                $this->the_row();
+
+                $name = $this->get_field_in_repeater( 'sponsors' , 'name' );
+                $link = $this->get_field_in_repeater( 'sponsors' , 'link' );
+                $image = $this->get_field_in_repeater( 'sponsors' , 'logo' );
+                if ( $image ) {
+                    $image_src = wp_get_attachment_image_src( $image , 'client-logo--small' );
+                    $image = '<img src="'.$image_src[0].'" alt="Logo for '.$name.'" />';
+                }
+
+                $html .= '<li class="client-item small-6 medium-3 large-2 columns '.( (empty($link)) ? 'client-item__inner': '' ).' ">';
+                if ( !empty($link) ) {
+                    $html .= '<a class="client-item__inner" href="' . $link . '">'.$image.'</a>';
+                } else {
+                    $html .= $image;
+                }
+
+                $html .= '</li>';
+            }
+
+            $html .= '</ol>';
+
+            $html .= '</div>';
+        }
 
         return $html;
 
