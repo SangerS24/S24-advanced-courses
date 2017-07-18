@@ -1,41 +1,40 @@
 <?php
 
-function wgcacsc_format_editor($settings) {
+//Change default TinyMCE
+function my_format_TinyMCE( $in ) {
 
-    $style_formats = array(
-        array(
-            'title' => 'Header 2',
-            'block' => 'h2',
-            'classes' => 'h2'
-        ),
-        array(
-            'title' => 'Header 3',
-            'block' => 'h3',
-            'classes' => 'h3'
-        ),
-        array(
-            'title' => 'Header 4',
-            'block' => 'h4',
-            'classes' => 'h4'
-        ),
-        array(
-            'title' => 'Header 5',
-            'block' => 'h5',
-            'classes' => 'h5'
-        ),
-        array(
-            'title' => 'Header 6',
-            'block' => 'h6',
-            'classes' => 'h6'
-        )
-    );
+    $in['block_formats'] = 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
+    $in['toolbar1'] = 'bold,italic,link,unlink, undo, redo';
+    $in['toolbar2'] = '';
+    $in['toolbar3'] = '';
+    $in['toolbar4'] = '';
+    return $in;
+}
+add_filter( 'tiny_mce_before_init', 'my_format_TinyMCE' );
 
-    $settings['style_formats'] = json_encode($style_formats);
+function enable_more_buttons($buttons) {
 
-    return $settings;
+    $buttons[] = 'table';
+
+    return $buttons;
 
 }
+add_filter('mce_buttons_3', 'enable_more_buttons');
 
-add_filter( 'tiny_mce_before_init' , 'wgcacsc_format_editor'  );
+add_filter( 'acf/fields/wysiwyg/toolbars' , 's24_toolbars'  );
+function s24_toolbars( $toolbars )
+{
 
-//add_filter( 'acf/fields/wysiwyg/toolbars' , 'wgcacsc_format_editor'  );
+    // Add a new toolbar called "Very Simple"
+    // - this toolbar has only 1 row of buttons
+    $toolbars['Full' ] = array();
+    $toolbars['Full' ][1] = array('bold' , 'italic' , 'bullist', 'ctplist', 'numlist' , 'hr', 'link', 'unlink', 'wp_adv' );
+    $toolbars['Full'][2] = array( 'formatselect' ,  'table' , 'undo' , 'redo');
+
+    // remove the 'Basic' toolbar completely
+    $toolbars['Basic' ] = array();
+    $toolbars['Basic'][1] = array( 'bold' , 'italic', 'link' , 'unlink');
+
+    // return $toolbars - IMPORTANT!
+    return $toolbars;
+}
