@@ -54,7 +54,7 @@ class component_teasers extends project_brick
         if( $this->have_rows( 'content_items' ) ) {
             $eq_id = 'eq-'.rand();
 
-            $html .= '<div class="component component-teasers component-teaser--'.$teaser_count.'" data-equalizer="'.$eq_id.'">';
+            $html .= '<div class="component component-teasers component-teasers--'.$teaser_count.'" data-equalizer="'.$eq_id.'">';
             while ( $this->have_rows( 'content_items' ) ) {
                 $this->the_row();
 

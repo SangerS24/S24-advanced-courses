@@ -22,15 +22,18 @@
   }
 
   img {
-    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
     height: auto;
     position: absolute;
+    max-width: none;
 
-    left: 0;
-    right: 0;
+    left: rem-calc(-9999);
+    right: rem-calc(-9999);
     top: rem-calc(-9999);
     bottom: rem-calc(-9999);
-    margin: auto 0 ;
+    margin: auto;
   }
 }
 
@@ -48,7 +51,24 @@
 }
 
 .component-teasers--1 {
+  position: relative;
   .component-teasers__teaser__text-wrapper {
     font-size: rem-calc(18);
+  }
+
+  @include breakpoint(480px) {
+    .component-teasers__teaser__thumbnail-wrapper {
+      width: 50%;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: rem-calc(40);
+    }
+    .component-teasers__teaser__text-wrapper {
+      min-height: rem-calc(240);
+      width: 50%;
+      margin-left: 50%;
+    }
   }
 }
