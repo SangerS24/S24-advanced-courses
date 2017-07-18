@@ -26,6 +26,9 @@ class component_download extends project_brick
 
         $this->add_field((new acf_fields\text('Title', 'download_title', '050420151822b')));
         $this->add_field((new acf_fields\file('File', 'download_file', '050420151822f')));
+        $this->add_field(new acf_fields\image( 'Thumbnail' , 'thumbnail' , '201707181349a' , [
+            'instructions' => 'Optional'
+        ]));
 
     }
 
@@ -35,6 +38,7 @@ class component_download extends project_brick
     public function get_brick_html($args = array())
     {
 
+        $file_title =  $this->get_field("download_title") ;
         $file_id = $this->get_field('download_file');
         $file_url = '';
 
@@ -53,9 +57,17 @@ class component_download extends project_brick
 
         }
 
-        $html = '<div class="component component-download offset-content">';
+        $file_image = $this->get_field( 'thumbnail' );
+        if ( !empty( $file_image ) ) {
+            $file_image_src = wp_get_attachment_image_src( $file_image , 'download-thumbnail' );
+        }
+
+        $html = '<div class="component component-download offset-content '.( ( !empty($file_image) ) ? 'has-image' : '' ).'">';
         $html .=  '<a href="' . $file_url . '" class="component-download__link">';
-        $html .= '<span class="component-download__title">'. $this->get_field("download_title") .'</span> ';
+        if ( !empty($file_image) ) {
+            $html .= '<img src="'.$file_image_src[0].'" alt="'.$file_title.'" />';
+        }
+        $html .= '<span class="component-download__title">'.$file_title.'</span> ';
         $html .= '<span class="component-download__size">('. $filesize .')</span>';
         $html .= '</a>';
         $html .= '</div>';

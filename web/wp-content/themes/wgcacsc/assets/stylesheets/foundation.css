@@ -6805,14 +6805,45 @@ a.client-item__inner {
 .acf-map img {
   max-width: inherit !important; }
 
+.component-download {
+  overflow: hidden; }
+
 .component-download__link {
-  background: url("../images/pdf_icon.svg") no-repeat 0 0;
-  color: #CB2C30;
   display: inline-block;
   font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
-  line-height: 1.5rem;
-  padding: 0.5rem 0.77778rem 0.55556rem 2.77778rem; }
+  line-height: 2.22222rem;
+  padding: 0 0.77778rem 0 2.22222rem;
+  position: relative; }
+  .component-download__link:before {
+    content: '';
+    width: 0.22222rem;
+    height: 0.22222rem;
+    border-radius: 50%;
+    background-color: #333333;
+    position: absolute;
+    top: 1rem;
+    left: 1rem; }
+  .has-image .component-download__link {
+    padding-left: 0;
+    line-height: 1.5rem; }
+    .has-image .component-download__link:before {
+      display: none; }
+    .has-image .component-download__link img {
+      max-width: 4.44444rem;
+      max-height: 4.44444rem;
+      width: auto;
+      height: auto;
+      display: block;
+      margin-right: 1.11111rem;
+      float: left; }
+    @media screen and (min-width: 48em) {
+      .has-image .component-download__link img {
+        max-width: 11.11111rem;
+        max-height: 11.11111rem;
+        float: none;
+        display: inline-block;
+        vertical-align: middle; } }
 
 .container-360 {
   height: 13.88889rem;

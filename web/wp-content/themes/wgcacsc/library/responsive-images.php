@@ -84,6 +84,12 @@ add_image_size ( 'news-listing-retina', 840, 440, array('center', 'center') );
 
 add_image_size ( 'bio-listing', 240, 240, array('center', 'center') );
 
+/**
+ * Download Image Styles
+ */
+
+add_image_size ( 'download-thumbnail', 400, 400, false );
+
 // Register the new image sizes for use in the add media modal in wp-admin
 add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
 function wpshout_custom_sizes( $sizes ) {
