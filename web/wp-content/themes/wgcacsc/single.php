@@ -38,21 +38,6 @@ get_header(); ?>
 
 								<?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html(); ?>
 
-								<?php
-								if(has_category(18)) {
-									$eventSummary = '';
-									$eventSummary .= (get_field('organiser') ? '<small>Event organiser:</small> ' . get_field('organiser') . '<br />' : '');
-									$eventSummary .= (get_field('event_date_details') ? '<small>Event Dates:</small> ' . get_field('event_date_details') . '<br />' : '');
-									$eventSummary .= (get_field('event_website') ? '<small>Event website:</small> ' . get_field('event_website') : '');
-
-									if(!empty($eventSummary)) {
-										echo '<div class="offset-content"><p class="news-item__excerpt">' . $eventSummary . '</p></div>';
-									}
-								}
-								?>
-
-								<?php the_content(); ?>
-
 								<?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html(); ?>
 							</div>
 						</article>
