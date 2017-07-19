@@ -4520,7 +4520,7 @@ body {
 
 .off-canvas {
   position: absolute;
-  background: #222222;
+  background: #000000;
   z-index: -1;
   max-height: 100%;
   overflow-y: auto;
@@ -6047,7 +6047,8 @@ span.wpcf7-list-item {
   padding: 1rem; }
 
 .mobile-nav .nested {
-  margin-left: 0; }
+  margin-left: 0;
+  background-color: #000000; }
 
 .mobile-nav li > a {
   border-bottom: 1px solid #666666;
@@ -6146,7 +6147,8 @@ span.wpcf7-list-item {
 .nav-next {
   float: right; }
 
-.mobile-navigation .is-drilldown {
+.mobile-navigation .is-drilldown,
+.mobile-navigation .is-drilldown-submenu {
   min-height: 18.88889rem !important; }
 
 .side-menu-container h5, .side-menu-container .h5, .side-menu-container .accordion-title {
