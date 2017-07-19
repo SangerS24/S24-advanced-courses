@@ -97,36 +97,59 @@ $fg35->add_brick(new bricks\component_hero_list('page_heroes', '220820161421b'))
 $fg35->register();
 
 
+/*
+ * Events ACFs
+ */
+$location = [
+    [
+        [
+            'param' => 'post_type',
+            'operator' => '==',
+            'value' => 'event'
+        ]
+    ]
+];
 
-//$location = [
-//    [
-//        [
-//            'param' => 'post_type',
-//            'operator' => '==',
-//            'value' => 'post'
-//        ]
-//    ]
-//];
-//
-//$fg8 = (new fewacf\field_group('Base Settings', '210920161440a', $location, 4, [
-//    'position' => 'acf_after_title',
-//    'names_of_items_to_hide_on_screen' => [
-//        0 => 'the_content'
-//    ]
-//]));
-//
-//$fg8->add_field(new acf_fields\radio('Promote to homepage', 'promoted_to_homepage', '300820160918a', [
-//    'instructions' => 'Whether or not to display this item at the bottom of the homepage. The \'Remove from homepage\' date must also be set for this to work correctly',
-//    'choices' => array(
-//        '0' => 'Don\'t promote to homepage',
-//        '1' => 'Promote to homepage'
-//    )
-//]));
-//$fg8->add_field(new acf_fields\date_picker('Remove from homepage', 'promoted_to_homepage_expiry', '220920160843a', [
-//    'instructions' => 'Specify a date after which the post will no longer appear on the homepage. If you specified 22nd of September for example, the post would stop displaying on the homepage on the 22nd of September at 23:590 This field must be set if you want this item to appear on the homepage.'
-//]));
-//$fg8->add_brick(new bricks\component_listing_image('listing_image', '210920161445a'));
-//$fg8->add_field(new acf_fields\text('Listing Summary', 'listing_summary', '210920161008a', [
-//    'instructions' => 'Add a summary to show on listing pages/the homepage. For events, if this isn\'t filled in, then the event details are used to populate the listing page. If you populate this field for an event, a read more link will be displayed linking through to further details regarding the event.'
-//]));
-//$fg8->register();
+$fg_event_key_details = (new fewacf\field_group( 'Event Key Details' , '201707191650a' , $location , 1 , [
+    'position' => 'acf_after_title',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_event_key_details->add_field(new acf_fields\date_picker( 'Start date' , 'start_date' , '201707191652a' ) );
+$fg_event_key_details->add_field(new acf_fields\date_picker( 'End date' , 'end_date' , '201707191652b' ) );
+$fg_event_key_details->add_field(new acf_fields\text( 'Location' , 'location' , '201707191652c' ) );
+
+$fg_event_key_details->add_field((new acf_fields\repeater( 'Deadlines' , 'deadlines' , '201707191655a' , [
+    'button_label' => 'Add deadline'
+]))
+    ->add_sub_field(new acf_fields\text( 'Deadline name' , 'name' , '201707191656a'))
+    ->add_sub_field(new acf_fields\date_picker( 'Date' , 'date' , '201707191656b' , [
+        'instructions' => 'The deadline will be marked as closed after this date.'
+    ]))
+    ->add_sub_field(new acf_fields\checkbox( 'Close now?' , 'closed' , '201707191656c' , [
+        'choices' => [
+            'closed' => 'Yes'
+        ],
+        'instructions' => 'Tick this box to close the deadline even if the date has not passed.'
+    ])));
+
+$fg_event_key_details->register();
+
+$fg_event_registration_info = (new fewacf\field_group( 'Event Registration Details' , '201707191720a' , $location , 2 , [
+    'position' => 'acf_after_title',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_event_registration_info->add_field(new acf_fields\text( 'Registration page link' , 'registration_link' , '201707191720b' , [
+    'instructions' => 'If left blank, the registration button will not appear.'
+]));
+
+$fg_event_registration_info->add_field(new acf_fields\wysiwyg( 'Pre-registration holding content' , 'holding_content' , '201707191720c' , [
+    'instructions' => 'Content that appears if the registration is not yet open. Make sure to remove it for the event content to show.'
+]));
+
+$fg_event_registration_info->register();
