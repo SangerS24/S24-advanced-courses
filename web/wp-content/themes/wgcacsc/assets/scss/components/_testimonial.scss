@@ -2,14 +2,15 @@
 
 .component-testimonial {
 
-    margin-bottom: rem-calc(58);
+    //margin-bottom: rem-calc(58);
 
 }
 
 
 .component-testimonial__inner {
 
-    background: #333333;
+    border-top: rem-calc(1) solid $light-gray;
+    //background: #333333;
     padding: rem-calc(50, 20);
     text-align: center;
 
@@ -18,7 +19,7 @@
 
 .component-testimonial__testimonial {
 
-    color: #FFFFFF;
+    color: $primary-color;
     font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
     font-size: rem-calc(18);
     line-height: rem-calc(27);
@@ -39,7 +40,7 @@
 
 .component-testimonial__author {
 
-    color: #CCCCCC;
+    color: #666666;
     font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
     font-size: rem-calc(18);
     line-height: rem-calc(27);

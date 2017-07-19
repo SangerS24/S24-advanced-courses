@@ -6726,16 +6726,13 @@ a.client-item__inner {
           background-size: 50% 50%;
   right: 0; }
 
-.component-testimonial {
-  margin-bottom: 3.22222rem; }
-
 .component-testimonial__inner {
-  background: #333333;
+  border-top: 0.05556rem solid #e5e5e5;
   padding: 2.5rem;
   text-align: center; }
 
 .component-testimonial__testimonial {
-  color: #FFFFFF;
+  color: #9B26B6;
   font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -6749,7 +6746,7 @@ a.client-item__inner {
       padding: 0 6.55556rem; } }
 
 .component-testimonial__author {
-  color: #CCCCCC;
+  color: #666666;
   font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
