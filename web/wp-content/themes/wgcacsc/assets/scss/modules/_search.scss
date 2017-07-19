@@ -104,12 +104,13 @@
         height: rem-calc(31);
         margin-left: rem-calc(6);
         width: rem-calc(30);
+        background-color: $light-gray;
+        background-image: url('../images/next_arrow_highlight.svg');
         
         &:hover,
         &:focus {
-            background-color: $white;
-            background-image: url('../images/next_arrow_highlight.svg');
-
+            background-color: $primary-color;
+            background-image: url('../images/next_arrow.svg');
         }
 
     }

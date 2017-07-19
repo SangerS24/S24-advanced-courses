@@ -6285,10 +6285,12 @@ span.wpcf7-list-item {
   border: 0 none;
   height: 1.72222rem;
   margin-left: 0.33333rem;
-  width: 1.66667rem; }
+  width: 1.66667rem;
+  background-color: #e5e5e5;
+  background-image: url("../images/next_arrow_highlight.svg"); }
   .mobile-search-form .search__submit:hover, .mobile-search-form .search__submit:focus {
-    background-color: #fefefe;
-    background-image: url("../images/next_arrow_highlight.svg"); }
+    background-color: #9B26B6;
+    background-image: url("../images/next_arrow.svg"); }
 
 .latest-news-row {
   padding-left: 0;
