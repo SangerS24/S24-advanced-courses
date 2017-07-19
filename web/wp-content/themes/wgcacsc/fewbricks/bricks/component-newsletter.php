@@ -108,7 +108,7 @@ EOD;
 
         $archive_link_text = $this->get_field( 'archive_link' );
         if( !empty($archive_link_text) ) {
-            $newsletter_archive_url = get_term_link(25 , 'category');
+            $newsletter_archive_url = get_permalink( 1102 );
 
             $html .= '<a href="'.$newsletter_archive_url.'" class="component-newsletter__archive-link">'.$archive_link_text.'</a>';
         }

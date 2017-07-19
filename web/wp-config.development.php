@@ -31,7 +31,7 @@ define('DB_HOST', 'localhost');
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 define('FUTURA_FONT_STYLE_SHEET', '/wp-content/themes/wgcacsc/assets/stylesheets/fonts.css');
 
