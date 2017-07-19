@@ -16,10 +16,16 @@
 get_header(); ?>
 
 <div id="page" role="main">
-	<article class="main-content" id="main-content">
+    <div class="page__inner row">
+
+    <div class="page__inner__content small-12 columns">
+
+    <div class="main-content small-12 large-9 columns" id="main-content">
         <div class="offset-content">
             <?php s24_breadcrumb(); ?>
         </div>
+        <div class="offset-content">
+            <h1 class="page-title">News</h1>
 	<?php if ( have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>
@@ -39,12 +45,11 @@ get_header(); ?>
 				<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationpress' ) ); ?></div>
 			</nav>
 		<?php } ?>
-
+        </div> <!-- end of offset-content -->
 		<a class="back-to-top" id="back-to-top" href="#off-canvas-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_up.svg" alt="" /> Back to top </a>
-
-	</article>
+    </div>
 	<?php get_sidebar(); ?>
-
+    </div>
 </div>
 
 <?php get_footer();

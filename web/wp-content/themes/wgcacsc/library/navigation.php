@@ -495,7 +495,7 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
 
     $current_working_menu_item = array();
 
-    if  ( !empty( $current_working_menu_item ) ) {
+    if  ( !empty( $current_menu_item_object ) ) {
         $current_working_menu_item['object'] = $current_menu_item_object;
         $current_working_menu_item['type'] = 'nav_menu_item';
 
