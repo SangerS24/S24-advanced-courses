@@ -19,7 +19,7 @@ get_header(); ?>
 			<div class="main-content small-12 large-9 columns" id="main-content">
 
 				<div class="offset-content">
-					<?php foundationpress_breadcrumb(); ?>
+					<?php s24_breadcrumb(); ?>
 				</div>
 
 				<div class="offset-content">
@@ -30,7 +30,7 @@ get_header(); ?>
 					if ( have_posts() ):
 					?>
 
-						<h2><?php _e( 'Search Results for', 'foundationpress' ); ?> "<?php echo $searchQuery; ?>"</h2>
+						<h1 class="page-title"><?php _e( 'Search Results for', 'foundationpress' ); ?> "<?php echo $searchQuery; ?>"</h1>
 
 						<?php
 						get_search_form();
@@ -46,9 +46,26 @@ get_header(); ?>
 							<?php endwhile; ?>
 						</div>
 
-					<?php else : ?>
+					<?php elseif ( !empty($_GET['s'] ) ) : ?>
 
-						<?php get_template_part( 'template-parts/content', 'none' ); ?>
+                        <header class="page-header">
+                            <h1 class="page-title"><?php _e( 'Nothing Found', 'foundationpress' ); ?></h1>
+                        </header>
+
+                        <div class="page-content">
+                                <p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'foundationpress' ); ?></p>
+                                <?php get_search_form(); ?>
+                        </div>
+
+                    <?php else : ?>
+
+                        <header class="page-header">
+                            <h1 class="page-title"><?php _e( 'Search', 'foundationpress' ); ?></h1>
+                        </header>
+
+                        <div class="page-content">
+                             <?php get_search_form(); ?>
+                        </div>
 
 					<?php endif;?>
 

@@ -443,6 +443,10 @@ function s24_breadcrumb( $showhome = true, $separatorclass = false ) {
     if ( is_front_page() && ( $showhome == true ) ) {
         echo '<ul id="' . $id . '" class="' . $class . '"><li class="item-home current">' . $home_title . '</li></ul>';
         return;
+    } if ( is_search() ) {
+        $results_for_str = ( !empty($_GET['s']) ) ? ' results for '.$_GET['s'] : '';
+        echo '<ul id="' . $id . '" class="' . $class . '"><li class="item-home"><a href="'.home_url().'">' . $home_title . '</a> / Search'.$results_for_str.'</li></ul>';
+        return;
     }
 
     $current_object_id = s24_get_current_object_id();
