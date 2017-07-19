@@ -103,12 +103,12 @@ class component_cta extends project_brick
 
 
         if(!empty($caption)) {
-            $html .= '<picture>';
+            $html .= '<div class="cta-item__picture-wrapper"><picture>';
             $html .= "<source media='(min-width: 1040px)' srcset='$imageSrcRetina 2x, $imageSrc 1x' />";
             $html .= "<source media='(min-width: 480px) and (max-width: 1040px)' srcset='".$imageUrls['imageSrcFullRetina']." 2x, ".$imageUrls['imageSrcFull']." 1x' />";
             $html .= "<source media='(max-width: 480px)' srcset='".$imageUrls['imageSrcHalfRetina']." 2x, ".$imageUrls['imageSrcHalf']." 1x' />";
             $html .= '<img class="cta-item__image" src="' . $imageSrc . '" alt="' . $alt . '" />';
-            $html .= '</picture>';
+            $html .= '</picture></div>';
             $html .= '<a href="'. $linkUrl .'" class="cta-item__link"><span>' . $caption . '</span></a>';
         }
 

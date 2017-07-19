@@ -9,12 +9,6 @@
 
     }
 
-    @include breakpoint(large) {
-
-        min-height: rem-calc(97);
-
-    }
-
 }
 
 
@@ -71,27 +65,9 @@
 
     }
 
-    //@include breakpoint(large) {
-    //
-    //    margin-top: rem-calc(10);
-    //    max-height: none;
-    //
-    //}
 
 }
 
-
-.site-header__ctas {
-
-    //padding-top: rem-calc(10);
-
-    //@include breakpoint(large) {
-    //
-    //    padding-top: 0;
-    //
-    //}
-
-}
 
 
 .enquire-cta {
