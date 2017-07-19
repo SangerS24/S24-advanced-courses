@@ -6149,6 +6149,18 @@ span.wpcf7-list-item {
 .mobile-navigation .is-drilldown {
   min-height: 18.88889rem !important; }
 
+.side-menu-container h5, .side-menu-container .h5, .side-menu-container .accordion-title {
+  text-transform: uppercase; }
+  .side-menu-container h5 a, .side-menu-container .h5 a, .side-menu-container .accordion-title a, .side-menu-container h5 a:visited, .side-menu-container .h5 a:visited, .side-menu-container .accordion-title a:visited {
+    color: #222222; }
+    .side-menu-container h5 a:hover, .side-menu-container .h5 a:hover, .side-menu-container .accordion-title a:hover, .side-menu-container h5 a:visited:hover, .side-menu-container .h5 a:visited:hover, .side-menu-container .accordion-title a:visited:hover {
+      color: #9B26B6; }
+
+.side-menu-container .current-menu-item a, .side-menu-container .current-menu-item a:visited {
+  color: #222222; }
+  .side-menu-container .current-menu-item a:hover, .side-menu-container .current-menu-item a:visited:hover {
+    color: #9B26B6; }
+
 @media screen and (min-width: 65em) {
   .page__inner {
     padding-right: 0; } }

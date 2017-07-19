@@ -405,7 +405,7 @@ function s24_build_menu_list( $side_menu_item , $current_id , $topmost = false )
     $submenu_class = 'sub-menu';
     if ( $topmost ) {
         //topmost item
-        $list_html .= '<h6><a href="'.$item_object->url.'">'.$item_object->title.'</a></h6>';
+        $list_html .= '<h5><a href="'.$item_object->url.'">'.$item_object->title.'</a></h5>';
         $submenu_class = 'menu';
     } else {
         $li_classes = '';
