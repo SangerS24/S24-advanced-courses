@@ -3608,17 +3608,17 @@ h6, .h6 {
 
 @media screen and (min-width: 48em) {
   h1, .h1 {
-    font-size: 2.66667rem; }
+    font-size: 2.05556rem; }
   h2, .h2 {
-    font-size: 2.22222rem; }
-  h3, .h3 {
     font-size: 1.72222rem; }
+  h3, .h3 {
+    font-size: 1.44444rem; }
   h4, .h4 {
-    font-size: 1.38889rem; }
+    font-size: 1.22222rem; }
   h5, .h5, .accordion-title {
-    font-size: 1.11111rem; }
+    font-size: 1rem; }
   h6, .h6 {
-    font-size: 0.88889rem; } }
+    font-size: 0.77778rem; } }
 
 a {
   color: #9B26B6;
@@ -5863,6 +5863,12 @@ table.hover tbody tr:nth-of-type(even):hover {
   My custom styles:
   Add your scss files below to structure your project styles
 */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .accordion-title, h6, .h6 {
+  color: #222222; }
+
+h4, .h4, h6, .h6 {
+  font-family: "futura-medium", Helvetica, Roboto, Arial, sans-serif; }
+
 bold, strong {
   font-weight: normal;
   font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif; }
@@ -6674,9 +6680,9 @@ a.client-item__inner {
   display: block; }
 
 .component-images__caption {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 24, 103, 0.8);
   bottom: 0;
-  color: #222222;
+  color: #fefefe;
   left: 0;
   padding: 0.77778rem 0.55556rem;
   position: absolute;

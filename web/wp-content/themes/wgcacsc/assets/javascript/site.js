@@ -6,7 +6,7 @@ $(document).ready(function() {
         if($(this).find('img').length > 1) {
             $(this).slick({
                 //lazyLoad: 'progressive',
-                infinite: false,
+                infinite: true,
                 adaptiveHeight: true
             });
         }
