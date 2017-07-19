@@ -16,7 +16,7 @@ class component_image_list extends project_brick
      * It can be overridden by passing an item with the key "label" in the array that is the second argument when
      * creating a brick.
      */
-    protected $label = 'Image List';
+    protected $label = 'Image or image carousel';
 
     /**
      * @var int
