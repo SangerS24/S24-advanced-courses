@@ -26,7 +26,7 @@ function loadCollapsibleURLMonitoring( $el ) {
             $copySpan = jQuery($UrlFieldWrap).find('.url-copy-input');
         }
 
-        jQuery($copySpan).val( globalData.page_url + '#' + jQuery(this).val());
+        jQuery($copySpan).val( getPagePermalink() + '#' + jQuery(this).val());
 
     });
 }
@@ -46,7 +46,7 @@ function addCollapsibleURLMonitoring( $el ) {
         jQuery($nextUrlField).val( $slugValue );
 
         var $copySpan = jQuery(this).parents('.acf-fields').first().find('.url-copy-input');
-        jQuery($copySpan).val( globalData.page_url + '#' + $slugValue );
+        jQuery($copySpan).val( getPagePermalink() + '#' + $slugValue );
     });
 
 
@@ -57,7 +57,7 @@ function addCollapsibleURLMonitoring( $el ) {
         var $copySpan = jQuery(this).parents('.acf-input').first().find('.url-copy-input');
 
         jQuery(this).val( $UrlValue );
-        jQuery($copySpan).val( globalData.page_url + '#' + $UrlValue );
+        jQuery($copySpan).val( getPagePermalink() + '#' + $UrlValue );
     });
 }
 
@@ -73,4 +73,8 @@ function stringToSlug( $str ) {
     });
 
     return $str;
+}
+
+function getPagePermalink() {
+    return jQuery('#sample-permalink').text();
 }
