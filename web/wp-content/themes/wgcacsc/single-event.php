@@ -62,7 +62,7 @@ get_header(); ?>
                                         if ( !empty($event_thumbnail ) ) {
                                             $th_element = '<figure class="event-header__thumbnail">';
                                             if ( $flagged_as_new ) {
-                                                $th_element .= '<span class="event-header__thumbnail__new-flag">New</span>';
+                                                $th_element .= '<span class="event-header__thumbnail__new-flag h5">New</span>';
                                             }
                                             $th_element .= $event_thumbnail;
                                             if ( $course_type != 'none' ) {
@@ -73,12 +73,12 @@ get_header(); ?>
                                             echo $th_element;
                                         }
                                     ?>
-                                    <div class="event-header-text-content">
+                                    <div class="event-header__text-content">
 									    <h1 class="page-title"><?php the_title(); ?></h1>
                                         <?php
                                             $date_range = wgcacsc_get_event_dates( get_the_ID() );
                                             if ( !empty($date_range) ) {
-                                                echo '<span class="h3">'.$date_range.'</span>';
+                                                echo '<span class="h3 event-header__date-range">'.$date_range.'</span>';
                                             }
 
                                             $event_location = get_field( 'location' );

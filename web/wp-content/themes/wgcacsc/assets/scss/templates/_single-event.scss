@@ -1,0 +1,57 @@
+.event-header__thumbnail {
+  display: block;
+  float: left;
+  height: rem-calc(105);
+  margin: rem-calc(-5) rem-calc(20) rem-calc(40) rem-calc(-5);
+  overflow: hidden; //hides overflowing label
+  padding: rem-calc(5) 0 0 rem-calc(5);
+  position: relative;
+  width: rem-calc(105);
+  .wp-post-image {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include breakpoint(500px) {
+    height: rem-calc(205);
+    width: rem-calc(205);
+  }
+}
+
+.event-header__thumbnail__new-flag,
+.event-header__thumbnail__course-type {
+  position: absolute;
+  z-index: 2;
+}
+
+.event-header__thumbnail__new-flag {
+  background-color: #F5A623;
+  font-size: rem-calc(14);
+  height: rem-calc(56);
+  left: rem-calc(-33);
+  padding-top: rem-calc(30);
+  text-align: center;
+  text-transform: uppercase;
+  top: rem-calc(-12);
+  -ms-transform: rotate(-45deg); /* IE 9 */
+  -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+  transform: rotate(-45deg);
+  width: rem-calc(99);
+}
+
+.event-header__thumbnail__course-type {
+  bottom: 0;
+  height: rem-calc(40);
+  right: 0;
+  width: rem-calc(40);
+}
+
+.single-event {
+  .page-title {
+    line-height: 1.2;
+  }
+}
+
+.event-header__date-range {
+  margin-bottom: 0.1em;
+}
