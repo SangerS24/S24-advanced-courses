@@ -473,6 +473,11 @@ class WPSEO_Twitter {
 		 */
 		$img = apply_filters( 'wpseo_twitter_image', $img );
 
+		if ( WPSEO_Utils::is_url_relative( $img ) === true && $img[0] === '/' ) {
+			$parsed_url = wp_parse_url( home_url() );
+			$img        = $parsed_url['scheme'] . '://' . $parsed_url['host'] . $img;
+		}
+
 		$escaped_img = esc_url( $img );
 
 		if ( in_array( $escaped_img, $this->shown_images ) ) {
@@ -631,6 +636,8 @@ class WPSEO_Twitter {
 	 * Displays the domain tag for the site.
 	 *
 	 * @deprecated 3.0
+	 *
+	 * @codeCoverageIgnore
 	 */
 	protected function site_domain() {
 		_deprecated_function( __METHOD__, 'WPSEO 3.0' );

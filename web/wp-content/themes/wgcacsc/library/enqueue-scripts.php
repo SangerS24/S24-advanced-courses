@@ -51,11 +51,6 @@ function wgc_collapsibles_admin_js()
     $screen = get_current_screen();
 
     if ( in_array( $screen->id , ['page' , 'post' , 'event'] ) ) {
-        wp_enqueue_script('wgc_admin_js', get_template_directory_uri() . '/assets/javascript/admin/wgc_admin.js', array('jquery'));
-
-//        $data = array(
-//            'page_url' => get_permalink($_GET['post'])
-//        );
-//        wp_localize_script('wgc_admin_js', 'globalData', $data);
+        wp_enqueue_script('wgc_admin_js', get_template_directory_uri() . '/assets/javascript/admin/wgc_admin.js', array('jquery' , 'acf-input', 'acf-field-group' ));
     }
 }

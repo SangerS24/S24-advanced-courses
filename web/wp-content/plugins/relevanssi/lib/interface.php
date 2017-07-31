@@ -67,7 +67,7 @@ function relevanssi_options() {
 	relevanssi_options_form();
 
 	if (apply_filters('relevanssi_display_common_words', true))
-		relevanssi_common_words();
+		relevanssi_common_words(25);
 
 	echo "<div style='clear:both'></div>";
 
@@ -86,7 +86,8 @@ function relevanssi_search_stats() {
 		check_admin_referer('relevanssi_reset_logs', '_relresnonce');
 		if (isset($_REQUEST['relevanssi_reset_code'])) {
 			if ($_REQUEST['relevanssi_reset_code'] == 'reset') {
-				relevanssi_truncate_logs();
+				$verbose = true;
+				relevanssi_truncate_logs($verbose);
 			}
 		}
 	}
@@ -117,13 +118,22 @@ function relevanssi_search_stats() {
 		relevanssi_sidebar();
 }
 
-function relevanssi_truncate_logs() {
+function relevanssi_truncate_logs($verbose = true) {
 	global $wpdb, $relevanssi_variables;
 
 	$query = "TRUNCATE " . $relevanssi_variables['log_table'];
-	$wpdb->query($query);
+	$result = $wpdb->query($query);
 
-	echo "<div id='relevanssi-warning' class='updated fade'>" . __('Logs clear!', 'relevanssi') . "</div>";
+	if ($verbose) {
+		if ($result !== false) {
+			echo "<div id='relevanssi-warning' class='updated fade'>" . __('Logs clear!', 'relevanssi') . "</div>";
+		}
+		else {
+			echo "<div id='relevanssi-warning' class='updated fade'>" . __('Clearing the logs failed.', 'relevanssi') . "</div>";
+		}
+	}
+
+	return $result;
 }
 
 function update_relevanssi_options() {
@@ -292,7 +302,6 @@ function update_relevanssi_options() {
 	if (isset($_REQUEST['relevanssi_disable_or_fallback'])) update_option('relevanssi_disable_or_fallback', $_REQUEST['relevanssi_disable_or_fallback']);
 	if (isset($_REQUEST['relevanssi_respect_exclude'])) update_option('relevanssi_respect_exclude', $_REQUEST['relevanssi_respect_exclude']);
 	if (isset($_REQUEST['relevanssi_throttle'])) update_option('relevanssi_throttle', $_REQUEST['relevanssi_throttle']);
-	if (isset($_REQUEST['relevanssi_throttle_limit'])) update_option('relevanssi_throttle_limit', $_REQUEST['relevanssi_throttle_limit']);
 	if (isset($_REQUEST['relevanssi_wpml_only_current'])) update_option('relevanssi_wpml_only_current', $_REQUEST['relevanssi_wpml_only_current']);
 	if (isset($_REQUEST['relevanssi_word_boundaries'])) update_option('relevanssi_word_boundaries', $_REQUEST['relevanssi_word_boundaries']);
 	if (isset($_REQUEST['relevanssi_default_orderby'])) update_option('relevanssi_default_orderby', $_REQUEST['relevanssi_default_orderby']);
@@ -369,33 +378,48 @@ function relevanssi_remove_all_stopwords() {
 	printf(__("<div id='message' class='updated fade'><p>Stopwords removed! Remember to re-index.</p></div>", "relevanssi"), $term);
 }
 
-function relevanssi_remove_stopword($term) {
+function relevanssi_remove_stopword($term, $verbose = true) {
 	global $wpdb, $relevanssi_variables;
 
 	$q = $wpdb->prepare("DELETE FROM " . $relevanssi_variables['stopword_table'] . " WHERE stopword=%s", $term);
 	$success = $wpdb->query($q);
 
 	if ($success) {
-		printf(__("<div id='message' class='updated fade'><p>Term '%s' removed from stopwords! Re-index to get it back to index.</p></div>", "relevanssi"), stripslashes($term));
+		if ($verbose) {
+			echo "<div id='message' class='updated fade'><p>";
+			printf(__("Term '%s' removed from stopwords! Re-index to get it back to index.", "relevanssi"), stripslashes($term));
+			echo "</p></div>";
+		}
+		else {
+			return true;
+		}
 	}
 	else {
-		printf(__("<div id='message' class='updated fade'><p>Couldn't remove term '%s' from stopwords!</p></div>", "relevanssi"), stripslashes($term));
+		if ($verbose) {
+			echo "<div id='message' class='updated fade'><p>";
+			printf(__("Couldn't remove term '%s' from stopwords!", "relevanssi"), stripslashes($term));
+			echo "</p></div>";
+		}
+		else {
+			return false;
+		}
 	}
 }
 
-function relevanssi_common_words() {
+function relevanssi_common_words($limit = 25, $wp_cli = false) {
 	global $wpdb, $relevanssi_variables, $wp_version;
 
 	RELEVANSSI_PREMIUM ? $plugin = 'relevanssi-premium' : $plugin = 'relevanssi';
 
-	echo "<div style='float:left; width: 45%'>";
+	if (!is_numeric($limit)) $limit = 25;
 
-	echo "<h3>" . __("25 most common words in the index", 'relevanssi') . "</h3>";
+	$words = $wpdb->get_results("SELECT COUNT(*) as cnt, term FROM " . $relevanssi_variables['relevanssi_table'] . " GROUP BY term ORDER BY cnt DESC LIMIT $limit");
+	// Clean: $limit is numeric.
 
-	echo "<p>" . __("These words are excellent stopword material. A word that appears in most of the posts in the database is quite pointless when searching. This is also an easy way to create a completely new stopword list, if one isn't available in your language. Click the icon after the word to add the word to the stopword list. The word will also be removed from the index, so rebuilding the index is not necessary.", 'relevanssi') . "</p>";
-
-	$words = $wpdb->get_results("SELECT COUNT(DISTINCT(doc)) as cnt, term
-		FROM " . $relevanssi_variables['relevanssi_table'] . " GROUP BY term ORDER BY cnt DESC LIMIT 25");
+	if (!$wp_cli) {
+		echo "<div style='float:left; width: 45%'>";
+		echo "<h3>" . __("25 most common words in the index", 'relevanssi') . "</h3>";
+		echo "<p>" . __("These words are excellent stopword material. A word that appears in most of the posts in the database is quite pointless when searching. This is also an easy way to create a completely new stopword list, if one isn't available in your language. Click the icon after the word to add the word to the stopword list. The word will also be removed from the index, so rebuilding the index is not necessary.", 'relevanssi') . "</p>";
 
 ?>
 <form method="post">
@@ -404,26 +428,31 @@ function relevanssi_common_words() {
 <ul>
 <?php
 
-	if (function_exists("plugins_url")) {
-		if (version_compare($wp_version, '2.8dev', '>' )) {
-			$src = plugins_url('delete.png', $relevanssi_variables['file']);
+		if (function_exists("plugins_url")) {
+			if (version_compare($wp_version, '2.8dev', '>' )) {
+				$src = plugins_url('delete.png', $relevanssi_variables['file']);
+			}
+			else {
+				$src = plugins_url($plugin . '/delete.png');
+			}
 		}
 		else {
-			$src = plugins_url($plugin . '/delete.png');
+			// We can't check, so let's assume something sensible
+			$src = '/wp-content/plugins/' . $plugin . '/delete.png';
 		}
+
+		foreach ($words as $word) {
+			$stop = __('Add to stopwords', 'relevanssi');
+			printf('<li>%s (%d) <input style="padding: 0; margin: 0" type="image" src="%s" alt="%s" name="term" value="%s"/></li>', $word->term, $word->cnt, $src, $stop, $word->term);
+		}
+		echo "</ul>\n</form>";
+
+		echo "</div>";
 	}
 	else {
-		// We can't check, so let's assume something sensible
-		$src = '/wp-content/plugins/' . $plugin . '/delete.png';
+		// WP CLI gets the list of words
+		return $words;
 	}
-
-	foreach ($words as $word) {
-		$stop = __('Add to stopwords', 'relevanssi');
-		printf('<li>%s (%d) <input style="padding: 0; margin: 0" type="image" src="%s" alt="%s" name="term" value="%s"/></li>', $word->term, $word->cnt, $src, $stop, $word->term);
-	}
-	echo "</ul>\n</form>";
-
-	echo "</div>";
 }
 
 function relevanssi_query_log() {
@@ -442,10 +471,10 @@ function relevanssi_query_log() {
 	echo '<h3>' . __("Common Queries", 'relevanssi') . '</h3>';
 
 	$limit = apply_filters('relevanssi_user_searches_limit', 20);
-	$lead = __("Here you can see the $limit most common user search queries, how many times those
+	$lead = __("Here you can see the %d most common user search queries, how many times those
 		queries were made and how many results were found for those queries.", 'relevanssi');
 
-	echo "<p>$lead</p>";
+	sprintf("<p>" . $lead . "</p>", $limit);
 
 	echo "<div style='width: 30%; float: left; margin-right: 2%; overflow: scroll'>";
 	relevanssi_date_queries(1, __("Today and yesterday", 'relevanssi'));
@@ -482,7 +511,7 @@ function relevanssi_query_log() {
 		echo '<h3>' . __('Reset Logs', 'relevanssi') . "</h3>\n";
 		echo "<form method='post'>\n$nonce";
 		echo "<p>";
-		printf(__('To reset the logs, type "reset" into the box here %s and click %s', 'relevanssi'), ' <input type="text" name="relevanssi_reset_code" />', 'and click <input type="submit" name="relevanssi_reset" value="Reset" class="button" />');
+		printf(__('To reset the logs, type "reset" into the box here %s and click %s', 'relevanssi'), ' <input type="text" name="relevanssi_reset_code" />', ' <input type="submit" name="relevanssi_reset" value="Reset" class="button" />');
 		echo "</p></form>";
 
 	}
@@ -828,7 +857,7 @@ function relevanssi_options_form() {
 		$mysql_columns = get_option('relevanssi_mysql_columns');
 		$serialize_options['relevanssi_mysql_columns'] = $mysql_columns;
 
-		$serialized_options = serialize($serialize_options);
+		$serialized_options = json_encode($serialize_options);
 	}
 
 	echo "<div class='postbox-container' style='width:70%;'>";
@@ -856,7 +885,7 @@ function relevanssi_options_form() {
     	echo '<a href="#options">' . __("Import/export options", "relevanssi") . '</a>';
     }
     else {
-		echo '<strong><a href="http://www.relevanssi.com/buy-premium/?utm_source=plugin&utm_medium=link&utm_campaign=buy">' . __('Buy Relevanssi Premium', 'relevanssi') . '</a></strong>';
+		echo '<strong><a href="https://www.relevanssi.com/buy-premium/?utm_source=plugin&utm_medium=link&utm_campaign=buy">' . __('Buy Relevanssi Premium', 'relevanssi') . '</a></strong>';
     }
 ?>
     </p>
@@ -934,13 +963,7 @@ function relevanssi_options_form() {
 
 	<label for='relevanssi_throttle'><?php _e("Limit searches:", "relevanssi"); ?>
 	<input type='checkbox' name='relevanssi_throttle' id='relevanssi_throttle' <?php echo $throttle ?> /></label><br />
-	<small><?php _e("If this option is checked, Relevanssi will limit search results to at most 500 results per term. This will improve performance, but may cause some relevant documents to go unfound. However, Relevanssi tries to prioritize the most relevant documents. <strong>This does not work well when sorting results by date.</strong> The throttle can end up cutting off recent posts to favour more relevant posts.", 'relevanssi'); ?></small>
-
-	<br /><br />
-
-	<label for='relevanssi_throttle_limit'><?php _e("Limit:", "relevanssi"); ?>
-	<input type='text' size='4' name='relevanssi_throttle_limit' id='relevanssi_throttle_limit' value='<?php echo $throttle_limit ?>' /></label><br />
-	<small><?php printf(__("For better performance, adjust the limit to a smaller number. Adjusting the limit to 100 or 200 should be safe for good results, and might bring a boost in search speed. DO NOT use this feature to limit the number of search results on search results pages, as that will lead to problems. For adjusting the number of search results displayed, see <a href='%s'>this knowledge base entry</a>.", 'relevanssi'), 'http://www.relevanssi.com/knowledge-base/posts-per-page/'); ?></small>
+	<small><?php _e("If this option is checked, Relevanssi will limit search results to at most 500 results per term (this number can be adjusted by changing the 'relevanssi_throttle_limit' option). This will improve performance, but may cause some relevant documents to go unfound. However, Relevanssi tries to prioritize the most relevant documents. <strong>This does not work when sorting results by date.</strong> The throttle can end up cutting off recent posts to favour more relevant posts.", 'relevanssi'); ?></small>
 
 	<br /><br />
 
@@ -1022,12 +1045,11 @@ function relevanssi_options_form() {
 	<small><?php _e("Comma-separated list of numeric user IDs or user login names that will not be logged.", "relevanssi"); ?></small>
 
 <?php
-	if (RELEVANSSI_PREMIUM) {
-		echo "<p>" . __("If you enable logs, you can see what your users are searching for. You can prevent your own searches from getting in the logs with the omit feature.", "relevanssi") . "</p>";
+	echo "<p>" . __("If you enable logs, you can see what your users are searching for. You can prevent your own searches from getting in the logs with the omit feature.", "relevanssi");
+	if (!RELEVANSSI_PREMIUM) {
+		echo " " . __("Logs are also needed to use the 'Did you mean?' feature.", "relevanssi");
 	}
-	else {
-		echo "<p>" . __("If you enable logs, you can see what your users are searching for. Logs are also needed to use the 'Did you mean?' feature. You can prevent your own searches from getting in the logs with the omit feature.", "relevanssi") . "</p>";
-	}
+	echo "</p>";
 ?>
 
 	<?php if (function_exists('relevanssi_form_hide_branding')) relevanssi_form_hide_branding($hide_branding); ?>
@@ -1055,12 +1077,11 @@ function relevanssi_options_form() {
 	<label for='relevanssi_expst'><?php _e('Exclude these posts/pages from search:', 'relevanssi'); ?>
 	<input type='text'  name='relevanssi_expst' id='relevanssi_expst' size='20' value='<?php echo esc_attr($expst); ?>' /></label><br />
 <?php
+	echo "<small>" . __("Enter a comma-separated list of post/page IDs that are excluded from search results. This only works here, you can't use the input field option (WordPress doesn't pass custom parameters there).", 'relevanssi');
 	if (RELEVANSSI_PREMIUM) {
-		echo "<small>" . __("Enter a comma-separated list of post/page IDs that are excluded from search results. This only works here, you can't use the input field option (WordPress doesn't pass custom parameters there). You can also use a checkbox on post/page edit pages to remove posts from index.", 'relevanssi') . "</small>";
+		echo " " . __("You can also use a checkbox on post/page edit pages to remove posts from index. This setting doesn't work in multisite searches, but the checkbox does.", 'relevanssi');
 	}
-	else {
-		echo "<small>" . __("Enter a comma-separated list of post/page IDs that are excluded from search results. This only works here, you can't use the input field option (WordPress doesn't pass custom parameters there).", 'relevanssi') . "</small>";
-	}
+	echo "</small>";
 ?>
 
 	<br /><br />
@@ -1126,7 +1147,7 @@ function relevanssi_options_form() {
 
 	<label for='relevanssi_hilite_title'><?php _e("Highlight query terms in result titles too:", 'relevanssi'); ?>
 	<input type='checkbox' name='relevanssi_hilite_title' id='relevanssi_hilite_title' <?php echo $hititle ?> /></label>
-	<small><?php _e("", 'relevanssi'); ?></small>
+	<small><?php _e("Highlight hits in titles of the search results. This doesn't work automatically but requires you to replace the_title() on the template with relevanssi_the_title().", 'relevanssi'); ?></small>
 
 	<br />
 
@@ -1193,7 +1214,7 @@ function relevanssi_options_form() {
 		<tr>
 			<th><?php _e('Type', 'relevanssi'); ?></th>
 			<th><?php _e('Index', 'relevanssi'); ?></th>
-			<th><?php _e('Public?', 'relevanssi'); ?></th>
+			<th><?php _e('Excluded from search?', 'relevanssi'); ?></th>
 		</tr>
 	</thead>
 	<?php
@@ -1210,8 +1231,8 @@ function relevanssi_options_form() {
 			else {
 				$checked = '';
 			}
-			$label = sprintf(__("%s", 'relevanssi'), $type);
-			in_array($type, $public_types) ? $public = __('yes', 'relevanssi') : $public = __('no', 'relevanssi');
+			$label = sprintf("%s", $type);
+			in_array($type, $public_types) ? $public = __('no', 'relevanssi') : $public = __('yes', 'relevanssi');
 
 			echo <<<EOH
 	<tr>
@@ -1241,6 +1262,7 @@ EOH;
 	</tr>
 	</table>
 
+	<p><?php printf(__('If you choose to index a post type that is excluded from the search, you may need to uncheck the "%s" option.', 'relevanssi'), __('Respect exclude_from_search for custom post types', 'relevanssi')); ?></p>
 	<br /><br />
 
 	<p><?php _e('Choose taxonomies to index:', 'relevanssi'); ?></p>
@@ -1264,7 +1286,7 @@ EOH;
 			else {
 				$checked = '';
 			}
-			$label = sprintf(__("%s", 'relevanssi'), $taxonomy->name);
+			$label = sprintf("%s", $taxonomy->name);
 			$taxonomy->public ? $public = __('yes', 'relevanssi') : $public = __('no', 'relevanssi');
 			$type = $taxonomy->name;
 
@@ -1313,7 +1335,7 @@ EOH;
 
 	<label for='relevanssi_index_excerpt'><?php _e('Index and search post excerpts:', 'relevanssi'); ?>
 	<input type='checkbox' name='relevanssi_index_excerpt' id='relevanssi_index_excerpt' <?php echo $index_excerpt ?> /></label><br />
-	<small><?php _e("If checked, Relevanssi will also index and search the excerpts of your posts.Remember to rebuild the index if you change this option!", 'relevanssi'); ?></small>
+	<small><?php _e("If checked, Relevanssi will also index and search the excerpts of your posts. Remember to rebuild the index if you change this option!", 'relevanssi'); ?></small>
 
 	<br /><br />
 
@@ -1329,7 +1351,7 @@ EOH;
 
 	<label for='relevanssi_index_fields'><?php _e("Custom fields to index:", "relevanssi"); ?>
 	<input type='text' name='relevanssi_index_fields' id='relevanssi_index_fields' size='30' value='<?php echo esc_attr($index_fields) ?>' /></label><br />
-	<small><?php _e("A comma-separated list of custom fields to include in the index. Set to 'visible' to index all visible custom fields and to 'all' to index all custom fields, also those starting with a '_' character.", "relevanssi"); ?></small>
+	<small><?php _e("A comma-separated list of custom fields to include in the index. Set to 'visible' to index all visible custom fields and to 'all' to index all custom fields, also those starting with a '_' character. With Relevanssi Premium, you can also use 'fieldname_%_subfieldname' notation for ACF repeater fields. You can use 'relevanssi_index_custom_fields' filter hook to adjust which custom fields are indexed.", "relevanssi"); ?></small>
 
 	<br /><br />
 
@@ -1372,13 +1394,15 @@ function relevanssi_show_stopwords() {
 
 	RELEVANSSI_PREMIUM ? $plugin = 'relevanssi-premium' : $plugin = 'relevanssi';
 
-	_e("<p>Enter a word here to add it to the list of stopwords. The word will automatically be removed from the index, so re-indexing is not necessary. You can enter many words at the same time, separate words with commas.</p>", 'relevanssi');
+	echo "<p>";
+	_e("Enter a word here to add it to the list of stopwords. The word will automatically be removed from the index, so re-indexing is not necessary. You can enter many words at the same time, separate words with commas.", 'relevanssi');
+	echo "</p>";
 
 ?><label for="addstopword"><p><?php _e("Stopword(s) to add: ", 'relevanssi'); ?><textarea name="addstopword" id="addstopword" rows="2" cols="40"></textarea>
 <input type="submit" value="<?php esc_attr_e("Add", 'relevanssi'); ?>" class='button' /></p></label>
-<?php
+<p><?php
 
-	_e("<p>Here's a list of stopwords in the database. Click a word to remove it from stopwords. Removing stopwords won't automatically return them to index, so you need to re-index all posts after removing stopwords to get those words back to index.", 'relevanssi');
+	_e("Here's a list of stopwords in the database. Click a word to remove it from stopwords. Removing stopwords won't automatically return them to index, so you need to re-index all posts after removing stopwords to get those words back to index.", 'relevanssi');
 
 	if (function_exists("plugins_url")) {
 		if (version_compare($wp_version, '2.8dev', '>' )) {
@@ -1393,7 +1417,7 @@ function relevanssi_show_stopwords() {
 		$src = '/wp-content/plugins/' . $plugin . '/delete.png';
 	}
 
-	echo "<ul>";
+	echo "</p><ul>";
 	$results = $wpdb->get_results("SELECT * FROM " . $relevanssi_variables['stopword_table']);
 	$exportlist = array();
 	foreach ($results as $stopword) {
