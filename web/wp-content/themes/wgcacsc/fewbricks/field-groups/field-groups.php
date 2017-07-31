@@ -197,3 +197,19 @@ $fg_event_flags->add_field(new acf_fields\radio( 'Course type flag' , 'flag_cour
 ]));
 
 $fg_event_flags->register();
+
+$fg_event_full_details = (new fewacf\field_group( 'Event full details' , '201707311412a' , $location , 20 , [
+    'style' => 'seamless'
+]));
+
+$fg_event_full_details->add_brick(new bricks\component_event_collapsibles( 'event_details_panels' , '201707311416a' ) );
+
+$fg_event_full_details->register();
+
+$fg_event_bottom_components = (new fewacf\field_group('Bottom components', '201707311421a', $location, 50));
+
+$fg_event_bottom_components->add_brick(new bricks\group_flexible_content('standard_components', '201707311421b'));
+
+// Register the field group
+$fg_event_bottom_components->register();
+
