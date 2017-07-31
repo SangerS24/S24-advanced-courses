@@ -89,7 +89,19 @@ get_header(); ?>
                                         ?>
                                     </div>
 								</div>
+                                </div> <!-- End header wrappers-->
+
+                                <div class="small-12 medium-3 columns float-right">
+
+                                </div> <!-- end deadlines and register section -->
+
+                                <div class="small-12 medium-9 columns">
+                                    More bits about the event
                                 </div>
+
+                                <div class="small-12 medium-3 medium-offset-9">
+                                    akdjfhlwj
+                                </div> <!-- end deadlines and register section -->
 
 							</div>
 						</article>
