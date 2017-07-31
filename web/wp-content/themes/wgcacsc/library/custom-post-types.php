@@ -34,7 +34,7 @@ function wgcacsc_register_my_cpts()
         "rewrite" => array("slug" => "our-events"),
         "query_var" => true,
         "menu_icon" => "dashicons-calendar-alt",
-        "supports" => array("title", "excerpt", "revisions", "author"),
+        "supports" => array("title", "excerpt", "revisions", "author" , "thumbnail" ),
     );
     register_post_type("event", $args);
 

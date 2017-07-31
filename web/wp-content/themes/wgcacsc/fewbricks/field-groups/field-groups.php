@@ -117,6 +117,7 @@ $fg_event_key_details = (new fewacf\field_group( 'Event Key Details' , '20170719
     ]
 ]));
 
+$fg_event_key_details->add_brick(new bricks\component_section_heading('page_sub_heading', '201707311344a'));
 $fg_event_key_details->add_field(new acf_fields\date_picker( 'Start date' , 'start_date' , '201707191652a' ) );
 $fg_event_key_details->add_field(new acf_fields\date_picker( 'End date' , 'end_date' , '201707191652b' ) );
 $fg_event_key_details->add_field(new acf_fields\text( 'Location' , 'location' , '201707191652c' ) );
@@ -145,11 +146,54 @@ $fg_event_registration_info = (new fewacf\field_group( 'Event Registration Detai
 ]));
 
 $fg_event_registration_info->add_field(new acf_fields\text( 'Registration page link' , 'registration_link' , '201707191720b' , [
-    'instructions' => 'If left blank, the registration button will not appear.'
+    'instructions' => 'If left blank, the registration button will not appear and will be replaced by the text entered in the next field.'
 ]));
+
+$fg_event_registration_info->add_field(new acf_fields\text( 'Registration button replacement text' , 'registration_button_replacement' , '201707191720z' , [
+    'default_value' => 'Registration opens soon, contact the conference organiser.'
+]) );
 
 $fg_event_registration_info->add_field(new acf_fields\wysiwyg( 'Pre-registration holding content' , 'holding_content' , '201707191720c' , [
     'instructions' => 'Content that appears if the registration is not yet open. Make sure to remove it for the event content to show.'
 ]));
 
 $fg_event_registration_info->register();
+
+$fg_event_download = (new fewacf\field_group( 'Event downloadable programme' , '201707311348a' , $location , 3 , [
+    'position' => 'acf_after_title',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_event_download->add_field(new acf_fields\file( 'File' , 'event_download_file' , '201707311349a' ));
+$fg_event_download->add_field(new acf_fields\text( 'Download link text' , 'event_download_label' , '201707311349b' , [
+    'default_value' => 'Download full programme (PDF)'
+]));
+
+$fg_event_download->register();
+
+$fg_event_flags = (new fewacf\field_group( 'Event flags' , '201707311329a' , $location , 10 , [
+    'position' => 'side',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_event_flags->add_field(new acf_fields\checkbox( 'Flag as new' , 'flag_new' , '201707311331a' , [
+    'choices' => [
+        'new' => 'Yes, flag as new'
+    ]
+]));
+
+$fg_event_flags->add_field(new acf_fields\radio( 'Course type flag' , 'flag_course_type' , '201707311336a' , [
+    'choices' => [
+        'none' => 'None (or not a course)',
+        'computational' => 'Computational',
+        'lecture' => 'Lecture/Discussion',
+        'laboratory' => 'Laboratory'
+    ],
+    'default_value' => 'none'
+]));
+
+$fg_event_flags->register();
