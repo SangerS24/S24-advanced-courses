@@ -92,21 +92,21 @@ add_filter( 'wpcf7_load_js', '__return_false' );
 add_filter( 'wpcf7_load_css', '__return_false' );
 
 
-function wgcacsc_sort_archive($query) {
-    $postType = get_query_var('post_type');
-    if(!is_admin() && ($postType != 'client') && ($query->is_archive() || $query->category())) {
-        $query->set('meta_key', 'post_sort_date');
-        $query->set('orderby', 'meta_value');
-        $query->set('order', 'DESC');
-    }
-
-    if(!is_admin() && $postType == 'client') {
-        $query->set('orderby', 'title');
-        $query->set('order', 'ASC');
-        $query->set('posts_per_page', 100);
-    }
-}
-add_action('pre_get_posts', 'wgcacsc_sort_archive');
+//function wgcacsc_sort_archive($query) {
+//    $postType = get_query_var('post_type');
+//    if(!is_admin() && ($postType != 'client') && ($query->is_archive() || $query->category())) {
+//        $query->set('meta_key', 'post_sort_date');
+//        $query->set('orderby', 'meta_value');
+//        $query->set('order', 'DESC');
+//    }
+//
+//    if(!is_admin() && $postType == 'client') {
+//        $query->set('orderby', 'title');
+//        $query->set('order', 'ASC');
+//        $query->set('posts_per_page', 100);
+//    }
+//}
+//add_action('pre_get_posts', 'wgcacsc_sort_archive');
 
 
 //function wgcacsc_add_cookie_compliance_message() {
@@ -127,3 +127,36 @@ function wgcacsc_add_tracking_code() {
     }
 }
 add_action('foundationpress_before_closing_body', 'wgcacsc_add_tracking_code');
+
+function wgcacsc_get_event_dates( $event_id ) {
+    $start_date = get_field( 'start_date' , $event_id );
+
+    $end_date = get_field( 'end_date' , $event_id );
+
+    //no dates entered (no start date to be strict)
+    if (empty( $start_date )) {
+        return '';
+    }
+
+    $start_date = date_create_from_format( 'Ymd' , $start_date );
+
+    //start date but no end date
+    if ( empty( $end_date ) ) {
+        return $start_date->format('d F Y');
+    }
+
+    $end_date = date_create_from_format( 'Ymd' , $end_date );
+    //starts and ends in different years
+    if ( $start_date->format('Y' ) != $end_date->format( 'Y' ) ) {
+        return $start_date->format( 'd F Y' ).' - '.$end_date->format( 'd F Y' );
+    }
+
+    //starts and ends in different months
+    if ( $start_date->format('Ym' ) != $end_date->format( 'Ym' ) ) {
+        return $start_date->format( 'd F' ).' - '.$end_date->format( 'd F Y' );
+    }
+
+    //starts and ends in same month
+
+    return $start_date->format('d' ).' - '.$end_date->format( 'd F Y' );
+}

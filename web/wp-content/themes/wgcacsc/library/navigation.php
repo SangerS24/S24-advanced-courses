@@ -581,8 +581,8 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
             array_push( $trail_array , $post_item );
             $event_cat = wp_get_post_terms( $current_object_id , 'event-category' );
             if ( !empty( $event_cat ) ) {
-                $event_cat = $event_cat[0];
-                $event_cat_object = get_term( $event_cat , 'event-category' );
+                $event_cat_object = $event_cat[0];
+                $event_cat = $event_cat_object->term_id;
                 $event_cat_menu_item = s24_get_menu_item( $event_cat , 'taxonomy');
                 while( ( $event_cat_menu_item == false ) && ( $event_cat_object->parent != 0 ) ) {
                     //as long as it's not a menu item and it has parents
