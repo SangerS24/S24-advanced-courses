@@ -110,6 +110,8 @@ $location = [
     ]
 ];
 
+//// Key details - e.g. dates, deadlines
+
 $fg_event_key_details = (new fewacf\field_group( 'Event Key Details' , '201707191650a' , $location , 1 , [
     'position' => 'acf_after_title',
     'names_of_items_to_hide_on_screen' => [
@@ -138,6 +140,8 @@ $fg_event_key_details->add_field((new acf_fields\repeater( 'Deadlines' , 'deadli
 
 $fg_event_key_details->register();
 
+/// Registration links etc.
+
 $fg_event_registration_info = (new fewacf\field_group( 'Event Registration Details' , '201707191720a' , $location , 2 , [
     'position' => 'acf_after_title',
     'names_of_items_to_hide_on_screen' => [
@@ -159,6 +163,9 @@ $fg_event_registration_info->add_field(new acf_fields\wysiwyg( 'Pre-registration
 
 $fg_event_registration_info->register();
 
+
+////Programme download
+
 $fg_event_download = (new fewacf\field_group( 'Event downloadable programme' , '201707311348a' , $location , 3 , [
     'position' => 'acf_after_title',
     'names_of_items_to_hide_on_screen' => [
@@ -173,12 +180,35 @@ $fg_event_download->add_field(new acf_fields\text( 'Download link text' , 'event
 
 $fg_event_download->register();
 
+
+//// Full details collapsibles
+
+$fg_event_full_details = (new fewacf\field_group( 'Event full details' , '201707311412a' , $location , 20 , [
+    'style' => 'seamless'
+]));
+
+$fg_event_full_details->add_brick(new bricks\component_event_collapsibles( 'event_details_panels' , '201707311416a' ) );
+
+$fg_event_full_details->register();
+
+$fg_event_bottom_components = (new fewacf\field_group('Bottom components', '201707311421a', $location, 50));
+
+$fg_event_bottom_components->add_brick(new bricks\group_flexible_content('standard_components', '201707311421b'));
+
+// Register the field group
+$fg_event_bottom_components->register();
+
+
 $fg_event_flags = (new fewacf\field_group( 'Event flags' , '201707311329a' , $location , 10 , [
     'position' => 'side',
     'names_of_items_to_hide_on_screen' => [
         0 => 'the_content'
     ]
 ]));
+
+///side ACFS
+
+// Flags (new, course type)
 
 $fg_event_flags->add_field(new acf_fields\checkbox( 'Flag as new' , 'flag_new' , '201707311331a' , [
     'choices' => [
@@ -198,18 +228,54 @@ $fg_event_flags->add_field(new acf_fields\radio( 'Course type flag' , 'flag_cour
 
 $fg_event_flags->register();
 
-$fg_event_full_details = (new fewacf\field_group( 'Event full details' , '201707311412a' , $location , 20 , [
-    'style' => 'seamless'
+//sidebar elements
+
+$fg_event_side_sponsors = (new fewacf\field_group( 'In association with' , '201707311456a' , $location , 20 , [
+    'position' => 'side',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
 ]));
 
-$fg_event_full_details->add_brick(new bricks\component_event_collapsibles( 'event_details_panels' , '201707311416a' ) );
+$fg_event_side_sponsors->add_brick(new bricks\component_sponsors_side( 'side_sponsors' , '201707311456b' ) );
 
-$fg_event_full_details->register();
+$fg_event_side_sponsors->register();
 
-$fg_event_bottom_components = (new fewacf\field_group('Bottom components', '201707311421a', $location, 50));
+$fg_event_side_questions = (new fewacf\field_group( 'Questions' , '201707311456c' , $location , 30 , [
+    'position' => 'side',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
 
-$fg_event_bottom_components->add_brick(new bricks\group_flexible_content('standard_components', '201707311421b'));
+$fg_event_side_questions->add_field(new acf_fields\text( 'Title' , 'side_questions_title' , '201707311456d', [
+    'default_value' => 'Questions?'
+]));
 
-// Register the field group
-$fg_event_bottom_components->register();
+$default_questions_content = <<<EOD
+<a href="mailto:advancedcourses@wellcomegenomecampus.org">Email the organisers</a>
 
+or calls us: +44 (0)1223 495100
+EOD;
+
+
+$fg_event_side_questions->add_field(new acf_fields\wysiwyg( 'Content' , 'side_question_content' , '201707311456e' , [
+    'default_value' => $default_questions_content
+]));
+
+$fg_event_side_questions->register();
+
+$fg_event_side_share = (new fewacf\field_group( 'Share' , '201707311514a' , $location , 40 , [
+    'position' => 'side',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_event_side_share->add_field(new acf_fields\text( 'Title' , 'side_share_title' , '201707311514b' , [
+    'default_value' => 'Share'
+]));
+
+$fg_event_side_share->add_field(new acf_fields\text( 'Hashtag' , 'side_share_hashtag' , '201707311514c' ) );
+
+$fg_event_side_share->register();
