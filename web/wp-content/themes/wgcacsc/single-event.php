@@ -55,7 +55,7 @@ get_header(); ?>
                                     $course_type = get_field( 'flag_course_type');
                                 ?>
 
-                                <div class="small-12 medium-9 columns">
+                                <div class="small-12 large-9 columns">
 								<div class="offset-content event-header <?php echo $event_header_classes; ?>">
 
                                     <?php
@@ -91,15 +91,20 @@ get_header(); ?>
 								</div>
                                 </div> <!-- End header wrappers-->
 
-                                <div class="small-12 medium-3 columns float-right">
-
+                                <div class="small-12 large-3 columns float-right">
+                                        <?php
+                                            $deadlines = wgcacsc_get_deadlines( get_the_ID() );
+                                            if ( !empty( $deadlines ) ) {
+                                                echo wgcacsc_output_deadlines( $deadlines );
+                                            }
+                                        ?>
                                 </div> <!-- end deadlines and register section -->
 
-                                <div class="small-12 medium-9 columns">
+                                <div class="small-12 large-9 columns">
                                     More bits about the event
                                 </div>
 
-                                <div class="small-12 medium-3 medium-offset-9">
+                                <div class="small-12 large-3 large-offset-9">
                                     akdjfhlwj
                                 </div> <!-- end deadlines and register section -->
 

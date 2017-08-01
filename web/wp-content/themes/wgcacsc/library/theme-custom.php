@@ -128,6 +128,7 @@ function wgcacsc_add_tracking_code() {
 }
 add_action('foundationpress_before_closing_body', 'wgcacsc_add_tracking_code');
 
+//returns event start and end date as single string
 function wgcacsc_get_event_dates( $event_id ) {
     $start_date = get_field( 'start_date' , $event_id );
 
@@ -159,4 +160,56 @@ function wgcacsc_get_event_dates( $event_id ) {
     //starts and ends in same month
 
     return $start_date->format('d' ).' - '.$end_date->format( 'd F Y' );
+}
+
+//returns array of deadlines or false if no deadlines
+function wgcacsc_get_deadlines( $event_id ) {
+    $deadlines = get_field( 'deadlines' , $event_id );
+
+    if ( empty( $deadlines ) ) {
+        return false;
+    }
+
+    //array of 'filtered' deadlines - contain only deadline label and value (which can be a formatted date or 'closed')
+    $deadlines_array = array();
+
+    foreach ($deadlines as $deadline) {
+
+        $temp_deadline = array();
+
+        $temp_deadline['label'] = $deadline['deadlines_name'];
+
+        if ( !empty( $deadline['deadlines_closed'] ) && in_array( 'closed' , $deadline['deadlines_closed'] ) ) {
+            $temp_deadline['value'] = 'Closed';
+        } elseif ( $deadline['deadlines_date'] < date( 'Ymd' ) ) {
+            $temp_deadline['value'] = 'Closed';
+        } elseif ( !empty($deadline['deadlines_date'] ) ) {
+            $temp_deadline['value'] = date_create_from_format( 'Ymd' , $deadline['deadlines_date'] );
+            $temp_deadline['value'] = $temp_deadline['value']->format( 'd F Y' );
+        }
+
+        //only add the deadline if the date exists
+        if ( isset( $temp_deadline['value'] ) ) {
+            array_push( $deadlines_array , $temp_deadline );
+        }
+    }
+
+    return $deadlines_array;
+}
+
+//return html list of deadlines
+function  wgcacsc_output_deadlines( $deadlines_array ) {
+    if ( empty( $deadlines_array ) ) {
+        return '';
+    }
+
+    $deadlines_html = '<div class="event-deadlines"><h6>Deadlines: </h6><ul>';
+
+    foreach ( $deadlines_array as $deadline ) {
+        $deadlines_html .= '<li><span class="event-deadlines__label">'.$deadline['label'].'</span> <span class="event-deadlines__date">'.$deadline['value'].'</span></li>';
+    }
+
+    $deadlines_html .= '</ul></div>';
+
+    return $deadlines_html;
 }
