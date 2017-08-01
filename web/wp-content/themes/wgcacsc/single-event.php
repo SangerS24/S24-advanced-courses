@@ -112,9 +112,7 @@ get_header(); ?>
 
                                         <?php echo (new fewbricks\bricks\component_event_collapsibles('event_details_panels'))->get_html(); ?>
 
-                                        <div class="offset-content">
-
-                                        </div>
+                                        <?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html(); ?>
                                 </div>
 
                                 <div class="small-12 large-3 event-side-block large-offset-9">
