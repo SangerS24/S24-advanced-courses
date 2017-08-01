@@ -7015,12 +7015,19 @@ p + ol {
   line-height: 1.16667rem;
   background-color: #e5e5e5;
   margin-bottom: 0; }
+  .accordion-title:before {
+    color: #9B26B6; }
   .accordion-title:focus {
     background-color: #e5e5e5; }
 
 .accordion-content {
   overflow: hidden;
   border-bottom: 0.05556rem solid #e5e5e5; }
+
+.accordion-content .component {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0; }
 
 .component-newsletter {
   background-color: #333333;

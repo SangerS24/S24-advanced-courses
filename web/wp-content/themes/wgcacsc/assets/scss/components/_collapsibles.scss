@@ -12,6 +12,9 @@
   line-height: rem-calc(21);
   background-color: $light-gray;
   margin-bottom: 0;
+  &:before {
+    color: $primary-color;
+  }
   &:focus {
     background-color: $light-gray;
   }
@@ -20,4 +23,13 @@
 .accordion-content {
   overflow: hidden;
   border-bottom: rem-calc(1) solid $light-gray;
+}
+
+//nested components
+.accordion-content {
+  .component {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

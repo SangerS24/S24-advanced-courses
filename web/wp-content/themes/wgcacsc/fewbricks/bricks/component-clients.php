@@ -43,7 +43,7 @@ class component_clients extends project_brick
     /**
      * @return string|void
      */
-    public function get_brick_html($args = array())
+    public function get_brick_html( $args = array())
     {
 
         $html = '';

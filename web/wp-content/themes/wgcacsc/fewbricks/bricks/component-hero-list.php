@@ -72,12 +72,12 @@ class component_hero_list extends project_brick
                   <div class="small-12 columns">';
         }
 
-        if ($this->have_rows('hero_list')) {
+        if ($this->have_rows('hero_list', $this->get_post_id_to_get_field_from())) {
 
             if($args['plain'] != true) {
                 $html .= '<ol class="menu simple hero-list">';
             }
-            while ($this->have_rows('hero_list')) {
+            while ($this->have_rows('hero_list', $this->get_post_id_to_get_field_from())) {
 
                 $this->the_row();
 

@@ -50,7 +50,7 @@ class component_sponsors_side extends project_brick
 
         $component_title = $this->get_field( 'title' );
 
-        if ( !empty($component_title) && $this->have_rows( 'sponsors' ) ) {
+        if ( !empty($component_title) && $this->have_rows( 'sponsors', $this->get_post_id_to_get_field_from() ) ) {
             $html .= '<div class="component component-sponsors">';
 
             if ( !empty($component_title) ) {
@@ -59,7 +59,7 @@ class component_sponsors_side extends project_brick
 
             $html .= '<ol class="clients-list row">';
 
-            while ( $this->have_rows( 'sponsors' ) ) {
+            while ( $this->have_rows( 'sponsors', $this->get_post_id_to_get_field_from() ) ) {
                 $this->the_row();
 
                 $name = $this->get_field_in_repeater( 'sponsors' , 'name' );

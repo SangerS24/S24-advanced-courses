@@ -110,6 +110,8 @@ get_header(); ?>
 
                                         <?php echo wgcacsc_get_programme_download( get_the_ID() ); ?>
 
+                                        <?php echo (new fewbricks\bricks\component_event_collapsibles('event_details_panels'))->get_html(); ?>
+
                                         <div class="offset-content">
 
                                         </div>

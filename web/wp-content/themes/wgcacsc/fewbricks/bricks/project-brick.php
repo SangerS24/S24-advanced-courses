@@ -41,6 +41,24 @@ class project_brick extends brick
     }
 
     /**
+     * Wrapper function for ACFs have_rows()
+     * @param $name
+     * @return bool
+     */
+    protected function have_rows($name , $post_id = false)
+    {
+
+        if ($this->is_option) {
+            $outcome = have_rows($this->get_data_name('_' . $name), 'option');
+        } else {
+            $outcome = have_rows($this->get_name() . '_' . $name , $post_id);
+        }
+
+        return $outcome;
+
+    }
+
+    /**
      * @param $data_key
      * @param bool $value
      * @return string
@@ -93,6 +111,10 @@ class project_brick extends brick
      */
     public function get_html($args = [], $brick_layouts = false)
     {
+
+        if ( !$this->get_is_layout() && !$this->get_is_sub_field() && isset( $args['post_id']) ) {
+            $this->set_post_id_to_get_field_from($args['post_id']);
+        }
 
         $this->set_brick_layouts($brick_layouts);
 

@@ -45,10 +45,10 @@ class component_bio extends project_brick
 
 //        $bios = $this->get_field('staff_bios');
 
-        if( $this->have_rows( 'staff_bios' ) ) {
+        if( $this->have_rows( 'staff_bios', $this->get_post_id_to_get_field_from() ) ) {
             $html .= '<div class="component component-bio offset-content">';
 
-            while ( $this->have_rows( 'staff_bios' ) ) {
+            while ( $this->have_rows( 'staff_bios', $this->get_post_id_to_get_field_from() ) ) {
                 $this->the_row();
 
                 $staff_picture = $this->get_field_in_repeater( 'staff_bios' , 'picture');

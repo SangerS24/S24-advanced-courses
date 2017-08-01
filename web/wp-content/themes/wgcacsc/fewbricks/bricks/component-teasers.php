@@ -51,11 +51,11 @@ class component_teasers extends project_brick
         $html = '';
         $teaser_count = sizeof( $this->get_field( 'content_items' ) );
 
-        if( $this->have_rows( 'content_items' ) ) {
+        if( $this->have_rows( 'content_items', $this->get_post_id_to_get_field_from() ) ) {
             $eq_id = 'eq-'.rand();
 
             $html .= '<div class="component component-teasers component-teasers--'.$teaser_count.'" data-equalizer="'.$eq_id.'">';
-            while ( $this->have_rows( 'content_items' ) ) {
+            while ( $this->have_rows( 'content_items', $this->get_post_id_to_get_field_from() ) ) {
                 $this->the_row();
 
                 $teaser_picture = $this->get_field_in_repeater( 'content_items' , 'picture');

@@ -71,41 +71,14 @@ class group_flexible_content_event_collapsibles extends project_brick
 
     }
 
-
-    /**
-     * Wrapper function for ACFs have_rows()
-     * @param $name
-     * @return bool
-     */
-    protected function have_rows($name, $post_id = null)
-    {
-        $outcome = null;
-
-        $outcome = parent::have_rows($name);
-
-        if(isset($post_id)) {
-            $outcome = have_rows($this->get_data_name('_' . $name), $post_id);
-        }
-
-        return $outcome;
-
-    }
-
     /**
      * @return string
      */
     protected function get_brick_html($args = array())
     {
-        $post_id = null;
-
-        if(!empty($this->get_post_id_to_get_field_from())) {
-
-            $post_id = $this->get_post_id_to_get_field_from();
-
-        }
         $html = '';
 
-        while ($this->have_rows('rows', $post_id) ) {
+        while ($this->have_rows('rows', $this->get_post_id_to_get_field_from()) ) {
 
             $this->the_row();
 
