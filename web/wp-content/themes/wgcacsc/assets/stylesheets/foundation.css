@@ -6493,7 +6493,8 @@ p.copyright {
 @media screen and (min-width: 65em) {
   .sidebar {
     padding-left: 2.22222rem;
-    padding-right: 1.33333rem; } }
+    padding-right: 1.33333rem;
+    padding-top: 3.05556rem; } }
 
 .sidebar .side-menu-container h6 a, .sidebar .side-menu-container .h6 a, .sidebar .side-menu-container h6 a:visited, .sidebar .side-menu-container .h6 a:visited {
   color: #333333; }

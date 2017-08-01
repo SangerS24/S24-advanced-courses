@@ -265,6 +265,7 @@ add_action('foundationpress_before_sidebar' , 's24_list_child_pages' , 10 , 0 );
 //list child pages of a section
 function s24_list_child_pages() {
 
+
     $current_object_id = s24_get_current_object_id();
     $current_object_type = s24_get_current_object_type();
 
@@ -323,13 +324,15 @@ function s24_get_current_object_id() {
     $item_id = false;
 
     //looks for current page in the main menu first
-    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() ) ) {
+    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() || is_post_type_archive('event' ) ) ) {
         return $item_id;
     }
 
 
     if (is_home() ) {
         $item_id = get_option( 'page_for_posts' );
+    } elseif ( is_post_type_archive('event' ) ) {
+        $item_id = 974;
     } elseif ( is_tax() || is_category() || is_tag() ) {
         $item_id = get_queried_object()->term_id;
     }elseif ( is_single() || is_singular('event') || is_page() ) {
@@ -344,7 +347,7 @@ function s24_get_current_object_type() {
     $item_type = '';
 
     //looks for current page in the main menu first
-    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() ) ) {
+    if ( ! (is_singular() || is_category() || is_tag() || is_tax() || is_home() || is_post_type_archive('event' ) ) ) {
         return $item_type;
     }
 
@@ -352,7 +355,7 @@ function s24_get_current_object_type() {
     $current_object_id = 0;
 
 
-    if (is_home() ) {
+    if (is_home() || is_post_type_archive('event' ) ) {
         $item_type = 'post_type';
     } elseif ( is_tax() || is_category() || is_tag() ) {
         $item_type = 'taxonomy';

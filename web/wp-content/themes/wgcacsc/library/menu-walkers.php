@@ -23,6 +23,7 @@ if (!class_exists('Foundationpress_Top_Bar_Walker')) {
     if (!class_exists('Foundationpress_Mobile_Walker')) {
         class Foundationpress_Mobile_Walker extends Walker_Nav_Menu
         {
+            protected $current_parent = 0;
             function start_lvl(&$output, $depth = 0, $args = array())
             {
                 $indent = str_repeat("\t", $depth);
