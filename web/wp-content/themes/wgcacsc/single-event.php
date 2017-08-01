@@ -118,6 +118,7 @@ get_header(); ?>
                                 <div class="small-12 large-3 event-side-block large-offset-9">
                                         <?php echo (new fewbricks\bricks\component_sponsors_side( 'side_sponsors' ))->get_html(); ?>
 
+                                        <?php echo wgcacsc_get_questions_section( get_the_ID() ); ?>
                                 </div> <!-- end other side sections -->
 
 							</div>

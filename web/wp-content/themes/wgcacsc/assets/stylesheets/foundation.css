@@ -7356,7 +7356,11 @@ p + ol {
   border-bottom: 0.05556rem solid #e5e5e5;
   padding-left: 0.27778rem;
   margin-bottom: 0.83333rem;
-  padding-right: 0.27778rem; }
+  padding-right: 0.27778rem;
+  font-size: 0.88889rem;
+  line-height: 1.33333rem; }
+  .event-side-block__section p {
+    margin-bottom: 1.11111rem; }
   @media screen and (min-width: 65em) {
     .event-side-block__section {
       margin-left: 1.11111rem; } }
@@ -7387,5 +7391,10 @@ p + ol {
 
 .single-event .component-sub-heading {
   padding-top: 1.11111rem; }
+
+.event-questions__title {
+  font-size: 0.88889rem;
+  line-height: 1.33333rem;
+  font-family: "futura-medium-bold"; }
 
 /*# sourceMappingURL=foundation.css.map */

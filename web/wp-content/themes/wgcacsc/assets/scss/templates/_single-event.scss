@@ -105,6 +105,11 @@
   padding-left: rem-calc(5);
   margin-bottom: rem-calc(15);
   padding-right: rem-calc(5);
+  font-size: rem-calc(16);
+  line-height: rem-calc(24);
+  p {
+    margin-bottom: rem-calc(20);
+  }
   @include breakpoint('large') {
     margin-left: rem-calc(20);
   }
@@ -153,4 +158,11 @@
   .component-sub-heading {
     padding-top: rem-calc(20);
   }
+}
+
+//questions section
+.event-questions__title {
+  font-size: rem-calc(16);
+  line-height: rem-calc(24);
+  font-family: $header-font-family;
 }

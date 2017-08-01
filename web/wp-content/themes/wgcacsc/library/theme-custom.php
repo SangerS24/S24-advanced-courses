@@ -248,3 +248,22 @@ function wgcacsc_get_programme_download( $event_id ) {
 
     return $download_html;
 }
+
+//returns html of 'questions' section of single event page
+function wgcacsc_get_questions_section( $event_id ) {
+    $section_content = apply_filters( 'the_content' , get_field( 'side_question_content' , $event_id ) );
+
+    if ( empty($section_content) ) {
+        return;
+    }
+
+    $section_title = get_field( 'side_questions_title' , $event_id );
+
+    $section_html = '<div class="event-side-block__section">';
+    if ( !empty($section_title) ) {
+        $section_html .= '<h6 class="event-questions__title">'.$section_title.'</h6>';
+    }
+    $section_html .= $section_content.'</div>';
+
+    return $section_html;
+}
