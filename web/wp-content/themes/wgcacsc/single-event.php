@@ -84,14 +84,14 @@ get_header(); ?>
                                             $event_location = get_field( 'location' );
 
                                             if ( !empty($event_location) ) {
-                                                echo '<span class="h5">'.$event_location.'</span>';
+                                                echo '<span class="h5 event-header__location">'.$event_location.'</span>';
                                             }
                                         ?>
                                     </div>
 								</div>
                                 </div> <!-- End header wrappers-->
 
-                                <div class="small-12 large-3 columns float-right">
+                                <div class="small-12 large-3 event-side-block columns event-deadlines-register">
                                         <?php
                                             $deadlines = wgcacsc_get_deadlines( get_the_ID() );
                                             if ( !empty( $deadlines ) ) {
@@ -101,10 +101,12 @@ get_header(); ?>
                                 </div> <!-- end deadlines and register section -->
 
                                 <div class="small-12 large-9 columns">
-                                    More bits about the event
+                                    <div class="offset-content">
+                                        More bits about the event
+                                    </div>
                                 </div>
 
-                                <div class="small-12 large-3 large-offset-9">
+                                <div class="small-12 large-3 event-side-block large-offset-9">
                                     akdjfhlwj
                                 </div> <!-- end deadlines and register section -->
 

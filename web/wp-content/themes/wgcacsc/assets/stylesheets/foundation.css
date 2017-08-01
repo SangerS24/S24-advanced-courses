@@ -7158,6 +7158,23 @@ p + ol {
   .component-teasers--3 .component-teasers__teaser {
     width: 33.33333%; } }
 
+.event-deadlines h6, .event-deadlines .h6 {
+  font-size: 0.88889rem;
+  line-height: 1.33333rem;
+  font-family: "futura-medium-bold"; }
+
+.event-deadlines ul {
+  list-style-type: none;
+  margin-left: 0; }
+  .event-deadlines ul li {
+    padding-left: 0;
+    margin-bottom: 1.11111rem;
+    font-size: 0.88889rem;
+    line-height: 1.33333rem; }
+
+.event-deadlines__date {
+  font-family: "futura-medium-bold"; }
+
 /* Slider */
 .slick-slider {
   position: relative;
@@ -7292,5 +7309,32 @@ p + ol {
 
 .event-header__date-range {
   margin-bottom: 0.1em; }
+
+.event-header__location {
+  margin-bottom: 1.66667rem; }
+
+.event-side-block {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40rem; }
+  @media screen and (min-width: 65em) {
+    .event-side-block {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: none; } }
+
+.event-deadlines-register {
+  clear: both;
+  float: none;
+  padding-top: 1.66667rem; }
+  @media screen and (min-width: 65em) {
+    .event-deadlines-register {
+      clear: none;
+      float: right;
+      padding-top: 3.33333rem; } }
+
+@media screen and (min-width: 65em) {
+  .single-event .event-deadlines span {
+    display: block; } }
 
 /*# sourceMappingURL=foundation.css.map */

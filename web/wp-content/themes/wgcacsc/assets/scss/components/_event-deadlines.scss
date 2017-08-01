@@ -1,0 +1,51 @@
+.event-deadlines {
+
+  //h6, ul , li {
+  //  font-family: $body-font-family;
+  //  font-size: rem-calc(16);
+  //  line-height: rem-calc(20);
+  //}
+  //h6, li {
+  //  display: inline-block;
+  //  margin-bottom: 0;
+  //  vertical-align: middle;
+  //}
+  //
+  //ul {
+  //  display: inline;
+  //  margin-left: 0;
+  //  list-style-type: none;
+  //  li {
+  //    border-right: rem-calc(1) solid $body-font-color;
+  //    margin-right: rem-calc(10);
+  //    padding-left: 0;
+  //    padding-right: rem-calc(10);
+  //    &:last-child {
+  //      border-right:none;
+  //      margin-right: 0;
+  //      padding-right: 0;
+  //    }
+  //  }
+  //}
+
+  h6 {
+    font-size: rem-calc(16);
+    line-height: rem-calc(24);
+    font-family: $header-font-family;
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+    li {
+      padding-left: 0;
+      margin-bottom: rem-calc(20);
+      font-size: rem-calc(16);
+      line-height: rem-calc(24);
+    }
+  }
+}
+
+.event-deadlines__date {
+  font-family: $header-font-family;
+}

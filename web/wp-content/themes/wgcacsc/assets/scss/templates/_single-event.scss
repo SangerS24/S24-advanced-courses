@@ -77,3 +77,41 @@
 .event-header__date-range {
   margin-bottom: 0.1em;
 }
+
+.event-header__location {
+  margin-bottom: rem-calc(30);
+}
+
+//side blocks
+.event-side-block {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: rem-calc(720);
+  @include breakpoint('large') {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+}
+
+.event-deadlines-register {
+  clear: both;
+  float: none;
+  padding-top: rem-calc(30);
+  @include breakpoint('large') {
+    clear: none;
+    float: right;
+    padding-top: rem-calc(60);
+  }
+}
+
+.single-event {
+  .event-deadlines {
+
+    @include breakpoint('large') {
+      span {
+        display: block;
+      }
+    }
+  }
+}
