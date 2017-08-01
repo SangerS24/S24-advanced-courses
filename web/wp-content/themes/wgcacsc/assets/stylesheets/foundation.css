@@ -7354,9 +7354,9 @@ p + ol {
 
 .event-side-block__section {
   border-bottom: 0.05556rem solid #e5e5e5;
-  padding-left: 0.27778rem;
+  padding-left: 0.44444rem;
   margin-bottom: 0.83333rem;
-  padding-right: 0.27778rem;
+  padding-right: 0.44444rem;
   font-size: 0.88889rem;
   line-height: 1.33333rem; }
   .event-side-block__section p {
@@ -7396,5 +7396,24 @@ p + ol {
   font-size: 0.88889rem;
   line-height: 1.33333rem;
   font-family: "futura-medium-bold"; }
+
+.event-shares {
+  list-style-type: none;
+  margin-bottom: 0.44444rem;
+  margin-left: 0; }
+  .event-shares li {
+    padding: 0.44444rem 0; }
+    .event-shares li a {
+      line-height: 1.11111rem; }
+      .event-shares li a:before {
+        display: inline-block;
+        height: 1.11111rem;
+        margin-right: 0.55556rem;
+        vertical-align: middle;
+        width: 1.11111rem; }
+  .event-shares .event-shares__facebook a:before {
+    content: url("../images/share_facebook.svg"); }
+  .event-shares .event-shares__twitter a:before {
+    content: url("../images/share_twitter.svg"); }
 
 /*# sourceMappingURL=foundation.css.map */

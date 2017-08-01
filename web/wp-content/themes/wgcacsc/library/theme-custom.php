@@ -267,3 +267,23 @@ function wgcacsc_get_questions_section( $event_id ) {
 
     return $section_html;
 }
+
+//returns html of share section of the single event page
+function wgcacsc_get_share_section( $event_id ) {
+    $hashtag = get_field( 'side_share_hashtag' , $event_id );
+
+    $share_html = '<div class="event-side-block__section">';
+    if ( ! empty($hashtag) ) {
+        $share_html .= '<p>Hashtag: '.$hashtag.'</p>';
+    }
+    
+    $share_url = urlencode( get_permalink($event_id) );
+    $share_status = urlencode( get_the_title( $event_id ).' '. get_permalink( $event_id ) .' '. $hashtag );
+    $share_html .= '<ul class="event-shares">';
+    $share_html .= '<li class="event-shares__facebook"><a href="https://www.facebook.com/sharer/sharer.php?u='.$share_url.'" target="_blank">Facebook</a></li>';
+    $share_html .= '<li class="event-shares__twitter"><a href="https://twitter.com/home?status='.$share_status.'" target="_blank">Twitter</a></li>';
+    $share_html .= '</ul>';
+    $share_html .= '</div>';
+
+    return $share_html;
+}

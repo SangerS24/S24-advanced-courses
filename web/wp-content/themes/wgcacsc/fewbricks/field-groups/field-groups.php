@@ -272,10 +272,6 @@ $fg_event_side_share = (new fewacf\field_group( 'Share' , '201707311514a' , $loc
     ]
 ]));
 
-$fg_event_side_share->add_field(new acf_fields\text( 'Title' , 'side_share_title' , '201707311514b' , [
-    'default_value' => 'Share'
-]));
-
 $fg_event_side_share->add_field(new acf_fields\text( 'Hashtag' , 'side_share_hashtag' , '201707311514c' ) );
 
 $fg_event_side_share->register();

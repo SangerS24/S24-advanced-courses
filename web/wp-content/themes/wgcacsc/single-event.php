@@ -106,19 +106,20 @@ get_header(); ?>
 
                                 <div class="small-12 large-9 columns">
                                         <!-- LEAD -->
-                                        <?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html(); ?>
-
-                                        <?php echo wgcacsc_get_programme_download( get_the_ID() ); ?>
-
-                                        <?php echo (new fewbricks\bricks\component_event_collapsibles('event_details_panels'))->get_html(); ?>
-
-                                        <?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html(); ?>
+                                        <?php
+                                            echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html();
+                                            echo wgcacsc_get_programme_download( get_the_ID() );
+                                            echo (new fewbricks\bricks\component_event_collapsibles('event_details_panels'))->get_html();
+                                            echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html();
+                                        ?>
                                 </div>
 
                                 <div class="small-12 large-3 event-side-block large-offset-9">
-                                        <?php echo (new fewbricks\bricks\component_sponsors_side( 'side_sponsors' ))->get_html(); ?>
-
-                                        <?php echo wgcacsc_get_questions_section( get_the_ID() ); ?>
+                                        <?php
+                                            echo (new fewbricks\bricks\component_sponsors_side( 'side_sponsors' ))->get_html();
+                                            echo wgcacsc_get_questions_section( get_the_ID() );
+                                            echo wgcacsc_get_share_section( get_the_ID() );
+                                        ?>
                                 </div> <!-- end other side sections -->
 
 							</div>
