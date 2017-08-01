@@ -31,7 +31,7 @@ get_header(); ?>
 
 
 					<?php while ( have_posts() ) : the_post(); ?>
-						<article <?php post_class('post-content') ?> id="post-<?php the_ID(); ?>">
+						<article <?php post_class('post-content clearfix') ?> id="post-<?php the_ID(); ?>">
 
 
 							<?php do_action( 'foundationpress_page_before_entry_content' ); ?>
@@ -92,12 +92,16 @@ get_header(); ?>
                                 </div> <!-- End header wrappers-->
 
                                 <div class="small-12 large-3 event-side-block columns event-deadlines-register">
+                                    <div class="event-side-block__section">
                                         <?php
                                             $deadlines = wgcacsc_get_deadlines( get_the_ID() );
                                             if ( !empty( $deadlines ) ) {
                                                 echo wgcacsc_output_deadlines( $deadlines );
                                             }
+
+                                            echo wgcacsc_register_button( get_the_ID() );
                                         ?>
+                                    </div>
                                 </div> <!-- end deadlines and register section -->
 
                                 <div class="small-12 large-9 columns">

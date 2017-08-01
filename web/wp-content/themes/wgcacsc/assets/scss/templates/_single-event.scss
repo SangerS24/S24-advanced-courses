@@ -94,6 +94,14 @@
   }
 }
 
+.event-side-block__section {
+  padding-left: rem-calc(5);
+  border-bottom: rem-calc(1) solid $light-gray;
+  margin-bottom: rem-calc(15);
+}
+
+
+//Deadlines
 .event-deadlines-register {
   clear: both;
   float: none;
@@ -114,4 +122,17 @@
       }
     }
   }
+}
+
+//register button
+
+.event-register-button {
+  font-family: $header-font-family;
+  font-size: rem-calc(18);
+  padding-bottom: rem-calc(17);
+  padding-top: rem-calc(17);
+  margin-bottom: rem-calc(35);
+  max-width: rem-calc(280);
+  text-transform: uppercase;
+  width: 100%;
 }

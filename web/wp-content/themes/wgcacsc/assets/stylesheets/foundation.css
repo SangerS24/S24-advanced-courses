@@ -7323,6 +7323,11 @@ p + ol {
       margin-right: 0;
       max-width: none; } }
 
+.event-side-block__section {
+  padding-left: 0.27778rem;
+  border-bottom: 0.05556rem solid #e5e5e5;
+  margin-bottom: 0.83333rem; }
+
 .event-deadlines-register {
   clear: both;
   float: none;
@@ -7336,5 +7341,15 @@ p + ol {
 @media screen and (min-width: 65em) {
   .single-event .event-deadlines span {
     display: block; } }
+
+.event-register-button {
+  font-family: "futura-medium-bold";
+  font-size: 1rem;
+  padding-bottom: 0.94444rem;
+  padding-top: 0.94444rem;
+  margin-bottom: 1.94444rem;
+  max-width: 15.55556rem;
+  text-transform: uppercase;
+  width: 100%; }
 
 /*# sourceMappingURL=foundation.css.map */

@@ -213,3 +213,18 @@ function  wgcacsc_output_deadlines( $deadlines_array ) {
 
     return $deadlines_html;
 }
+
+//returns register button or placeolder text
+function wgcacsc_register_button( $event_id ) {
+    $registration_link = get_field( 'registration_link' , $event_id );
+
+    if ( !empty( $registration_link ) ) {
+        return '<a class="button event-register-button" href="'.$registration_link.'" target="_blank">Register</a>';
+    }
+
+    $registration_link_alternative = get_field( 'registration_button_replacement' , $event_id );
+
+    if ( !empty($registration_link_alternative) ) {
+        return '<p>'.$registration_link_alternative.'</p>';
+    }
+}
