@@ -136,3 +136,11 @@
   text-transform: uppercase;
   width: 100%;
 }
+
+//sub-heading
+
+.single-event {
+  .component-sub-heading {
+    padding-top: rem-calc(20);
+  }
+}

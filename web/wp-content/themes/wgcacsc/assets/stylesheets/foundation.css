@@ -7352,4 +7352,7 @@ p + ol {
   text-transform: uppercase;
   width: 100%; }
 
+.single-event .component-sub-heading {
+  padding-top: 1.11111rem; }
+
 /*# sourceMappingURL=foundation.css.map */

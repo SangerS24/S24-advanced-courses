@@ -105,8 +105,10 @@ get_header(); ?>
                                 </div> <!-- end deadlines and register section -->
 
                                 <div class="small-12 large-9 columns">
+                                        <!-- LEAD -->
+                                        <?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html(); ?>
                                     <div class="offset-content">
-                                        More bits about the event
+
                                     </div>
                                 </div>
 
