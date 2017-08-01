@@ -107,9 +107,12 @@ get_header(); ?>
                                 <div class="small-12 large-9 columns">
                                         <!-- LEAD -->
                                         <?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html(); ?>
-                                    <div class="offset-content">
 
-                                    </div>
+                                        <?php echo wgcacsc_get_programme_download( get_the_ID() ); ?>
+
+                                        <div class="offset-content">
+
+                                        </div>
                                 </div>
 
                                 <div class="small-12 large-3 event-side-block large-offset-9">

@@ -228,3 +228,23 @@ function wgcacsc_register_button( $event_id ) {
         return '<p>'.$registration_link_alternative.'</p>';
     }
 }
+
+//returns single event download
+function wgcacsc_get_programme_download( $event_id ) {
+
+    $download_file_id = get_field( 'event_download_file' , $event_id );
+
+    if ( empty($download_file_id) ) {
+        return '';
+    }
+    $download_file_url = wp_get_attachment_url($download_file_id);
+
+    $download_file_title = get_field( 'event_download_label' , $event_id );
+    $download_file_title = ( !empty($download_file_title) ) ? $download_file_title : get_the_title( $download_file_id );
+
+    $download_html = '<div class="component component-download offset-content">';
+    $download_html .= '<a class="component-download__link" href="'.$download_file_url.'"><span class="component-download__title">'.$download_file_title.'</span></a>';
+    $download_html .= '</div>';
+
+    return $download_html;
+}
