@@ -1,3 +1,25 @@
+//breadcrumbs
+
+.event-breadcrumb {
+   @include breakpoint('large') {
+     margin-right: 25%;
+   }
+}
+
+//HEADER
+
+.event-header {
+  border-bottom: rem-calc(1px) solid $light-gray;
+  margin-bottom: rem-calc(5);
+
+  @include breakpoint('large') {
+    margin-left: rem-calc(76);
+    margin-right: rem-calc(100);
+    max-width: rem-calc(760);
+    padding: 0 rem-calc(20);
+  }
+}
+
 .event-header__thumbnail {
   display: block;
   float: left;

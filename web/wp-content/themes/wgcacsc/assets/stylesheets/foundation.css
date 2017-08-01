@@ -7229,6 +7229,20 @@ p + ol {
 .slick-arrow.slick-hidden {
   display: none; }
 
+@media screen and (min-width: 65em) {
+  .event-breadcrumb {
+    margin-right: 25%; } }
+
+.event-header {
+  border-bottom: 0.05556rem solid #e5e5e5;
+  margin-bottom: 0.27778rem; }
+  @media screen and (min-width: 65em) {
+    .event-header {
+      margin-left: 4.22222rem;
+      margin-right: 5.55556rem;
+      max-width: 42.22222rem;
+      padding: 0 1.11111rem; } }
+
 .event-header__thumbnail {
   display: block;
   float: left;

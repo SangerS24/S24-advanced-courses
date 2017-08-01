@@ -23,7 +23,7 @@ get_header(); ?>
 
 				<div class="main-content" id="main-content">
 
-                    <div class="small-12 columns">
+                    <div class="event-breadcrumb small-12 large-9 columns">
                             <div class="offset-content">
                                 <?php s24_breadcrumb(); ?>
                             </div>
@@ -56,7 +56,7 @@ get_header(); ?>
                                 ?>
 
                                 <div class="small-12 large-9 columns">
-								<div class="offset-content event-header <?php echo $event_header_classes; ?>">
+								<div class="offset-content event-header clearfix <?php echo $event_header_classes; ?>">
 
                                     <?php
                                         if ( !empty($event_thumbnail ) ) {
