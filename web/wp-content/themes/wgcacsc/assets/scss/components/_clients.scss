@@ -58,3 +58,37 @@
 a.client-item__inner {
     width: 100%;
 }
+
+//side sponsors
+.component-side-sponsors {
+    h6 {
+        color: #666666;
+        font-family: $body-font-family;
+        font-size: rem-calc(14);
+        line-height: 1.2em;
+    }
+    .clients-list {
+        border: none;
+        padding: 0 0 rem-calc(10) 0;
+    }
+
+    .client-item__inner {
+        img {
+            max-height: rem-calc(80);
+        }
+    }
+
+    @include breakpoint('large') {
+        .clients-list {
+            text-align: left;
+            li {
+                display: block;
+            }
+        }
+
+        .client-item__inner {
+            text-align: left;
+            padding-left: 0;
+        }
+    }
+}

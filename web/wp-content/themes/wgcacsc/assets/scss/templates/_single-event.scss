@@ -94,10 +94,20 @@
   }
 }
 
+.event-side-block.large-offset-9 {
+  @include breakpoint('large') {
+    margin-left: 75%;
+  }
+}
+
 .event-side-block__section {
-  padding-left: rem-calc(5);
   border-bottom: rem-calc(1) solid $light-gray;
+  padding-left: rem-calc(5);
   margin-bottom: rem-calc(15);
+  padding-right: rem-calc(5);
+  @include breakpoint('large') {
+    margin-left: rem-calc(20);
+  }
 }
 
 

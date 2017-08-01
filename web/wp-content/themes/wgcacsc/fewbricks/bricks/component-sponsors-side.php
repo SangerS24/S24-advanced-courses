@@ -50,14 +50,14 @@ class component_sponsors_side extends project_brick
 
         $component_title = $this->get_field( 'title' );
 
-        if ( !empty($component_title) && $this->have_rows( 'sponsors', $this->get_post_id_to_get_field_from() ) ) {
-            $html .= '<div class="component component-sponsors">';
+        if ( $this->have_rows( 'sponsors', $this->get_post_id_to_get_field_from() ) ) {
+            $html .= '<div class="component-side-sponsors event-side-block__section">';
 
             if ( !empty($component_title) ) {
                 $html .= '<h6>'.$component_title.'</h6>';
             }
 
-            $html .= '<ol class="clients-list row">';
+            $html .= '<ol class="clients-list">';
 
             while ( $this->have_rows( 'sponsors', $this->get_post_id_to_get_field_from() ) ) {
                 $this->the_row();

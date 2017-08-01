@@ -116,8 +116,9 @@ get_header(); ?>
                                 </div>
 
                                 <div class="small-12 large-3 event-side-block large-offset-9">
-                                    akdjfhlwj
-                                </div> <!-- end deadlines and register section -->
+                                        <?php echo (new fewbricks\bricks\component_sponsors_side( 'side_sponsors' ))->get_html(); ?>
+
+                                </div> <!-- end other side sections -->
 
 							</div>
 						</article>
