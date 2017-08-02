@@ -287,3 +287,47 @@ function wgcacsc_get_share_section( $event_id ) {
 
     return $share_html;
 }
+
+
+//PRE GET POSTS
+
+//exclude past events from listings
+//re-order events by start date - ASC
+
+//load all events in past events
+add_action( 'pre_get_posts' , 'wgcacsc_pre_get_posts' );
+
+function wgcacsc_pre_get_posts( $query ) {
+    if ( is_admin() || !$query->is_main_query() ) {
+        return;
+    }
+
+    //past events page
+    if ( is_tax( 'event-category' , 'past-events' ) ) {
+        $query->set( 'posts_per_page' , -1 );
+    }
+    //event cat pages
+    if ( is_tax( 'event-category' ) && !is_tax( 'event-category' , 'past-events' ) ) {
+        $new_tax_query = array(
+            array(
+                'taxonomy' => 'event-category',
+                'field' => 'slug',
+                'terms' => array( 'past-events'),
+                'operator' => 'NOT IN'
+            )
+        );
+        $query->set( 'tax_query' , $new_tax_query );
+
+        $query->set( 'orderby' , 'meta_value_num date' );
+        $query->set( 'meta_key' , 'start_date' );
+        $query->set( 'order' , 'ASC' );
+    }
+}
+
+//default meta value of 0 for start date to avoid exclusion of events without a start date
+function wgcacsc_add_default_date($post_id) {
+    if ( get_post_type( $post_id) == 'event' ) {
+        add_post_meta($post_id, 'start_date', 0, true);
+    }
+}
+add_action('save_post', 'wgcacsc_add_default_date');

@@ -40,7 +40,7 @@ class component_hero_list extends project_brick
             'button_label' => 'Add Hero',
             'max' => $this->limit,
             'allow_null' => 0,
-            'instructions' => 'Hero images display full width at the top of the page in question. They are also used as images in listing pages (the news listing page for example)'
+            'instructions' => 'Hero images display full width at the top of the page in question.'
         ]))
             ->add_sub_field(new acf_fields\image('Image', 'hero_image', '290720161214b', [
                 'instructions' => 'Ideal dimensions: 2560 pixels wide and 1700 pixels tall.<br />Minimum dimensions: 1280 pixels wide, 350 pixels tall'
@@ -54,6 +54,13 @@ class component_hero_list extends project_brick
      */
     protected function get_brick_html($args = array())
     {
+        $heroes = $this->get_field( 'hero_list' , $this->get_post_id_to_get_field_from()) ;
+
+        //get out if no heroes anyway
+        if ( empty( $heroes ) ) {
+            return '';
+        }
+
         if(!isset($args['plain'])) {
             $args['plain'] = false;
         }
@@ -72,19 +79,13 @@ class component_hero_list extends project_brick
                   <div class="small-12 columns">';
         }
 
-        if ($this->have_rows('hero_list', $this->get_post_id_to_get_field_from())) {
-
+        foreach ( $heroes as $hero) {
             if($args['plain'] != true) {
                 $html .= '<ol class="menu simple hero-list">';
             }
-            while ($this->have_rows('hero_list', $this->get_post_id_to_get_field_from())) {
 
-                $this->the_row();
-
-                $hero_img = $this->get_field_in_repeater('hero_list', 'hero_image');
-                $alt = get_post_meta($hero_img, '_wp_attachment_image_alt', true);
-
-                // #TODO: This is confusing and probably overly complex, refactor
+            $hero_img = $hero['hero_list_hero_image'];
+            $alt = get_post_meta($hero_img, '_wp_attachment_image_alt', true);
                 if($args['plain'] == true) {
 
                     if(isset($args['size'])) {
@@ -116,7 +117,6 @@ class component_hero_list extends project_brick
                     }
 
                 } else {
-
                     $heroImageLargeSrc = wp_get_attachment_image_url($hero_img, 'hero-large');
                     $heroImageLargeRetinaSrc = wp_get_attachment_image_url($hero_img, 'hero-large-retina');
 
@@ -139,12 +139,12 @@ class component_hero_list extends project_brick
 
                 }
 
-            }
             if($args['plain'] != true) {
                 $html .= '</ol>';
             }
-
         }
+
+
 
         if($args['plain'] != true) {
             $html .= '

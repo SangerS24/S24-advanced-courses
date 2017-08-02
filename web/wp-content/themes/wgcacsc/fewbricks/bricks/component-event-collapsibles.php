@@ -42,11 +42,11 @@ class component_event_collapsibles extends project_brick
     {
         $html = '';
 
-        if( $this->have_rows( 'collapsible_panels' , $this->get_post_id_to_get_field_from() ) ) {
+        if( $this->have_rows( 'collapsible_panels' ) ) {
             $html .= '<div class="component component-collapsibles offset-content"><ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">';
 
             $panel_count = 0;
-            while ( $this->have_rows( 'collapsible_panels' , $this->get_post_id_to_get_field_from()  ) ) {
+            while ( $this->have_rows( 'collapsible_panels' ) ) {
                 $this->the_row();
 
                 $panel_title = $this->get_field_in_repeater( 'collapsible_panels' , 'title');

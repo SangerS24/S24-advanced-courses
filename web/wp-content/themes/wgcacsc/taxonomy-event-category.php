@@ -15,10 +15,17 @@
  * @since FoundationPress 1.0.0
  */
 
+$few_args = array();
+$tax_id = get_queried_object()->term_id;
+
+$few_args['post_id'] = 'event-category_'.$tax_id;
+
 get_header(); ?>
 
 
 <div id="page" role="main">
+
+    <?php echo (new fewbricks\bricks\component_hero_list('page_heroes'))->get_html( $few_args ); ?>
 
 	<div class="page__inner row">
 
@@ -37,9 +44,12 @@ get_header(); ?>
 						$archiveTitle = get_the_archive_title();
 							echo '<h1 class="page-title">' . $archiveTitle . '</h1>';
 						?>
-					</div>
 
-					<?php if ( have_posts() ) : ?>
+
+                    </div>
+                        <?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html( $few_args ); ?>
+                        <?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html( $few_args ); ?>
+                    <?php if ( have_posts() ) : ?>
 
 					<?php /* Start the Loop */ ?>
 						<?php while ( have_posts() ) : the_post(); ?>
@@ -49,7 +59,11 @@ get_header(); ?>
 						<?php endwhile; ?>
 
 					<?php else : ?>
-						<?php get_template_part( 'template-parts/content', 'none' ); ?>
+                        <div class="small-12 columns">
+						<div class="offset-content">
+                            No events at the moment.
+                        </div>
+                        </div>
 
 					<?php endif; // End have_posts() check. ?>
 
@@ -61,7 +75,9 @@ get_header(); ?>
 						</nav>
 					<?php } ?>
 
-					<a class="back-to-top" id="back-to-top" href="#off-canvas-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_up.svg" alt="" /> Back to top </a>
+                    <?php echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html( $few_args ); ?>
+
+                    <a class="back-to-top" id="back-to-top" href="#off-canvas-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_up.svg" alt="" /> Back to top </a>
 
 				</div>
 

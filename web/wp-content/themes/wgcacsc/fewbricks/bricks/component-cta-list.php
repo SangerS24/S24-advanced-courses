@@ -84,10 +84,10 @@ class component_cta_list extends project_brick
             $ctaSize = 'third';
         }
 
-        $test = $this->have_rows('cta_list', $this->get_post_id_to_get_field_from());
+        $test = $this->have_rows('cta_list' );
         $testContent = $this->get_field('cta_list');
 
-        if ($this->have_rows('cta_list', $this->get_post_id_to_get_field_from())) {
+        if ($this->have_rows('cta_list' )) {
 
             $html = '
                 <div class="component cta-group">';
@@ -96,7 +96,7 @@ class component_cta_list extends project_brick
             }
 
             $html .= '<div class="row cta-group-items">';
-            while ($this->have_rows('cta_list', $this->get_post_id_to_get_field_from())) {
+            while ($this->have_rows('cta_list' )) {
 
                 $this->the_row();
 

@@ -376,7 +376,6 @@ class brick
      */
     protected function get_field_in_repeater($repeater_name, $data_name, $post_id = false)
     {
-
         return $this->get_field($repeater_name . '_' . $data_name, $post_id, false, true);
 
     }

@@ -20,6 +20,8 @@ get_header(); ?>
 
 <div id="page" role="main">
 
+    <?php echo (new fewbricks\bricks\component_hero_list('page_heroes'))->get_html( array( 'post_id' => 974 ) ); ?>
+
 	<div class="page__inner row">
 
 		<div class="page__inner__content small-12 columns">

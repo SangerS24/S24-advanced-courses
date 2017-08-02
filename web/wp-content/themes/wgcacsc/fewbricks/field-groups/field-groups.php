@@ -31,6 +31,13 @@ $location = [
             'operator' => '!=',
             'value' => 'page-templates/front.php'
         ]
+    ],
+    [
+        [
+            'param' =>'taxonomy',
+            'operator' => '==',
+            'value' => 'event-category'
+        ]
     ]
 ];
 
@@ -275,3 +282,29 @@ $fg_event_side_share = (new fewacf\field_group( 'Share' , '201707311514a' , $loc
 $fg_event_side_share->add_field(new acf_fields\text( 'Hashtag' , 'side_share_hashtag' , '201707311514c' ) );
 
 $fg_event_side_share->register();
+
+
+/*
+ * Event categories bottom components
+ */
+
+$location = [
+    [
+        [
+            'param' => 'taxonomy',
+            'operator' => '==',
+            'value' => 'event-category'
+        ]
+    ]
+];
+
+$fg_event_cat_bottom = (new fewacf\field_group( 'Bottom components' , 'event_cat_bottom' , $location , 60 , [
+    'position' => 'normal',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_event_cat_bottom->add_brick(new bricks\group_flexible_content( 'bottom_components' , '201708021123a' ));
+
+$fg_event_cat_bottom->register();

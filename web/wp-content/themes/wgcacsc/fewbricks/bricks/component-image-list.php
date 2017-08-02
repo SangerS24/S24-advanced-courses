@@ -76,10 +76,10 @@ class component_image_list extends project_brick
             $html .= '<h2 class="section-heading section-heading--centered">' . $heading . '</h2>';
         }
 
-        if ($this->have_rows('image_list', $this->get_post_id_to_get_field_from() )) {
+        if ($this->have_rows('image_list' )) {
 
             $html .= '<ol class="component-images">';
-            while ($this->have_rows('image_list', $this->get_post_id_to_get_field_from() )) {
+            while ($this->have_rows('image_list' )) {
 
                 $this->the_row();
 
