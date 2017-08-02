@@ -129,7 +129,7 @@ function wgcacsc_add_tracking_code() {
 add_action('foundationpress_before_closing_body', 'wgcacsc_add_tracking_code');
 
 //returns html of event thumbnail with 'new' and 'course type' flags
-function wgcacsc_get_event_thumbnail( $event_id ) {
+function wgcacsc_get_event_thumbnail( $event_id , $link_it = true) {
     $event_thumbnail = get_the_post_thumbnail( $event_id , 'teaser-thumbnail');
     $flagged_as_new = !empty( get_field( 'flag_new' , $event_id ) );
     $course_type = get_field( 'flag_course_type' , $event_id );
@@ -139,12 +139,19 @@ function wgcacsc_get_event_thumbnail( $event_id ) {
     }
 
     $th_element = '<figure class="event-header__thumbnail">';
+
+    if ( $link_it ) {
+        $th_element .= '<a href="'.get_permalink( $event_id ).'">';
+    }
     if ( $flagged_as_new ) {
         $th_element .= '<span class="event-header__thumbnail__new-flag h5">New</span>';
     }
     $th_element .= $event_thumbnail;
     if ( $course_type != 'none' ) {
         $th_element .= '<img class="event-header__thumbnail__course-type event-header__thumbnail__course-type--'.$course_type.'" alt="This course type is '.$course_type.'" src="'.get_template_directory_uri().'/assets/images/course-type-'.$course_type.'.svg" />';
+    }
+    if ( $link_it ) {
+        $th_element .= '</a>';
     }
     $th_element .= '</figure>';
 

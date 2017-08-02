@@ -43,7 +43,7 @@ get_header(); ?>
 								<div class="offset-content event-header clearfix">
 
                                     <?php
-                                            echo wgcacsc_get_event_thumbnail( get_the_ID() );
+                                            echo wgcacsc_get_event_thumbnail( get_the_ID() , false );
                                     ?>
                                     <div class="event-header__text-content">
 									    <h1 class="page-title"><?php the_title(); ?></h1>
