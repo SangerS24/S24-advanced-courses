@@ -31,11 +31,13 @@ class component_cta extends project_brick
                 'post_type' => [
                     0 => 'post',
                     1 => 'page',
-                    2 => 'room',
-                    3 => 'event'
+                    2 => 'event'
                 ]
             ]
         ));
+        $this->add_field(new acf_fields\text( 'OR external content to link to' , 'external_link' , '290720161518d' , [
+            'instructions' => 'Enter the link manually if you cannot find it in the choice above. Please note this setting overrides the choice above.'
+        ]));
 
     }
 
@@ -58,9 +60,12 @@ class component_cta extends project_brick
         $image = $this->get_field('cta_image');
         $caption = $this->get_field('cta_title');
         $linkObjectId = $this->get_field('cta_link');
+        $manual_url = $this->get_field('external_link');
         $linkUrl = '';
 
-        if (!empty($linkObjectId)) {
+        if ( !empty($manual_url) ) {
+            $linkUrl = $manual_url;
+        } elseif (!empty($linkObjectId)) {
             $linkUrl = get_the_permalink($linkObjectId);
         }
 
