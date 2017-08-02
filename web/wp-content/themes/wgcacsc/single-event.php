@@ -39,39 +39,11 @@ get_header(); ?>
 
                                 <!-- Header elements; Thumbnail and flages, title, date range -->
 
-                                <?php
-                                    $event_header_classes = '';
-                                    $event_thumbnail = get_the_post_thumbnail( get_the_ID() , 'teaser-thumbnail');
-
-                                    if ( !empty($event_thumbnail) ) {
-                                        $event_header_classes = 'has-thumbnail';
-                                    }
-
-                                    $flagged_as_new = !empty( get_field( 'flag_new') );
-
-                                    if ( $flagged_as_new ) {
-                                        $event_header_classes .= ' flagged-as-new';
-                                    }
-                                    $course_type = get_field( 'flag_course_type');
-                                ?>
-
                                 <div class="small-12 large-9 columns">
-								<div class="offset-content event-header clearfix <?php echo $event_header_classes; ?>">
+								<div class="offset-content event-header clearfix">
 
                                     <?php
-                                        if ( !empty($event_thumbnail ) ) {
-                                            $th_element = '<figure class="event-header__thumbnail">';
-                                            if ( $flagged_as_new ) {
-                                                $th_element .= '<span class="event-header__thumbnail__new-flag h5">New</span>';
-                                            }
-                                            $th_element .= $event_thumbnail;
-                                            if ( $course_type != 'none' ) {
-                                                $th_element .= '<img class="event-header__thumbnail__course-type event-header__thumbnail__course-type--'.$course_type.'" alt="This course type is '.$course_type.'" src="'.get_template_directory_uri().'/assets/images/course-type-'.$course_type.'.svg" />';
-                                            }
-                                            $th_element .= '</figure>';
-
-                                            echo $th_element;
-                                        }
+                                            echo wgcacsc_get_event_thumbnail( get_the_ID() );
                                     ?>
                                     <div class="event-header__text-content">
 									    <h1 class="page-title"><?php the_title(); ?></h1>

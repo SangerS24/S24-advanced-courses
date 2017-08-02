@@ -128,6 +128,29 @@ function wgcacsc_add_tracking_code() {
 }
 add_action('foundationpress_before_closing_body', 'wgcacsc_add_tracking_code');
 
+//returns html of event thumbnail with 'new' and 'course type' flags
+function wgcacsc_get_event_thumbnail( $event_id ) {
+    $event_thumbnail = get_the_post_thumbnail( $event_id , 'teaser-thumbnail');
+    $flagged_as_new = !empty( get_field( 'flag_new' , $event_id ) );
+    $course_type = get_field( 'flag_course_type' , $event_id );
+
+    if ( empty($event_thumbnail) ) {
+        return '';
+    }
+
+    $th_element = '<figure class="event-header__thumbnail">';
+    if ( $flagged_as_new ) {
+        $th_element .= '<span class="event-header__thumbnail__new-flag h5">New</span>';
+    }
+    $th_element .= $event_thumbnail;
+    if ( $course_type != 'none' ) {
+        $th_element .= '<img class="event-header__thumbnail__course-type event-header__thumbnail__course-type--'.$course_type.'" alt="This course type is '.$course_type.'" src="'.get_template_directory_uri().'/assets/images/course-type-'.$course_type.'.svg" />';
+    }
+    $th_element .= '</figure>';
+
+    return $th_element;
+}
+
 //returns event start and end date as single string
 function wgcacsc_get_event_dates( $event_id ) {
     $start_date = get_field( 'start_date' , $event_id );
@@ -163,7 +186,8 @@ function wgcacsc_get_event_dates( $event_id ) {
 }
 
 //returns array of deadlines or false if no deadlines
-function wgcacsc_get_deadlines( $event_id ) {
+//Format either 'expanded' = 'd F Y',  or 'short' = 'd M' and Y only if not this year
+function wgcacsc_get_deadlines( $event_id , $format = 'expanded') {
     $deadlines = get_field( 'deadlines' , $event_id );
 
     if ( empty( $deadlines ) ) {
@@ -185,7 +209,16 @@ function wgcacsc_get_deadlines( $event_id ) {
             $temp_deadline['value'] = 'Closed';
         } elseif ( !empty($deadline['deadlines_date'] ) ) {
             $temp_deadline['value'] = date_create_from_format( 'Ymd' , $deadline['deadlines_date'] );
-            $temp_deadline['value'] = $temp_deadline['value']->format( 'd F Y' );
+            $date_format = '';
+            if ( $format == 'expanded' ) {
+                $date_format = 'd F Y';
+            } elseif ( ( $format == 'short' ) ) {
+                $date_format = 'd M Y';
+                if ( $temp_deadline['value']->format( 'Y' ) == date( 'Y' ) ) {
+                    $date_format = 'd M';
+                }
+            }
+                $temp_deadline['value'] = $temp_deadline['value']->format( $date_format );
         }
 
         //only add the deadline if the date exists

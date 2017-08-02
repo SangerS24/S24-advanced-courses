@@ -42,7 +42,14 @@ get_header(); ?>
 
 						<div class="content-list">
 							<?php while ( have_posts() ) : the_post(); ?>
-								<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+								<?php
+                                    if ( get_post_type() == 'event' ) {
+                                        get_template_part( 'template-parts/content', 'event' );
+
+                                    } else {
+                                        get_template_part( 'template-parts/content', get_post_format() );
+                                    }
+                                ?>
 							<?php endwhile; ?>
 						</div>
 

@@ -53,8 +53,8 @@ get_header(); ?>
 
 					<?php /* Start the Loop */ ?>
 						<?php while ( have_posts() ) : the_post(); ?>
-							<div class="content-list offset-content">
-							<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+							<div class="event-list offset-event-list">
+							<?php get_template_part( 'template-parts/content', 'event' ); ?>
 							</div>
 						<?php endwhile; ?>
 
