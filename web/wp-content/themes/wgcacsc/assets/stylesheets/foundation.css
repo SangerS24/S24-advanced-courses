@@ -6565,6 +6565,20 @@ body#tinymce {
   max-width: 71.11111rem;
   padding: 1.11111rem !important; }
 
+.course-types-list {
+  border-bottom: 0.05556rem solid #e5e5e5;
+  border-top: 0.05556rem solid #e5e5e5;
+  margin-bottom: 1.11111rem;
+  padding: 0.83333rem 1.11111rem 1.11111rem;
+  text-align: center; }
+
+.course-types-list__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .course-types-list__list li {
+    display: inline-block; }
+
 .js_enabled #cookie-message {
   display: none; }
 

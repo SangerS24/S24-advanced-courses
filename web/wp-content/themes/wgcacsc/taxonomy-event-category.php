@@ -49,6 +49,20 @@ get_header(); ?>
                     </div>
                         <?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html( $few_args ); ?>
                         <?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html( $few_args ); ?>
+
+
+                    <!--   //IF COURSES, add legend //-->
+                    <?php if ( is_tax( 'event-category' , 'courses' ) ): ?>
+                        <div class="course-types-list offset-event-list">
+                            <h6>Course types</h6>
+                            <ul class="course-types-list__list">
+                                <li><img src="<?php echo get_template_directory_uri().'/assets/images/course-type-computational.svg'; ?>" width="40" height="40" /> Computational</li>
+                                <li><img src="<?php echo get_template_directory_uri().'/assets/images/course-type-lecture.svg'; ?>" width="40" height="40" /> Lecture/Discussion</li>
+                                <li><img src="<?php echo get_template_directory_uri().'/assets/images/course-type-laboratory.svg'; ?>" width="40" height="40" /> Laboratory</li>
+                            </ul>
+                        </div>
+                    <?php endif; ?> <!-- end of if it courses page -->
+
                     <?php if ( have_posts() ) : ?>
 
 					<?php /* Start the Loop */ ?>
