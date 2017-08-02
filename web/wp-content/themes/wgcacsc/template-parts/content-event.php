@@ -24,7 +24,13 @@
                 echo '<span class="h5 event-item__date-ranges">'.$dates.'</span>';
             }
 
-            echo wgcacsc_output_deadlines( wgcacsc_get_deadlines( get_the_ID() , 'short' ) );
+            $holding_content = apply_filters( 'the_content', get_field( 'holding_content' ) );
+
+            if ( empty($holding_content) ) {
+              echo wgcacsc_output_deadlines( wgcacsc_get_deadlines( get_the_ID() , 'short' ) );
+            } else {
+                echo $holding_content;
+            }
 
         ?>
 	</div>

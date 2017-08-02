@@ -6385,35 +6385,35 @@ span.wpcf7-list-item {
 .content-item.has-post-thumbnail .event-item__text-content {
   margin-left: 6.94444rem; }
 
-.content-item.type-event .event-item__title {
-  line-height: 1.44444rem;
-  margin-bottom: 0.16667rem; }
-
-.content-item.type-event .event-item__date-ranges {
-  line-height: 1.16667rem;
-  margin-bottom: 0.16667rem; }
-
-.content-item.type-event .event-deadlines {
-  margin-bottom: 1.11111rem; }
-  .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6, .content-item.type-event .event-deadlines li {
-    display: inline-block;
-    font-size: 0.88889rem;
-    line-height: 1.11111rem;
-    margin-bottom: 0;
-    vertical-align: middle; }
-  .content-item.type-event .event-deadlines ul {
-    display: inline; }
-  .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
-    font-family: "futura-medium", Helvetica, Roboto, Arial, sans-serif; }
-  .content-item.type-event .event-deadlines li, .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
-    padding-right: 0.44444rem; }
-  .content-item.type-event .event-deadlines li {
-    border-right: 0.05556rem solid #333333;
-    margin-right: 0.44444rem; }
-    .content-item.type-event .event-deadlines li:last-child {
-      border-right: none;
-      margin-right: 0;
-      padding-right: 0; }
+.content-item.type-event {
+  font-size: 0.88889rem; }
+  .content-item.type-event .event-item__title {
+    line-height: 1.44444rem;
+    margin-bottom: 0.16667rem; }
+  .content-item.type-event .event-item__date-ranges {
+    line-height: 1.16667rem;
+    margin-bottom: 0.16667rem; }
+  .content-item.type-event .event-deadlines {
+    margin-bottom: 1.11111rem; }
+    .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6, .content-item.type-event .event-deadlines li {
+      display: inline-block;
+      font-size: 0.88889rem;
+      line-height: 1.11111rem;
+      margin-bottom: 0;
+      vertical-align: middle; }
+    .content-item.type-event .event-deadlines ul {
+      display: inline; }
+    .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
+      font-family: "futura-medium", Helvetica, Roboto, Arial, sans-serif; }
+    .content-item.type-event .event-deadlines li, .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
+      padding-right: 0.44444rem; }
+    .content-item.type-event .event-deadlines li {
+      border-right: 0.05556rem solid #333333;
+      margin-right: 0.44444rem; }
+      .content-item.type-event .event-deadlines li:last-child {
+        border-right: none;
+        margin-right: 0;
+        padding-right: 0; }
 
 .back-to-top {
   clear: both;
@@ -7377,6 +7377,10 @@ p + ol {
 
 .event-header__location {
   margin-bottom: 1.66667rem; }
+
+.single-event-holding-content {
+  font-size: 110%;
+  margin-top: 2.22222rem; }
 
 .event-side-block {
   margin-left: auto;
