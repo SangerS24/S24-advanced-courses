@@ -6366,14 +6366,19 @@ span.wpcf7-list-item {
   margin-bottom: 0.55556rem; }
 
 .offset-event-list {
-  margin: 0 auto 2.22222rem auto;
-  max-width: 42.22222rem; }
+  margin: 0 auto;
+  max-width: 42.22222rem;
+  padding-bottom: 1.11111rem; }
   .offset-event-list .content-item {
     border-bottom: 0.05556rem solid #e5e5e5;
     padding-left: 1.11111rem;
-    padding-right: 1.11111rem; }
+    padding-right: 1.11111rem;
+    margin-bottom: 1.11111rem; }
+
+.content-item.has-post-thumbnail .event-header__thumbnail {
+  margin-bottom: 1.11111rem; }
   @media screen and (min-width: 31.25em) {
-    .offset-event-list .event-header__thumbnail {
+    .content-item.has-post-thumbnail .event-header__thumbnail {
       height: 5.83333rem;
       width: 5.83333rem; } }
 
@@ -6388,29 +6393,27 @@ span.wpcf7-list-item {
   line-height: 1.16667rem;
   margin-bottom: 0.16667rem; }
 
-.content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6, .content-item.type-event .event-deadlines li {
-  display: inline-block;
-  font-size: 0.88889rem;
-  line-height: 1.11111rem;
-  margin-bottom: 0;
-  vertical-align: middle; }
-
-.content-item.type-event .event-deadlines ul {
-  display: inline; }
-
-.content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
-  font-family: "futura-medium", Helvetica, Roboto, Arial, sans-serif; }
-
-.content-item.type-event .event-deadlines li, .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
-  padding-right: 0.44444rem; }
-
-.content-item.type-event .event-deadlines li {
-  border-right: 0.05556rem solid #333333;
-  margin-right: 0.44444rem; }
-  .content-item.type-event .event-deadlines li:last-child {
-    border-right: none;
-    margin-right: 0;
-    padding-right: 0; }
+.content-item.type-event .event-deadlines {
+  margin-bottom: 1.11111rem; }
+  .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6, .content-item.type-event .event-deadlines li {
+    display: inline-block;
+    font-size: 0.88889rem;
+    line-height: 1.11111rem;
+    margin-bottom: 0;
+    vertical-align: middle; }
+  .content-item.type-event .event-deadlines ul {
+    display: inline; }
+  .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
+    font-family: "futura-medium", Helvetica, Roboto, Arial, sans-serif; }
+  .content-item.type-event .event-deadlines li, .content-item.type-event .event-deadlines h6, .content-item.type-event .event-deadlines .h6 {
+    padding-right: 0.44444rem; }
+  .content-item.type-event .event-deadlines li {
+    border-right: 0.05556rem solid #333333;
+    margin-right: 0.44444rem; }
+    .content-item.type-event .event-deadlines li:last-child {
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0; }
 
 .back-to-top {
   clear: both;

@@ -1,21 +1,23 @@
 .offset-event-list {
-  margin: 0 auto rem-calc(40) auto;
+  margin: 0 auto;
   max-width: rem-calc(760);
-
+  padding-bottom: rem-calc(20);
   .content-item {
     border-bottom: rem-calc(1) solid $light-gray;
     padding-left: rem-calc(20);
     padding-right: rem-calc(20);
+    margin-bottom: rem-calc(20);
   }
 
+}
+.content-item.has-post-thumbnail {
   .event-header__thumbnail {
+    margin-bottom: rem-calc(20);
     @include breakpoint(500px) {
       height: rem-calc(105);
       width: rem-calc(105);
     }
   }
-}
-.content-item.has-post-thumbnail {
   .event-item__text-content {
     margin-left: rem-calc(125);
   }
@@ -33,6 +35,7 @@
   }
 
   .event-deadlines {
+    margin-bottom: rem-calc(20);
     h6, li {
       display: inline-block;
       font-size: rem-calc(16);

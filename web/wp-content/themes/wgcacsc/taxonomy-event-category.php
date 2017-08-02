@@ -52,11 +52,11 @@ get_header(); ?>
                     <?php if ( have_posts() ) : ?>
 
 					<?php /* Start the Loop */ ?>
-						<?php while ( have_posts() ) : the_post(); ?>
 							<div class="event-list offset-event-list">
+						<?php while ( have_posts() ) : the_post(); ?>
 							<?php get_template_part( 'template-parts/content', 'event' ); ?>
-							</div>
 						<?php endwhile; ?>
+							</div>
 
 					<?php else : ?>
                         <div class="small-12 columns">
