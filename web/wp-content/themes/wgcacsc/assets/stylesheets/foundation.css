@@ -7168,7 +7168,7 @@ p + ol {
       padding: 0;
       position: absolute;
       top: 0;
-      left: 0;
+      left: 0.55556rem;
       bottom: 2.22222rem; }
     .component-teasers--2 .component-teasers__teaser .component-teasers__teaser__text-wrapper {
       min-height: 13.33333rem;

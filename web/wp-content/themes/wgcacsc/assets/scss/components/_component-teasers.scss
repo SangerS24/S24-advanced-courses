@@ -109,7 +109,7 @@
         padding: 0;
         position: absolute;
         top: 0;
-        left: 0;
+        left: rem-calc(10);
         bottom: rem-calc(40);
       }
       .component-teasers__teaser__text-wrapper {
