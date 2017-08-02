@@ -15,14 +15,28 @@
     <?php
         $post_text_content_layout_classes = 'small-12 columns content-item__description';
 
-        if ( !empty( get_the_post_thumbnail() ) ) {
+        $news_listing_thumbnail_srcs = array();
+
+        if ( !empty( get_field( 'page_heroes_hero_list' ) ) ) {
+            $hero_list_object = get_field('page_heroes_hero_list');
+            $hero_image_id = $hero_list_object[0]['hero_list_hero_image'];
+
+            if ( !empty( $hero_image_id ) ) {
+                $news_listing_thumbnail_srcs['default'] = wp_get_attachment_image_url( $hero_image_id , 'news_listing' );
+                $news_listing_thumbnail_srcs['retina'] = wp_get_attachment_image_url( $hero_image_id , 'news-listing-retina' );
+            }
+        } elseif ( !empty( get_the_post_thumbnail() ) ) {
+            $news_listing_thumbnail_srcs['default'] = get_the_post_thumbnail_url( get_the_ID() , 'news-listing' );
+            $news_listing_thumbnail_srcs['retina'] = get_the_post_thumbnail_url( get_the_ID() , 'news-listing-retina' );
+        }
+        if ( !empty( $news_listing_thumbnail_srcs ) ) {
             ?>
             <div class="small-12 medium-6 columns content-item__visual">
                 <div class="news-item__image">
                     <picture>
-                        <source media="(min-width: 200px)" srcset="<?php echo get_the_post_thumbnail_url( get_the_ID() , 'news-listing-retina' ); ?> 2x, <?php echo get_the_post_thumbnail_url( get_the_ID() , 'news-listing' ); ?> 1x" />
-                        <source media="(max-width: 200px)" src="<?php echo get_the_post_thumbnail_url( get_the_ID() , 'news-listing' ); ?>" />
-                        <img src="<?php echo get_the_post_thumbnail_url( get_the_ID() , 'news-listing' ); ?>" alt="<?php the_title(); ?>" />
+                        <source media="(min-width: 200px)" srcset="<?php echo $news_listing_thumbnail_srcs['retina']; ?> 2x, <?php echo $news_listing_thumbnail_srcs['default']; ?> 1x" />
+                        <source media="(max-width: 200px)" src="<?php echo $news_listing_thumbnail_srcs['default']; ?>" />
+                        <img src="<?php echo $news_listing_thumbnail_srcs['default']; ?>" alt="<?php the_title(); ?>" />
                         </picture>
                 </div>
             </div>
