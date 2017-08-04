@@ -6415,6 +6415,13 @@ span.wpcf7-list-item {
         margin-right: 0;
         padding-right: 0; }
 
+.past-archive-link {
+  background-color: #e5e5e5;
+  padding: 1.22222rem; }
+
+.past-events-list__ul {
+  margin-bottom: 1.11111rem; }
+
 .back-to-top {
   clear: both;
   float: right;
