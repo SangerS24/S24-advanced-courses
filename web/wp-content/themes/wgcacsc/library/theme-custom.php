@@ -345,6 +345,9 @@ function wgcacsc_pre_get_posts( $query ) {
     //past events page
     if ( is_tax( 'event-category' , 'past-events' ) ) {
         $query->set( 'posts_per_page' , -1 );
+        $query->set( 'orderby' , 'meta_value_num date' );
+        $query->set( 'meta_key' , 'start_date' );
+        $query->set( 'order' , 'DESC' );
     }
     //event cat pages
     if ( is_tax( 'event-category' ) && !is_tax( 'event-category' , 'past-events' ) ) {

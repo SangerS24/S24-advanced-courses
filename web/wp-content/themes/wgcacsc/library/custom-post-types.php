@@ -39,7 +39,7 @@ function wgcacsc_register_my_cpts()
     register_post_type("event", $args);
 
     $labels = array(
-        'name'              => _x( 'Course types', '' ),
+        'name'              => _x( 'Event Categories', '' ),
         'singular_name'     => _x( 'Event Category', '' ),
         'search_items'      => __( 'Search Event Categories', '' ),
         'all_items'         => __( 'All Event Categories', '' ),
