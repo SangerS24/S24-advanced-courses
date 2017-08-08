@@ -8,7 +8,7 @@ use fewbricks\acf\fields as acf_fields;
  * Class component_cta_list
  * @package fewbricks\bricks
  */
-class component_cta_list extends project_brick
+class component_cta_list_home extends project_brick
 {
 
     /**
@@ -23,7 +23,7 @@ class component_cta_list extends project_brick
      *
      * The maximum number of heroes that can be input by a user per block
      */
-    protected $limit = 3;
+    protected $limit = 4;
 
     protected $fullWidth = false;
 
@@ -41,11 +41,7 @@ class component_cta_list extends project_brick
      */
     public function set_fields() {
 
-        $this->add_field(new acf_fields\text('CTA Group Title', 'cta_list_title', '290720161518d', [
-            'instructions' => 'An optional heading that would appear centered above the list of CTAs'
-        ]));
-
-        $this->add_repeater((new acf_fields\repeater('CTA List', 'cta_list', '290720161518e', [
+        $this->add_repeater((new acf_fields\repeater('Events Call to Actions', 'cta_list', '290720161518e', [
             'button_label' => 'Add CTA',
             'required' => 0,
             'min' => 0,
@@ -66,8 +62,6 @@ class component_cta_list extends project_brick
         }
 
         $html = '';
-
-        $title = $this->get_field('cta_list_title');
 
         $numCtas = count($this->get_field('cta_list'));
 
@@ -94,9 +88,6 @@ class component_cta_list extends project_brick
 
             $html = '
                 <div class="component cta-group">';
-            if(!empty($title)) {
-                $html .= '<h2 class="section-heading section-heading--centered">'. $title .'</h2>';
-            }
 
             $html .= '<div class="row cta-group-items">';
             while ($this->have_rows('cta_list' )) {

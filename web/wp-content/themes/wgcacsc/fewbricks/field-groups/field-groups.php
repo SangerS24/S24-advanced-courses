@@ -117,6 +117,38 @@ $fg35->add_brick(new bricks\component_hero_list('page_heroes', '220820161421b'))
 $fg35->register();
 
 
+
+$fg_front_featured = (new fewacf\field_group( 'Featured content' , '201708081612a' , $location , 10 , [
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_front_featured->add_field(new acf_fields\message( 'events ctas section' ,  'events_cta_section' , '201708081628a' , [
+    'message' => '<h1>Events CTAs</h1>'
+]));
+$fg_front_featured->add_brick(new bricks\component_cta_list_home( 'events_call_to_action' ,'201708081612b' ));
+
+$fg_front_featured->add_field(new acf_fields\message( 'spotlight events section' ,  'spotlight_events_section' , '201708081628c' , [
+    'message' => '<h1>Spotlight Events</h1>'
+]));
+
+$fg_front_featured->add_brick(new bricks\component_featured_events( 'featured_events' ,'201708081612d' ));
+
+$fg_front_featured->register();
+
+// Create field group
+$fg_front_bottom = (new fewacf\field_group('Bottom components', '201708081554a', $location, 15, [
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_front_bottom->add_brick(new bricks\group_flexible_content('bottom_components', '201708081554b'));
+
+// Register the field group
+$fg_front_bottom->register();
+
 /*
  * Events ACFs
  */

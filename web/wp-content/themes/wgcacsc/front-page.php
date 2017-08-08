@@ -32,11 +32,12 @@
                    <?php do_action( 'foundationpress_page_before_entry_content' ); ?>
                    <div class="entry-content">
 
-                       <?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html(); ?>
+                       <?php
 
-                       <?php the_content(); ?>
-
-                       <?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html(); ?>
+                        echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html();
+                        echo (new fewbricks\bricks\component_cta_list_home('events_call_to_action'))->get_html();
+                       echo (new fewbricks\bricks\component_featured_events('featured_events'))->get_html();
+                        echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html(); ?>
                    </div>
                </article>
              <?php endwhile;?>

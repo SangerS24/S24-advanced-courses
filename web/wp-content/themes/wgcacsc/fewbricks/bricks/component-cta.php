@@ -104,6 +104,9 @@ class component_cta extends project_brick
         } elseif($args['ctaSize'] == 'third') {
             $imageSrc = $imageUrls['imageSrcThird'];
             $imageSrcRetina = $imageUrls['imageSrcThirdRetina'];
+        } elseif($args['ctaSize'] == 'quarter') {
+            $imageSrc = $imageUrls['imageSrcThird'];
+            $imageSrcRetina = $imageUrls['imageSrcThirdRetina'];
         }
 
 
