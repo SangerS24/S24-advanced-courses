@@ -27,9 +27,9 @@ $location = [
             'value' => 'page'
         ],
         [
-            'param' => 'page_template',
+            'param' => 'page_type',
             'operator' => '!=',
-            'value' => 'page-templates/front.php'
+            'value' => 'front_page'
         ]
     ],
     [
@@ -83,12 +83,25 @@ $fg1->register();
 $location = [
     [
         [
-            'param' => 'page_template',
+            'param' => 'page_type',
             'operator' => '==',
-            'value' => 'page-templates/front.php'
+            'value' => 'front_page'
         ],
     ]
 ];
+
+// Create field group
+$fg_front_subheading = (new fewacf\field_group('Sub Heading', '201708081454a', $location, 5, [
+    'position' => 'acf_after_title',
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_front_subheading->add_brick(new bricks\component_section_heading_home('page_sub_heading', '201708081454b'));
+
+// Register the field group
+$fg_front_subheading->register();
 
 // Create field group
 $fg35 = (new fewacf\field_group('Hero', '220820161421a', $location, 8, [

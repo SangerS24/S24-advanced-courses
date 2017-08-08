@@ -6554,6 +6554,20 @@ p.copyright {
 .sidebar .menu a {
   padding-left: 0; }
 
+.widget {
+  overflow: hidden;
+  margin-bottom: 2.22222rem; }
+
+.widget__title {
+  font-family: "futura-medium-bold";
+  font-size: 0.88889rem;
+  line-height: 1.33333rem;
+  text-transform: uppercase; }
+  @media screen and (min-width: 48em) {
+    .widget__title {
+      font-size: 1rem;
+      line-height: 1.44444rem; } }
+
 .widget_categories ul {
   list-style: none;
   margin: 0; }
@@ -7331,6 +7345,73 @@ p + ol {
 
 .slick-arrow.slick-hidden {
   display: none; }
+
+.home .home-page-title {
+  background-color: #5F259F;
+  overflow: hidden;
+  padding: 0.55556rem;
+  text-align: center; }
+  .home .home-page-title h1, .home .home-page-title .h1 {
+    color: #fefefe;
+    margin: 0;
+    text-transform: uppercase; }
+    @media screen and (min-width: 48em) {
+      .home .home-page-title h1, .home .home-page-title .h1 {
+        font-size: 2rem;
+        line-height: 2.44444rem; } }
+
+@media screen and (min-width: 48em) {
+  .home .hero-container .small-12 {
+    position: relative;
+    overflow: hidden; }
+  .home .home-page-title {
+    background-color: transparent;
+    bottom: 0;
+    left: 0;
+    overflow: visible;
+    padding-bottom: 0;
+    padding-right: 14%;
+    padding-top: 0;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    width: 60%; }
+    .home .home-page-title:before {
+      background-color: #5F259F;
+      content: '';
+      height: 200%;
+      position: absolute;
+      right: 3.61111rem;
+      top: -55%;
+      width: 200%;
+      z-index: 1;
+      -ms-transform: rotate(15deg);
+      /* IE 9 */
+      -webkit-transform: rotate(15deg);
+      /* Chrome, Safari, Opera */
+      transform: rotate(15deg); }
+    .home .home-page-title h1, .home .home-page-title .h1 {
+      display: inline-block;
+      max-width: 16.94444rem;
+      padding-top: 22%;
+      position: relative;
+      z-index: 2; } }
+
+@media screen and (min-width: 65em) {
+  .home .home-page-title {
+    width: 50%; }
+    .home .home-page-title h1, .home .home-page-title .h1 {
+      padding-top: 25%; } }
+
+.home .component-sub-heading {
+  float: none;
+  max-width: none;
+  text-align: center; }
+  @media screen and (min-width: 48em) {
+    .home .component-sub-heading {
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%; } }
 
 @media screen and (min-width: 65em) {
   .event-breadcrumb {

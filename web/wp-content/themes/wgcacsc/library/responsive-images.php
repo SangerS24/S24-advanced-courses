@@ -26,6 +26,9 @@ add_image_size ( 'hero-medium-retina', 2080, 700, array('center', 'center') );
 add_image_size ( 'hero-small', 640, 400, array('center', 'center') );
 add_image_size ( 'hero-small-retina', 1280, 800, array('center', 'center') );
 
+add_image_size ( 'hero-home-small', 640, 400, array('right', 'center') );
+add_image_size ( 'hero-home-small-retina', 1280, 800, array('right', 'center') );
+
 add_image_size( 'hero-listing', 360, 230, array('center', 'center') );
 
 

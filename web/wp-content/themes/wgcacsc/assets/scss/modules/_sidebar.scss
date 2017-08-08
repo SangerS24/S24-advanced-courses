@@ -42,6 +42,21 @@
 
 }
 
+.widget {
+    overflow: hidden;
+    margin-bottom: rem-calc(40);
+}
+
+.widget__title {
+    font-family: $header-font-family;
+    font-size: rem-calc(16);
+    line-height: rem-calc(24);
+    text-transform: uppercase;
+    @include breakpoint('medium') {
+        font-size: rem-calc(18);
+        line-height: rem-calc(26);
+    }
+}
 
 .widget_categories {
 

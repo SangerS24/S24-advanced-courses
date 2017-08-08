@@ -123,8 +123,13 @@ class component_hero_list extends project_brick
                     $heroImageMediumSrc = wp_get_attachment_image_url($hero_img, 'hero-medium');
                     $heroImageMediumRetinaSrc = wp_get_attachment_image_url($hero_img, 'hero-medium-retina');
 
-                    $heroImageSmallSrc = wp_get_attachment_image_url($hero_img, 'hero-small');
-                    $heroImageSmallRetinaSrc = wp_get_attachment_image_url($hero_img, 'hero-small-retina');
+                    if ( is_front_page() ) {
+                        $heroImageSmallSrc = wp_get_attachment_image_url($hero_img, 'hero-home-small');
+                        $heroImageSmallRetinaSrc = wp_get_attachment_image_url($hero_img, 'hero-home-small-retina');
+                    } else {
+                        $heroImageSmallSrc = wp_get_attachment_image_url($hero_img, 'hero-small');
+                        $heroImageSmallRetinaSrc = wp_get_attachment_image_url($hero_img, 'hero-small-retina');
+                    }
 
                     $html .= '<li>';
 
@@ -142,6 +147,10 @@ class component_hero_list extends project_brick
             if($args['plain'] != true) {
                 $html .= '</ol>';
             }
+        }
+
+        if ( is_front_page() ) {
+            $html .= '<div class="home-page-title"><h1>'.get_the_title().'</h1></div>';
         }
 
 
