@@ -8,7 +8,7 @@ Utilises the [Foundation 6 Wordpress Template](https://foundationpress.olefredri
 
 * Live: https:// ??? .wellcomegenomecampus.org/
 * Sanger Staging: http://wt- ??? .sandbox.sanger.ac.uk/
-* S24 Staging: http:// ??? .s24.net/
+* S24 Staging: http://wgcacsc.s24.net/
 * Development: http://wgacsc.dev
 
 ## Building the site
