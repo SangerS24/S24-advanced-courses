@@ -45,7 +45,7 @@ web/wp-content/uploads
 **/bwp-minify/cache
 #web/wp-config.development.php
 web/wp-config.production.php
-web/wp-config.staging.php
+#web/wp-config.staging.php
 
 web/360s
 
