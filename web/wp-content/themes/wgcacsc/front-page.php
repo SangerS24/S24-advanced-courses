@@ -40,6 +40,19 @@
 
                        echo wgcacsc_get_latest_news();
 
+                       ?>
+
+                       <div class="offset-content front-newsletter-and-download">
+                           <div class="row">
+                               <?php
+                                    echo (new fewbricks\bricks\component_newsletter('front_newsletter'))->get_html();
+                               echo (new fewbricks\bricks\component_download('front_download'))->get_html();
+                               ?>
+                           </div>
+                       </div>
+
+                       <?php
+
                         echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html(); ?>
                    </div>
                </article>

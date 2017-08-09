@@ -7418,7 +7418,8 @@ p + ol {
   text-align: center; }
 
 .featured-events-list {
-  margin-top: 1.11111rem; }
+  margin-top: 1.11111rem;
+  padding: 0; }
   .featured-events-list .event-item__text-content {
     margin-left: 6.66667rem; }
   .featured-events-list .event-deadlines h6, .featured-events-list .event-deadlines .h6 {
@@ -7430,18 +7431,64 @@ p + ol {
     .featured-events-list .event-deadlines ul li {
       margin-bottom: 0.44444rem; } }
   @media screen and (min-width: 65em) {
-    .featured-events-list .featured-event {
-      padding: 0 0.55556rem; }
-    .featured-events-list .event-header__thumbnail {
-      float: none;
-      margin: -0.27778rem auto 1.11111rem auto; }
-    .featured-events-list .event-item__text-content {
-      margin-left: 0;
-      text-align: left; } }
+    .featured-events-list {
+      margin-left: -0.55556rem;
+      margin-right: -0.55556rem; }
+      .featured-events-list .featured-event {
+        padding: 0 0.55556rem; }
+      .featured-events-list .event-header__thumbnail {
+        float: none;
+        margin: -0.27778rem auto 1.11111rem auto; }
+      .featured-events-list .event-item__text-content {
+        margin-left: 0;
+        text-align: left; } }
+
+.latest-news-list {
+  margin-bottom: 2.22222rem;
+  overflow: hidden; }
+  @media screen and (min-width: 48em) {
+    .latest-news-list {
+      margin-left: -0.55556rem;
+      margin-right: -0.55556rem; } }
+
+.latest-news-item .content-item__visual {
+  padding: 0; }
+
+.latest-news-item .news-item__image {
+  float: none; }
+  .latest-news-item .news-item__image img {
+    display: block;
+    width: 100%; }
 
 @media screen and (min-width: 48em) {
   .latest-news-item {
     padding: 0 0.55556rem; } }
+
+.front-newsletter-and-download .row {
+  padding: 0; }
+
+@media screen and (min-width: 65em) {
+  .front-newsletter-and-download .component-newsletter,
+  .front-newsletter-and-download .component-download {
+    clear: none;
+    float: left;
+    width: 50%; } }
+
+@media screen and (min-width: 65em) {
+  .front-newsletter-and-download .component-download {
+    text-align: center; }
+    .front-newsletter-and-download .component-download .component-download__link {
+      max-width: 80%;
+      padding: 2.22222rem 0; }
+      .front-newsletter-and-download .component-download .component-download__link img {
+        display: block;
+        height: auto;
+        margin-bottom: 2.22222rem;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 16.66667rem;
+        max-width: 16.66667rem;
+        width: auto; } }
 
 @media screen and (min-width: 65em) {
   .event-breadcrumb {

@@ -396,15 +396,45 @@ function wgcacsc_get_latest_news(){
         return '';
     }
 
-    $html = '<div class="offset-content">';
+    $html = '<div class="offset-content"><h2>Latest news</h2>';
+    $html .= '<div class="latest-news-list">';
     foreach ( $latest_news as $latest_news_item ) {
+        $news_listing_thumbnail_srcs = array();
+
+        if ( !empty( get_field( 'page_heroes_hero_list' , $latest_news_item->ID ) ) ) {
+            $hero_list_object = get_field('page_heroes_hero_list' , $latest_news_item->ID );
+            $hero_image_id = $hero_list_object[0]['hero_list_hero_image'];
+
+            if ( !empty( $hero_image_id ) ) {
+                $news_listing_thumbnail_srcs['default'] = wp_get_attachment_image_url( $hero_image_id , 'news_listing' );
+                $news_listing_thumbnail_srcs['retina'] = wp_get_attachment_image_url( $hero_image_id , 'news-listing-retina' );
+            }
+        } elseif ( !empty( get_the_post_thumbnail( $latest_news_item->ID ) ) ) {
+            $news_listing_thumbnail_srcs['default'] = get_the_post_thumbnail_url( $latest_news_item->ID , 'news-listing' );
+            $news_listing_thumbnail_srcs['retina'] = get_the_post_thumbnail_url( $latest_news_item->ID , 'news-listing-retina' );
+        }
+
         $html .= '<article class="small-12 medium-6 columns latest-news-item">';
-        $html .= '<p class="news-item__date"><time class="updated" datetime="'.get_the_time( $latest_news_item->ID , 'c' ).'">'.sprintf( __( '%1$s', 'foundationpress' ), get_the_date( $latest_news_item->ID ) ).'</time></p>';
+
+        if ( !empty( $news_listing_thumbnail_srcs ) ) {
+           $html .= '<div class="content-item__visual">';
+           $html .= '<div class="news-item__image">';
+           $html .= '<picture>';
+           $html .= '<source media="(min-width: 200px)" srcset="'.$news_listing_thumbnail_srcs['retina'].' 2x, '.$news_listing_thumbnail_srcs['default'].' 1x" />';
+           $html .= '<source media="(max-width: 200px)" src="'.$news_listing_thumbnail_srcs['default'].'" />';
+           $html .= '<img src="'.$news_listing_thumbnail_srcs['default'].'" alt="'.$latest_news_item->post_title.'" />';
+           $html .= '</picture>';
+           $html .= ' </div>';
+           $html .= '</div>';
+        }
+
+        $html .= '<p class="news-item__date"><time class="updated" datetime="'.get_the_time( $latest_news_item->ID , 'c' ).'">'.sprintf( __( '%1$s', 'foundationpress' ), get_the_date( 'd M Y', $latest_news_item->ID ) ).'</time></p>';
         $html .= '<h3 class="content-item__title">'.$latest_news_item->post_title.'</h3>';
-        $html .= '<p class="news-item__excerpt">'.get_the_excerpt( $latest_news_item ).'</p>';
+        $html .= '<p class="news-item__excerpt">'.get_field( 'page_sub_heading_section_heading' ,$latest_news_item->ID ).'</p>';
         $html .= '<p><a class="button button-cta" href="'.get_permalink( $latest_news_item->ID ).'">Read More</a></p>';
         $html .= '</article>';
     }
+    $html .= '</div>';
     $html .= '</div>';
     return $html;
 

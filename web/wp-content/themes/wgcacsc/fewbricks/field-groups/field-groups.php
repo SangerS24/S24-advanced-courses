@@ -141,6 +141,27 @@ $fg_front_featured->add_field(new acf_fields\message( 'latest news' ,  'latest_n
 
 $fg_front_featured->register();
 
+//newsletter and download
+$fg_front_newsletter_and_download = (new fewacf\field_group( 'Newsletter and programme download' , '201807091037a' , $location , 12 , [
+    'names_of_items_to_hide_on_screen' => [
+        0 => 'the_content'
+    ]
+]));
+
+$fg_front_newsletter_and_download->add_field(new acf_fields\message( 'newsletters section' , 'newsletter_section' , '201807091037b' , [
+    'message' => '<h1>Newsletter Sign Up</h1>'
+]));
+
+$fg_front_newsletter_and_download->add_brick(new bricks\component_newsletter( 'front_newsletter' , '201807091037c') );
+
+$fg_front_newsletter_and_download->add_field(new acf_fields\message( 'programme download section' , 'download_section' , '201807091037d' , [
+    'message' => '<h1>Programme Download</h1>'
+]));
+
+$fg_front_newsletter_and_download->add_brick(new bricks\component_download( 'front_download' , '201807091037d') );
+
+$fg_front_newsletter_and_download->register();
+
 // Create field group
 $fg_front_bottom = (new fewacf\field_group('Bottom components', '201708081554a', $location, 15, [
     'names_of_items_to_hide_on_screen' => [
