@@ -135,6 +135,10 @@ $fg_front_featured->add_field(new acf_fields\message( 'spotlight events section'
 
 $fg_front_featured->add_brick(new bricks\component_featured_events( 'featured_events' ,'201708081612d' ));
 
+$fg_front_featured->add_field(new acf_fields\message( 'latest news' ,  'latest_news_section' , '201708081628e' , [
+    'message' => '<h1>Latest news appears here</h1>'
+]));
+
 $fg_front_featured->register();
 
 // Create field group

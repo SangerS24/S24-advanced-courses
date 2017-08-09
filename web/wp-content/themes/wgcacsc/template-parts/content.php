@@ -50,9 +50,9 @@
 	<div class="<?php echo $post_text_content_layout_classes; ?>">
         <p class="news-item__date"><time class="updated" datetime="<?php echo get_the_time( 'c' ); ?>"><?php echo sprintf( __( '%1$s', 'foundationpress' ), get_the_date() ); ?></time></p>
         <?php
-        if(!empty($date) && !has_category(18) && !is_front_page()) {
-            echo '<p class="news-item__date">'. $date .'</p>';
-        }
+//        if(!empty($date) && !has_category(18) && !is_front_page()) {
+//            echo '<p class="news-item__date">'. $date .'</p>';
+//        }
         ?>
 		<h3 class="content-item__title"><?php the_title(); ?></h3>
         <p class="news-item__excerpt"><?php the_excerpt(); ?></p>

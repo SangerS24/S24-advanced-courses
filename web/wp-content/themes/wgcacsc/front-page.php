@@ -37,6 +37,9 @@
                         echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html();
                         echo (new fewbricks\bricks\component_cta_list_home('events_call_to_action'))->get_html();
                        echo (new fewbricks\bricks\component_featured_events('featured_events'))->get_html();
+
+                       echo wgcacsc_get_latest_news();
+
                         echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html(); ?>
                    </div>
                </article>

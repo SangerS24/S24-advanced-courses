@@ -383,3 +383,29 @@ function wgcacsc_add_default_date($post_id) {
     }
 }
 add_action('save_post', 'wgcacsc_add_default_date');
+
+
+//GET LATEst news for front page
+function wgcacsc_get_latest_news(){
+    $args = array(
+        'posts_per_page' => 2
+    );
+    $latest_news = get_posts( $args );
+
+    if ( empty($latest_news) ) {
+        return '';
+    }
+
+    $html = '<div class="offset-content">';
+    foreach ( $latest_news as $latest_news_item ) {
+        $html .= '<article class="small-12 medium-6 columns latest-news-item">';
+        $html .= '<p class="news-item__date"><time class="updated" datetime="'.get_the_time( $latest_news_item->ID , 'c' ).'">'.sprintf( __( '%1$s', 'foundationpress' ), get_the_date( $latest_news_item->ID ) ).'</time></p>';
+        $html .= '<h3 class="content-item__title">'.$latest_news_item->post_title.'</h3>';
+        $html .= '<p class="news-item__excerpt">'.get_the_excerpt( $latest_news_item ).'</p>';
+        $html .= '<p><a class="button button-cta" href="'.get_permalink( $latest_news_item->ID ).'">Read More</a></p>';
+        $html .= '</article>';
+    }
+    $html .= '</div>';
+    return $html;
+
+}

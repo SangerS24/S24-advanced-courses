@@ -66,15 +66,15 @@ class component_featured_events extends project_brick
         if ( !empty($events) ) {
 
             $html = '
-                <div class="component featured_events">';
+                <div class="component featured_events offset-content">';
             if(!empty($title)) {
-                $html .= '<h2 class="section-heading section-heading--centered">'. $title .'</h2>';
+                $html .= '<h2>'. $title .'</h2>';
             }
 
             $html .= '<div class="row featured-events-list">';
 
             foreach ( $events as $event) {
-                $html .= '<article class="small-12 medium-4 columns featured-event">';
+                $html .= '<article class="small-12 large-4 columns featured-event">';
                 $holding_content = apply_filters( 'the_content', get_field( 'holding_content' , $event->ID ) );
 
                 $link_to_event = true;
