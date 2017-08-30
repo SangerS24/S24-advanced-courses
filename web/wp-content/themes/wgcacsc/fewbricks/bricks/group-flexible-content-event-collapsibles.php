@@ -47,7 +47,13 @@ class group_flexible_content_event_collapsibles extends project_brick
         $l->add_brick(new component_download('download_component', '201707311430i'));
         $fc->add_layout($l);
 
+
         //bios
+        $l = new layout('', 'l11', '201707311430j');
+        $l->add_brick(new component_bio('bio_component', '201707311430k'));$l->add_brick(new component_bio('bio_component', '201707311430k'));
+        $fc->add_layout($l);
+
+        //speakers
         $l = new layout('', 'l11', '201708301320a');
         $l->add_brick(new component_speakers('speakers_component', '201708301320b'));
         $fc->add_layout($l);
