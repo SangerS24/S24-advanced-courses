@@ -7122,6 +7122,31 @@ p + ol {
   margin-left: 0;
   margin-right: 0; }
 
+.accordion-content .component-speakers {
+  margin-left: -0.55556rem;
+  margin-right: -0.55556rem; }
+
+.component-speakers__speaker {
+  padding: 0.55556rem;
+  text-align: center; }
+  .component-speakers__speaker img {
+    margin-bottom: 0.27778rem;
+    max-width: 6.66667rem; }
+  .component-speakers__speaker p {
+    margin-bottom: 0.55556rem; }
+  .component-speakers__speaker:nth-child(odd) {
+    clear: left; }
+  @media screen and (min-width: 48em) {
+    .component-speakers__speaker:nth-child(odd) {
+      clear: none; }
+    .component-speakers__speaker:nth-child(4n) {
+      clear: left; } }
+  @media screen and (min-width: 65em) {
+    .component-speakers__speaker:nth-child(4n) {
+      clear: none; }
+    .component-speakers__speaker:nth-child(5n) {
+      clear: left; } }
+
 .component-newsletter {
   background-color: #333333;
   color: #e5e5e5;

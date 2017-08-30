@@ -1,0 +1,40 @@
+.accordion-content .component-speakers {
+  margin-left: rem-calc(-10);
+  margin-right: rem-calc(-10);
+}
+
+.component-speakers__speaker {
+  padding: rem-calc(10);
+  text-align: center;
+  img {
+    margin-bottom: rem-calc(5);
+    max-width: rem-calc(120);
+  }
+
+  p {
+    margin-bottom: rem-calc(10);
+  }
+
+  &:nth-child(odd) {
+    clear: left;
+  }
+
+  @include breakpoint(medium) {
+    &:nth-child(odd) {
+      clear: none;
+    }
+    &:nth-child(4n) {
+      clear: left;
+    }
+  }
+
+  @include breakpoint(large) {
+    &:nth-child(4n) {
+      clear: none;
+    }
+    &:nth-child(5n) {
+      clear: left;
+    }
+  }
+
+}
