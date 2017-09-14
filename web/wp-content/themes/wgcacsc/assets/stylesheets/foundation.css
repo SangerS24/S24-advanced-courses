@@ -6884,7 +6884,7 @@ a.client-item__inner {
   overflow: hidden; }
 
 .cta-item__image {
-  opacity: 0.35;
+  opacity: 1;
   position: absolute;
   top: -555.5rem;
   right: -555.5rem;
@@ -6907,11 +6907,11 @@ a.client-item__inner {
   text-align: center;
   text-transform: uppercase;
   top: 0.55556rem;
-  background-color: rgba(95, 37, 159, 0.7);
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333333;
   z-index: 2; }
   .cta-item__link:hover {
-    background-color: #5f259f;
+    background-color: rgba(95, 37, 159, 0.7);
     color: #fefefe; }
   .cta-item__link:before {
     content: '';
