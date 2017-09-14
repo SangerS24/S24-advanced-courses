@@ -39,7 +39,10 @@ class component_teasers extends project_brick
         ]) )
         ->add_sub_field(new acf_fields\text( 'OR external content to link to' , 'external_link' , '201707181519f' , [
                 'instructions' => 'Enter the link manually if you cannot find it in the choice above. Please note this setting overrides the choice above.'
-            ])));
+            ]))
+        ->add_sub_field(new acf_fields\text( 'Link text' , 'link_text' , '201709141452a' , [
+            'default_value' => 'Read more'
+        ])));
 
     }
 
@@ -100,7 +103,11 @@ class component_teasers extends project_brick
                 $html .= '<h3 class="h5">'.( ( !empty($teaser_link) ) ? '<a href="'.$teaser_link.'">'.$teaser_title.'</a>' : $teaser_title ).'</h3>';
                 $html .= $teaser_excerpt;
                 if ( !empty( $teaser_link ) ) {
-                    $html .= '<a href="'.$teaser_link.'" class="component-teasers__read-more">Read more</a>';
+                    $teaser_link_text = $this->get_field_in_repeater( 'content_items' , 'link_text' );
+                    if ( empty($teaser_link_text) ) {
+                        $teaser_link_text = 'Read more';
+                    }
+                    $html .= '<a href="'.$teaser_link.'" class="component-teasers__read-more">'.$teaser_link_text.'</a>';
                 }
                 $html .= '</div>'; //end of content wrapper
 
