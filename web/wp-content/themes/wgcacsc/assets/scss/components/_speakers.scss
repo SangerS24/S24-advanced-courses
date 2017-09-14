@@ -5,6 +5,7 @@
 
 .component-speakers__speaker {
   padding: rem-calc(10);
+  overflow: hidden;
   text-align: center;
   img {
     margin-bottom: rem-calc(5);
@@ -13,6 +14,7 @@
 
   p {
     margin-bottom: rem-calc(10);
+    line-height: 1.3;
   }
 
   &:nth-child(odd) {
