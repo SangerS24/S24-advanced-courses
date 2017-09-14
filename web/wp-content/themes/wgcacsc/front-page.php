@@ -36,7 +36,16 @@
 
                         echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html();
                         echo (new fewbricks\bricks\component_cta_list_home('events_call_to_action'))->get_html();
-                       echo (new fewbricks\bricks\component_featured_events('featured_events'))->get_html();
+
+                       $spotlight_events_title = get_field('spotlight_events_header' );
+
+                       echo '<div class="offset-content">';
+                       if ( !empty($spotlight_events_title) ) {
+                           echo '<h2>'.$spotlight_events_title.'</h2>';
+                       }
+
+                       echo (new fewbricks\bricks\component_teasers('front_events_teasers'))->get_html();
+                       echo '</div>';
 
                        echo wgcacsc_get_latest_news();
 
