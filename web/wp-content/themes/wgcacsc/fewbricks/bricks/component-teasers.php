@@ -25,8 +25,7 @@ class component_teasers extends project_brick
     {
 
         $this->add_repeater( (new acf_fields\repeater( 'Content items' , 'content_items' , '201707181519a' , [
-            'button_label' => 'Add teaser',
-            'max' => 3
+            'button_label' => 'Add teaser'
         ] ))
         ->add_sub_field( new acf_fields\image( 'Picture' , 'picture' , '201707181519b' ) )
         ->add_sub_field( new acf_fields\text( 'Teaser title' , 'title' , '201707181519c'))
@@ -53,6 +52,9 @@ class component_teasers extends project_brick
     {
         $html = '';
         $teaser_count = sizeof( $this->get_field( 'content_items' ) );
+        if ( $teaser_count > 3 ) {
+            $teaser_count = 2;
+        }
 
         if( $this->have_rows( 'content_items' ) ) {
             $eq_id = 'eq-'.rand();

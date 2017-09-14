@@ -94,35 +94,39 @@
 }
 
 .component-teasers--2 {
-  @include breakpoint(550px) {
-    .component-teasers__teaser {
-      float: left;
-      padding: 0 rem-calc(10) rem-calc(40) rem-calc(10);
-      width: 50%;
-    }
-  }
+   @include breakpoint(550px) {
+     margin-left: rem-calc(-10);
+     margin-right: rem-calc(-10);
+     .component-teasers__teaser {
+       float: left;
+       padding: 0 rem-calc(10) rem-calc(40) rem-calc(10);
+       width: 50%;
+     }
+   }
 
-  @include breakpoint('large') {
-    .component-teasers__teaser {
-      position: relative;
-      .component-teasers__teaser__thumbnail-wrapper {
-        width: 50%;
-        padding: 0;
-        position: absolute;
-        top: 0;
-        left: rem-calc(10);
-        bottom: rem-calc(40);
-      }
-      .component-teasers__teaser__text-wrapper {
-        min-height: rem-calc(240);
-        width: 50%;
-        margin-left: 50%;
-      }
-    }
-  }
-}
+   @include breakpoint('large') {
+     .component-teasers__teaser {
+       position: relative;
+       .component-teasers__teaser__thumbnail-wrapper {
+         width: 50%;
+         padding: 0;
+         position: absolute;
+         top: 0;
+         left: rem-calc(10);
+         bottom: rem-calc(40);
+       }
+       .component-teasers__teaser__text-wrapper {
+         min-height: rem-calc(240);
+         width: 50%;
+         margin-left: 50%;
+       }
+     }
+   }
+ }
 
 .component-teasers--3 {
+  margin-left: rem-calc(-10);
+  margin-right: rem-calc(-10);
   @include breakpoint(550px) {
     .component-teasers__teaser {
       padding: 0 rem-calc(10) rem-calc(40) rem-calc(10);
