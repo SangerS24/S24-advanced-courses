@@ -23,9 +23,9 @@
 
      <?php do_action( 'foundationpress_before_content' ); ?>
 
-     <div class="page__inner__content small-12 large-9 columns">
+     <div class="page__inner__content small-12 columns">
 
-         <div class="main-content" id="main-content">
+         <div class="main-content small-12 large-9 columns" id="main-content">
 
              <div class="offset-content">
                  <?php s24_breadcrumb(); ?>
