@@ -54,7 +54,7 @@ class component_event_collapsibles extends project_brick
                 $panel_content = $this->get_child_brick_in_repeater( 'collapsible_panels' , 'content' , 'group_flexible_content' )->get_html();
 
                 if ( $panel_count == 0 ) {
-                    $html .= '<li class="accordion-item" data-accordion-item>';
+                    $html .= '<li class="accordion-item is-active" data-accordion-item>';
                 } else {
                     $html .= '<li class="accordion-item" data-accordion-item>';
                 }
