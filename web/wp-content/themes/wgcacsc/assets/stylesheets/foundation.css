@@ -6438,16 +6438,17 @@ span.wpcf7-list-item {
 .footer {
   padding-top: 1.11111rem;
   background: url("../images/footer_bg.svg") no-repeat center center;
-  -webkit-background-size: auto 200px;
-          background-size: auto 200px; }
-  @media screen and (min-width: 48em) {
-    .footer {
-      -webkit-background-size: 1470px 179px;
-              background-size: 1470px 179px; } }
-  @media screen and (min-width: 91.875em) {
-    .footer {
-      -webkit-background-size: 100% auto;
-              background-size: 100% auto; } }
+  -webkit-background-size: auto 220px;
+          background-size: auto 220px; }
+
+.footer__top {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.44444rem 0;
+  text-align: center; }
+  .footer__top img {
+    display: block;
+    margin: 0 auto;
+    width: 9.16667rem; }
 
 .footer__inner {
   background: #333333;
@@ -6456,7 +6457,7 @@ span.wpcf7-list-item {
   width: 100%; }
   @media screen and (min-width: 37.5em) {
     .footer__inner {
-      padding: 0.55556rem 0 0.38889rem 0; } }
+      padding: 0.83333rem 0 0.66667rem 0; } }
 
 .footer__inner__highlight {
   background: #333333;

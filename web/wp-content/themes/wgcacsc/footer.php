@@ -14,6 +14,15 @@
 
 		<div class="footer-container" id="footer-container">
 			<footer class="footer" id="footer">
+                <div class="footer__top">
+                    <div class="row">
+                        <div class="small-12 columns">
+
+                            <a href="https://connectingscience.wellcomegenomecampus.org/" target="_blank"><img src="<?php echo get_stylesheet_directory_uri().'/assets/images/connecting-science-logo.svg'; ?>" alt="Visit the Connecting Science website"/></a>
+
+                        </div>
+                    </div>
+                </div>
 				<div class="footer__inner">
 					<div class="row">
 						<div class="small-12 columns">

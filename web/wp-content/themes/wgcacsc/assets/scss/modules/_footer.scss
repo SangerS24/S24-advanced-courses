@@ -30,22 +30,32 @@
 .footer {
 	padding-top: rem-calc(20);
 	background: url('../images/footer_bg.svg') no-repeat center center;
-	background-size: auto 200px;
+	background-size: auto 220px;
     //
 	//padding: rem-calc(80) 0 0 0;
     //
-	@include breakpoint(medium) {
+    //@include breakpoint(medium) {
+    //
+		//background-size: 1470px 179px;
+    //
+    //}
 
-		background-size: 1470px 179px;
-
-	}
-
-	@include breakpoint(1470) {
-		background-size: 100% auto;
-	}
+	//@include breakpoint(1470) {
+	//	background-size: auto 210px;
+	//}
 
 }
 
+.footer__top {
+	background-color: rgba(255,255,255, 0.7);
+	padding: rem-calc(8) 0;
+	text-align: center;
+	img {
+		display: block;
+		margin: 0 auto;
+		width: rem-calc(165);
+	}
+}
 
 .footer__inner {
 
@@ -56,7 +66,7 @@
 
 	@include breakpoint(600) {
 
-		padding: rem-calc(10) 0 rem-calc(7) 0;
+		padding: rem-calc(15) 0 rem-calc(12) 0;
 
 	}
 
