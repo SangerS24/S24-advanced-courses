@@ -17,15 +17,7 @@
 
         $news_listing_thumbnail_srcs = array();
 
-        if ( !empty( get_field( 'page_heroes_hero_list' ) ) ) {
-            $hero_list_object = get_field('page_heroes_hero_list');
-            $hero_image_id = $hero_list_object[0]['hero_list_hero_image'];
-
-            if ( !empty( $hero_image_id ) ) {
-                $news_listing_thumbnail_srcs['default'] = wp_get_attachment_image_url( $hero_image_id , 'news_listing' );
-                $news_listing_thumbnail_srcs['retina'] = wp_get_attachment_image_url( $hero_image_id , 'news-listing-retina' );
-            }
-        } elseif ( !empty( get_the_post_thumbnail() ) ) {
+        if ( !empty( get_the_post_thumbnail() ) ) {
             $news_listing_thumbnail_srcs['default'] = get_the_post_thumbnail_url( get_the_ID() , 'news-listing' );
             $news_listing_thumbnail_srcs['retina'] = get_the_post_thumbnail_url( get_the_ID() , 'news-listing-retina' );
         }
