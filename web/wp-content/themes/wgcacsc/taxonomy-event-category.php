@@ -75,7 +75,7 @@ get_header(); ?>
 					<?php else : ?>
                         <div class="small-12 columns">
 						<div class="offset-content">
-                            No events at the moment.
+                            <p>No events at the moment.</p>
                         </div>
                         </div>
 

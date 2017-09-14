@@ -6416,6 +6416,7 @@ span.wpcf7-list-item {
         padding-right: 0; }
 
 .past-archive-link {
+  clear: both;
   background-color: #e5e5e5;
   padding: 1.22222rem; }
 
