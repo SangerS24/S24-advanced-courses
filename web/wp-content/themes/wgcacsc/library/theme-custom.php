@@ -259,7 +259,36 @@ function wgcacsc_register_button( $event_id ) {
     $registration_link = get_field( 'registration_link' , $event_id );
 
     if ( !empty( $registration_link ) ) {
-        return '<a class="button event-register-button" href="'.$registration_link.'" target="_blank">Register</a>';
+        $register_text = '';
+        $event_cats = wp_get_object_terms( $event_id , 'event-category' );
+
+        if ( !empty( $event_cats) ) {
+            $event_cats = array_filter( $event_cats , 'remove_past_events_cat' );
+            if ( !empty($event_cats) ) {
+                $primary_cat = array_shift( $event_cats );
+                switch( $primary_cat->slug ) {
+                    case 'conferences':
+                        $register_text = 'Register';
+                    break;
+                    case 'courses':
+                        $register_text = 'Apply';
+                    break;
+                    case 'online-courses':
+                        $register_text = 'Join';
+                    break;
+                    case 'overseas-courses':
+                        $register_text = 'Apply';
+                    break;
+                    case 'retreats':
+                        $register_text = '';
+                    break;
+
+                    default:
+                        $register_text = 'Apply';
+                }
+            }
+        }
+        return '<a class="button event-register-button" href="'.$registration_link.'" target="_blank">'.$register_text.'</a>';
     }
 
     $registration_link_alternative = get_field( 'registration_button_replacement_adv' , $event_id );
@@ -267,6 +296,12 @@ function wgcacsc_register_button( $event_id ) {
     if ( !empty($registration_link_alternative) ) {
         return '<p>'.apply_filters( 'the_content' , $registration_link_alternative ).'</p>';
     }
+
+    return '';
+}
+
+function remove_past_events_cat( $e_cat_object) {
+    return $e_cat_object->slug != 'past-events';
 }
 
 //returns single event download
@@ -373,6 +408,7 @@ function wgcacsc_pre_get_posts( $query ) {
         $query->set( 'orderby' , 'meta_value_num date' );
         $query->set( 'meta_key' , 'start_date' );
         $query->set( 'order' , 'ASC' );
+        $query->set( 'posts_per_page' , -1 );
     }
 }
 
