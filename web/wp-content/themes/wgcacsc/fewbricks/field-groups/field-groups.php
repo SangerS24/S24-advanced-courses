@@ -230,8 +230,9 @@ $fg_event_registration_info->add_field(new acf_fields\text( 'Registration page l
     'instructions' => 'If left blank, the registration button will not appear and will be replaced by the text entered in the next field.'
 ]));
 
-$fg_event_registration_info->add_field(new acf_fields\text( 'Registration button replacement text' , 'registration_button_replacement' , '201707191720z' , [
-    'default_value' => 'Registration opens soon, contact the conference organiser.'
+$fg_event_registration_info->add_field(new acf_fields\wysiwyg( 'Registration button replacement text' , 'registration_button_replacement_adv' , '201709141030z' , [
+    'default_value' => '<p>Registration opens soon.<br /><a href="mailto:advancedcourses@wellcomegenomecampus.org">Email</a> for updates.</p>',
+    'toolbar' => 'Basic'
 ]) );
 
 $fg_event_registration_info->add_field(new acf_fields\wysiwyg( 'Pre-registration holding content' , 'holding_content' , '201707191720c' , [

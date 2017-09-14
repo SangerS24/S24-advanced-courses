@@ -262,10 +262,10 @@ function wgcacsc_register_button( $event_id ) {
         return '<a class="button event-register-button" href="'.$registration_link.'" target="_blank">Register</a>';
     }
 
-    $registration_link_alternative = get_field( 'registration_button_replacement' , $event_id );
+    $registration_link_alternative = get_field( 'registration_button_replacement_adv' , $event_id );
 
     if ( !empty($registration_link_alternative) ) {
-        return '<p>'.$registration_link_alternative.'</p>';
+        return '<p>'.apply_filters( 'the_content' , $registration_link_alternative ).'</p>';
     }
 }
 

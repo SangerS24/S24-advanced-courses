@@ -63,19 +63,6 @@ get_header(); ?>
 								</div>
                                 </div> <!-- End header wrappers-->
 
-                                <?php
-
-                                ////DO NOT SHOW CONTENT IF HOLDING CONTENT PRESENT AND USER IS NOT LOGGED IN////////
-
-                                $holding_content = get_field( 'holding_content' );
-
-                                if ( !empty( $holding_content ) && !is_user_logged_in() ) : ?>
-                                <div class="small-12 large-9 columns">
-                                    <div class="offset-content single-event-holding-content">
-                                    <?php echo apply_filters( 'the_content' , $holding_content ); ?>
-                                    </div>
-                                </div>
-                                <?php else: ?>
                                 <div class="small-12 large-3 event-side-block columns event-deadlines-register">
                                     <div class="event-side-block__section">
                                         <?php
@@ -106,7 +93,6 @@ get_header(); ?>
                                             echo wgcacsc_get_share_section( get_the_ID() );
                                         ?>
                                 </div> <!-- end other side sections -->
-                                <?php endif; ?>
 							</div>
 						</article>
 					<?php endwhile;?>
