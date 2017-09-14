@@ -91,10 +91,12 @@ get_header(); ?>
 
                     <?php echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html( $few_args ); ?>
 
+                    <?php if ($tax_id != 37) : ?>
                     <div class="offset-content past-archive-link">
                         <h5 class="h3">Past events</h5>
                         <a href="<?php echo get_term_link( 'past-events' , 'event-category'); ?>" class="component-download__link">Browse our events archive</a>
                     </div>
+                    <?php endif; ?>
 
                     <a class="back-to-top" id="back-to-top" href="#off-canvas-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_up.svg" alt="" /> Back to top </a>
 
