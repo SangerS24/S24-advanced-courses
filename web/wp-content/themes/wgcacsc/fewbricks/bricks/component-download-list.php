@@ -69,7 +69,7 @@ class component_download_list extends project_brick
                 $html .= '<li><a href="'.$file_url.'">'.$file_name.' ('.$filesize.')</a></li>';
 
             }
-            $html .= '</ul></div></div>';
+            $html .= '</ul></div>';
         }
 
 //        $file_title =  $this->get_field("download_title") ;
