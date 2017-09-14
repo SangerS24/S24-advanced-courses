@@ -25,15 +25,17 @@ add_filter( 'acf/fields/wysiwyg/toolbars' , 's24_toolbars'  );
 function s24_toolbars( $toolbars )
 {
 
+//    echo '<pre>'.print_r( $toolbars , 1 ).'</pre>';
+
     // Add a new toolbar called "Very Simple"
     // - this toolbar has only 1 row of buttons
     $toolbars['Full' ] = array();
     $toolbars['Full' ][1] = array('bold' , 'italic' , 'bullist', 'ctplist', 'numlist' , 'hr', 'link', 'unlink', 'wp_adv' );
-    $toolbars['Full'][2] = array( 'formatselect' ,  'table' , 'undo' , 'redo');
+    $toolbars['Full'][2] = array( 'formatselect' ,  'table' , 'pastetext' , 'undo' , 'redo');
 
     // remove the 'Basic' toolbar completely
     $toolbars['Basic' ] = array();
-    $toolbars['Basic'][1] = array( 'bold' , 'italic', 'link' , 'unlink');
+    $toolbars['Basic'][1] = array( 'bold' , 'italic', 'link' , 'unlink' , 'pastetext' );
 
     // return $toolbars - IMPORTANT!
     return $toolbars;
