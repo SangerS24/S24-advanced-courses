@@ -23,7 +23,7 @@
 
      <?php do_action( 'foundationpress_before_content' ); ?>
 
-     <div class="page__inner__content small-12 columns">
+     <div class="page__inner__content">
 
          <div class="main-content small-12 large-9 columns" id="main-content">
 
