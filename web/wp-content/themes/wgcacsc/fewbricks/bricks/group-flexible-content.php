@@ -47,6 +47,11 @@ class group_flexible_content extends project_brick
         $l->add_brick(new component_download('download_component', '060420161448b'));
         $fc->add_layout($l);
 
+        //download list
+        $l = new layout('', 'l20', '201709141428a');
+        $l->add_brick(new component_download_list('download_list_component', '201709141428b'));
+        $fc->add_layout($l);
+
         //collapsibles
         $l = new layout('', 'l12', '201707141515a');
         $l->add_brick(new component_collapsibles('collapsibles_component', '201707141515a'));

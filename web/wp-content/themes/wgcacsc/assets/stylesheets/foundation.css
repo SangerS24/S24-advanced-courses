@@ -6954,8 +6954,10 @@ a.client-item__inner {
     border-radius: 50%;
     background-color: #333333;
     position: absolute;
-    top: 1rem;
-    left: 1rem; }
+    top: 0.77778rem;
+    left: 0.77778rem; }
+  .component-download__link p {
+    margin-bottom: 0; }
   .has-image .component-download__link {
     padding-left: 0;
     line-height: 1.5rem; }

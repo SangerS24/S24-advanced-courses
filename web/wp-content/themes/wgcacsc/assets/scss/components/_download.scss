@@ -17,8 +17,11 @@
         background-color: $body-font-color;
 
         position: absolute;
-        top: rem-calc(18);
-        left: rem-calc(18);
+        top: rem-calc(14);
+        left: rem-calc(14);
+    }
+    p {
+        margin-bottom: 0;
     }
 
     .has-image &{
