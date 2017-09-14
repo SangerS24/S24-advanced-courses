@@ -67,8 +67,8 @@ class component_download extends project_brick
         if ( !empty($file_image) ) {
             $html .= '<img src="'.$file_image_src[0].'" alt="'.$file_title.'" />';
         }
-        $html .= '<span class="component-download__title">'.$file_title.'</span> ';
-        $html .= '<span class="component-download__size">('. $filesize .')</span>';
+        $html .= '<p><span class="component-download__title">'.$file_title.'</span> ';
+        $html .= '<span class="component-download__size">('. $filesize .')</span></p>';
         $html .= '</a>';
         $html .= '</div>';
 

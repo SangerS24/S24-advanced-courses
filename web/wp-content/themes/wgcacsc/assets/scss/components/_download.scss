@@ -3,7 +3,7 @@
 }
 
 .component-download__link {
-    display: inline-block;
+    display: block;
     font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
     font-size: rem-calc(18);
     line-height: rem-calc(40);
@@ -48,6 +48,13 @@
                 float: none;
                 display: inline-block;
                 vertical-align: middle;
+            }
+            p {
+                //margin-left: rem-calc(220);
+                display: inline-block;
+                vertical-align: middle;
+                width: calc(100% - 220px);
+                margin-bottom: 0;
             }
         }
     }

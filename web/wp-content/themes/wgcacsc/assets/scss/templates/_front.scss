@@ -178,6 +178,10 @@
           max-width: rem-calc(300);
           width: auto;
         }
+        p {
+          width: 100%;
+          padding: 0 rem-calc(40);
+        }
       }
     }
   }

@@ -6941,7 +6941,7 @@ a.client-item__inner {
   overflow: hidden; }
 
 .component-download__link {
-  display: inline-block;
+  display: block;
   font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
   line-height: 2.22222rem;
@@ -6975,7 +6975,12 @@ a.client-item__inner {
         max-height: 11.11111rem;
         float: none;
         display: inline-block;
-        vertical-align: middle; } }
+        vertical-align: middle; }
+      .has-image .component-download__link p {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 220px);
+        margin-bottom: 0; } }
 
 .container-360 {
   height: 13.88889rem;
@@ -7517,7 +7522,10 @@ p + ol {
         margin-right: auto;
         max-height: 16.66667rem;
         max-width: 16.66667rem;
-        width: auto; } }
+        width: auto; }
+      .front-newsletter-and-download .component-download .component-download__link p {
+        width: 100%;
+        padding: 0 2.22222rem; } }
 
 @media screen and (min-width: 65em) {
   .event-breadcrumb {
