@@ -280,7 +280,7 @@
 // this is to fix a bug in Foundation, not ideal but we didn't have time to make a proper fix and submit a PR
 .mobile-navigation .is-drilldown,
 .mobile-navigation .is-drilldown-submenu {
-    min-height: rem-calc(340) !important;
+    min-height: rem-calc(380) !important;
 }
 
 .side-menu-container {
