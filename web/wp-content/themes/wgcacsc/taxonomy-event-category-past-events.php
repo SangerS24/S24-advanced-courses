@@ -96,8 +96,9 @@ get_header(); ?>
                         if ( !empty( $past_events_array ) ) {
                             $past_event_html = '<div class="past-events-list offset-content">';
                             foreach ( $past_events_array as $past_events_category ) {
-                                $past_event_html .= '<h4>'.$past_events_category['object']->name.'</h4>';
+
                                 if ( !empty($past_events_category['years'] ) ) {
+                                    $past_event_html .= '<h4>'.$past_events_category['object']->name.'</h4>';
                                     krsort( $past_events_category['years']  );
                                     $past_event_html .= '<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">';
                                     //accordion items
