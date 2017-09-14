@@ -43,7 +43,7 @@ class component_hero_list extends project_brick
             'instructions' => 'Hero images display full width at the top of the page in question.'
         ]))
             ->add_sub_field(new acf_fields\image('Image', 'hero_image', '290720161214b', [
-                'instructions' => 'Ideal dimensions: 2560 pixels wide and 1700 pixels tall.<br />Minimum dimensions: 1280 pixels wide, 350 pixels tall'
+                'instructions' => 'Required dimensions: 2560 pixels wide and 800 pixels tall.<br />Minimum dimensions: 1280 pixels wide, 400 pixels tall'
             ]))
         );
 
