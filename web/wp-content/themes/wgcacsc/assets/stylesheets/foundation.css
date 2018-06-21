@@ -7174,6 +7174,7 @@ p + ol {
   border-bottom: 0.05556rem solid #e5e5e5; }
 
 .accordion-content .component {
+  width: auto;
   max-width: none;
   margin-left: 0;
   margin-right: 0; }

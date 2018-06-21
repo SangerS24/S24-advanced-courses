@@ -94,7 +94,7 @@ get_header(); ?>
                         }
 
                         if ( !empty( $past_events_array ) ) {
-                            $past_event_html = '<div class="past-events-list offset-content">';
+                            $past_event_html = '<div class="past-events-list --offset-content">';
                             foreach ( $past_events_array as $past_events_category ) {
 
                                 if ( !empty($past_events_category['years'] ) ) {
