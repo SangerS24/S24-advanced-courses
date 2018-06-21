@@ -42,6 +42,9 @@
   font-size: rem-calc(16);
   padding: rem-calc(20) rem-calc(10) rem-calc(57);
   position: relative;
+
+  p {margin-bottom: rem-calc(10); }
+
   .component-teasers__read-more {
     display: block;
     position: absolute;

@@ -7414,6 +7414,8 @@ p + ol {
   font-size: 0.88889rem;
   padding: 1.11111rem 0.55556rem 3.16667rem;
   position: relative; }
+  .component-teasers__teaser__text-wrapper p {
+    margin-bottom: 0.55556rem; }
   .component-teasers__teaser__text-wrapper .component-teasers__read-more {
     display: block;
     position: absolute;
