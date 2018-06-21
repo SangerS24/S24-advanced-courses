@@ -94,7 +94,7 @@ get_header(); ?>
                     <?php if ($tax_id != 37) : ?>
                     <div class="offset-content past-archive-link">
                         <h5 class="h3">Past events</h5>
-                        <a href="<?php echo get_term_link( 'past-events' , 'event-category'); ?>" class="component-download__link">Browse our events archive</a>
+                        <a href="<?php echo get_term_link( 'past-events' , 'event-category'); ?>" class="">Browse our events archive</a>
                     </div>
                     <?php endif; ?>
 
