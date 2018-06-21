@@ -34,8 +34,18 @@
     display: none;
 
 }
+
+.latest-news__heading {
+
+    font-size: rem-calc(24);
+    line-height: (36/24);
+
+}
+
 .news-and-flexible-content .section-heading--video {
 
     display: block;
+    font-size: rem-calc(24);
+    line-height: (36/24);
 
 }

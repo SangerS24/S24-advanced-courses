@@ -432,7 +432,7 @@ function wgcacsc_get_latest_news(){
         return '';
     }
 
-    $html = '<div class="--offset-content"><h2>Latest news</h2>';
+    $html = '<div class="--offset-content"><h2 class="latest-news__heading">Latest news</h2>';
     $html .= '<div class="latest-news-list">';
     foreach ( $latest_news as $latest_news_item ) {
         $news_listing_thumbnail_srcs = array();

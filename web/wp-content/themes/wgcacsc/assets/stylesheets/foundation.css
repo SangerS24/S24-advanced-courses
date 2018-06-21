@@ -6995,8 +6995,14 @@ a.client-item__inner {
 .section-heading--video {
   display: none; }
 
+.latest-news__heading {
+  font-size: 1.33333rem;
+  line-height: 1.5; }
+
 .news-and-flexible-content .section-heading--video {
-  display: block; }
+  display: block;
+  font-size: 1.33333rem;
+  line-height: 1.5; }
 
 .component-download {
   overflow: hidden;
@@ -7017,6 +7023,11 @@ a.client-item__inner {
 .component-download__link,
 .component-download__heading {
   color: #fefefe; }
+
+.component-download__heading,
+.component-newsletter__title {
+  font-size: 1.22222rem;
+  line-height: 1.22727; }
 
 .front-newsletter-and-download .row {
   padding: 0;
