@@ -34,6 +34,10 @@ get_header(); ?>
 
 								<div class="offset-content">
 									<h1 class="page-title"><?php the_title(); ?></h1>
+                                    <span class="h3 event-header__date-range"><?php echo get_the_date('d F Y'); ?></span>
+
+									<?php get_template_part( 'template-parts/share' ); ?>
+
 								</div>
 
 								<?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html(); ?>

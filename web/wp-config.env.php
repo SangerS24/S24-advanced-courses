@@ -28,7 +28,7 @@ define( 'WP_ENV',
         ? 'sanger-'.$matches[1]
         : ( preg_match( '/^.*[.]s24[.]net$/', $hostname )
             ? 'staging'
-            : ( preg_match( '/^.*[.]dev$/', $hostname )
+            : ( preg_match( 'local[.]/^.*[.]org$/', $hostname )
                 ? 'development'
                 : 'development'
             )

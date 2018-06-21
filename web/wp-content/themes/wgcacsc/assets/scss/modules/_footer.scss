@@ -7,8 +7,8 @@
 
 	img {
 		display: inline-block;
-		margin: 5px 0 0 0;
-		vertical-align: text-top;
+		margin: 0 rem-calc(5) 0 0;
+		vertical-align: middle;
 // 		width: 12px;
 	}
 
@@ -17,10 +17,29 @@
 
 .footer-container {
 	margin-top: rem-calc(30);
+	position: relative;
 
 	@include breakpoint(large) {
 
 		//margin-top: rem-calc(70);
+
+	}
+
+	&:before {
+
+		content: " ";
+		display: block;
+		width: rem-calc(400);
+		height: rem-calc(400);
+		background: url('../images/gem.svg') no-repeat center center;
+		background-size: rem-calc(400) rem-calc(400);
+
+		position: absolute;
+		// dependent on the height of the social links (not robust)
+		top: rem-calc(- 336);
+		right: rem-calc(- 60);
+		
+		z-index: 1;
 
 	}
 
@@ -29,8 +48,8 @@
 
 .footer {
 	padding-top: rem-calc(20);
-	background: url('../images/footer_bg.svg') no-repeat center center;
-	background-size: auto 220px;
+	//background: url('../images/footer_bg.svg') no-repeat center center;
+	//background-size: auto 220px;
     //
 	//padding: rem-calc(80) 0 0 0;
     //
@@ -47,19 +66,20 @@
 }
 
 .footer__top {
-	background-color: rgba(255,255,255, 0.7);
-	padding: rem-calc(8) 0;
-	text-align: center;
+	//background-color: rgba(255,255,255, 0.7);
+	border-top: 1px solid $light-gray;
+	padding: rem-calc(29);
+	//text-align: center;
 	img {
-		display: block;
-		margin: 0 auto;
-		width: rem-calc(165);
+		display: inline-block;
+		//margin: 0 auto;
+		width: rem-calc(187);
 	}
 }
 
 .footer__inner {
 
-	background: #333333;
+	//background: #333333;
 	padding: rem-calc(15) 0 rem-calc(12) 0;
 	text-align: center;
 	width: 100%;
@@ -229,14 +249,16 @@
 	a {
 
 		display: block;
+		color: $secondary-color;
 
 		@include breakpoint(large) {
 			transition: opacity .25s ease-in-out;
-			opacity: 0.8;
+			//opacity: 0.8;
 
 			&:hover {
 
-				opacity: 1;
+				//opacity: 1;
+				color: $black;
 
 			}
 
@@ -244,9 +266,10 @@
 
 	}
 	
-	img {
+	svg {
 
 		display: block;
+		//fill: currentColor;
 		
 	}
 
@@ -256,7 +279,7 @@
 
 .footer__outer {
 
-	background: rgba(0, 0, 0, 0.5);
+	background: $black;
 	color: #ffffff;
 	font-size: rem-calc(12);
 	padding: rem-calc(15) 0;
@@ -306,14 +329,14 @@ p.copyright {
 
 	@include breakpoint(medium) {
 
-		text-align: right;
+		//text-align: right;
 
 	}
 }
 
 @include breakpoint(medium) {
 
-	.copyright {
+	.footer-links {
 
 		text-align: right;
 

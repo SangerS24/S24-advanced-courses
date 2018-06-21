@@ -45,10 +45,7 @@ EOD;
             'default_value' => 'Sign up'
         ]));
 
-        $this->add_field(new acf_fields\text( 'Link to newsletter archive text' , 'archive_link' , '201707151548f' , [
-            'default_value' => 'See examples of our newsletter',
-            'instructions' => 'Leave blank to omit the link'
-        ]));
+        $this->add_field(new acf_fields\wysiwyg( 'Content' , 'archive_link' , '201707151548f'));
     }
 
     /**
@@ -56,7 +53,7 @@ EOD;
      */
     public function get_brick_html($args = array())
     {
-        $html = '<div class="component component-newsletter "><div class="offset-content">';
+        $html = '<div class="component component-newsletter " data-equalizer-watch="front-newsletter-and-download"><div class="--offset-content">';
         $html .= '<h5 class="component-newsletter__title">'.$this->get_field( 'title' ).'</h5>';
         $html .= apply_filters( 'the_content' , $this->get_field( 'text' ) );
 
@@ -99,7 +96,7 @@ EOD;
 								<!-- Email - the user's email address -->
 								<p class="mailing-signup__group">
 									<label for="Email" class="mailing-signup__label">$email_label</label>
-									<input class="mailing-signup__input" id="Email" placeholder="Email address" type="text" name="Email">
+									<input class="mailing-signup__input" id="Email" placeholder="E.g. jane.smith@domain.co.uk" type="text" name="Email">
 								</p>
 								<input class="button button-cta mailing-signup__button" type="submit" name="Submit" value="$submit_label">
 							</form>
@@ -108,9 +105,9 @@ EOD;
 
         $archive_link_text = $this->get_field( 'archive_link' );
         if( !empty($archive_link_text) ) {
-            $newsletter_archive_url = get_permalink( 1102 );
+//            $newsletter_archive_url = get_permalink( 1102 );
 
-            $html .= '<a href="'.$newsletter_archive_url.'" class="component-newsletter__archive-link">'.$archive_link_text.'</a>';
+            $html .= '<div>'.$archive_link_text.'</div>';
         }
         $html .= '</div></div>';
         return $html;

@@ -34,35 +34,41 @@
 
                        <?php
 
+                       echo (new fewbricks\bricks\component_cta_list_home('events_call_to_action'))->get_html();
                         echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html();
-                        echo (new fewbricks\bricks\component_cta_list_home('events_call_to_action'))->get_html();
 
                        $spotlight_events_title = get_field('spotlight_events_header' );
 
-                       echo '<div class="offset-content">';
+                       echo '<div class="--offset-content">';
                        if ( !empty($spotlight_events_title) ) {
-                           echo '<h2>'.$spotlight_events_title.'</h2>';
+                           echo '<h2 class="section-heading--centered">'.$spotlight_events_title.'</h2>';
                        }
 
                        echo (new fewbricks\bricks\component_teasers('front_events_teasers'))->get_html();
                        echo '</div>';
 
-                       echo wgcacsc_get_latest_news();
-
                        ?>
 
-                       <div class="offset-content front-newsletter-and-download">
-                           <div class="row">
-                               <?php
-                                    echo (new fewbricks\bricks\component_newsletter('front_newsletter'))->get_html();
-                               echo (new fewbricks\bricks\component_download('front_download'))->get_html();
-                               ?>
+                       <div class="--offset-content front-newsletter-and-download">
+                           <div class="row" data-equalizer="front-newsletter-and-download">
+                               <div class="columns small-12 medium-6">
+                                   <?php echo (new fewbricks\bricks\component_download('front_download'))->get_html(); ?>
+                               </div>
+	                           <div class="columns small-12 medium-6">
+		                           <?php echo (new fewbricks\bricks\component_newsletter('front_newsletter'))->get_html(); ?>
+                               </div>
                            </div>
                        </div>
 
-                       <?php
+                       <div class="row news-and-flexible-content">
+                           <div class="columns small-12 medium-6">
+	                           <?php echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html(); ?>
+                           </div>
+                           <div class="columns small-12 medium-6">
+	                           <?php echo wgcacsc_get_latest_news(); ?>
+                           </div>
+                       </div>
 
-                        echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html(); ?>
                    </div>
                </article>
              <?php endwhile;?>

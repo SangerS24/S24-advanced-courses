@@ -66,7 +66,7 @@
 
         border: 0 none;
         color: #222222;
-        font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+        font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
         font-size: rem-calc(14);
         height: rem-calc(30);
         padding: rem-calc(9);
@@ -104,13 +104,14 @@
         height: rem-calc(31);
         margin-left: rem-calc(6);
         width: rem-calc(30);
-        background-color: $light-gray;
-        background-image: url('../images/next_arrow_highlight.svg');
+        background-color: $secondary-color;
+        color: $black;
+        background-image: url('../images/search-arrow.svg');
         
         &:hover,
         &:focus {
             background-color: $primary-color;
-            background-image: url('../images/next_arrow.svg');
+            background-image: url('../images/search-arrow.svg');
         }
 
     }

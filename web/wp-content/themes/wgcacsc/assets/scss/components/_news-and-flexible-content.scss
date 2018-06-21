@@ -1,0 +1,41 @@
+.news-and-flexible-content {
+
+    padding: 0;
+    margin-left: rem-calc(-10);
+    margin-right: rem-calc(-10);
+
+    .columns {
+        padding: 0 rem-calc(10) 0 rem-calc(10);
+    }
+
+}
+
+.latest-news-item {
+
+    border-bottom: 1px solid $light-gray;
+    padding-bottom: rem-calc(20) !important;
+
+    + .latest-news-item {
+
+        margin-top: rem-calc(20);
+
+    }
+
+}
+
+.news-item__excerpt {
+
+    margin-bottom: 0;
+
+}
+
+.section-heading--video {
+
+    display: none;
+
+}
+.news-and-flexible-content .section-heading--video {
+
+    display: block;
+
+}

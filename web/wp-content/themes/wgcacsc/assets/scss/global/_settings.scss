@@ -51,25 +51,32 @@ $global-font-size: 18px;
 //$global-width: rem-calc(1328);
 $global-width: rem-calc(1280);
 $global-lineheight: 1.5;
+//$foundation-palette: (
+//  primary: #9B26B6,
+//  secondary: #777,
+//  success: #3adb76,
+//  warning: #ffae00,
+//  alert: #ec5840,
+//);
 $foundation-palette: (
-  primary: #9B26B6,
-  secondary: #777,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #ec5840,
+    primary: #E75153,
+    secondary: #EA994D,
+    success: #3adb76,
+    warning: #ffae00,
+    alert: #ec5840,
 );
 $light-gray: #e5e5e5;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$black: #000;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: #333333;
-$body-font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: rem-calc(28);
 $global-padding: 1rem;
-$global-weight-normal: normal;
+$global-weight-normal: 300;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
@@ -104,8 +111,8 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: 'futura-medium-bold';
-$header-font-weight: $global-weight-normal;
+$header-font-family: 'web-apercu-mono';
+$header-font-weight: 400;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (

@@ -31,7 +31,7 @@
   h6 {
     font-size: rem-calc(16);
     line-height: rem-calc(24);
-    font-family: $header-font-family;
+    font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
   }
 
   ul {
@@ -47,5 +47,5 @@
 }
 
 .event-deadlines__date {
-  font-family: $header-font-family;
+  font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
 }

@@ -7,7 +7,6 @@
 
 }
 
-
 .cta-item {
 
     padding: rem-calc(10);
@@ -15,7 +14,6 @@
     height: rem-calc(240);
 
 }
-
 
 .cta-item--full {
 }
@@ -28,8 +26,8 @@
     left: rem-calc(10);
     z-index: 1;
     overflow: hidden; //hide bits of images that overflow
+    opacity: 0.1;
 }
-
 
 .cta-item__image {
 
@@ -52,24 +50,23 @@
 
 }
 
-
 .cta-item__link {
 
     bottom: rem-calc(10);
-    font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
-    font-size: rem-calc(22);
+    font-family: 'web-apercu-mono', Helvetica, Roboto, Arial, sans-serif;
+    font-size: rem-calc(24);
     left: rem-calc(10);
     position: absolute;
     right: rem-calc(10);
     text-align: center;
     text-transform: uppercase;
     top: rem-calc(10);
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba($secondary-color, 0.4);
     color: $body-font-color;
     z-index: 2;
     &:hover {
-        background-color: rgba(95, 37, 159, 0.7);
-        color: $white;
+        background-color: rgba($secondary-color, 1);
+        color: $body-font-color;
     }
 
     &:before {
@@ -87,9 +84,21 @@
         display: inline-block;
         vertical-align: middle;
 
+        &:after {
+
+            content: " ";
+            display: inline-block;
+            background: url('../images/cta-chevron.svg') no-repeat;
+            background-size: rem-calc(11) rem-calc(20);
+            width: rem-calc(11);
+            height: rem-calc(20);
+            vertical-align: text-top;
+            margin-left: 0.5rem;
+
+        }
+
     }
 
 }
-
 
 //     background-image: url('../images/next_arrow.svg');

@@ -2,7 +2,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #222222;
 }
 
-h4, h6 {
+h2, h3, h4, h5, h6 {
     font-family: $body-font-family;
 }
 
@@ -49,7 +49,7 @@ h4, h6 {
 
 bold, strong {
     font-weight: normal;
-    font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+    font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
 }
 
 iframe {
@@ -102,16 +102,16 @@ ul li {
 
 .section-heading {
 
-    color: #666666;
-    font-family: 'futura-light', Helvetica, Roboto, Arial, sans-serif;
+    color: #000;
+    font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
     font-size: rem-calc(22);
     line-height: rem-calc(28);
     text-transform: none;
 
     @include breakpoint(medium) {
 
-        font-size: rem-calc(24);
-        line-height: rem-calc(32);
+        font-size: rem-calc(28);
+        line-height: rem-calc(36);
 
     }
 
@@ -120,23 +120,23 @@ ul li {
 
 .section-heading--dark {
 
-    color: #222222;
+    color: #000;
 
 }
 
 
 .section-heading--normal {
 
-    color: #222222;
-    font-family: 'futura-medium', Helvetica, Roboto, Arial, sans-serif;
+    color: #000;
+    font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
 
 }
 
 
 .section-heading--bold {
 
-    color: #222222;
-    font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+    color: #000;
+    font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
     font-size: rem-calc(26);
     text-transform: uppercase;
 }
@@ -144,8 +144,8 @@ ul li {
 
 .section-heading-small {
 
-    color: #222222;
-    font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+    color: #000;
+    font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
     font-size: rem-calc(18);
     text-align: center;
 
@@ -204,5 +204,18 @@ ul li {
         margin-right: rem-calc(120);
 
     }
+
+}
+
+.visuallyhidden {
+
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 
 }

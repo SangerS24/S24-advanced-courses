@@ -424,7 +424,7 @@ add_action('save_post', 'wgcacsc_add_default_date');
 //GET LATEst news for front page
 function wgcacsc_get_latest_news(){
     $args = array(
-        'posts_per_page' => 2
+        'posts_per_page' => 3
     );
     $latest_news = get_posts( $args );
 
@@ -432,7 +432,7 @@ function wgcacsc_get_latest_news(){
         return '';
     }
 
-    $html = '<div class="offset-content"><h2>Latest news</h2>';
+    $html = '<div class="--offset-content"><h2>Latest news</h2>';
     $html .= '<div class="latest-news-list">';
     foreach ( $latest_news as $latest_news_item ) {
         $news_listing_thumbnail_srcs = array();
@@ -442,10 +442,10 @@ function wgcacsc_get_latest_news(){
             $news_listing_thumbnail_srcs['retina'] = get_the_post_thumbnail_url( $latest_news_item->ID , 'news-listing-retina' );
         }
 
-        $html .= '<article class="small-12 medium-6 columns latest-news-item">';
+        $html .= '<article class="row latest-news-item">';
 
         if ( !empty( $news_listing_thumbnail_srcs ) ) {
-           $html .= '<div class="content-item__visual">';
+           $html .= '<div class="columns small-12 medium-2 content-item__visual">';
            $html .= '<div class="news-item__image">';
            $html .= '<picture>';
            $html .= '<source media="(min-width: 200px)" srcset="'.$news_listing_thumbnail_srcs['retina'].' 2x, '.$news_listing_thumbnail_srcs['default'].' 1x" />';
@@ -456,11 +456,11 @@ function wgcacsc_get_latest_news(){
            $html .= '</div>';
         }
 
-        $html .= '<p class="news-item__date"><time class="updated" datetime="'.get_the_time( $latest_news_item->ID , 'c' ).'">'.sprintf( __( '%1$s', 'foundationpress' ), get_the_date( 'd M Y', $latest_news_item->ID ) ).'</time></p>';
-        $html .= '<h3 class="content-item__title">'.$latest_news_item->post_title.'</h3>';
+        $html .= '<div class="columns small-12 medium-10">';
+        $html .= '<h3 class="content-item__title"><a href="'.get_permalink( $latest_news_item->ID ).'">'.$latest_news_item->post_title.'</a></h3>';
         $html .= '<p class="news-item__excerpt">'.get_field( 'page_sub_heading_section_heading' ,$latest_news_item->ID ).'</p>';
-        $html .= '<p><a class="button button-cta" href="'.get_permalink( $latest_news_item->ID ).'">Read More</a></p>';
-        $html .= '</article>';
+//        $html .= '<p><a class="button button-cta" href="'.get_permalink( $latest_news_item->ID ).'">Read More</a></p>';
+        $html .= '</div></article>';
     }
     $html .= '</div>';
     $html .= '</div>';

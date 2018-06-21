@@ -9,4 +9,13 @@
 
 a {
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-weight: 400;
+  text-decoration: underline;
+
+  // If this is the parent
+  h1 &, h2 &, h3 &, h4 &, h5 &, h6 & {
+
+    text-decoration: none;
+
+  }
 }

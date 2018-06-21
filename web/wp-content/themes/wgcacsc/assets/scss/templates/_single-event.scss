@@ -71,6 +71,7 @@
 .single-event {
   .page-title {
     line-height: 1.2;
+    color: $primary-color;
   }
 }
 
@@ -147,13 +148,16 @@
 //register button
 
 .event-register-button {
-  font-family: $header-font-family;
+  background-color: $secondary-color;
+  color: $black;
+  font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
   font-size: rem-calc(18);
   padding-bottom: rem-calc(17);
   padding-top: rem-calc(17);
   margin-bottom: rem-calc(35);
   max-width: rem-calc(280);
-  text-transform: uppercase;
+  text-transform: none;
+  text-decoration: none;
   width: 100%;
 }
 
@@ -169,7 +173,7 @@
 .event-questions__title {
   font-size: rem-calc(16);
   line-height: rem-calc(24);
-  font-family: $header-font-family;
+  font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
 }
 
 //event-shares

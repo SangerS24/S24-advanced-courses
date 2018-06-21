@@ -84,11 +84,11 @@ Run on your local Mac, note that you may need to change the local path for this 
 TBC
 ```
 
-### Sync files from staging to local dev
+### Staging → Development
 
 ```
 #!bash
-TBC
+rsync -e 'ssh' -av studio24@goldeneye.studio24.net:/var/www/wgcc/wascc/staging/web/wp-content/uploads/ ~/Sites/wellcome-genome-campus-advanced-courses-and-scientific/web/wp-content/uploads/
 ```
 
 ## Installation
@@ -113,14 +113,14 @@ TBC
 
 The project uses Bower for JavaScript dependencies. For the initial build run:
 
-    cd web/wp-content/themes/wgccc
+    cd web/wp-content/themes/wgcacsc
     bower install
 
 ### Gulp
 
 This project uses Gulp to build the Sass and JavaScript. For the initial build run:
 
-    cd web/wp-content/themes/wgccc
+    cd web/wp-content/themes/wgcacsc
     # Install project dependencies
     sudo npm install
 

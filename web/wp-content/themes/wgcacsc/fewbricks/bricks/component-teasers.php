@@ -52,9 +52,9 @@ class component_teasers extends project_brick
     {
         $html = '';
         $teaser_count = sizeof( $this->get_field( 'content_items' ) );
-        if ( $teaser_count > 3 ) {
-            $teaser_count = 2;
-        }
+//        if ( $teaser_count > 3 ) {
+//            $teaser_count = 2;
+//        }
 
         if( $this->have_rows( 'content_items' ) ) {
             $eq_id = 'eq-'.rand();

@@ -22,14 +22,15 @@ class component_video extends project_brick
     public function set_fields()
     {
 
-        $this->add_field(new acf_fields\text('Heading', 'heading', '150820161414a'));
-
         $this->add_field(
             (new acf_fields\oembed('URL', 'url', '140820161415a'))
                 ->set_settings([
                     'instructions' => 'Enter the URL of the YouTube or Vimeo video that you want to display.'
                 ])
         );
+
+	    $this->add_field(new acf_fields\text('Heading', 'heading', '150820161414a'));
+	    $this->add_field(new acf_fields\wysiwyg('Content', 'content', '201806201427a'));
 
     }
 
@@ -39,7 +40,7 @@ class component_video extends project_brick
     protected function get_brick_html($args = array())
     {
 
-        $html = '<h3 class="section-heading section-heading--centered">' . $this->get_field('heading') . '</h3>';
+        $html = '<h3 class="section-heading section-heading--video">Event video</h3>';
 
         if (false !== ($url = $this->get_video_url())) {
 
@@ -51,6 +52,9 @@ class component_video extends project_brick
                 </div>';
 
         }
+
+	    $html .= '<h5>' . $this->get_field('heading') . '</h5>';
+	    $html .= '<div>' . $this->get_field('content') . '</div>';
 
         return $html;
 

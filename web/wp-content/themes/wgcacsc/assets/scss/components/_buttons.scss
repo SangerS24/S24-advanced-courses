@@ -11,10 +11,12 @@
 .button-cta,
 .room-search__submit,
 .wpcf7-submit  {
-    font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+    font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
+    font-weight: 400;
+    text-decoration: none;
     font-size: 14px;
     margin-bottom: 0;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .button--inline {

@@ -29,18 +29,18 @@
 
 .site-header__inner {
 
-    padding: rem-calc(25 10);
+    padding: rem-calc(26 10);
 
     @include breakpoint(medium) {
 
-        padding: rem-calc(25 20);
+        padding: rem-calc(26 20);
 
     }
 
 
     @include breakpoint(large) {
 
-        padding: rem-calc(25 20 20);
+        padding: rem-calc(26 20 26 20);
 
     }
 
@@ -50,7 +50,7 @@
 .site-logo {
 
     display: inline-block;
-    width: rem-calc(192);
+    width: rem-calc(260);
 
     img {
 
@@ -61,7 +61,7 @@
 
     @include breakpoint(500) {
 
-        width: rem-calc(288);
+        width: rem-calc(483);
 
     }
 

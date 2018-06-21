@@ -59,6 +59,11 @@ get_header(); ?>
                                                 echo '<span class="h5 event-header__location">'.$event_location.'</span>';
                                             }
                                         ?>
+
+
+	                                    <?php get_template_part( 'template-parts/share' ); ?>
+
+
                                     </div>
 								</div>
                                 </div> <!-- End header wrappers-->
@@ -98,7 +103,7 @@ get_header(); ?>
 					<?php endwhile;?>
 
                     <div class="small-12 large-9 columns">
-					    <a class="back-to-top" id="back-to-top" href="#off-canvas-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_up.svg" alt="" /> Back to top </a>
+					    <a class="back-to-top" id="back-to-top" href="#off-canvas-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_up.svg" alt="" /><span>Back to top</span></a>
                     </div>
 				</div>
 

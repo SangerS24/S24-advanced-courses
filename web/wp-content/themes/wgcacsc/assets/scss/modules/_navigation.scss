@@ -94,7 +94,8 @@
 
             border-bottom: 1px solid #666666;
             color: #E5E5E5;
-            font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+            font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
+            text-decoration: none;
             font-size: rem-calc(14);
             //padding: rem-calc(12) rem-calc(20);
             position: relative;
@@ -119,7 +120,7 @@
                 position: absolute;
                 right: rem-calc(30);
                 top: rem-calc(11);
-                width: rem-calc(10);
+                width: rem-calc(8);
 
             }
 
@@ -160,7 +161,7 @@
 
             border-bottom-color: #666666;
             color: #CCCCCC;
-            font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+            font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
             font-size: rem-calc(12);
 
         }
@@ -285,7 +286,7 @@
 
 .side-menu-container {
     h5 {
-        text-transform: uppercase;
+        //text-transform: uppercase;
         a, a:visited {
             color: #222222;
             &:hover {
