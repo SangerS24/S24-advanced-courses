@@ -13,12 +13,27 @@
   background-color: $light-gray;
   margin-bottom: 0;
   text-decoration: none;
+
   &:before {
+
     color: $primary-color;
+    content: " ";
+    width: rem-calc(15);
+    height: rem-calc(15);
+    background-image: url('../images/collapsibles-plus.svg');
+    background-size: rem-calc(15) rem-calc(15);
   }
+
   &:focus {
     background-color: $light-gray;
   }
+}
+
+.is-active > .accordion-title:before {
+
+  background-image: url('../images/collapsibles-minus.svg');
+  content: " ";
+
 }
 
 .accordion-content {

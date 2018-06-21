@@ -90,6 +90,7 @@ ul li {
 
 .page-title {
 
+    color: $primary-color;
     margin-bottom: rem-calc(9);
 
     @include breakpoint(medium) {

@@ -34,7 +34,7 @@ get_header(); ?>
 
 								<div class="offset-content">
 									<h1 class="page-title"><?php the_title(); ?></h1>
-                                    <span class="h3 event-header__date-range"><?php echo get_the_date('d F Y'); ?></span>
+                                    <p><span class="h3 event-header__date-range"><?php echo get_the_date('d F Y'); ?></span></p>
 
 									<?php get_template_part( 'template-parts/share' ); ?>
 
