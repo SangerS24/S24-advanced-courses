@@ -1,11 +1,11 @@
 .component-newsletter{
 
   //background-color: $light-gray;
-  background: $light-gray url('../images/gem.svg') no-repeat bottom 30px right -50px;
+  background: $super-light-gray url('../images/gem.svg') no-repeat bottom 30px right -50px;
   background-size: rem-calc(300) rem-calc(211);
   color: $black;
 
-  padding: rem-calc(30);
+  padding: rem-calc(30) rem-calc(30) 0 rem-calc(30);
 
   overflow: hidden;
   label {

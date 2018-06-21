@@ -7002,7 +7002,7 @@ a.client-item__inner {
   overflow: hidden;
   background-color: #E75153;
   color: #fefefe;
-  padding: 1.66667rem; }
+  padding: 1.66667rem 1.66667rem 0 1.66667rem; }
 
 /* a */
 .component-download__thumblink {
@@ -7348,11 +7348,11 @@ p + ol {
       clear: left; } }
 
 .component-newsletter {
-  background: #e5e5e5 url("../images/gem.svg") no-repeat bottom 30px right -50px;
+  background: #F6F6F6 url("../images/gem.svg") no-repeat bottom 30px right -50px;
   -webkit-background-size: 16.66667rem 11.72222rem;
           background-size: 16.66667rem 11.72222rem;
   color: #000;
-  padding: 1.66667rem;
+  padding: 1.66667rem 1.66667rem 0 1.66667rem;
   overflow: hidden; }
   .component-newsletter label {
     margin-bottom: 0.27778rem; }
@@ -7410,7 +7410,7 @@ p + ol {
     margin: auto; }
 
 .component-teasers__teaser__text-wrapper {
-  background-color: #e5e5e5;
+  background-color: #F6F6F6;
   font-size: 0.88889rem;
   padding: 1.11111rem 0.55556rem 3.16667rem;
   position: relative; }
