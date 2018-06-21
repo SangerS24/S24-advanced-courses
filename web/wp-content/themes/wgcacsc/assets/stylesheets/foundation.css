@@ -6647,7 +6647,8 @@ body#tinymce {
   font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
   font-weight: 400;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.88889rem;
+  line-height: 1.1875;
   margin-bottom: 0;
   text-transform: none; }
 
@@ -7819,6 +7820,7 @@ p + ol {
   color: #000;
   font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
+  line-height: 1.22222;
   padding-bottom: 0.94444rem;
   padding-top: 0.94444rem;
   margin-bottom: 1.94444rem;
