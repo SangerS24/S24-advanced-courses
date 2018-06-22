@@ -6902,7 +6902,7 @@ a.client-item__inner {
 .cta-item {
   padding: 0.55556rem;
   position: relative;
-  height: 13.33333rem; }
+  height: 8.88889rem; }
 
 .cta-item__picture-wrapper {
   position: absolute;
@@ -6947,7 +6947,7 @@ a.client-item__inner {
   .cta-item__link:before {
     content: '';
     width: 0;
-    height: 12.22222rem;
+    height: 7.77778rem;
     display: inline-block;
     vertical-align: middle; }
   .cta-item__link span {

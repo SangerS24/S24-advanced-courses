@@ -11,7 +11,7 @@
 
     padding: rem-calc(10);
     position: relative;
-    height: rem-calc(240);
+    height: rem-calc(160);
 
 }
 
@@ -72,7 +72,8 @@
     &:before {
         content: '';
         width: 0;
-        height: rem-calc(220);
+        // hack to center align text
+        height: rem-calc(140);
         display: inline-block;
         vertical-align: middle;
     }
