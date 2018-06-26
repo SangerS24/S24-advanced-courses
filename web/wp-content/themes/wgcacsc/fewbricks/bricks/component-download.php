@@ -67,12 +67,12 @@ class component_download extends project_brick
         }
 
         $html = '<div data-equalizer-watch="front-newsletter-and-download" class="component component-download --offset-content '.( ( !empty($file_image) ) ? 'has-image' : '' ).'">';
-        $html .=  '<a href="' . $file_url . '" class="component-download__thumblink">';
         if ( !empty($file_image) ) {
+	        $html .=  '<a href="' . $file_url . '" class="component-download__thumblink">';
             $html .= '<img src="'.$file_image_src[0].'" alt="'.$file_title.'" /></a>';
         }
         $html .= '<h5 class="component-download__heading">'.$file_heading.'</h5> ';
-        $html .= '<div>'.$file_content.'</div> ';
+        $html .= '<div class="component-download__content">'.$file_content.'</div> ';
 	    $html .= '<p><a class="component-download__link" href="' . $file_url . '"><span class="component-download__title">'.$file_title.'</span> ';
         $html .= '<span class="component-download__size">('. $filesize .')</span></p>';
         $html .= '</a>';

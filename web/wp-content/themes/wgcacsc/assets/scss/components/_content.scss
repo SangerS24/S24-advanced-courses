@@ -1,3 +1,17 @@
 .component-content {
 
 }
+
+.content-group {
+
+    padding-left: rem-calc(30);
+
+    @include breakpoint(761) {
+
+        margin-left: auto;
+        margin-right: auto;
+        max-width: rem-calc(760);
+
+    }
+
+}

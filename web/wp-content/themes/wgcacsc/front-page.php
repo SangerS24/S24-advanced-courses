@@ -41,7 +41,7 @@
 
                        echo '<div class="--offset-content">';
                        if ( !empty($spotlight_events_title) ) {
-                           echo '<h2 class="section-heading--centered">'.$spotlight_events_title.'</h2>';
+                           echo '<h2 class="heading--xxl section-heading--centered section-heading--spotlight">'.$spotlight_events_title.'</h2>';
                        }
 
                        echo (new fewbricks\bricks\component_teasers('front_events_teasers'))->get_html();

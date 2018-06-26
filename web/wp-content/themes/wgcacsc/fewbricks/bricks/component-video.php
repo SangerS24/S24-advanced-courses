@@ -53,8 +53,8 @@ class component_video extends project_brick
 
         }
 
-	    $html .= '<h5>' . $this->get_field('heading') . '</h5>';
-	    $html .= '<div>' . $this->get_field('content') . '</div>';
+	    $html .= '<div class="component-video__content"><h5 class="component-video__heading">' . $this->get_field('heading') . '</h5>';
+	    $html .= '<div>' . $this->get_field('content') . '</div></div>';
 
         return $html;
 

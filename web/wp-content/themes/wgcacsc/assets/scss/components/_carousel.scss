@@ -56,9 +56,9 @@
 
 .component-images__caption {
 
-    background: rgba(0, 24, 103, 0.8);
+    background: rgba($white, 0.8);
     bottom: 0;
-    color: $white;
+    color: $black;
     left: 0;
     padding: rem-calc(14) rem-calc(10);
     position: absolute;
@@ -102,16 +102,16 @@
 .slick-next {
     transition: all .25s ease-in-out;
     padding: 1.5rem 1.5rem 1.5rem 1rem;
-    background: rgba(0, 0, 0, 0.5) url('../images/previous_arrow.svg') no-repeat center center;
+    background: rgba($secondary-color, 0.8) url('../images/previous_arrow.svg') no-repeat center center;
     background-size: 50% 50%;
     &:hover {   
 
-    	background-color: rgba(0, 0, 0, 1);
+    	background-color: rgba($secondary-color, 1);
 	}
 }
 
 .slick-next {
-    background: rgba(0, 0, 0, 0.5) url('../images/next_arrow.svg') no-repeat center center;
+    background: rgba($secondary-color, 0.8) url('../images/next_arrow.svg') no-repeat center center;
     background-size: 50% 50%;
     right:0;
 }

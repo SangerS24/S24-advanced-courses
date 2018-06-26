@@ -2,7 +2,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #222222;
 }
 
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: $body-font-family;
 }
 
@@ -119,12 +119,24 @@ ul li {
 }
 
 
+.section-heading--spotlight {
+
+    margin-bottom: rem-calc(20);
+
+}
+
 .section-heading--dark {
 
     color: #000;
 
 }
 
+.heading--xxl {
+
+    font-size: rem-calc(24);
+    line-height: (24/36);
+
+}
 
 .section-heading--normal {
 

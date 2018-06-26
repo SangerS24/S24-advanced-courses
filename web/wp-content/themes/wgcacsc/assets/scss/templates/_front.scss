@@ -121,30 +121,7 @@
   }
 }
 
-.latest-news-list {
-  margin-bottom: rem-calc(40);
-  overflow: hidden;
-  @include breakpoint(medium) {
-    margin-left: rem-calc(-10);
-    margin-right: rem-calc(-10);
-  }
-}
 
-.latest-news-item {
-  .content-item__visual {
-    padding: 0;
-  }
-  .news-item__image {
-    float: none;
-    img {
-      display: block;
-      width: 100%;
-    }
-  }
-  @include breakpoint('medium') {
-    padding: 0 rem-calc(10);
-  }
-}
 
 // Moved to _downloads partial
 //.front-newsletter-and-download {

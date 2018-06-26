@@ -19,27 +19,25 @@
 	margin-top: rem-calc(30);
 	position: relative;
 
-	@include breakpoint(large) {
+	@include breakpoint(1760) {
 
-		//margin-top: rem-calc(70);
+		&:before {
 
-	}
+			content: " ";
+			display: block;
+			width: rem-calc(400);
+			height: rem-calc(400);
+			background: url('../images/gem.svg') no-repeat center center;
+			background-size: rem-calc(400) rem-calc(400);
 
-	&:before {
+			position: absolute;
+			// dependent on the height of the social links (not robust)
+			top: rem-calc(- 336);
+			right: rem-calc(- 60);
 
-		content: " ";
-		display: block;
-		width: rem-calc(400);
-		height: rem-calc(400);
-		background: url('../images/gem.svg') no-repeat center center;
-		background-size: rem-calc(400) rem-calc(400);
+			z-index: 1;
 
-		position: absolute;
-		// dependent on the height of the social links (not robust)
-		top: rem-calc(- 336);
-		right: rem-calc(- 60);
-		
-		z-index: 1;
+		}
 
 	}
 
@@ -97,6 +95,18 @@
 	background: #333333;
 	color: #E5E5E5;
 	padding: rem-calc(10) 0 rem-calc(15) 0;
+
+	a {
+
+		color: inherit;
+
+		&:hover {
+
+			text-decoration: none;
+
+		}
+
+	}
 
 	@include breakpoint(600) {
 
@@ -294,11 +304,12 @@
 
 
 	a {
-		font-family: 'futura-medium-bold', Helvetica, Roboto, Arial, sans-serif;
+		font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
 		color: inherit;
 
 		&:hover {
-			color: #000;
+			color: inherit;
+			text-decoration: none;
 		}
 	}
 

@@ -3,7 +3,7 @@
 // Apercu, 300
 @font-face {
   font-family:"web-apercu";
-  src: url("../fonts/apercu/apercu-light.woff2") format("woff2");
+  src: url("../fonts/apercu/apercu-light.otf") format("opentype");
     font-weight: 300;
     font-style: normal;
 }
@@ -11,7 +11,7 @@
 // Apercu, 300 italic
 @font-face {
     font-family:"web-apercu";
-    src: url("../fonts/apercu/apercu-light-italic.woff2") format("woff2");
+    src: url("../fonts/apercu/apercu-light-italic.otf") format("opentype");
     font-weight: 300;
     font-style: italic;
 }
@@ -19,7 +19,7 @@
 // Apercu, 400
 @font-face {
     font-family:"web-apercu";
-    src: url("../fonts/apercu/apercu-regular.woff2") format("woff2");
+    src: url("../fonts/apercu/apercu-regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
@@ -27,7 +27,7 @@
 // Apercu, 700
 @font-face {
     font-family:"web-apercu";
-    src: url("../fonts/apercu/apercu-bold.woff2") format("woff2");
+    src: url("../fonts/apercu/apercu-bold.otf") format("opentype");
     font-weight: 700;
     font-style: normal;
 }
@@ -35,7 +35,7 @@
 // Apercu Mono, 400 (headings)
 @font-face {
     font-family:"web-apercu-mono";
-    src: url("../fonts/apercu/apercu-mono-regular.woff2") format("woff2");
+    src: url("../fonts/apercu/apercu-mono-regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }

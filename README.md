@@ -15,12 +15,12 @@ Utilises the [Foundation 6 Wordpress Template](https://foundationpress.olefredri
 
 To build the site once:
 
-    cd web/wp-content/themes/wgacsc
+    cd web/wp-content/themes/wgcacsc
     npm run build
 
 And to continuously watch the project for changes run:
 
-    cd web/wp-content/themes/wgacsc
+    cd web/wp-content/themes/wgcacsc
     npm run watch
 
 ## Hosting
@@ -43,8 +43,9 @@ This is currently just a git pull on the server.
 #!bash
 ssh studio24@goldeneye.studio24.net
 su root
-cd /var/www/wgcc/wgccc.s24.net
+cd /var/www/wgcc/wascc/staging/
 git pull
+## This part might not be needed
 cd ..
 chown -R apache:apache wgccc.s24.net
 ```

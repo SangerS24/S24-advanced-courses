@@ -4,9 +4,13 @@
   padding-bottom: rem-calc(20);
   .content-item {
     border-bottom: rem-calc(1) solid $light-gray;
-    padding-left: rem-calc(20);
+    padding-left: rem-calc(30);
     padding-right: rem-calc(20);
     margin-bottom: rem-calc(20);
+
+    @include breakpoint(medium) {
+
+    }
   }
 
 }
@@ -19,7 +23,13 @@
     }
   }
   .event-item__text-content {
-    margin-left: rem-calc(125);
+
+    @include breakpoint(medium) {
+
+      margin-left: rem-calc(125);
+
+    }
+
   }
 }
 

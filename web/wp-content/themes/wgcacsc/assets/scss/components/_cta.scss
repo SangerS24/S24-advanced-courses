@@ -60,9 +60,10 @@
     right: rem-calc(10);
     text-align: center;
     text-transform: uppercase;
+    padding: 0 rem-calc(20);
     top: rem-calc(10);
-    background-color: rgba($secondary-color, 0.4);
-    color: $body-font-color;
+    background-color: rgba($secondary-color, 0.3);
+    color: $black;
     z-index: 2;
     &:hover {
         background-color: rgba($secondary-color, 1);

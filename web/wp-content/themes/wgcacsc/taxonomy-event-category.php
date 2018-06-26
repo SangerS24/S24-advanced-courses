@@ -33,22 +33,27 @@ get_header(); ?>
 
 			<div class="main-content small-12 large-9 columns" id="main-content">
 
-				<div class="offset-content">
+				<div class="breadcrumb-wrapper --offset-content clearfix">
 					<?php s24_breadcrumb(); ?>
 				</div>
 
 				<div class="main-content" id="main-content">
 
-					<div class="offset-content">
+					<div class="content-group --offset-content clearfix">
 						<?php
 						$archiveTitle = get_the_archive_title();
 							echo '<h1 class="page-title">' . $archiveTitle . '</h1>';
 						?>
+                    </div>
 
+
+					<?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html( $few_args ); ?>
+
+                    <div class="content-group">
+	                    <?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html( $few_args ); ?>
 
                     </div>
-                        <?php echo (new fewbricks\bricks\component_section_heading('page_sub_heading'))->get_html( $few_args ); ?>
-                        <?php echo (new fewbricks\bricks\group_flexible_content('standard_components'))->get_html( $few_args ); ?>
+
 
 
                     <!--   //IF COURSES, add legend //-->

@@ -23,20 +23,24 @@
 .event-header__thumbnail {
   display: block;
   float: left;
-  height: rem-calc(105);
+  //height: rem-calc(105);
+  height: rem-calc(155);
   margin: rem-calc(-5) rem-calc(20) rem-calc(40) rem-calc(-5);
   overflow: hidden; //hides overflowing label
   padding: rem-calc(5) 0 0 rem-calc(5);
   position: relative;
-  width: rem-calc(105);
+  //width: rem-calc(105);
+  width: 100%;
   .wp-post-image {
     position: relative;
     z-index: 1;
   }
 
-  @include breakpoint(500px) {
+  @include breakpoint(641px) {
+    float: left;
     height: rem-calc(205);
     width: rem-calc(205);
+  margin-bottom: rem-calc(130);
   }
 }
 
@@ -144,6 +148,14 @@
     }
   }
 }
+
+
+.event-deadlines__label {
+
+  font-weight: 400;
+
+}
+
 
 //register button
 

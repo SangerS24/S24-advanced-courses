@@ -3,25 +3,35 @@
 
     background-color: $primary-color;
     color: $white;
-    padding: rem-calc(30) rem-calc(30) 0 rem-calc(30);
+    padding: rem-calc(30);
 
 }
 
 
+componetnt-download__content
 
-/* a */.component-download__thumblink {
 
-    max-width: rem-calc(285);
+/* a */
+.component-download__thumblink {
+
     //max-height: rem-calc(324);
+    max-width: rem-calc(285);
 
     display: block;
-    margin-left: rem-calc(50);
-    float: right;
+    margin: 0 auto rem-calc(30) auto;
 
     img {
 
         width: 100%;
         height: auto;
+
+    }
+
+    @include breakpoint(large) {
+
+        //max-width: rem-calc(285);
+        margin: 0 0 rem-calc(30) rem-calc(30);
+        float: right;
 
     }
 

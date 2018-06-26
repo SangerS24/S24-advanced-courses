@@ -447,11 +447,11 @@ function wgcacsc_get_latest_news(){
         if ( !empty( $news_listing_thumbnail_srcs ) ) {
            $html .= '<div class="columns small-12 medium-2 content-item__visual">';
            $html .= '<div class="news-item__image">';
-           $html .= '<picture>';
+           $html .= '<a href="'.get_permalink( $latest_news_item->ID ).'"><picture>';
            $html .= '<source media="(min-width: 200px)" srcset="'.$news_listing_thumbnail_srcs['retina'].' 2x, '.$news_listing_thumbnail_srcs['default'].' 1x" />';
            $html .= '<source media="(max-width: 200px)" src="'.$news_listing_thumbnail_srcs['default'].'" />';
            $html .= '<img src="'.$news_listing_thumbnail_srcs['default'].'" alt="'.$latest_news_item->post_title.'" />';
-           $html .= '</picture>';
+           $html .= '</picture></a>';
            $html .= ' </div>';
            $html .= '</div>';
         }

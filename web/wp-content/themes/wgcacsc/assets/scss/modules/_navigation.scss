@@ -33,6 +33,7 @@
 
     display: block;
     margin-left: rem-calc(10);
+    margin-top: rem-calc(22);
     width: rem-calc(32);
 
     img {
@@ -44,6 +45,7 @@
     @include breakpoint(500) {
 
         width: rem-calc(40);
+        margin-top: rem-calc(46);
 
     }
 

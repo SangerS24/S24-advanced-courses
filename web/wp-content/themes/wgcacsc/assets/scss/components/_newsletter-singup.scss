@@ -17,11 +17,24 @@
   a, a:visited {
     color: $primary-color;
   }
+  a:hover {
+
+    color: $black;
+
+  }
   .button,
   button,
   input[type="submit"] {
     background-color: $secondary-color;
     color: $body-font-color;
+
+    &:hover {
+
+      background-color: $black;
+      color: $white;
+
+    }
+
   }
 
   form {

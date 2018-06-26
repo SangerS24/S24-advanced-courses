@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="51px" height="77px" viewBox="0 0 51 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
-    <title>next</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Carousel---M" transform="translate(-889.000000, -282.000000)" fill="#FFFFFF">
-            <polygon id="next" points="901.515603 282 889 294.494295 914.966542 320.416719 889 346.335241 901.515603 358.827435 940 320.416719"></polygon>
-        </g>
-    </g>
-</svg>
+<svg width="27" height="50" xmlns="http://www.w3.org/2000/svg"><path d="M26.4 25l-1.8-2.1L5 0 0 4.2 17.8 25 0 45.8 5 50l19.6-22.9z" fill="#000" fill-rule="nonzero"/></svg>
