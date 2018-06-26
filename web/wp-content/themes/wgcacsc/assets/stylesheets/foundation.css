@@ -6068,9 +6068,12 @@ span.wpcf7-list-item {
   z-index: auto; }
 
 /* Mobile menu */
-.off-canvas > ul.menu {
-  height: 100vh;
-  padding: 1rem; }
+.off-canvas {
+  max-height: 0;
+  min-height: 100vh !important; }
+  .off-canvas > ul.menu {
+    height: 100vh;
+    padding: 1rem; }
 
 .mobile-nav .nested {
   margin-left: 0;
@@ -6110,7 +6113,7 @@ span.wpcf7-list-item {
   .mobile-nav .js-drilldown-back a:before {
     background: url("../images/previous_arrow_neutral.svg") no-repeat 0 0;
     -webkit-background-size: 100% 100%;
-            background-size: 100%;
+            background-size: 100% 100%;
     content: '';
     height: 0.83333rem;
     left: 1.11111rem;
@@ -6119,7 +6122,10 @@ span.wpcf7-list-item {
     width: 0.55556rem; }
 
 .mobile-search-form {
-  padding: 0 1.11111rem 0.22222rem 1.11111rem; }
+  padding: 0 1.11111rem 0.22222rem 1.11111rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
 
 .noscript-navigation {
   margin-bottom: 1.66667rem; }
@@ -6176,7 +6182,12 @@ span.wpcf7-list-item {
 
 .mobile-navigation .is-drilldown,
 .mobile-navigation .is-drilldown-submenu {
-  min-height: 21.11111rem !important; }
+  min-height: 0 !important;
+  overflow: visible; }
+
+.mobile-navigation .is-drilldown-submenu {
+  min-height: 100% !important;
+  overflow: visible; }
 
 .side-menu-container h5 a, .side-menu-container .h5 a, .side-menu-container .accordion-title a, .side-menu-container h5 a:visited, .side-menu-container .h5 a:visited, .side-menu-container .accordion-title a:visited {
   color: #222222; }

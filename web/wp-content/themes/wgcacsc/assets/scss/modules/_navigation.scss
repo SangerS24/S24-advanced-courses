@@ -74,6 +74,10 @@
 /* Mobile menu */
 
 .off-canvas {
+
+    max-height: 0;
+    min-height: 100vh !important;
+
     > ul.menu {
         height: 100vh;
         padding: 1rem;
@@ -151,7 +155,7 @@
             &:before {
 
                 background: url('../images/previous_arrow_neutral.svg') no-repeat 0 0;
-                background-size: 100%;
+                background-size: 100% 100%;
                 content: '';
                 height: rem-calc(15);
                 left: rem-calc(20);
@@ -177,6 +181,9 @@
 .mobile-search-form {
 
     padding: 0 rem-calc(20) rem-calc(4) rem-calc(20);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 
 }
 
@@ -283,7 +290,17 @@
 // this is to fix a bug in Foundation, not ideal but we didn't have time to make a proper fix and submit a PR
 .mobile-navigation .is-drilldown,
 .mobile-navigation .is-drilldown-submenu {
-    min-height: rem-calc(380) !important;
+    // Please provide a link to the bug
+    //min-height: rem-calc(380) !important;
+    min-height: 0 !important;
+    overflow: visible;
+}
+
+.mobile-navigation .is-drilldown-submenu {
+
+    min-height: 100% !important;
+    overflow: visible;
+
 }
 
 .side-menu-container {
