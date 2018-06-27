@@ -44,8 +44,8 @@
 
     @include breakpoint(500) {
 
-        width: rem-calc(40);
         margin-top: rem-calc(46);
+        width: rem-calc(40);
 
     }
 
@@ -89,8 +89,8 @@
 
     .nested {
 
-        margin-left: 0;
         background-color: #000000;
+        margin-left: 0;
 
     }
 
@@ -101,10 +101,10 @@
             border-bottom: 1px solid #666666;
             color: #E5E5E5;
             font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
-            text-decoration: none;
             font-size: rem-calc(14);
-            //padding: rem-calc(12) rem-calc(20);
             position: relative;
+            //padding: rem-calc(12) rem-calc(20);
+            text-decoration: none;
             text-transform: uppercase;
 
         }
@@ -150,8 +150,13 @@
 
         a {
 
-            padding-left: rem-calc(40);
+            border-bottom-color: #666666;
 
+            color: #CCCCCC;
+
+            font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
+            font-size: rem-calc(12);
+            padding-left: rem-calc(40);
             &:before {
 
                 background: url('../images/previous_arrow_neutral.svg') no-repeat 0 0;
@@ -160,15 +165,11 @@
                 height: rem-calc(15);
                 left: rem-calc(20);
                 position: absolute;
-                top: rem-calc(11);
+                top: 50%;
+                transform: translateY(-50%);
                 width: rem-calc(10);
 
             }
-
-            border-bottom-color: #666666;
-            color: #CCCCCC;
-            font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
-            font-size: rem-calc(12);
 
         }
 
@@ -180,10 +181,18 @@
 
 .mobile-search-form {
 
+    bottom: 0;
     padding: 0 rem-calc(20) rem-calc(4) rem-calc(20);
     position: absolute;
-    bottom: 0;
     width: 100%;
+
+}
+
+
+// Make 'Our events' menu item appear active when viewing event landing page (hacky)
+.post-type-archive-event .menu-item-988 a {
+
+    color: $black;
 
 }
 
@@ -253,10 +262,10 @@
 /* Text meant only for screen readers. Addresses part of theme-check issue #840. https://github.com/Automattic/_s/blob/master/style.css */
 .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
-    position: absolute !important;
     height: 1px;
-    width: 1px;
     overflow: hidden;
+    position: absolute !important;
+    width: 1px;
 }
 
 .screen-reader-text:focus {

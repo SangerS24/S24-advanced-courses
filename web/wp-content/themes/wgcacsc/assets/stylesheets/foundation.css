@@ -6054,8 +6054,8 @@ span.wpcf7-list-item {
     width: 100%; }
   @media screen and (min-width: 31.25em) {
     .mobile-navigation-toggle {
-      width: 2.22222rem;
-      margin-top: 2.55556rem; } }
+      margin-top: 2.55556rem;
+      width: 2.22222rem; } }
   @media screen and (min-width: 65em) {
     .mobile-navigation-toggle {
       display: none; } }
@@ -6076,16 +6076,16 @@ span.wpcf7-list-item {
     padding: 1rem; }
 
 .mobile-nav .nested {
-  margin-left: 0;
-  background-color: #000000; }
+  background-color: #000000;
+  margin-left: 0; }
 
 .mobile-nav li > a {
   border-bottom: 1px solid #666666;
   color: #E5E5E5;
   font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
-  text-decoration: none;
   font-size: 0.77778rem;
   position: relative;
+  text-decoration: none;
   text-transform: uppercase; }
 
 .mobile-nav .menu-item-has-children > a {
@@ -6105,11 +6105,11 @@ span.wpcf7-list-item {
   color: #E5E5E5; }
 
 .mobile-nav .js-drilldown-back a {
-  padding-left: 2.22222rem;
   border-bottom-color: #666666;
   color: #CCCCCC;
   font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
-  font-size: 0.66667rem; }
+  font-size: 0.66667rem;
+  padding-left: 2.22222rem; }
   .mobile-nav .js-drilldown-back a:before {
     background: url("../images/previous_arrow_neutral.svg") no-repeat 0 0;
     -webkit-background-size: 100% 100%;
@@ -6118,14 +6118,20 @@ span.wpcf7-list-item {
     height: 0.83333rem;
     left: 1.11111rem;
     position: absolute;
-    top: 0.61111rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
     width: 0.55556rem; }
 
 .mobile-search-form {
+  bottom: 0;
   padding: 0 1.11111rem 0.22222rem 1.11111rem;
   position: absolute;
-  bottom: 0;
   width: 100%; }
+
+.post-type-archive-event .menu-item-988 a {
+  color: #000; }
 
 .noscript-navigation {
   margin-bottom: 1.66667rem; }
@@ -6149,10 +6155,10 @@ span.wpcf7-list-item {
 /* Text meant only for screen readers. Addresses part of theme-check issue #840. https://github.com/Automattic/_s/blob/master/style.css */
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
-  position: absolute !important;
   height: 1px;
-  width: 1px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px; }
 
 .screen-reader-text:focus {
   background-color: #f1f1f1;

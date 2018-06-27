@@ -7,7 +7,7 @@
  */
 
 ?>
-<aside class="sidebar small-12 large-3 columns">
+<aside class="sidebar small-12 large-3 columns show-for-large">
 	<div class="sidebar__inner" id="sidebar__inner">
 		<?php do_action( 'foundationpress_before_sidebar' ); ?>
 		<?php

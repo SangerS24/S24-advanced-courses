@@ -114,6 +114,7 @@ TBC
 
 The project uses Bower for JavaScript dependencies. For the initial build run:
 
+    nvm use 4.5.0
     cd web/wp-content/themes/wgcacsc
     bower install
 
