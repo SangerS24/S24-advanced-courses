@@ -7090,15 +7090,16 @@ a.client-item__inner {
   color: #fefefe;
   padding: 1.66667rem; }
 
-componetnt-download__content .component-download__thumblink {
+/* a */
+.component-download__thumblink {
   max-width: 15.83333rem;
   display: block;
   margin: 0 auto 1.66667rem auto; }
-  componetnt-download__content .component-download__thumblink img {
+  .component-download__thumblink img {
     width: 100%;
     height: auto; }
   @media screen and (min-width: 65em) {
-    componetnt-download__content .component-download__thumblink {
+    .component-download__thumblink {
       margin: 0 0 1.66667rem 1.66667rem;
       float: right; } }
 
