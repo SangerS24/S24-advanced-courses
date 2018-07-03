@@ -23,7 +23,10 @@ class component_cta extends project_brick
      */
     public function set_fields() {
 
-        $this->add_field(new acf_fields\image('Image', 'cta_image', '290720161518a', [ 'allow_null' => 0 ]));
+        $this->add_field(new acf_fields\image('Image', 'cta_image', '290720161518a', [
+        	'allow_null' => 0,
+	        'instructions' => 'Minimum dimensions: 1260 pixels wide, 240 pixels tall.<br />Recommended dimensions: 2520 pixels wide and 480 pixels tall.'
+        ]));
         $this->add_field(new acf_fields\text('Title', 'cta_title', '290720161518b', [ 'allow_null' => 0 ]));
         $this->add_field(new acf_fields\post_object('Link', 'cta_link', '290720161518c',
             [

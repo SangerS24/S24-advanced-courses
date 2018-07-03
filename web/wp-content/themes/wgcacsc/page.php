@@ -27,7 +27,7 @@
 
          <div class="main-content small-12 large-9 columns" id="main-content">
 
-             <div class="offset-content">
+             <div class="breadcrumb-wrapper">
                  <?php s24_breadcrumb(); ?>
              </div>
 
@@ -36,7 +36,7 @@
                    <?php do_action( 'foundationpress_page_before_entry_content' ); ?>
                    <div class="entry-content">
 
-                       <div class="offset-content">
+                       <div class="content-group --offset-content">
                             <h1 class="page-title"><?php the_title(); ?></h1>
                        </div>
 

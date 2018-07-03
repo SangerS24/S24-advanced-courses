@@ -44,7 +44,7 @@ class component_section_heading extends project_brick
         if($args['plain'] == true) {
             return $this->get_field('section_heading');
         } else {
-            return '<h2 class="component component-sub-heading section-heading content-group --clearfix --offset-content">' . $this->get_field('section_heading') . '</h2>';
+            return '<h2 class="component component-sub-heading section-heading --clearfix --offset-content">' . $this->get_field('section_heading') . '</h2>';
         }
 
     }

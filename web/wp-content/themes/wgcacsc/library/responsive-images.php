@@ -78,8 +78,8 @@ add_image_size ( 'client-logo--small', 390, 160, false );
  * News Image Styles
  */
 
-add_image_size ( 'news-listing', 420, 220, array('center', 'center') );
-add_image_size ( 'news-listing-retina', 840, 440, array('center', 'center') );
+add_image_size ( 'news-listing', 420, 420, array('center', 'center') );
+add_image_size ( 'news-listing-retina', 840, 840, array('center', 'center') );
 
 /**
  * Teaser Image Styles

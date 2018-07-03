@@ -4,6 +4,8 @@
     @include breakpoint(medium) {
         margin-left: rem-calc(-10);
         margin-right: rem-calc(-10);
+
+        padding-left: rem-calc(30);
     }
 }
 
@@ -20,7 +22,7 @@
     }
     @include breakpoint('medium') {
         //padding: 0 rem-calc(10);
-        padding: 0 rem-calc(10) 0 rem-calc(30);
+        padding: 0 rem-calc(10) 0 0;
     }
 }
 
@@ -49,7 +51,7 @@
     }
 
     @include breakpoint('medium') {
-        padding-left: rem-calc(30);
+
     }
 
 }

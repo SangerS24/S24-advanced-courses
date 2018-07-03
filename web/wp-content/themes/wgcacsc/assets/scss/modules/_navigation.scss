@@ -316,7 +316,7 @@
     h5 {
         //text-transform: uppercase;
         a, a:visited {
-            color: #222222;
+            color: #000;
             &:hover {
                 color: $primary-color;
             }
@@ -325,7 +325,7 @@
 
     .current-menu-item {
         a, a:visited {
-            color: #222222;
+            color: #000;
             &:hover {
                 color: $primary-color;
             }

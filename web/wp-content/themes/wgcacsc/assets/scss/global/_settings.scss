@@ -150,7 +150,7 @@ $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
 $anchor-color: $primary-color;
-$anchor-color-hover: #222;
+$anchor-color-hover: #000;
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
@@ -246,8 +246,8 @@ $breadcrumbs-item-slash: true;
 $button-padding: rem-calc(10) rem-calc(20);
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
-$button-background: $primary-color;
-$button-background-hover: #222;
+$button-background: $secondary-color;
+$button-background-hover: #000;
 $button-color: #fff;
 $button-color-alt: #000;
 $button-radius: $global-radius;
@@ -297,7 +297,7 @@ $closebutton-color-hover: $black;
 $drilldown-transition: transform 0.15s linear;
 $drilldown-arrows: false;
 $drilldown-arrow-color: $primary-color;
-$drilldown-background: #222222;
+$drilldown-background: #000;
 
 // 16. Dropdown
 // ------------
@@ -393,7 +393,7 @@ $menu-margin: 0;
 $menu-margin-nested: 1rem;
 //$menu-item-padding: rem-calc(10);
 $menu-item-padding: rem-calc(12) rem-calc(20);
-$menu-item-color-active: #222222;
+$menu-item-color-active: #000;
 $menu-item-background-active: transparent;
 $menu-icon-spacing: 0.25rem;
 

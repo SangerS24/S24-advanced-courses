@@ -23,7 +23,7 @@ get_header(); ?>
 
 				<div class="main-content small-12 large-9 columns" id="main-content">
 
-					<div class="offset-content">
+					<div class="breadcrumb-wrapper --offset-content">
 						<?php s24_breadcrumb(); ?>
 					</div>
 
@@ -32,7 +32,7 @@ get_header(); ?>
 							<?php do_action( 'foundationpress_page_before_entry_content' ); ?>
 							<div class="entry-content">
 
-								<div class="offset-content">
+								<div class="content-group --offset-content">
 									<h1 class="page-title"><?php the_title(); ?></h1>
                                     <p><span class="h3 event-header__date-range"><?php echo get_the_date('d F Y'); ?></span></p>
 

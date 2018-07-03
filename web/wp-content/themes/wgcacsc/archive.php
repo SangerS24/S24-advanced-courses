@@ -26,13 +26,13 @@ get_header(); ?>
 
 			<div class="main-content small-12 large-9 columns" id="main-content">
 
-				<div class="offset-content">
+				<div class="breadcrumb-wrapper offset-content">
 					<?php s24_breadcrumb(); ?>
 				</div>
 
 				<div class="main-content" id="main-content">
 
-					<div class="offset-content">
+					<div class="content-group --offset-content">
 						<?php
 						$archiveTitle = get_the_archive_title();
 							echo '<h1 class="page-title">' . $archiveTitle . '</h1>';
@@ -43,7 +43,7 @@ get_header(); ?>
 
 					<?php /* Start the Loop */ ?>
 						<?php while ( have_posts() ) : the_post(); ?>
-							<div class="content-list offset-content">
+							<div class="content-list content-group --offset-content">
 							<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
 							</div>
 						<?php endwhile; ?>

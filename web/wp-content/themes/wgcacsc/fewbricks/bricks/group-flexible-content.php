@@ -92,6 +92,11 @@ class group_flexible_content extends project_brick
         $l->add_brick(new component_newsletter('newsletter_component', '201707151607b'));
         $fc->add_layout($l);
 
+	    //download
+	    $l = new layout('', 'l15', '201807021523a');
+	    $l->add_brick(new component_download_slim('download_component_slim', '201807021523b'));
+	    $fc->add_layout($l);
+
         $this->add_flexible_content($fc);
 
     }

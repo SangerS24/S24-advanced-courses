@@ -36,14 +36,14 @@ class component_hero_list extends project_brick
      */
     public function set_fields() {
 
-        $this->add_repeater((new acf_fields\repeater('Hero Items', 'hero_list', '290720161214a', [
-            'button_label' => 'Add Hero',
+        $this->add_repeater((new acf_fields\repeater('Hero image', 'hero_list', '290720161214a', [
+            'button_label' => 'Add image',
             'max' => $this->limit,
             'allow_null' => 0,
-            'instructions' => 'Hero images display full width at the top of the page in question.'
+            'instructions' => 'Hero images display full width at the top of the page in question. Minimum dimensions: 1280 pixels wide, 400 pixels tall.<br />Recommended dimensions: 2560 pixels wide and 800 pixels tall.'
         ]))
             ->add_sub_field(new acf_fields\image('Image', 'hero_image', '290720161214b', [
-                'instructions' => 'Required dimensions: 2560 pixels wide and 800 pixels tall.<br />Minimum dimensions: 1280 pixels wide, 400 pixels tall'
+                'instructions' => 'Please don&rsquo;t leave this field blank. Remove this image field by pressing the minus button.'
             ]))
         );
 

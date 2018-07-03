@@ -54,7 +54,7 @@
 
     bottom: rem-calc(10);
     font-family: 'web-apercu-mono', Helvetica, Roboto, Arial, sans-serif;
-    font-size: rem-calc(24);
+    font-size: rem-calc(18);
     left: rem-calc(10);
     position: absolute;
     right: rem-calc(10);
@@ -91,9 +91,9 @@
             content: " ";
             display: inline-block;
             background: url('../images/cta-chevron.svg') no-repeat;
-            background-size: rem-calc(11) rem-calc(20);
+            background-size: rem-calc(11) rem-calc(16);
             width: rem-calc(11);
-            height: rem-calc(20);
+            height: rem-calc(16);
             vertical-align: text-top;
             margin-left: 0.5rem;
 

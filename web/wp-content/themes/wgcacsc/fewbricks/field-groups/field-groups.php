@@ -336,15 +336,18 @@ $fg_event_side_questions->add_field(new acf_fields\text( 'Title' , 'side_questio
     'default_value' => 'Questions?'
 ]));
 
-$default_questions_content = <<<EOD
-<a href="mailto:advancedcourses@wellcomegenomecampus.org">Email the organisers</a>
-
-or calls us: +44 (0)1223 495100
-EOD;
-
+$fg_event_side_questions->add_field(new acf_fields\email( 'Email address' , 'side_question_email' , '201807021057a' , [
+	'default_value' => 'advancedcourses@wellcomegenomecampus.org'
+]));
+$fg_event_side_questions->add_field(new acf_fields\text( 'Email subject' , 'side_question_email_subject' , '201807021058b' , [
+	'default_value' => 'Keep me updated on XXX'
+]));
+$fg_event_side_questions->add_field(new acf_fields\text( 'Phone number' , 'side_question_phone' , '201807021100a' , [
+	'default_value' => '+44 (0)1223 495100'
+]));
 
 $fg_event_side_questions->add_field(new acf_fields\wysiwyg( 'Content' , 'side_question_content' , '201707311456e' , [
-    'default_value' => $default_questions_content
+    'default_value' => ''
 ]));
 
 $fg_event_side_questions->register();

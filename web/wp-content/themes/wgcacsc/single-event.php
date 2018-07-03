@@ -61,9 +61,6 @@ get_header(); ?>
                                         ?>
 
 
-	                                    <?php get_template_part( 'template-parts/share' ); ?>
-
-
                                     </div>
 								</div>
                                 </div> <!-- End header wrappers-->
@@ -96,7 +93,9 @@ get_header(); ?>
                                             echo (new fewbricks\bricks\component_sponsors_side( 'side_sponsors' ))->get_html();
                                             echo wgcacsc_get_questions_section( get_the_ID() );
                                             echo wgcacsc_get_share_section( get_the_ID() );
+                                            get_template_part( 'template-parts/share' );
                                         ?>
+                                        </div>
                                 </div> <!-- end other side sections -->
 							</div>
 						</article>

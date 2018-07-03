@@ -2,7 +2,8 @@
 
 }
 
-.content-group {
+.content-group,
+.component-sub-heading {
 
     padding-left: rem-calc(30);
 
@@ -13,5 +14,17 @@
         max-width: rem-calc(760);
 
     }
+
+}
+
+.home .component-sub-heading {
+
+    max-width: rem-calc(960);
+
+}
+
+.component-sub-heading {
+
+    font-weight: 300;
 
 }

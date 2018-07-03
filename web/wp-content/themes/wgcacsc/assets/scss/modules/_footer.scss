@@ -292,8 +292,8 @@
 	background: $black;
 	color: #ffffff;
 	font-size: rem-calc(12);
-	padding: rem-calc(15) 0;
-	text-align: center;
+	padding: rem-calc(15) 0 rem-calc(32) rem-calc(15);
+	//text-align: center;
 	width: 100%;
 
 	p {
@@ -315,7 +315,7 @@
 
 	@include breakpoint(medium) {
 
-		text-align: left;
+		//text-align: left;
 
 		p {
 
@@ -324,6 +324,16 @@
 		}
 
 	}
+}
+
+
+.footer__logo {
+
+	display: inline-block;
+	max-width: rem-calc(187);
+	margin-top: rem-calc(34);
+	margin-bottom: rem-calc(32);
+
 }
 
 
@@ -346,6 +356,20 @@ p.copyright {
 }
 
 @include breakpoint(medium) {
+
+	.footer__logo {
+
+		margin-bottom: 0;
+
+	}
+
+	.footer__outer .row {
+
+		display: flex;
+		// flexible vertical center
+		align-items: flex-end;
+
+	}
 
 	.footer-links {
 

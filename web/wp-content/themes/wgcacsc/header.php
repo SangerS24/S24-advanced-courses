@@ -63,3 +63,16 @@
 
 	<section class="container main-content">
 		<?php do_action( 'foundationpress_after_header' );
+
+if( is_home() ) {
+	echo "is home";
+}
+else {
+	echo "not home";
+}
+if( is_front_page() ) {
+	echo "is front";
+}
+else {
+	echo "not front";
+}

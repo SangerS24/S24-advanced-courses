@@ -58,7 +58,7 @@
     border: 1px solid #E5E5E5;
     display: block;
     float: left;
-    margin-bottom: rem-calc(10);
+    //margin-bottom: rem-calc(10);
     max-width: 100%;
     
     picture {
@@ -109,7 +109,7 @@
 
 .news-item__title {
 
-    color: #222222;
+    color: #000;
     font-size: rem-calc(22);
     line-height: rem-calc(26);
     margin-bottom: rem-calc(10);

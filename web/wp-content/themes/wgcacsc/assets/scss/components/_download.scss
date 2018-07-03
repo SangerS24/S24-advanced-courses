@@ -52,67 +52,6 @@
 
 }
 
-//.component-download__link {
-//    //display: block;
-//    //font-family: 'web-apercu', Helvetica, Roboto, Arial, sans-serif;
-//    font-size: rem-calc(18);
-//    line-height: rem-calc(40);
-//    padding: 0 rem-calc(14) 0 rem-calc(40);
-//    position: relative;
-//    &:before {
-//        content: '';
-//        width: rem-calc(4);
-//        height: rem-calc(4);
-//        border-radius: 50%;
-//        background-color: $body-font-color;
-//
-//        position: absolute;
-//        top: rem-calc(14);
-//        left: rem-calc(14);
-//    }
-//    p {
-//        margin-bottom: 0;
-//    }
-//
-//    .has-image &{
-//        padding-left: 0;
-//        line-height: rem-calc(27);
-//
-//        &:before {
-//            display: none;
-//        }
-//
-//        img {
-//            max-width: rem-calc(80);
-//            max-height: rem-calc(80);
-//
-//            width: auto;
-//            height: auto;
-//
-//            display: block;
-//            margin-left: rem-calc(20);
-//            float: right;
-//        }
-//
-//        @include breakpoint(medium) {
-//            img {
-//                max-width: rem-calc(200);
-//                max-height: rem-calc(200);
-//                float: none;
-//                display: inline-block;
-//                vertical-align: middle;
-//            }
-//            p {
-//                //margin-left: rem-calc(220);
-//                display: inline-block;
-//                vertical-align: middle;
-//                width: calc(100% - 220px);
-//                margin-bottom: 0;
-//            }
-//        }
-//    }
-//}
-
 .front-newsletter-and-download {
 
     .row {
@@ -138,41 +77,11 @@
 
 }
 
-//.front-newsletter-and-download {
-//    .row {
-//        padding: 0;
-//    }
-//    .component-newsletter,
-//    .component-download {
-//        @include breakpoint(large) {
-//            clear: none;
-//            float: left;
-//            width: 50%;
-//        }
-//    }
-//
-//    .component-download {
-//        @include breakpoint(large) {
-//
-//            //text-align: center;
-//
-//            .component-download__link {
-//                max-width: 80%;
-//                padding: rem-calc(40) 0;
-//                img {
-//                    display: block;
-//                    height: auto;margin-bottom: rem-calc(40);
-//                    margin-left: auto;
-//                    margin-right: auto;
-//                    max-height: rem-calc(300);
-//                    max-width: rem-calc(300);
-//                    width: auto;
-//                }
-//                p {
-//                    width: 100%;
-//                    padding: 0 rem-calc(40);
-//                }
-//            }
-//        }
-//    }
-//}
+.component-download--slim__link {
+
+    display: inline-block;
+
+    background: url(../images/pdf_icon.svg) no-repeat center left;
+    padding: rem-calc(9) rem-calc(15) rem-calc(10) rem-calc(50);
+
+}
