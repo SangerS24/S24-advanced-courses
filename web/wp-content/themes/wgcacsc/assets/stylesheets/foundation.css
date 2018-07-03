@@ -6262,19 +6262,15 @@ span.wpcf7-list-item {
     outline: 1px solid #333; }
 
 .search__submit {
-  background-color: #E75153;
-  background-image: url("../images/next_arrow.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-background-size: 0.55556rem 0.83333rem;
-          background-size: 0.55556rem 0.83333rem;
+  background-color: #EA994D;
+  color: #000;
   border: 0 none;
   height: 2.77778rem;
   margin-left: 0.33333rem;
   padding: 0;
   width: 2.77778rem; }
   .search__submit:hover, .search__submit:focus {
-    background-image: url("../images/next_arrow.svg"); }
+    color: white; }
 
 .search-form__input-group-button {
   bottom: 1px;

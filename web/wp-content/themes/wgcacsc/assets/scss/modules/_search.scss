@@ -25,12 +25,13 @@
 
 .search__submit {
      
-    background-color: $primary-color;
-    background-image: url('../images/next_arrow.svg');
+    background-color: $secondary-color;
+    color: #000;
+    //background-image: url('../images/search-icon.svg');
 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: rem-calc(10) rem-calc(15);
+    //background-position: center;
+    //background-repeat: no-repeat;
+    //background-size: rem-calc(10) rem-calc(15);
     border: 0 none;
     height: rem-calc(50);
     margin-left: rem-calc(6);
@@ -40,7 +41,9 @@
     &:hover,
     &:focus {
 
-        background-image: url('../images/next_arrow.svg');
+        //background-image: url('../images/search-icon.svg');
+        color: white;
+        //fill: white;
 
     }
 
