@@ -322,8 +322,8 @@ function wgcacsc_get_programme_download( $event_id ) {
 	$download_file_title = get_field( 'event_download_label', $event_id );
 	$download_file_title = ( ! empty( $download_file_title ) ) ? $download_file_title : get_the_title( $download_file_id );
 
-	$download_html = '<div class="component component-download offset-content">';
-	$download_html .= '<a class="component-download__link" href="' . $download_file_url . '"><span class="component-download__title">' . $download_file_title . '</span></a>';
+	$download_html = '<div class="component-download--slim offset-content">';
+	$download_html .= '<p><a class="component-download--slim__link" href="' . $download_file_url . '"><span class="">' . $download_file_title . '</span><span class="visuallyhidden"> Will open in a new window</span></a></p>';
 	$download_html .= '</div>';
 
 	return $download_html;

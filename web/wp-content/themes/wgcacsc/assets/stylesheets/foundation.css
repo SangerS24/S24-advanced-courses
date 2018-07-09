@@ -7147,6 +7147,10 @@ a.client-item__inner {
   background: url(../images/pdf_icon.svg) no-repeat center left;
   padding: 0.5rem 0.83333rem 0.55556rem 2.77778rem; }
 
+.accordion-content .offset-content {
+  margin-left: auto;
+  margin-right: auto; }
+
 .container-360 {
   height: 13.88889rem;
   width: 100%; }

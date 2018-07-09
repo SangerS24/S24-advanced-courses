@@ -72,6 +72,11 @@ class group_flexible_content_event_collapsibles extends project_brick
         $l->add_brick(new component_sponsors('sponsors_component', '201707311430q'));
         $fc->add_layout($l);
 
+	    //download (slim)
+	    $l = new layout('', 'l15', '201807091601a');
+	    $l->add_brick(new component_download_slim('download_component_slim', '201807091601b'));
+	    $fc->add_layout($l);
+
         $this->add_flexible_content($fc);
 
     }
