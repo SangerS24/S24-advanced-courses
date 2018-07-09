@@ -3842,12 +3842,12 @@ kbd {
   margin: 0 0 1.55556rem 0;
   font-size: 0.9rem;
   background-color: #EA994D;
-  color: #fff; }
+  color: #000; }
   [data-whatinput='mouse'] .button, [data-whatinput='mouse'] .towncrier__share-button {
     outline: 0; }
   .button:hover, .towncrier__share-button:hover, .button:focus, .towncrier__share-button:focus {
     background-color: #000;
-    color: #fff; }
+    color: #000; }
   .button.tiny, .tiny.towncrier__share-button {
     font-size: 0.6rem; }
   .button.small, .small.towncrier__share-button {
@@ -3861,34 +3861,34 @@ kbd {
     margin-right: 0; }
   .button.primary, .primary.towncrier__share-button {
     background-color: #E75153;
-    color: #000; }
+    color: #fff; }
     .button.primary:hover, .primary.towncrier__share-button:hover, .button.primary:focus, .primary.towncrier__share-button:focus {
       background-color: #db1e21;
-      color: #000; }
+      color: #fff; }
   .button.secondary, .secondary.towncrier__share-button {
     background-color: #EA994D;
-    color: #000; }
+    color: #fff; }
     .button.secondary:hover, .secondary.towncrier__share-button:hover, .button.secondary:focus, .secondary.towncrier__share-button:focus {
       background-color: #df791a;
-      color: #000; }
+      color: #fff; }
   .button.success, .success.towncrier__share-button {
     background-color: #3adb76;
-    color: #fff; }
+    color: #000; }
     .button.success:hover, .success.towncrier__share-button:hover, .button.success:focus, .success.towncrier__share-button:focus {
       background-color: #22bb5b;
-      color: #fff; }
+      color: #000; }
   .button.warning, .warning.towncrier__share-button {
     background-color: #ffae00;
-    color: #fff; }
+    color: #000; }
     .button.warning:hover, .warning.towncrier__share-button:hover, .button.warning:focus, .warning.towncrier__share-button:focus {
       background-color: #cc8b00;
-      color: #fff; }
+      color: #000; }
   .button.alert, .alert.towncrier__share-button {
     background-color: #ec5840;
-    color: #fff; }
+    color: #000; }
     .button.alert:hover, .alert.towncrier__share-button:hover, .button.alert:focus, .alert.towncrier__share-button:focus {
       background-color: #da3116;
-      color: #fff; }
+      color: #000; }
   .button.hollow, .hollow.towncrier__share-button {
     border: 1px solid #E75153;
     color: #E75153; }
@@ -3932,37 +3932,37 @@ kbd {
     cursor: not-allowed; }
     .button.disabled:hover, .disabled.towncrier__share-button:hover, .button.disabled:focus, .disabled.towncrier__share-button:focus, .button[disabled]:hover, [disabled].towncrier__share-button:hover, .button[disabled]:focus, [disabled].towncrier__share-button:focus {
       background-color: #E75153;
-      color: #fff; }
+      color: #000; }
     .button.disabled.primary, .disabled.primary.towncrier__share-button, .button[disabled].primary, [disabled].primary.towncrier__share-button {
       opacity: 0.25;
       cursor: not-allowed; }
       .button.disabled.primary:hover, .disabled.primary.towncrier__share-button:hover, .button.disabled.primary:focus, .disabled.primary.towncrier__share-button:focus, .button[disabled].primary:hover, [disabled].primary.towncrier__share-button:hover, .button[disabled].primary:focus, [disabled].primary.towncrier__share-button:focus {
         background-color: #E75153;
-        color: #fff; }
+        color: #000; }
     .button.disabled.secondary, .disabled.secondary.towncrier__share-button, .button[disabled].secondary, [disabled].secondary.towncrier__share-button {
       opacity: 0.25;
       cursor: not-allowed; }
       .button.disabled.secondary:hover, .disabled.secondary.towncrier__share-button:hover, .button.disabled.secondary:focus, .disabled.secondary.towncrier__share-button:focus, .button[disabled].secondary:hover, [disabled].secondary.towncrier__share-button:hover, .button[disabled].secondary:focus, [disabled].secondary.towncrier__share-button:focus {
         background-color: #EA994D;
-        color: #fff; }
+        color: #000; }
     .button.disabled.success, .disabled.success.towncrier__share-button, .button[disabled].success, [disabled].success.towncrier__share-button {
       opacity: 0.25;
       cursor: not-allowed; }
       .button.disabled.success:hover, .disabled.success.towncrier__share-button:hover, .button.disabled.success:focus, .disabled.success.towncrier__share-button:focus, .button[disabled].success:hover, [disabled].success.towncrier__share-button:hover, .button[disabled].success:focus, [disabled].success.towncrier__share-button:focus {
         background-color: #3adb76;
-        color: #fff; }
+        color: #000; }
     .button.disabled.warning, .disabled.warning.towncrier__share-button, .button[disabled].warning, [disabled].warning.towncrier__share-button {
       opacity: 0.25;
       cursor: not-allowed; }
       .button.disabled.warning:hover, .disabled.warning.towncrier__share-button:hover, .button.disabled.warning:focus, .disabled.warning.towncrier__share-button:focus, .button[disabled].warning:hover, [disabled].warning.towncrier__share-button:hover, .button[disabled].warning:focus, [disabled].warning.towncrier__share-button:focus {
         background-color: #ffae00;
-        color: #fff; }
+        color: #000; }
     .button.disabled.alert, .disabled.alert.towncrier__share-button, .button[disabled].alert, [disabled].alert.towncrier__share-button {
       opacity: 0.25;
       cursor: not-allowed; }
       .button.disabled.alert:hover, .disabled.alert.towncrier__share-button:hover, .button.disabled.alert:focus, .disabled.alert.towncrier__share-button:focus, .button[disabled].alert:hover, [disabled].alert.towncrier__share-button:hover, .button[disabled].alert:focus, [disabled].alert.towncrier__share-button:focus {
         background-color: #ec5840;
-        color: #fff; }
+        color: #000; }
   .button.dropdown::after, .dropdown.towncrier__share-button::after {
     content: '';
     display: block;
@@ -6674,6 +6674,12 @@ body#tinymce {
   padding: 0.83333rem; }
   #cookie-message p {
     margin-bottom: 0; }
+
+.button:hover, .towncrier__share-button:hover {
+  color: #fff; }
+
+.button:focus, .towncrier__share-button:focus, .button:active, .towncrier__share-button:active {
+  color: #fff; }
 
 .sites-button {
   background: #FF6908;

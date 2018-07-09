@@ -48,7 +48,7 @@ function s24_share_widget() {
        aria-expanded="false"
        aria-haspopup="true">
         <span class="towncrier__share-text accent-color">Share</span>
-        <svg width="15" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M11.3 11c-.7 0-1.3.2-1.8.6l-4-2.2a2.8 2.8 0 0 0 0-1.8l4.2-2.3a2.8 2.8 0 1 0-1-1.2l-4 2.3c-.5-.4-1-.7-1.8-.7a2.8 2.8 0 1 0 1.8 5l4 2.1a2.8 2.8 0 1 0 2.6-1.8z" fill-rule="nonzero" fill="#fff"/></svg>
+        <svg width="15" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M11.3 11c-.7 0-1.3.2-1.8.6l-4-2.2a2.8 2.8 0 0 0 0-1.8l4.2-2.3a2.8 2.8 0 1 0-1-1.2l-4 2.3c-.5-.4-1-.7-1.8-.7a2.8 2.8 0 1 0 1.8 5l4 2.1a2.8 2.8 0 1 0 2.6-1.8z" fill-rule="nonzero" fill="currentColor"/></svg>
     </a>
 
     <!-- change aria-hidden to `true` if js -->

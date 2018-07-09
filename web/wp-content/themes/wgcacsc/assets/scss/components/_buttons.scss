@@ -1,3 +1,21 @@
+.button {
+
+    &:hover {
+
+        color: #fff;
+
+    }
+
+    &:focus,
+    &:active {
+
+        color: #fff;
+
+    }
+
+
+}
+
 .sites-button {
     background: #FF6908;
     font-size: 1.25rem;
