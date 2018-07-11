@@ -6,10 +6,10 @@ Utilises the [Foundation 6 Wordpress Template](https://foundationpress.olefredri
 
 ## Site URLs
 
-* Live: https:// ??? .wellcomegenomecampus.org/
-* Sanger Staging: http://wt- ??? .sandbox.sanger.ac.uk/
+* Live: https://coursesandconferences.wellcomegenomecampus.org (TBC)
+* Sanger Staging: (TBC)
 * S24 Staging: http://wgcacsc.s24.net/
-* Development: http://wgacsc.dev
+* Development: http://local.wgacsc.org/
 
 ## Building the site
 
