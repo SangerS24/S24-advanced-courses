@@ -370,7 +370,7 @@ function s24_get_current_object_type() {
 //creates and returns menu item array (item itself and children - recursively )
 function s24_menu_item_array( $root_menu_item ) {
     $menu_item_array = array();
-    $menu_item_array['item'] = s24_set_single_menu_item($root_menu_item);
+    $menu_item_array['item'] = $root_menu_item;
     $menu_item_array['children'] = array();
 
     //get children
@@ -394,12 +394,13 @@ function s24_menu_item_array( $root_menu_item ) {
     return $menu_item_array;
 }
 
-function s24_set_single_menu_item( $menu_item ) {
-    $items = array($menu_item);
-    $items = array_map( 'wp_setup_nav_menu_item', $items );
-    $items = apply_filters( 'wp_get_nav_menu_items', $items );
-    return $items[0];
-}
+//function s24_set_single_menu_item( $menu_item ) {
+//    die('<pre>'.print_r( $menu_item , 1).'</pre>');
+//    $items = array($menu_item);
+//    $items = array_map( 'wp_setup_nav_menu_item', $items );
+//    $items = apply_filters( 'wp_get_nav_menu_items', $items );
+//    return $items[0];
+//}
 
 function s24_build_menu_list( $side_menu_item , $current_id , $topmost = false ) {
 
@@ -725,7 +726,7 @@ function s24_build_breadcrumb_link( $link_object , $current = false ) {
     $label = '';
     switch ( $link_object['type'] ) {
         case 'nav_menu_item':
-            $menu_item_object = s24_set_single_menu_item( $link_object['object'] );
+            $menu_item_object = $link_object['object'];
             $href = $menu_item_object->url;
             $label = $menu_item_object->title;
             break;
