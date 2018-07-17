@@ -75,10 +75,13 @@ class fewbricks {
 
         if (!helpers\use_acf_json() || $fewbricks_save_json === true) {
 
-            $fewbricks_template_directory = get_stylesheet_directory() . '/';
+            $project_files_base_path = apply_filters(
+                'fewbricks/project_files_base_path',
+                get_stylesheet_directory() . '/fewbricks'
+            );
 
-            require($fewbricks_template_directory . 'fewbricks/common-fields/init.php');
-            require($fewbricks_template_directory . 'fewbricks/field-groups/init.php');
+            require($project_files_base_path . '/common-fields/init.php');
+            require($project_files_base_path . '/field-groups/init.php');
 
         }
 
@@ -121,7 +124,12 @@ class fewbricks {
     private static function autoload_brick($file_name)
     {
 
-        $path = get_stylesheet_directory() . '/fewbricks/bricks/' . $file_name;
+        $project_files_base_path = apply_filters(
+            'fewbricks/project_files_base_path',
+            get_stylesheet_directory() . '/fewbricks'
+        );
+
+        $path = $project_files_base_path . '/bricks/' . $file_name;
 
         if(is_file($path)) {
 
@@ -284,7 +292,12 @@ class fewbricks {
     private static function fewbricks_template_dir_exists()
     {
 
-        $fewbricks_template_dir_exists = file_exists(get_stylesheet_directory() . '/fewbricks');
+        $project_files_base_path = apply_filters(
+            'fewbricks/project_files_base_path',
+            get_stylesheet_directory() . '/fewbricks'
+        );
+
+        $fewbricks_template_dir_exists = file_exists($project_files_base_path);
 
         if(!$fewbricks_template_dir_exists) {
             // Make sure that the fewbricks/fewbricks-directory has been moved to the template directory.
@@ -345,7 +358,7 @@ class fewbricks {
 
         self::$messages['fewbricks_template_dir_missing'] = '
             <div class="error notice">
-              <p>You have activated the plugin "Fewbricks". In order to use it, please make sure that you have copied the directory "fewbricks" in plugins/fewbricks/ to your theme directory. Read more in the <a href="https://github.com/folbert/fewbricks/blob/master/README.md">README</a> (search for "hidden").</p>
+              <p>You have activated the plugin "Fewbricks". In order to use it, please make sure that you have copied the directory "fewbricks" in plugins/fewbricks/ to your theme directory or placed it at the path that you have specified using the filter fewbricks/project_files_base_path. Read more in the <a href="https://github.com/folbert/fewbricks/blob/master/README.md">README</a> (search for "hidden").</p>
           </div>
         ';
 

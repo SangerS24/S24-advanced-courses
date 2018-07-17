@@ -1,90 +1,103 @@
 === ACF Content Analysis for Yoast SEO ===
-Contributors: ViktorFroberg, marol87, pekz0r, angrycreative
-Tags: Angry Creative, Yoast SEO, Yoast, SEO, ACF, Advanced Custom Fields
-Requires at least: 4.0
-Tested up to: 4.7.3
-Stable tag: 1.2.6
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: yoast, angrycreative, kraftner, marcusforsberg, viktorfroberg, joostdevalk, atimmer, jipmoors, theorboman
+Tags: Yoast, SEO, ACF, Advanced Custom Fields, analysis, Search Engine Optimization
+Requires at least: 4.8
+Tested up to: 4.9.7
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.html
+Stable tag: 2.1.0
+Requires PHP: 5.2.4
 
-Ensure that Yoast SEO analysize all ACF content including Flexible Content and Repeaters.
-Requires version 3.0 or later of Yoast SEO plugin.
+WordPress plugin that adds the content of all ACF fields to the Yoast SEO score analysis.
 
 == Description ==
 
-This plugin ensures that Yoast SEO analysize all ACF content including Flexible Content and Repeaters.
-Requires version 3.0 or later of Yoast SEO plugin.
+This plugin ensures that Yoast SEO analyzes all ACF content including Flexible Content and Repeaters.
 
-= Filters =
-`ysacf_exclude_fields`: exclude acf fields from Yoast scoring. Should return array of field names.
+[Yoast SEO for WordPress](https://yoast.com/wordpress/plugins/) content and SEO analysis does not take in to account the content of a post's [Advanced Custom Fields](http://www.advancedcustomfields.com/). This plugin uses the plugin system of Yoast SEO for WordPress 3.1+ to hook into the analyser in order to add ACF content to the SEO analysis.
 
-Example: exclude the text-color and background_image fields from Yoast scoring.
+This had previously been done by the [WordPress SEO ACF Content Analysis](https://wordpress.org/plugins/wp-seo-acf-content-analysis/) plugin but that no longer works with Yoast 3.0. Kudos to [ryuheixys](https://profiles.wordpress.org/ryuheixys/), the author of that plugin, for the original idea.
 
-`
-add_filter('ysacf_exclude_fields', function(){
-    return array(
-        'text_color',
-        'background_image'
-    );
-});
-`
+This Plugin is compatible with the free ACF 4 Version as well as with the PRO Version 5. Please be aware that it ignores Pro Add-Ons for Version 4. In that case please upgrade to ACF PRO Version 5.
 
+> If you have issues, please [submit them on GitHub](https://github.com/Yoast/yoast-acf-analysis/issues)
 
-== Installation ==
+Previously called Yoast ACF Analysis.
 
-1. Download, unzip and upload the plugin folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress (activate for network if multisite)
+== Filters ==
 
-== Frequently Asked Questions ==
+= Remove specific field from scoring =
+`add_filter( 'yoast-acf-analysis/blacklist_name', function ( $blacklist_name ) {
+    $blacklist_name->add( 'my-field-name' );
+    return $blacklist_name;
+});`
 
-= I'm using Flexible Content and the field name is displayed in the snippet preview. How do I remove it? =
+= Remove field type from scoring =
+`add_filter( 'yoast-acf-analysis/blacklist_type', function ( $blacklist_type ) {
+    // text, image etc
+    $blacklist_type->add( 'text' );
+    $blacklist_type->add( 'image' );
+    return $blacklist_type;
+});`
 
-You can remove it using the ysacf_exclude_fields filter.
+= Define custom field a specific heading value =
+`add_filter( 'yoast-acf-analysis/headlines', function ( $headlines ) {
+    // value from 1-6, 1=h1, 6=h6
+    $headlines['field_591eb45f2be86'] = 3;
+    return $headlines;
+});`
 
-`
-add_filter('ysacf_exclude_fields', function(){
-    return array(
-        'acf_fc_layout',
-    );
-});
-`
+= Change refresh rate =
+`add_filter( 'yoast-acf-analysis/refresh_rate', function () {
+    // Refresh rates in milliseconds
+    return 1000;
+});`
 
 == Changelog ==
 
-= 1.2.6 =
-* Tested with WordPress 4.7.3.
-* Added FAQ section to plugin repository page.
+= 2.1.0 =
 
-= 1.2.5 =
-* Fix for taxonomies in the latest version of WordPress
+Released July 10th, 2018
 
-= 1.2.4 =
-* Fix filter.
-* Add check for empty content.
+Bugfixes:
+ * Fixes a bug where attempting to get the ACF version, wouldn't always be reliable. This would lead the plugin to think that a newer version was installed than what was actually present.
+ * Fixes potential conflicts with other plugins due to generic variable naming.
+ * Fixes a bug where the YoastSEO ACF Content analysis would attempted to be loaded, although it wasn't available.
 
-= 1.2.3 =
-* Fix PHP warnings.
-* Works with WordPress 4.5
+Other:
+ * Adds filter examples to the readme.
 
-= 1.2.2 =
-* Fix warning for undefined index
-* Fix support for multisite
+= 2.0.1 =
+
+Released October 19th, 2017
+
+Bugfixes:
+	* Fixes the mismatch in textdomain according to the plugin slug.
+	* Fixes using an incorrect path when loading plugin data.
+	* Fixes a bug with flexible content and repeaters, in combination with ACF 5, causing JavaScript errors.
+	* Fixes a bug with short array notation which is a problem on sites running on PHP 5.3 or lower.
+	* Fixes a bug where assets are loaded without checking for required dependencies.
+
+= 2.0.0 =
+
+Released August 22th, 2017
+
+Changes:
+	* Complete rewrite, including full support for ACF 4 and 5.
 
 = 1.2.1 =
-* Bugfix for Yoast SEO Premium
+
+Released July 24th, 2017
+
+Bugfixes:
+	* Fixes Yoast SEO Premium social sharing tabs not showing any content when this plugin is active, props [Matt McAchran](https://github.com/mmcachran).
 
 = 1.2.0 =
-* Add support for alt and title tags in images.
-* Security improvements
-* Images returned as url will now be analysed as urls.
 
-= 1.1.1 =
-* Bugfix for undefined index
+Released June 30th, 2016
 
-= 1.1.0 =
-* Add support for taxonomies
-* Bug fixes and stability improvements
-* Works with WordPress 4.4.1
+* Bugfixes:
+	* Fixes an incompatibility issue with Yoast SEO version 3.2+ where the assets are registered with a new prefix.
 
-= 1.0.0 =
-* First public release
+* Internationalization:
+	* Improved text in notifications when dependencies are missing.

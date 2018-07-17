@@ -23,6 +23,7 @@ Please see [this issue](https://github.com/folbert/fewbricks/issues/2#issuecomme
     + [ACF Local JSON](#acf-local-json)
         + [Important about local JSON](#important-about-local-json)
     + [Available fields](#available-fields)
+    + [Filters](#filters)
         
         
 ## Legal
@@ -36,7 +37,7 @@ The following words will be explained in detail later in this document,
 + Brick Layout - Not to be confused with ACFs layouts. Brick layouts are like layouts in the [Blade templating system](https://laravel.com/docs/5.2/blade#defining-a-layout).
 
 ## About
-Fewbricks is a module system developed by [Björn Folbert](http://folbert.com) at [FEW Agency](http://fewagency.se). It is built on top of the awesome plugin [Advanced Custom Fields](http://www.advancedcustomfields.com/) (ACF) v5 PRO meaning that you must have that installed for this to work.
+Fewbricks is a module system developed by [Björn Folbert](https://folbert.com) at [KAN Malmö](http://kan.se). It is built on top of the awesome plugin [Advanced Custom Fields](http://www.advancedcustomfields.com/) (ACF) v5 PRO meaning that you must have that installed for this to work.
 
 Instead of building field groups, repeaters, flexible content etc. using the GUI that comes with ACF, you build it all by writing code. So if you are looking for a way to create reusable fields within the GUI, Fewbricks is not what you are looking for.
 
@@ -80,7 +81,7 @@ The system was created for the following reasons:
     * Install manually by downloading [the latest release](/releases).
     If you are installing Fewbricks this way, you must also install [Fewbricks Hidden field for ACF](https://github.com/folbert/acf-fewbricks-hidden) and make sure that its folder is named "acf-fewbricks-hidden".
  
- 3. In the main folder named "fewbricks", there is a folder also named "fewbricks". Move that folder to your theme folder and do __not__ rename it or any of its child directories. All your custom code will reside in this folder.
+ 3. In the main folder named "fewbricks", there is a folder also named "fewbricks". Move that folder to either the plugins folder or your theme folder. If you place it in the theme fodler and keep the name "fewbricks", you don't have to do anything. If you place the directory anywhere else and/or rename it, check the filter `fewbricks/project_files_base_path` to let Fewbricks know your custom path. All your custom code will reside in this folder. When starting writing Febwricks, i thought that keeping the it in the theme directory was the best thing to do, but have since come to change my mind and now prefer to keep it the plugins directory. For the sake of backwards compatibility, the default location is still themes/[theme-name]/fewbricks. 
  
  4. Activate Fewbricks and "Advanced Custom Fields: Hidden Field for Fewbricks" as you would any other plugins.
  
@@ -242,7 +243,7 @@ Each brick has its own class placed in the folder named "bricks". Each class hav
         
         The template-file have access to the same data and variables that you have if you are building the HTML right in `get_brick_html()`.
         
-        For your convenience, the main brick-class have a function named `get_brick_template_html()` for this. It will look for a template file with the name structure described above, include that file and return the outcome of it. This function also have a hook for the filter "fewbricks/brick/brick_template_base_path" allowing you to change the path to the directory where the file resides. Note that the file name will always be as described in step 2 above. You may also pass an argument to the function telling it where to look for a specific template file. Once again, you can pass the path, the filename is as described above. Passing the argument makes the function skip the hook.
+        For your convenience, the main brick-class have a function named `get_brick_template_html()` for this. It will look for a template file with the name structure described above, include that file and return the outcome of it. You may also pass an argument to the function telling it where to look for a specific template file. Once again, you can pass the path, the filename is as described above. Check out the [filters-section](#filters) of this README for filters available in this function.
             
         We are using this approach in [theme]/fewbricks/bricks/demo-jumbotron.php.
                 
@@ -251,6 +252,8 @@ Each brick has its own class placed in the folder named "bricks". Each class hav
     Including external files like in i and ii will have some minor impact on performance but if you feel that having the HTML in an external file is the way to go, go ahead. 
         
     The `get_field()`-function being used is a wrapper function for ACFs own `get_field()` which takes care of adding any needed prefixes to get the value. Note that we are using the name values that we set when adding fields under step 3 above.
+    
+    We have also added the function `get_field_values()` to the main brick class. It enables you to pass an array of field names and get an array with the values back in return.
    
 #### Is that all Fewbricks can do?
 Nope. Like we said, you can create flexible content, repeaters, bricks incorporating other bricks and also create field groups on the fly. For more on how to do this, check the files in the directories "field-groups", "demo", "bricks" and "brick-layouts". Don't miss the brick named "demo-flexible-brick"!
@@ -263,7 +266,7 @@ Brick layouts are not the same as layouts in ACF.
 
 Often when printing bricks you want to have some wrapping HTML that is the same for each brick. This can for example be Bootstraps "row" and "col"-divs. Other times, you might only want the "core html" of the brick without anything wrapping it. To keep it DRY, we have created a basic layout system.
 
-Brick layout files are stored in the brick-layouts directory and are used by passing the name(s) of the file(s) without the file extension (.php) to the `get_html`-function of a brick. If you dont want to use brick layouts, don't pass anything (or `false`) to the function.
+Brick layout files are stored in the brick-layouts directory and are used by passing the name(s) of the file(s) without the file extension (.php) to the `get_html`-function of a brick. If you dont want to use brick layouts, don't pass anything (or `false`) to the function. Check out the [filters-section] on how to change how layouts are found.
 
 You can also create layouts using Timber. The only thing you have to do different compared to when using a basic PHP-file is to include '.twig' in the filename when passing it to `get_html`.
 
@@ -350,3 +353,30 @@ The goal is to have all the fields available in ACF also available in Fewbricks.
 
 ## Extra fields
 + Fewbricks hidden - Used for base functionality in Fewbricks. 
+
+## Filters
+
+The following filters are available in Fewbricks:
+
+### `fewbricks/project_files_base_path`
+Allows you to change the path of the project Fewbricks folder.
+
+Simple example (namespaces, OOP-plugins etc. are waaaay outside the scope of this readme):
+```php
+add_filter('fewbricks/project_files_base_path', 'get_project_files_base_path');
+function fewbricks_project_files_base_path() {
+    // Path to where you placed the fewbricks-directory that originally resided
+    // in the main fewbricks directory.
+    // Include directory name, exclude trailing slash
+    return [PATH];
+}
+```
+
+### `fewbricks/brick/brick_template_file_extension`
+Allows you to change the file extension of template files used in [brick.php -> get_brick_template_html()](lib/brick.php). Your filter should return for example ".view.php" or ".php". Note the dot at the beginning. 
+
+### `fewbricks/brick/brick_template_base_path`
+Allows you to change the standard path of brick templates in [lib/brick.php -> get_brick_template_html()](lib/brick.php). If you pass a `$template_base_path` to `get_brick_template_html()` this filter will be ignored. Your filter should return the path without a trailing slash.
+
+### `fewbricks/brick/brick_layout_base_path`
+Allows you to change the base path of layout files used in [lib/brick.php -> get_brick_layouted_html()]. Your filter should return return the path without a trailing slash.

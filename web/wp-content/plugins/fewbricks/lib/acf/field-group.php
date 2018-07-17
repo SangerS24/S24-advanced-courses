@@ -369,7 +369,7 @@ class field_group
 
     /**
      * This function hides and/or removes items on the edit screen for where the field group is present.
-     * Note that hide and show are mutually exclusive. If you pass anything but false to hide, show will be ignored.
+     * Note that hide and showare mutually exclusive. If you pass anything but false to hide, show will be ignored.
      * Pass (false, []) to apply the values in show.
      * @param bool|array $names_of_items_to_hide
      * @param bool|array $names_of_items_to_show
@@ -380,7 +380,7 @@ class field_group
 
         $default_items_to_hide = [
             0 => 'the_content',
-            //1 => 'excerpt',
+            1 => 'excerpt',
             2 => 'custom_fields',
             3 => 'discussion',
             4 => 'comments',
@@ -390,7 +390,7 @@ class field_group
             8 => 'format',
             //9 => 'page_attributes', // Since page attributes are so often shown
             10 => 'featured_image',
-            //11 => 'categories',
+            11 => 'categories',
             12 => 'tags',
             13 => 'send-trackbacks',
         ];

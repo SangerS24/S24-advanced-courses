@@ -566,20 +566,28 @@ class acf_field_taxonomy extends acf_field {
 		
 		// vars
 		$div = array(
-			'class'				=> 'acf-taxonomy-field acf-soh',
+			'class'				=> 'acf-taxonomy-field',
 			'data-save'			=> $field['save_terms'],
-			'data-type'			=> $field['field_type'],
-			'data-taxonomy'		=> $field['taxonomy']
+			'data-ftype'		=> $field['field_type'],
+			'data-taxonomy'		=> $field['taxonomy'],
+			'data-allow_null'	=> $field['allow_null']
 		);
 		
 		
 		// get taxonomy
 		$taxonomy = get_taxonomy( $field['taxonomy'] );
 		
+		
+		// bail early if taxonomy does not exist
+		if( !$taxonomy ) return;
+		
+		
 		?>
 <div <?php acf_esc_attr_e($div); ?>>
 	<?php if( $field['add_term'] && current_user_can( $taxonomy->cap->manage_terms) ): ?>
-	<a href="#" class="acf-icon -plus acf-js-tooltip small acf-soh-target" data-name="add" title="<?php echo esc_attr($taxonomy->labels->add_new_item); ?>"></a>
+	<div class="acf-actions -hover">
+		<a href="#" class="acf-icon -plus acf-js-tooltip small" data-name="add" title="<?php echo esc_attr($taxonomy->labels->add_new_item); ?>"></a>
+	</div>
 	<?php endif;
 
 	if( $field['field_type'] == 'select' ) {
@@ -703,10 +711,10 @@ class acf_field_taxonomy extends acf_field {
 		// vars
 		$args = array(
 			'taxonomy'     		=> $field['taxonomy'],
-			'show_option_none'	=> __('No', 'acf') . ' ' . $taxonomy_obj->labels->name,
+			'show_option_none'	=> sprintf( _x('No %s', 'No terms', 'acf'), strtolower($taxonomy_obj->labels->name) ),
 			'hide_empty'   		=> false,
 			'style'        		=> 'none',
-			'walker'       		=> new acf_taxonomy_field_walker( $field ),
+			'walker'       		=> new ACF_Taxonomy_Field_Walker( $field ),
 		);
 		
 		
@@ -715,23 +723,13 @@ class acf_field_taxonomy extends acf_field {
 		$args = apply_filters('acf/fields/taxonomy/wp_list_categories/name=' . $field['_name'], $args, $field);
 		$args = apply_filters('acf/fields/taxonomy/wp_list_categories/key=' . $field['key'], $args, $field);
 		
-		?><div class="categorychecklist-holder">
-		
-			<ul class="acf-checkbox-list acf-bl">
-			
-				<?php if( $field['field_type'] == 'radio' && $field['allow_null'] ): ?>
-					<li>
-						<label class="selectit">
-							<input type="radio" name="<?php echo $field['name']; ?>" value="" /> <?php _e("None", 'acf'); ?>
-						</label>
-					</li>
-				<?php endif; ?>
-				
-				<?php wp_list_categories( $args ); ?>
-		
-			</ul>
-			
-		</div><?php
+		?>
+<div class="categorychecklist-holder">
+	<ul class="acf-checkbox-list acf-bl">
+		<?php wp_list_categories( $args ); ?>
+	</ul>
+</div>
+		<?php
 		
 	}
 	
@@ -788,6 +786,11 @@ class acf_field_taxonomy extends acf_field {
 			'name'			=> 'allow_null',
 			'type'			=> 'true_false',
 			'ui'			=> 1,
+			'conditions'	=> array(
+				'field'		=> 'field_type',
+				'operator'	=> '!=',
+				'value'		=> 'checkbox'
+			)
 		));
 		
 		
@@ -987,7 +990,10 @@ class acf_field_taxonomy extends acf_field {
 		}
 		
 		
-		?><p class="acf-submit"><button class="acf-button button button-primary" type="submit"><?php _e("Add", 'acf'); ?></button><i class="acf-spinner"></i><span></span></p></form><?php
+		?><p class="acf-submit">
+			<button class="acf-submit-button button button-primary" type="submit"><?php _e("Add", 'acf'); ?></button>
+		</p>
+		</form><?php
 		
 		
 		// die

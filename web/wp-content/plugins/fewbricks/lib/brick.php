@@ -248,7 +248,7 @@ class brick
      * @param string $key A site wide unique key for the field
      * @param array $settings Any extra settings to set on the field. Can be used to override existing settings as well.
      */
-    protected function add_common_field($common_field_array_key, $key, $settings = [])
+    public function add_common_field($common_field_array_key, $key, $settings = [])
     {
 
         global $fewbricks_common_fields;
@@ -376,6 +376,7 @@ class brick
      */
     protected function get_field_in_repeater($repeater_name, $data_name, $post_id = false)
     {
+
         return $this->get_field($repeater_name . '_' . $data_name, $post_id, false, true);
 
     }
@@ -465,12 +466,17 @@ class brick
     /**
      * Wrapper function for ACFs have_rows()
      * @param $name
+     * @param bool $post_id Specific post ID where your value was entered.
+     * Defaults to current post ID (not required). This can also be options / taxonomies / users / etc
+     * See https://www.advancedcustomfields.com/resources/have_rows/
      * @return bool
      */
-    protected function have_rows($name)
+    protected function have_rows($name, $post_id = false)
     {
 
-        if ($this->is_option) {
+        if($post_id !== false) {
+            $outcome = have_rows($this->name . '_' . $name, $post_id);
+        } elseif ($this->is_option) {
             $outcome = have_rows($this->get_data_name('_' . $name), 'option');
         } else {
             $outcome = have_rows($this->name . '_' . $name);
@@ -556,9 +562,10 @@ class brick
      * resides. Value returned by the hook should end with a slash. Note that the filter will only run if
      * the first argument to this funciton is false.
      * @param bool|string $template_base_path If you want to set a specific base path, pass it here. End with a slash.
+     * @param array $data Array of data to pass to the template file
      * @return string
      */
-    protected function get_brick_template_html($template_base_path = false)
+    protected function get_brick_template_html($template_base_path = false, $data = [])
     {
 
         if($template_base_path === false) {
@@ -570,9 +577,14 @@ class brick
 
         }
 
+        $template_files_extension = apply_filters(
+            'fewbricks/brick/brick_template_file_extension',
+            '.template.php'
+        );
+
         $template_path = $template_base_path .
             str_replace('_', '-', \fewbricks\helpers\get_real_class_name($this)) .
-            '.template.php';
+            $template_files_extension;
 
         ob_start();
 
@@ -592,13 +604,16 @@ class brick
 
         if (!empty($this->brick_layouts)) {
 
-            $theme_path = get_stylesheet_directory() . '/';
+            $template_base_path = apply_filters(
+                'fewbricks/brick/brick_layout_base_path',
+                get_stylesheet_directory() . '/fewbricks/brick-layouts'
+            );
 
             foreach ($this->brick_layouts AS $brick_layout) {
 
                 if(substr($brick_layout, -5) === '.twig') {
 
-                    $html = \Timber::compile($theme_path . 'fewbricks/brick-layouts/' . $brick_layout, [
+                    $html = \Timber::compile($template_base_path . '/' . $brick_layout, [
                         'html' => $html,
                         'this' => $this
                     ]);
@@ -608,7 +623,7 @@ class brick
                     ob_start();
 
                     /** @noinspection PhpIncludeInspection */
-                    include($theme_path . 'fewbricks/brick-layouts/' . $brick_layout . '.php');
+                    include($template_base_path . '/' . $brick_layout . '.php');
 
                     $html = ob_get_clean();
 
@@ -1118,6 +1133,55 @@ class brick
         $object->set_is_option($this->is_option);
 
         return $object;
+
+    }
+
+    /**
+     * Get multiple field values in one function call. Pass an array where each item can be either:
+     * - a field name
+     * - an array where the index is the field name and the value is the name you want to store the value
+     * in in the returned array: ['field_name_1', 'field_name_2', ['field_name_3' => 'name_to_save_as']]
+     * @param array $field_names
+     * @return array
+     */
+    public function get_field_values($field_names)
+    {
+
+        $values = [];
+
+        foreach($field_names AS $field_name) {
+
+            if(is_array($field_name)) {
+                $key = key($field_name);
+                $values[$field_name[$key]] = $this->get_field($key);
+            } else {
+                $values[$field_name] = $this->get_field($field_name);
+            }
+        }
+
+        return $values;
+
+    }
+
+    /**
+     * Get value of html_arg.
+     * @param $name
+     * @param bool $default_value Value to return if the arg has not been set
+     * @return bool
+     */
+    public function get_get_html_arg($name, $default_value = false) {
+
+        if(isset($this->get_html_args[$name])) {
+
+            $outcome = $this->get_html_args[$name];
+
+        } else {
+
+            $outcome = $default_value;
+
+        }
+
+        return $outcome;
 
     }
 

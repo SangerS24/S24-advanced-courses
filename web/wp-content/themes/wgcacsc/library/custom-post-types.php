@@ -31,10 +31,11 @@ function wgcacsc_register_my_cpts()
         "exclude_from_search" => false,
         "capability_type" => "post",
         "map_meta_cap" => true,
+        'hierarchical' => true,
         "rewrite" => array("slug" => "our-events"),
         "query_var" => true,
         "menu_icon" => "dashicons-calendar-alt",
-        "supports" => array("title", "excerpt", "revisions", "author" , "thumbnail" ),
+        "supports" => array("title", "excerpt", "revisions", "author" , "thumbnail", "page-attributes" ),
     );
     register_post_type("event", $args);
 

@@ -30,7 +30,7 @@ function wp_media_categories_update_count_callback( $terms = array(), $media_tax
 						WHERE taxonomy = %s
 				)) AS unioncount GROUP BY term_taxonomy_id";
 
-	$prepared = $wpdb->prepare( $sql, 'media_category', 'media_category' );
+	$prepared = $wpdb->prepare( $sql, $media_taxonomy->name, $media_taxonomy->name );
 	$count    = $wpdb->get_results( $prepared );
 
 	// update all count values from taxonomy
@@ -73,7 +73,7 @@ function wp_media_categories_get_media_category_options( $selected_value = '' ) 
 function wp_media_categories_no_category_request( $query_args = array() ) {
 
 	// Bail if not in admin
-	if ( ! is_admin() ) {
+	if ( ! is_admin() || ! is_main_query() ) {
 		return $query_args;
 	}
 
@@ -85,6 +85,12 @@ function wp_media_categories_no_category_request( $query_args = array() ) {
 
 		// No categories, so do a "NOT EXISTS" taxonomy query
 		if ( 'no_category' === $query_args[ $media_category ] ) {
+
+			// This is necessary to prevent the JOIN clause from being stomped
+			// and replaced for postmeta
+			$query_args['suppress_filters'] = true;
+
+			// This adds a taxonomy query, looking for no terms
 			$query_args['tax_query'] = array(
 				array(
 					'taxonomy'         => $media_category,

@@ -75,7 +75,7 @@ class acf_admin_settings_updates {
 	    // error object
     	if( is_wp_error($error) ) {
         	
-        	$error = __('<b>Error</b>. Could not connect to update server', 'acf') . ' <span class="description">(' . $error->get_error_message() . ')</span>';
+        	$error = __('<b>Error</b>. Could not connect to update server', 'acf') . ' <span class="description">(' . esc_html( $error->get_error_message() ) . ')</span>';
         	
     	}
     	
@@ -118,7 +118,7 @@ class acf_admin_settings_updates {
 			// is relevant?
 	    	if( version_compare($h4, $version, '==') ) {
 	        	
-	        	return '<h4>' . $version . '</h4>' . $text;
+	        	return '<h4>' . esc_html($version) . '</h4>' . acf_esc_html($text);
 	        	
 	    	}
 	    	
@@ -227,7 +227,6 @@ class acf_admin_settings_updates {
         
         // add changelog if the remote version is '>' than the current version
         $version = acf_get_setting('version');
-	 
 		
 	    // check if remote version is higher than current version
 		if( version_compare($info['version'], $version, '>') ) {
@@ -242,13 +241,42 @@ class acf_admin_settings_updates {
         	// - avoids new version not available in plugin update list
         	// - only request if license is active
         	if( $license ) {
-	        	
-	        	acf_updates()->refresh_plugins_transient();	
-	        	
+	        	$this->refresh_plugins_transient();
         	}
-
         }
+	}
+	
+	
+	/**
+	*  refresh_plugins_transient
+	*
+	*  Checks the site transient 'update_plugins' and compares the cached new_version against the plugin-info version.
+	*  If the cached version is older, a new version is available, and the transient is refreshed.
+	*
+	*  @date	12/7/18
+	*  @since	5.6.9
+	*
+	*  @param	void
+	*  @return	void
+	*/
+	
+	function refresh_plugins_transient() {
 		
+		// vars
+		$remote_version = $this->view['remote_version'];
+		$basename = acf_get_setting('basename');
+		$transient = get_site_transient('update_plugins');
+		$transient_version = 0;
+		
+		// get transient version
+		if( isset($transient->response[ $basename ]->new_version) ) {
+			$transient_version = $transient->response[ $basename ]->new_version;
+		}
+		
+		// return true if a newer $remote_version exists
+		if( acf_version_compare($remote_version, '>', $transient_version) ) {
+			acf_updates()->refresh_plugins_transient();
+		}
 	}
 	
 	
@@ -281,6 +309,12 @@ class acf_admin_settings_updates {
 		
 		// connect
 		$response = acf_updates()->request('v2/plugins/activate?p=pro', $post);
+		
+		
+		// ensure response is expected JSON array (not string)
+		if( is_string($response) ) {
+			$response = new WP_Error( 'server_error', esc_html($response) );
+		}
 		
 		
 		// error
@@ -343,6 +377,12 @@ class acf_admin_settings_updates {
 		
 		// connect
 		$response = acf_updates()->request('v2/plugins/deactivate?p=pro', $post);
+		
+		
+		// ensure response is expected JSON array (not string)
+		if( is_string($response) ) {
+			$response = new WP_Error( 'server_error', esc_html($response) );
+		}
 		
 		
 		// error
