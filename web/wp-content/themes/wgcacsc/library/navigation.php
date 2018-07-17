@@ -394,13 +394,13 @@ function s24_menu_item_array( $root_menu_item ) {
     return $menu_item_array;
 }
 
-function s24_set_single_menu_item( $menu_item ) {
-    die('<pre>'.print_r( $menu_item , 1).'</pre>');
-    $items = array($menu_item);
-    $items = array_map( 'wp_setup_nav_menu_item', $items );
-    $items = apply_filters( 'wp_get_nav_menu_items', $items );
-    return $items[0];
-}
+//function s24_set_single_menu_item( $menu_item ) {
+//    die('<pre>'.print_r( $menu_item , 1).'</pre>');
+//    $items = array($menu_item);
+//    $items = array_map( 'wp_setup_nav_menu_item', $items );
+//    $items = apply_filters( 'wp_get_nav_menu_items', $items );
+//    return $items[0];
+//}
 
 function s24_build_menu_list( $side_menu_item , $current_id , $topmost = false ) {
 
