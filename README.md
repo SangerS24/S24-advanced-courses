@@ -6,6 +6,10 @@ Utilises the [Foundation 6 Wordpress Template](https://foundationpress.olefredri
 
 ## Site URLs
 
+We host a temporary staging site (S24 Staging). The live and staging website are hosted by the Sanger IT team.
+
+The Sanger institute is run on the Wellcome Genome campus, and pimarily funded by the Wellcome Trust.
+
 * Live: https://coursesandconferences.wellcomegenomecampus.org (TBC)
 * Sanger Staging: (TBC)
 * S24 Staging: http://wgcacsc.s24.net/
@@ -25,13 +29,15 @@ And to continuously watch the project for changes run:
 
 ## Hosting
 
-The Studio24 staging site is hosted on: ?? new server ??, the Sanger web team host a live and staging site (which are listed above).
+Studio24 host a temporary staging site on goldeneye.studio24.net
+
+The Sanger web team host a live and staging site (which are listed above).
 
 ## Deployment
 
 ### Deploy the site to Sanger live/staging:
 
-To deploy the site live, simply merge any changes into the master branch and send an email to web@sanger.ac.uk requesting that a deployment be made on the Sanger server.
+To deploy the site live, simply merge any changes into the master branch and send an email to webmaster@sanger.ac.uk requesting that a deployment be made on the Sanger server.
 
 If database changes need to be made, then these can be made on the Sanger staging site (http://wt- ??? .sandbox.sanger.ac.uk/) using the sdunwoody login stored in Bitbucket (we need to get this changed to a Studio24 username, but this hasn't been actioned yet). If database changes are made to the Sanger staging site, you will also need to notify the web team that these changes need pulling in with your deploy.
 
@@ -50,6 +56,14 @@ cd ..
 chown -R apache:apache wgccc.s24.net
 ```
 
+## Contacting Sanger
+
+Our primary contact as the Sanger IT team is James Smith (js5@sanger.ac.uk). As of writing, he has been our main contact for the handover of three projects to their IT team.
+
+Our primary contact during the development of the website was Emily Boldy (emily.boldy@wellcomegenomecampus.org) who is a Marketing and Communications Officer. She should be copied into any communications deemed relevant or necessary.
+
+If you need to email their IT team requesting a backup of the database, or uploads directory (or any other technical questions or request), then please email webmaster@sanger.ac.uk and copy in James Smith: js5@sanger.ac.uk
+
 ## Documentation
 
 ### Wordpress comments
@@ -58,54 +72,21 @@ It should be noted that the comments section in the Wordpress admin has been hid
 
 ## Synching tasks
 
-### Sync files from live to staging
+If you require any files syncing (e.g. downloading live site uploads), you will need to contact the Sanger web team to facilitate this.
 
-Run on your local Mac. Remove *-n* to run this live.
-
-```
-#!bash
-TBC
-```
-
-### Sync files from live to local dev
-
-Run on your local Mac. Remove *-n* to run this live.
-
-```
-#!bash
-TBC
-```
-
-### Sync files from local dev to staging
-
-Run on your local Mac, note that you may need to change the local path for this to work.
-
-```
-#!bash
-TBC
-```
-
-### Staging → Development
-
-```
-#!bash
-rsync -e 'ssh' -av studio24@goldeneye.studio24.net:/var/www/wgcc/wascc/staging/web/wp-content/uploads/ ~/Sites/wellcome-genome-campus-advanced-courses-and-scientific/web/wp-content/uploads/
-```
+If you need to contact them about this, please email the Sanger IT team (please see `Contacting Sanger` section above).
 
 ## Installation
 
 You will need to import a database from the staging/live site and also pull down the config files from the server as these are not stored in the git repo.
 
-You should also pull down the uploaded assets when you first setup the project, you can do this by executing the following command (you may need to change the local path):
+You should also pull down the uploaded assets when you first setup the project.
 
-```
-#!bash
-TBC
-```
+To download either the files or the database, you will need to email the Sanger IT team (please see `Contacting sanger` section above).
 
 ### Requirements
 
-* PHP 5.6+
+* PHP 7.1+
 * [Bower](http://bower.io/) 
 * [Gulp](http://gulpjs.com/) 
 * [Node](https://nodejs.org) 4.5.0
