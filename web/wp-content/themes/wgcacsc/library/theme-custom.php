@@ -173,14 +173,14 @@ function wgcacsc_get_event_dates( $event_id ) {
 		return '';
 	}
 
-	$start_date = date_create_from_format( 'Ymd', $start_date );
+	$start_date = date_create_from_format( 'd/m/Y', $start_date );
 
 	//start date but no end date
 	if ( empty( $end_date ) ) {
 		return $start_date->format( 'd F Y' );
 	}
 
-	$end_date = date_create_from_format( 'Ymd', $end_date );
+	$end_date = date_create_from_format( 'd/m/Y', $end_date );
 	//starts and ends in different years
 	if ( $start_date->format( 'Y' ) != $end_date->format( 'Y' ) ) {
 		return $start_date->format( 'd F Y' ) . ' - ' . $end_date->format( 'd F Y' );
@@ -216,10 +216,10 @@ function wgcacsc_get_deadlines( $event_id, $format = 'expanded' ) {
 
 		if ( ! empty( $deadline['deadlines_closed'] ) && in_array( 'closed', $deadline['deadlines_closed'] ) ) {
 			$temp_deadline['value'] = 'Closed';
-		} elseif ( $deadline['deadlines_date'] < date( 'Ymd' ) ) {
+		} elseif ( $deadline['deadlines_date'] < date( 'd/m/Y' ) ) {
 			$temp_deadline['value'] = 'Closed';
 		} elseif ( ! empty( $deadline['deadlines_date'] ) ) {
-			$temp_deadline['value'] = date_create_from_format( 'Ymd', $deadline['deadlines_date'] );
+			$temp_deadline['value'] = date_create_from_format( 'd/m/Y', $deadline['deadlines_date'] );
 			$date_format            = '';
 			if ( $format == 'expanded' ) {
 				$date_format = 'd F Y';
