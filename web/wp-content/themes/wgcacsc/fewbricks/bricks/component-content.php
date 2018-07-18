@@ -34,7 +34,7 @@ class component_content extends project_brick
     public function get_brick_html($args = array())
     {
 
-        return '<div class="component component-content offset-content">' . $this->get_field('text') . '</div>';
+        return '<div class="component content-group component-content --offset-content">' . $this->get_field('text') . '</div>';
 
     }
 
