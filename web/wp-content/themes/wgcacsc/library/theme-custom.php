@@ -196,6 +196,39 @@ function wgcacsc_get_event_dates( $event_id ) {
 	return $start_date->format( 'd' ) . ' - ' . $end_date->format( 'd F Y' );
 }
 
+
+function wgcacsc_is_registration_open( $event_id ) {
+    $deadlines = get_field( 'deadlines', $event_id );
+    $is_registration_open = true;
+
+    foreach ( $deadlines as $deadline ) {
+        if( $deadline['deadlines_name'] === 'Registration deadline' && (!empty($deadline['deadlines_date']) || !empty($deadline['deadlines_closed'])) ) {
+            if(!empty($deadline['deadlines_closed'])) {
+                if ($deadline['deadlines_closed'][0] == 'closed') {
+                    $is_registration_open = false;
+                    break;
+                }
+            }
+
+            $registration_deadline = DateTime::createFromFormat('d/m/Y', $deadline['deadlines_date']);
+            $date_now = new DateTime();
+
+            // set time to the same to ensure fair comparison
+            $registration_deadline->setTime(0, 0);
+            $date_now->setTime(0,0);
+
+            // if the registration deadline is in the past, then registration is closed
+            if($date_now > $registration_deadline) {
+                $is_registration_open = false;
+            }
+
+        }
+    }
+
+    return $is_registration_open;
+}
+
+
 //returns array of deadlines or false if no deadlines
 //Format either 'expanded' = 'd F Y',  or 'short' = 'd M' and Y only if not this year
 function wgcacsc_get_deadlines( $event_id, $format = 'expanded' ) {
@@ -211,15 +244,25 @@ function wgcacsc_get_deadlines( $event_id, $format = 'expanded' ) {
 	foreach ( $deadlines as $deadline ) {
 
 		$temp_deadline = array();
-
 		$temp_deadline['label'] = $deadline['deadlines_name'];
+
+        $deadline_date = '';
+
+        // reformat the dates using DateTime for more reliable results
+        if(!empty($deadline['deadlines_date'])) {
+            $deadline_date = DateTime::createFromFormat('d/m/Y', $deadline['deadlines_date']);
+            $deadline_date->setTime(0, 0); // set time to the same to ensure fair comparison
+        }
+		$date_now      = new DateTime();
+        $date_now->setTime(0,0); // set time to the same to ensure fair comparison
+
 
 		if ( ! empty( $deadline['deadlines_closed'] ) && in_array( 'closed', $deadline['deadlines_closed'] ) ) {
 			$temp_deadline['value'] = 'Closed';
-		} elseif ( $deadline['deadlines_date'] < date( 'd/m/Y' ) ) {
+		} elseif ( $deadline_date < $date_now ) {
 			$temp_deadline['value'] = 'Closed';
 		} elseif ( ! empty( $deadline['deadlines_date'] ) ) {
-			$temp_deadline['value'] = date_create_from_format( 'd/m/Y', $deadline['deadlines_date'] );
+			$temp_deadline['value'] = $deadline_date;
 			$date_format            = '';
 			if ( $format == 'expanded' ) {
 				$date_format = 'd F Y';
@@ -260,6 +303,11 @@ function wgcacsc_output_deadlines( $deadlines_array ) {
 
 //returns register button or placeolder text
 function wgcacsc_register_button( $event_id ) {
+    // if registration is closed, then don't output the registration link
+    if(wgcacsc_is_registration_open( $event_id ) === false) {
+        return '';
+    }
+
 	$registration_link = get_field( 'registration_link', $event_id );
 
 	if ( ! empty( $registration_link ) ) {
