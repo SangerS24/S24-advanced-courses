@@ -489,6 +489,59 @@ function s24_breadcrumb( $showhome = true, $separatorclass = false ) {
     }
 }
 
+
+/**
+ * @param $event_categories
+ * @return bool
+ *
+ * Check if the event has the archived category assigned to it
+ */
+function s24_is_event_archived( $event_categories ) {
+    $is_archived = false;
+
+    for($i = 0; $i < count($event_categories); $i++) {
+        if($event_categories[$i]->term_id === 30) {
+            $is_archived = true;
+            // there's no need to continue the loop if this is true
+            break;
+        }
+    }
+
+    return $is_archived;
+}
+
+
+/**
+ * @param $event_categories
+ * @return null/object
+ *
+ * Return the archive event object if it's in the list of event
+ * categories passed to the function
+ */
+function s24_return_event_archive_cat( $event_categories ) {
+    $archived_category = null;
+
+    for($i = 0; $i < count($event_categories); $i++) {
+        if($event_categories[$i]->term_id === 30) {
+            $archived_category = $event_categories[$i];
+            // there's no need to continue the loop if this is true
+            break;
+        }
+    }
+
+    return $archived_category;
+}
+
+
+/**
+ * @param $current_object_id
+ * @param $current_object_type
+ * @return array
+ *
+ * Generates the breakcrumb array.
+ *
+ * Note that it is generated back-to-front using this function
+ */
 function s24_trail_array( $current_object_id , $current_object_type ) {
     $trail_array = array();
 
@@ -584,6 +637,17 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
             $post_item['object'] = get_post( $current_object_id );
             array_push( $trail_array , $post_item );
             $event_cat = wp_get_post_terms( $current_object_id , 'event-category' );
+
+            // check if the event is archived, if it is, then we add the
+            // archive category to the breadcrumb trail
+            $is_archived = s24_is_event_archived( $event_cat );
+            $archived_cat_object = null;
+            if($is_archived) {
+                // we create the object here, but we add it further down this
+                // if clause, because it generates the breadcrumb back-to-front
+                $archived_cat_object = s24_return_event_archive_cat( $event_cat );
+            }
+
             if ( !empty( $event_cat ) ) {
                 $event_cat_object = $event_cat[0];
                 $event_cat = $event_cat_object->term_id;
@@ -633,6 +697,16 @@ function s24_trail_array( $current_object_id , $current_object_type ) {
 
                         $current_menu_item_object = $events_page_menu_item;
                     }
+                }
+
+                // if the event is archived, then add this item to the
+                // breadcrumb menu
+                if($is_archived) {
+                    $cat_menu_item = array();
+                    $cat_menu_item['object'] = $archived_cat_object;
+                    $cat_menu_item['type'] = 'taxonomy';
+
+                    array_push( $trail_array , $cat_menu_item );
                 }
 
             }
