@@ -53,7 +53,7 @@ cd /var/www/wgcc/wascc/staging/
 git pull
 ## This part might not be needed
 cd ..
-chown -R apache:apache wgccc.s24.net
+chown -R apache:apache staging
 ```
 
 ## Contacting Sanger
