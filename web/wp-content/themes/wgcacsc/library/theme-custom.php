@@ -509,3 +509,14 @@ function wgcacsc_get_latest_news() {
 	}
 
 }
+
+
+function wps_change_role_name() {
+    global $wp_roles;
+    if (!isset($wp_roles)) {
+        $wp_roles = new WP_Roles();
+    }
+    $wp_roles->roles['wgccc_administrator']['name'] = 'WGC Administrator';
+    $wp_roles->role_names['wgccc_administrator'] = 'WGC Administrator';
+}
+add_action('init', 'wps_change_role_name');
