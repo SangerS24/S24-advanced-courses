@@ -80,7 +80,7 @@ get_header(); ?>
 					<?php else : ?>
                         <div class="small-12 columns">
 						<div class="offset-content">
-                            <p>No events at the moment.</p>
+                            <p>Please use the past events link below to browse our previous retreats.</p>
                         </div>
                         </div>
 
@@ -96,7 +96,8 @@ get_header(); ?>
 
                     <?php echo (new fewbricks\bricks\group_flexible_content('bottom_components'))->get_html( $few_args ); ?>
 
-                    <?php if ($tax_id != 37) : ?>
+                    <?php // Only show for Retreats ?>
+                    <?php if ($tax_id == 29) : ?>
                     <div class="offset-content past-archive-link">
                         <h5 class="h3">Past events</h5>
                         <a href="<?php echo get_term_link( 'past-events' , 'event-category'); ?>" class="">Browse our events archive</a>
