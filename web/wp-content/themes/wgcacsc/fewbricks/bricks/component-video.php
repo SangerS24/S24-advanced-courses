@@ -22,6 +22,8 @@ class component_video extends project_brick
     public function set_fields()
     {
 
+	    $this->add_field(new acf_fields\text('Title', 'title', '201808081352a'));
+
         $this->add_field(
             (new acf_fields\oembed('URL', 'url', '140820161415a'))
                 ->set_settings([
@@ -40,7 +42,7 @@ class component_video extends project_brick
     protected function get_brick_html($args = array())
     {
 
-        $html = '<h3 class="section-heading section-heading--video">Event video</h3>';
+        $html = '<h3 class="section-heading section-heading--video">' . $this->get_field('title') . '</h3>';
 
         if (false !== ($url = $this->get_video_url())) {
 
