@@ -111,8 +111,6 @@ get_header(); ?>
                             </nav>
 						<?php } ?>
 
-						<?php echo ( new fewbricks\bricks\group_flexible_content( 'bottom_components' ) )->get_html( $few_args ); ?>
-
 						<?php // Only show for Retreats ?>
 						<?php if ( $tax_id == 29 ) : ?>
                             <div class="offset-content past-archive-link">
@@ -121,6 +119,8 @@ get_header(); ?>
                                     our events archive</a>
                             </div>
 						<?php endif; ?>
+
+	                    <?php echo ( new fewbricks\bricks\group_flexible_content( 'bottom_components' ) )->get_html( $few_args ); ?>
 
                         <a class="back-to-top" id="back-to-top" href="#off-canvas-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_up.svg" alt=""/><span>Back to top</span></a>
 
