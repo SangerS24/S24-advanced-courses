@@ -63,12 +63,8 @@
 
                 </div>
                 <div class="small-12 medium-6 columns footer-links">
-                    <p>&copy; Wellcome Genome Campus Advanced
-                        Courses and Scientific Conferences</p>
                     <p class=""><a href="/cookies-policy/">Cookies Policy</a> /
-                        <a href="/terms-and-conditions/">Terms and
-                            conditions</a> / Website by
-                        <a href="http://www.studio24.net/">Studio 24</a></p>
+                        <a href="/terms/">Terms of use</a></p>
                 </div>
             </div>
         </div>

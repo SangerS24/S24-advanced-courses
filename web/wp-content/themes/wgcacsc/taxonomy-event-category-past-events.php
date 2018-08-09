@@ -58,7 +58,7 @@ get_header(); ?>
                         //In this instance, the loop only stores the entries in an array
                         //They will be re-ordered and then displayed from the array after
 
-                        $event_cat_terms = get_terms( array( 'taxonomy' => 'event-category' , 'order' => 'ASC' , 'orderby' => 'menu_order' , 'exclude' => array(29, 30) ) );
+                        $event_cat_terms = get_terms( array( 'taxonomy' => 'event-category' , 'order' => 'ASC' , 'orderby' => 'menu_order' , 'exclude' => array(29) ) );
 
                         $past_events_array = array();
 
