@@ -292,7 +292,7 @@ function wgcacsc_output_deadlines( $deadlines_array ) {
 		return '';
 	}
 
-	$deadlines_html = '<div class="event-deadlines"><h6>Deadlines: </h6><ul>';
+	$deadlines_html = '<div class="event-deadlines"><h6>Deadlines (at 23:59 UTC): </h6><ul>';
 
 	foreach ( $deadlines_array as $deadline ) {
 		$deadlines_html .= '<li><span class="event-deadlines__label">' . $deadline['label'] . '</span> <span class="event-deadlines__date">' . $deadline['value'] . '</span></li>';
