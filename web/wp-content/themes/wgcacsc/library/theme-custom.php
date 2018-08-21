@@ -211,8 +211,12 @@ function wgcacsc_is_registration_open( $event_id ) {
 				    }
 			    }
 
-			    $registration_deadline = DateTime::createFromFormat( 'd/m/Y', $deadline['deadlines_date'] );
-			    $date_now              = new DateTime();
+			    $timezone = new DateTimeZone('UTC');
+
+			    $registration_deadline = DateTime::createFromFormat( 'd/m/Y', $deadline['deadlines_date'],$timezone);
+			    			    
+			    $date_now              = new DateTime('now',$timezone);
+
 
 			    // set time to the same to ensure fair comparison
 			    $registration_deadline->setTime( 0, 0 );
@@ -292,7 +296,7 @@ function wgcacsc_output_deadlines( $deadlines_array ) {
 		return '';
 	}
 
-	$deadlines_html = '<div class="event-deadlines"><h6>Deadlines: </h6><ul>';
+	$deadlines_html = '<div class="event-deadlines"><h6>Deadlines (at 23:59 UTC): </h6><ul>';
 
 	foreach ( $deadlines_array as $deadline ) {
 		$deadlines_html .= '<li><span class="event-deadlines__label">' . $deadline['label'] . '</span> <span class="event-deadlines__date">' . $deadline['value'] . '</span></li>';
