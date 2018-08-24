@@ -6674,6 +6674,8 @@ body#tinymce {
   padding: 0.83333rem; }
   #cookie-message p {
     margin-bottom: 0; }
+    #cookie-message p a {
+      color: #E75153; }
 
 .button:hover, .towncrier__share-button:hover {
   color: #fff; }
