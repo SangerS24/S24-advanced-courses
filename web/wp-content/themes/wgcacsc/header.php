@@ -20,7 +20,7 @@
 	<body <?php body_class('no-js'); ?>>
 	<?php do_action( 'foundationpress_after_body' ); ?>
 
-	<div id="cookie-message"><p>We use cookies to ensure we give you the best experience on our website. If you continue, we'll assume that you are happy to receive all cookies. Please refer to our <a href="/cookies-policy/">Cookies Policy</a> for more information, including how to disable them.</p></div>
+	<div id="cookie-message"><div class="row" id="cookie-message__inner"><p>We use cookies to ensure we give you the best experience on our website. If you continue, we'll assume that you are happy to receive all cookies. Please refer to our <a href="/cookies-policy/">Cookies Policy</a> for more information, including how to disable them.</p></div></div>
 	<script type='text/javascript' src='/wp-content/themes/wgcacsc/assets/javascript/cookie-message.js?ver=1.0'></script>
 
 	<?php if ( get_theme_mod( 'wpt_mobile_menu_layout' ) == 'offcanvas' ) : ?>
