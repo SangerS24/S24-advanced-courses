@@ -100,6 +100,28 @@ EOD;
 								</p>
 								<input class="button button-cta mailing-signup__button" type="submit" name="Submit" value="$submit_label">
 							</form>
+							<form name="signup" class="mailing-signup" id="signup" action="https://dmtrk.net/signup.ashx" method="post" onsubmit="return validate_signup(this)">
+								<p class="mailing-signup__message"></p>
+								<input type="hidden" name="addressbookid" value="9422476">
+								<!-- ContentInsight field (1/3) -->
+								<input type="hidden" name="ci_isconsentform" value="true">
+								<!-- UserID - required field, do not remove -->
+								<input type="hidden" name="userid" value="130710">
+								<!-- Signature field - required field, do not remove -->
+								<input type="hidden" name="SIG203a839b4dc2f452e1785fe8ca45bef50982f15b1937f3cbf1de1f789438556b" value="">
+								<!-- ReturnURL - when the user hits submit, they'll get sent here -->
+								<input type="hidden" name="ReturnURL" value="$thank_you_url">
+								<!-- Email - the user's email address -->
+								<p class="mailing-signup__group">
+									<label for="Email" class="mailing-signup__label">$email_label</label>
+									<input class="mailing-signup__input" id="Email" placeholder="Email address" type="text" name="Email">
+								</p>
+								<!-- ContentInsight fields (2,3/3) -->
+								<input type="hidden" name="ci_userConsentText" value="">
+								<input type="hidden" id="ci_consenturl" name="ci_consenturl" value="">
+								
+								<input class="button button-cta mailing-signup__button" type="submit" name="Submit" value="$submit_label">
+							</form>
 							<!-- End of signup -->
 EOD;
 
