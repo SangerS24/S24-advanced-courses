@@ -86,20 +86,6 @@ EOD;
 
 								//-->
 							</script>
-							<form name="signup" class="mailing-signup" id="signup" action="https://t.trackedlink.net/signup.ashx" method="post" onsubmit="return validate_signup(this)">
-								<p class="mailing-signup__message"></p>
-								<input type="hidden" name="addressbookid" value="9422476">
-								<!-- UserID - required field, do not remove -->
-								<input type="hidden" name="userid" value="130710">
-								<!-- ReturnURL - when the user hits submit, they'll get sent here -->
-								<input type="hidden" name="ReturnURL" value="$thank_you_url">
-								<!-- Email - the user's email address -->
-								<p class="mailing-signup__group">
-									<label for="Email" class="mailing-signup__label">$email_label</label>
-									<input class="mailing-signup__input" id="Email" placeholder="E.g. jane.smith@domain.co.uk" type="text" name="Email">
-								</p>
-								<input class="button button-cta mailing-signup__button" type="submit" name="Submit" value="$submit_label">
-							</form>
 							<form name="signup" class="mailing-signup" id="signup" action="https://dmtrk.net/signup.ashx" method="post" onsubmit="return validate_signup(this)">
 								<p class="mailing-signup__message"></p>
 								<input type="hidden" name="addressbookid" value="9422476">
