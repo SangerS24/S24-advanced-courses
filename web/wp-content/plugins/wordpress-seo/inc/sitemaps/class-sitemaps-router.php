@@ -113,13 +113,16 @@ class WPSEO_Sitemaps_Router {
 		$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
 
 		/**
-		 * Filter the base URL of the sitemaps
+		 * Filter the base URL of the sitemaps.
 		 *
 		 * @param string $base The string that should be added to home_url() to make the full base URL.
 		 */
 		$base = apply_filters( 'wpseo_sitemaps_base_url', $base );
 
-		// Get the scheme from the configured home url instead of letting WordPress determine the scheme based on the requested URI.
+		/*
+		 * Get the scheme from the configured home URL instead of letting WordPress
+		 * determine the scheme based on the requested URI.
+		 */
 		return home_url( $base . $page, wp_parse_url( get_option( 'home' ), PHP_URL_SCHEME ) );
 	}
 }

@@ -3,10 +3,10 @@ Contributors: yoast, joostdevalk, tacoverdo, omarreiss, atimmer, jipmoors
 Donate link: https://yoa.st/1up
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: SEO, XML sitemap, Google Search Console, Content analysis, Readability
+Tags: SEO, XML sitemap, Content analysis, Readability
 Requires at least: 4.9
-Tested up to: 5.1
-Stable tag: 9.7
+Tested up to: 5.2
+Stable tag: 11.1.1
 Requires PHP: 5.2.4
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -42,11 +42,10 @@ Yoast SEO does everything in its power to please both visitors and search engine
 
 * Yoast SEO tunes the engine of your site so you can work on creating great content.
 * Our cornerstone content and internal linking features help you optimize your site structure in a breeze.
-* Integrates with Google Search Console: See how your site performs in the search engines and fix crawl errors.
 * Manage SEO roles: Give your colleagues access to specific sections of the Yoast SEO plugin.
 * Bulk editor: Make large-scale edits to your site.
 * **[Premium]** Social previews to manage the way your page is shared on social networks like Facebook and Twitter.
-* **[Premium]** Redirect manager: It keeps your site healthy by easily redirecting errors from Google Search Console, deleted pages and changed URLs.
+* **[Premium]** Redirect manager: It keeps your site healthy by easily redirecting deleted pages and changed URLs.
 
 ### Premium support
 
@@ -106,50 +105,51 @@ You'll find answers to many of your questions on [kb.yoast.com](https://yoa.st/1
 
 == Changelog ==
 
-= 9.7.0 =
-Release Date: February 26th, 2019
-
-Enhancements:
-
-* Replaces inch marks by smart quotes in search breadcrumbs.
-* Improves the feedback for the assessment that checks the length of cornerstone articles.
-* Improves accessibility and focus management for the How-To and FAQ structured data blocks.
-* Improves the Internal Links table headers on the post overview for better translations and accessibility.
-* Adds a description of the SEO and Readability score to the posts and taxonomies overview in mobile view.
-* Adds a label element to the Google Search Console authorisation code input field in the configuration wizard.
+= 11.1.1 =
+Release Date: May 6th, 2019
 
 Bugfixes:
 
-* Fixes a bug where a Flesch reading ease score of exactly 90 would trigger incorrect feedback.
-* Fixes a bug where the taxonomy sitemap provider would not handle private taxonomies as expected, resulting in sitemaps not being accessible in specific situations.
-* Fixes a bug where an empty twitter description instead of the term description would be shown.
-* Fixes a bug where 'undefined index' warnings would be given when saving a Facebook image.
-* Fixes a bug where the Recalibration Beta could not be loaded in combination with specific server configurations.
+* Fixes a bug where an empty width and height would be outputted in the image schema when there was no retrievable width and height.
+* Fixes a bug where using the `$context` argument in the deprecated `wpseo_json_ld_output` filter would result in a fatal error when using PHP 7.1 or higher.
 
-= 9.6.0 =
-Release Date: February 12th, 2019
+Other
 
-Content analysis recalibration (beta):
+* Adds a notification to explain why users’ Google Search Console reports are no longer showing any entries. [Read more about the reasons behind this](https://yoa.st/gsc-dep-changelog).
+* Removes the Google Search Console step from the configuration wizard.
 
-* As there are already a lot of users who are participating in testing, we currently have enough input to start preparing for the release of the improved analysis.
-  * Removes the ability to enable beta testing for new installations.
-  * When the feature is disabled, the ability to re-enable it will disappear.
+= 11.1.0 =
+Release Date: April 30th, 2019
 
 Enhancements:
 
-* Removes schema (JSON+LD) output from 404 pages.
-* Improves the Google Search Console table accessibility by removing a duplicate button.
-* Improves the code to better comply to the coding standards.
+* Improves how we generate the image parts for the Schema output. [Read more about the ImageObject output](https://yoa.st/image-schema).
+* Adds `filesize` to whitelisted properties on `$image`. Props to [cmmarslender](https://github.com/cmmarslender).
+* Optimizes the code to avoid an unnecessary DB query to remove notifications storage when it's already empty. Props to [rmc47](https://github.com/rmc47).
+* Improves the breadcrumbs accessibility by adding `aria-current` to the active item.
 
 Bugfixes:
 
-* Fixes a bug where an empty feed would be available for non-existing pages. Props [stodorovic](https://github.com/stodorovic).
-* Prevents `vendor_prefix/j4mie/idiorm/demo.php` from being included in the release.
+* Fixes a bug where the position of the buttons in the FAQ and How-To structured data blocks was compromised when running the development build of Gutenberg.
+* Fixed a bug where social profile settings would be empty because it was relying on the user choosing whether the site represents a company or a person.
 
-Other:
+= 11.0.0 =
+Release Date: April 16th, 2019
 
-* Props to [Kingdutch](https://github.com/Kingdutch) for helping improve our open source content analysis library.
-* Improves the redirect upsell when creating redirects in the search console overview.
+We've made huge changes to the schema.org markup we output, adding multiple different types of Schema. Be sure to check [our posts on yoast.com about this release](https://yoa.st/schema-release-post)!
+
+Enhancements:
+
+* Schema changes:
+	* Adds `Person` markup for author pages.
+	* Adds `WebPage` markup for all pages.
+	* Adds `Article` markup for posts, with `Person` markup for the author.
+	* Changes the ‘Organization or Person’ section of the Knowledge graph settings to allow selecting an author that is the ‘Person’ that the website represents.
+* Adds MySpace, SoundCloud, Tumblr and YouTube URL input fields to people’s profiles.
+
+Bugfixes:
+
+* Fixes an issue where the metabox would not display on term edit pages when running the development build of Gutenberg.
 
 = Earlier versions =
 
