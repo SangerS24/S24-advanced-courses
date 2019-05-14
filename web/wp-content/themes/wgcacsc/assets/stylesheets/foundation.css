@@ -7476,7 +7476,7 @@ p + ol {
   @media screen and (min-width: 65em) {
     .component-speakers__speaker:nth-child(4n) {
       clear: none; }
-    .component-speakers__speaker:nth-child(5n) {
+    .component-speakers__speaker:nth-child(4n+5) {
       clear: left; } }
 
 .component-newsletter {
