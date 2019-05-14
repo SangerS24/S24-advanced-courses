@@ -20,7 +20,7 @@ var scraperObjects = {
 	// Relational
 	taxonomy: require( "./scraper/scraper.taxonomy.js" ),
 
-	// jQuery
+	// Third-party / jQuery
 	// TODO: google_map, date_picker, color_picker
 
 };

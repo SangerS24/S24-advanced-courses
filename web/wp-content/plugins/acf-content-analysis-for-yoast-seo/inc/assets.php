@@ -65,5 +65,4 @@ class Yoast_ACF_Analysis_Assets {
 			wp_localize_script( 'yoast-acf-analysis-term', 'YoastACFAnalysisConfig', $config->to_array() );
 		}
 	}
-
 }

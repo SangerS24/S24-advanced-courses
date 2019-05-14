@@ -44,7 +44,7 @@ class Yoast_ACF_Analysis_String_Store {
 	 *
 	 * @param string $item Item to remove from the store.
 	 *
-	 * @return bool True if the item was added, False if it failed.
+	 * @return bool True if the item was removed, false if it failed.
 	 */
 	public function remove( $item ) {
 		if ( ! is_string( $item ) ) {
@@ -54,11 +54,9 @@ class Yoast_ACF_Analysis_String_Store {
 		if ( ! in_array( $item, $this->items, true ) ) {
 			return false;
 		}
-		$this->items = array_values(
-			array_diff(
-				$this->items, array( $item )
-			)
-		);
+
+		$items       = array_diff( $this->items, array( $item ) );
+		$this->items = array_values( $items );
 		sort( $this->items );
 
 		return true;
@@ -72,5 +70,4 @@ class Yoast_ACF_Analysis_String_Store {
 	public function to_array() {
 		return $this->items;
 	}
-
 }

@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 /* global YoastSEO, acf, _, jQuery, wp */
 var config = require( "./config/config.js" );
 var helper = require( "./helper.js" );
@@ -282,7 +282,7 @@ var Collect = function() {
 };
 
 Collect.prototype.getFieldData = function() {
-	var field_data = this.filterBroken( this.filterBlacklistName( this.filterBlacklistType( this.getData() ) ) );
+	var field_data = this.sort( this.filterBroken( this.filterBlacklistName( this.filterBlacklistType( this.getData() ) ) ) );
 
 	var used_types = _.uniq( _.pluck( field_data, "type" ) );
 
@@ -307,6 +307,10 @@ Collect.prototype.append = function( data ) {
 
 	_.each( field_data, function( field ) {
 		if ( typeof field.content !== "undefined" && field.content !== "" ) {
+			if ( field.order < 0 ) {
+				data = field.content + "\n" + data;
+				return;
+			}
 			data += "\n" + field.content;
 		}
 	} );
@@ -344,6 +348,20 @@ Collect.prototype.filterBlacklistName = function( field_data ) {
 Collect.prototype.filterBroken = function( field_data ) {
 	return _.filter( field_data, function( field ) {
 		return ( "key" in field );
+	} );
+};
+
+Collect.prototype.sort = function( field_data ) {
+	if ( typeof config.fieldOrder === "undefined" || ! config.fieldOrder ) {
+		return field_data;
+	}
+
+	_.each( field_data, function( field ) {
+		field.order = ( typeof config.fieldOrder[ field.key ] === "undefined" ) ? 0 : config.fieldOrder[ field.key ];
+	} );
+
+	return field_data.sort( function( a, b ) {
+		return a.order > b.order;
 	} );
 };
 
@@ -454,7 +472,7 @@ var scraperObjects = {
 	// Relational
 	taxonomy: require( "./scraper/scraper.taxonomy.js" ),
 
-	// jQuery
+	// Third-party / jQuery
 	// TODO: google_map, date_picker, color_picker
 
 };
@@ -747,6 +765,8 @@ Scraper.prototype.wrapInHeadline = function( field ) {
 	var level = this.isHeadline( field );
 	if ( level ) {
 		field.content = "<h" + level + ">" + field.content + "</h" + level + ">";
+	} else {
+		field.content = "<p>" + field.content + "</p>";
 	}
 
 	return field;
@@ -783,7 +803,7 @@ Scraper.prototype.scrape = function( fields ) {
 			return field;
 		}
 
-		field.content = field.$el.find( "textarea[id^=acf]" ).val();
+		field.content = "<p>" + field.$el.find( "textarea[id^=acf]" ).val() + "</p>";
 
 		return field;
 	} );

@@ -1,10 +1,19 @@
 <?php
 
-
 namespace Yoast\AcfAnalysis\Tests\Configuration;
 
+/**
+ * Class Registry_Test
+ */
 class Registry_Test extends \PHPUnit_Framework_TestCase {
 
+	/**
+	 * Tests that the singleton instance is properly set and that every call to the registry, is the same instance.
+	 *
+	 * Also checks that the content is the same when adding items to the registry and calling the instance.
+	 *
+	 * @return void
+	 */
 	public function testSingleton() {
 
 		$first  = \Yoast_ACF_Analysis_Facade::get_registry();
@@ -22,9 +31,13 @@ class Registry_Test extends \PHPUnit_Framework_TestCase {
 		);
 
 		$this->assertSame( $first, $second );
-
 	}
 
+	/**
+	 * Tests that adding a non-existing item to the registy, succeeds and that the item can be found based on its ID.
+	 *
+	 * @return void
+	 */
 	public function testAdd() {
 
 		$id      = 'add';
@@ -37,7 +50,5 @@ class Registry_Test extends \PHPUnit_Framework_TestCase {
 		$registry->add( $id, $content );
 
 		$this->assertSame( $content, $registry->get( $id ) );
-
 	}
-
 }

@@ -93,5 +93,4 @@ final class Yoast_ACF_Analysis_Dependency_Yoast_SEO implements Yoast_ACF_Analysi
 	private function has_required_version() {
 		return -1 !== version_compare( $this->get_major_version( WPSEO_VERSION ), self::MINIMAL_REQUIRED_VERSION );
 	}
-
 }

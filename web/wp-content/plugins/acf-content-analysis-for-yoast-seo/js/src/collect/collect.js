@@ -9,7 +9,7 @@ var Collect = function() {
 };
 
 Collect.prototype.getFieldData = function() {
-	var field_data = this.filterBroken( this.filterBlacklistName( this.filterBlacklistType( this.getData() ) ) );
+	var field_data = this.sort( this.filterBroken( this.filterBlacklistName( this.filterBlacklistType( this.getData() ) ) ) );
 
 	var used_types = _.uniq( _.pluck( field_data, "type" ) );
 
@@ -34,6 +34,10 @@ Collect.prototype.append = function( data ) {
 
 	_.each( field_data, function( field ) {
 		if ( typeof field.content !== "undefined" && field.content !== "" ) {
+			if ( field.order < 0 ) {
+				data = field.content + "\n" + data;
+				return;
+			}
 			data += "\n" + field.content;
 		}
 	} );
@@ -71,6 +75,20 @@ Collect.prototype.filterBlacklistName = function( field_data ) {
 Collect.prototype.filterBroken = function( field_data ) {
 	return _.filter( field_data, function( field ) {
 		return ( "key" in field );
+	} );
+};
+
+Collect.prototype.sort = function( field_data ) {
+	if ( typeof config.fieldOrder === "undefined" || ! config.fieldOrder ) {
+		return field_data;
+	}
+
+	_.each( field_data, function( field ) {
+		field.order = ( typeof config.fieldOrder[ field.key ] === "undefined" ) ? 0 : config.fieldOrder[ field.key ];
+	} );
+
+	return field_data.sort( function( a, b ) {
+		return a.order > b.order;
 	} );
 };
 

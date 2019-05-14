@@ -6,10 +6,15 @@ use Brain\Monkey;
 use Brain\Monkey\Filters;
 use Brain\Monkey\Functions;
 
+/**
+ * Class Configuration_Test
+ */
 class Configuration_Test extends \PHPUnit_Framework_TestCase {
 
 	/**
-	 * Set up test fixtures.
+	 * Sets up test fixtures.
+	 *
+	 * @return void
 	 */
 	protected function setUp() {
 		parent::setUp();
@@ -17,13 +22,20 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Tear down test fixtures previously setup.
+	 * Tears down test fixtures previously setup.
+	 *
+	 * @return void
 	 */
 	protected function tearDown() {
 		Monkey\tearDown();
 		parent::tearDown();
 	}
 
+	/**
+	 * Tests empty configurations.
+	 *
+	 * @return void
+	 */
 	public function testEmpty() {
 
 		$configuration = new \Yoast_ACF_Analysis_Configuration(
@@ -41,6 +53,7 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 				'blacklistType'  => [],
 				'blacklistName'  => [],
 				'fieldSelectors' => [],
+				'fieldOrder'     => [],
 				'debug'          => false,
 			],
 			$configuration->to_array()
@@ -49,6 +62,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals( Filters\applied( 'acf/get_info' ), 1 );
 	}
 
+	/**
+	 * Tests the ACF version 5 function.
+	 *
+	 * @return void
+	 */
 	public function testACF5VersionFunction() {
 		$acf_version = '5.0.0';
 		Functions\when( 'acf_get_setting' )->justReturn( $acf_version );
@@ -63,6 +81,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals( $acf_version, $config['acfVersion'] );
 	}
 
+	/**
+	 * Tests a valid blacklist type filter.
+	 *
+	 * @return void
+	 */
 	public function testBlacklistTypeFilter() {
 
 		$blacklist_type = new \Yoast_ACF_Analysis_String_Store();
@@ -81,9 +104,13 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 			->andReturn( $blacklist_type2 );
 
 		$this->assertSame( $blacklist_type2, $configuration->get_blacklist_type() );
-
 	}
 
+	/**
+	 * Tests an invalid blacklist type filter.
+	 *
+	 * @return void
+	 */
 	public function testBlacklistTypeFilterInvalid() {
 
 		$store = new \Yoast_ACF_Analysis_String_Store();
@@ -102,6 +129,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( $store, $configuration->get_blacklist_type() );
 	}
 
+	/**
+	 * Tests a valid blacklist name filter.
+	 *
+	 * @return void
+	 */
 	public function testBlacklistNameFilter() {
 
 		$blacklist_name = new \Yoast_ACF_Analysis_String_Store();
@@ -122,6 +154,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( $blacklist_name2, $configuration->get_blacklist_name() );
 	}
 
+	/**
+	 * Tests a valid legacy blacklist name filter.
+	 *
+	 * @return void
+	 */
 	public function testLegacyBlackistNameFilter() {
 
 		$blacklist_name = new \Yoast_ACF_Analysis_String_Store();
@@ -156,6 +193,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( $configuration->get_blacklist_name()->to_array(), [ 'some_field_name' ] );
 	}
 
+	/**
+	 * Tests an invalid legacy blacklist name filter.
+	 *
+	 * @return void
+	 */
 	public function testLegacyBlackistNameFilterInvalid() {
 
 		$blacklist_name = new \Yoast_ACF_Analysis_String_Store();
@@ -181,6 +223,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( $configuration->get_blacklist_name()->to_array(), [] );
 	}
 
+	/**
+	 * Tests an invalid blacklist name filter.
+	 *
+	 * @return void
+	 */
 	public function testBlacklistNameFilterInvalid() {
 
 		$store = new \Yoast_ACF_Analysis_String_Store();
@@ -199,6 +246,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( $store, $configuration->get_blacklist_name() );
 	}
 
+	/**
+	 * Tests a valid scraper config filter.
+	 *
+	 * @return void
+	 */
 	public function testScraperConfigFilter() {
 		$config    = array();
 		$blacklist = new \Yoast_ACF_Analysis_String_Store();
@@ -217,6 +269,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( $config, $configuration->get_scraper_config() );
 	}
 
+	/**
+	 * Tests an invalid scraper config filter.
+	 *
+	 * @return void
+	 */
 	public function testInvalidScraperConfigFilter() {
 		$blacklist = new \Yoast_ACF_Analysis_String_Store();
 
@@ -234,6 +291,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( array(), $configuration->get_scraper_config() );
 	}
 
+	/**
+	 * Tests the refresh rate filter.
+	 *
+	 * @return void
+	 */
 	public function testRefreshRateFilter() {
 		Filters\expectApplied( \Yoast_ACF_Analysis_Facade::get_filter_name( 'refresh_rate' ) )
 			->once()
@@ -249,6 +311,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( 9999, $configuration->get_refresh_rate() );
 	}
 
+	/**
+	 * Tests the refresh rate minimum value filter.
+	 *
+	 * @return void
+	 */
 	public function testRefreshRateMinimumValueFilter() {
 		Filters\expectApplied( \Yoast_ACF_Analysis_Facade::get_filter_name( 'refresh_rate' ) )
 			->once()
@@ -264,6 +331,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( 200, $configuration->get_refresh_rate() );
 	}
 
+	/**
+	 * Tests a valid field selector filter.
+	 *
+	 * @return void
+	 */
 	public function testFieldSelectorsFilter() {
 		$custom_store   = new \Yoast_ACF_Analysis_String_Store();
 		$field_selector = new \Yoast_ACF_Analysis_String_Store();
@@ -282,6 +354,11 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame( $custom_store, $configuration->get_field_selectors() );
 	}
 
+	/**
+	 * Tests an invalid field selector filter.
+	 *
+	 * @return void
+	 */
 	public function testFieldSelectorsFilterInvalid() {
 
 		$store = new \Yoast_ACF_Analysis_String_Store();
@@ -298,6 +375,5 @@ class Configuration_Test extends \PHPUnit_Framework_TestCase {
 			->andReturn( '' );
 
 		$this->assertSame( $store, $configuration->get_field_selectors() );
-
 	}
 }
