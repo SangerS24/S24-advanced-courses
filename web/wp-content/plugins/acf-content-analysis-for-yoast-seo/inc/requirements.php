@@ -50,5 +50,4 @@ class Yoast_ACF_Analysis_Requirements {
 
 		return $all_are_met;
 	}
-
 }

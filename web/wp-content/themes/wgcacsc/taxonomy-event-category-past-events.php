@@ -53,12 +53,14 @@ get_header(); ?>
 
                     <?php if ( have_posts() ) : ?>
 
-					<?php
+					<?php //print_r( get_posts() );
                         /* Start the Loop */
                         //In this instance, the loop only stores the entries in an array
                         //They will be re-ordered and then displayed from the array after
 
-                        $event_cat_terms = get_terms( array( 'taxonomy' => 'event-category' , 'order' => 'ASC' , 'orderby' => 'menu_order' , 'exclude' => array(29) ) );
+                        #$event_cat_terms = get_terms( array( 'taxonomy' => 'event-category' , 'order' => 'ASC' , 'orderby' => 'menu_order' , 'exclude' => array(29) ) );
+                        $event_cat_terms = get_terms( array( 'taxonomy' => 'event-category' , 'order' => 'ASC' , 'orderby' => 'menu_order' ) );
+#print_r( $event_cat_terms );
 
                         $past_events_array = array();
 
@@ -78,6 +80,8 @@ get_header(); ?>
                             if ( !empty( $event_array['year'] ) ) {
                                 $event_array['year'] = substr( $event_array['year'] , 0 , 4 );
                             }
+//print_r( array( $event_array['title'], wp_get_object_terms( array( get_the_ID() ), array('event-category') , array( 'fields' => 'ids' ) ) ) );
+
                             $event_array['category'] = array_diff( wp_get_object_terms( array( get_the_ID() ) , array('event-category') , array( 'fields' => 'ids' ) )  , array( 30 ) );
 
                             if ( !empty( $event_array['category'] ) && !empty( $event_array['year'] ) ) {

@@ -25,6 +25,8 @@ Scraper.prototype.wrapInHeadline = function( field ) {
 	var level = this.isHeadline( field );
 	if ( level ) {
 		field.content = "<h" + level + ">" + field.content + "</h" + level + ">";
+	} else {
+		field.content = "<p>" + field.content + "</p>";
 	}
 
 	return field;

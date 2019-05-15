@@ -47,6 +47,9 @@ web/wp-content/uploads
 web/wp-config.production.php
 #web/wp-config.staging.php
 
+# Include WP vendor
+!web/wp-includes/**/vendor
+
 web/360s
 
 

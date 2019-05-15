@@ -139,6 +139,10 @@ function relevanssi_init() {
 	if ( class_exists( 'Obenland_Wp_Search_Suggest', false ) ) {
 		require_once 'compatibility/wp-search-suggest.php';
 	}
+
+	if ( defined( 'GUTENBERG_VERSION' ) ) {
+		require_once 'compatibility/gutenberg.php';
+	}
 }
 
 /**
@@ -226,6 +230,7 @@ function relevanssi_query_vars( $qv ) {
 	$qv[] = 'post_types';
 	$qv[] = 'by_date';
 	$qv[] = 'highlight';
+	$qv[] = 'posts_per_page';
 
 	return $qv;
 }

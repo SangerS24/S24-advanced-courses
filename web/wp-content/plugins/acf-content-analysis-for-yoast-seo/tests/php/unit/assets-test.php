@@ -5,12 +5,29 @@ namespace Yoast\AcfAnalysis\Tests\Assets;
 use Brain\Monkey;
 use Brain\Monkey\Functions;
 
+/**
+ * Class Assets_Test
+ */
 class Assets_Test extends \PHPUnit_Framework_TestCase {
-	protected $preserveGlobalState      = false;
+
+	/**
+	 * Whether or not to preserve the global state.
+	 *
+	 * @var bool
+	 */
+	protected $preserveGlobalState = false;
+
+	/**
+	 * Whether or not to run each test in a separate process.
+	 *
+	 * @var bool
+	 */
 	protected $runTestInSeparateProcess = true;
 
 	/**
-	 * Set up test fixtures.
+	 * Sets up test fixtures.
+	 *
+	 * @return void
 	 */
 	protected function setUp() {
 		parent::setUp();
@@ -18,13 +35,20 @@ class Assets_Test extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Tear down test fixtures previously setup.
+	 * Tears down test fixtures previously setup.
+	 *
+	 * @return void
 	 */
 	protected function tearDown() {
 		Monkey\tearDown();
 		parent::tearDown();
 	}
 
+	/**
+	 * Test the init hook and determines whether the proper assets are loaded.
+	 *
+	 * @return void
+	 */
 	public function testInitHook() {
 		define( 'AC_SEO_ACF_ANALYSIS_PLUGIN_FILE', '/directory/file' );
 		Functions\expect( 'get_plugin_data' )

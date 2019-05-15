@@ -11,16 +11,22 @@
 class Yoast_ACF_Analysis_Configuration {
 
 	/**
+	 * The blacklist type.
+	 *
 	 * @var Yoast_ACF_Analysis_String_Store
 	 */
 	protected $blacklist_type;
 
 	/**
+	 * The blacklist's name.
+	 *
 	 * @var Yoast_ACF_Analysis_String_Store
 	 */
 	protected $blacklist_name;
 
 	/**
+	 * The field selectors for usage in ACF4.
+	 *
 	 * @var Yoast_ACF_Analysis_String_Store
 	 */
 	protected $field_selectors;
@@ -68,6 +74,7 @@ class Yoast_ACF_Analysis_Configuration {
 		}
 
 		// Fall back on filter use.
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- ACF hook.
 		return apply_filters( 'acf/get_info', 'version' );
 	}
 
@@ -98,7 +105,6 @@ class Yoast_ACF_Analysis_Configuration {
 		}
 
 		return $this->blacklist_type;
-
 	}
 
 	/**
@@ -244,6 +250,34 @@ class Yoast_ACF_Analysis_Configuration {
 	}
 
 	/**
+	 * Retrieves the field order.
+	 *
+	 * @return array The field order configuration.
+	 */
+	public function get_field_order() {
+		/**
+		 * Filters the order of the ACF fields relative to the post_content.
+		 *
+		 * The array has the ACF field key as the array key and the value should be an integer
+		 * where negative values result in the field value being placed before the default post_content.
+		 *
+		 * This is how to force the field with the key "field_591eb45f2be86" to be placed before the post_content:
+		 *
+		 *     $order_config = array(
+		 *          'field_591eb45f2be86' => -1
+		 *     );
+		 *
+		 * @since 2.2.0
+		 *
+		 * @param array $order_config {
+		 *      @type string $field_name     Name of the ACF field
+		 *      @type int    $order          Integer
+		 * }
+		 */
+		return apply_filters( Yoast_ACF_Analysis_Facade::get_filter_name( 'field_order' ), array() );
+	}
+
+	/**
 	 * Retrieves an array representation of the current object.
 	 *
 	 * @return array
@@ -257,6 +291,7 @@ class Yoast_ACF_Analysis_Configuration {
 			'blacklistType'  => $this->get_blacklist_type()->to_array(),
 			'blacklistName'  => $this->get_blacklist_name()->to_array(),
 			'fieldSelectors' => $this->get_field_selectors()->to_array(),
+			'fieldOrder'     => $this->get_field_order(),
 			'debug'          => $this->is_debug(),
 		);
 	}

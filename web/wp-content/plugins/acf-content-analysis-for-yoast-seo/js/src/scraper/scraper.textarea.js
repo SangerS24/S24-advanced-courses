@@ -8,7 +8,7 @@ Scraper.prototype.scrape = function( fields ) {
 			return field;
 		}
 
-		field.content = field.$el.find( "textarea[id^=acf]" ).val();
+		field.content = "<p>" + field.$el.find( "textarea[id^=acf]" ).val() + "</p>";
 
 		return field;
 	} );

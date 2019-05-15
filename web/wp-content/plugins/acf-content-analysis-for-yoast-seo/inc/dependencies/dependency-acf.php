@@ -43,5 +43,4 @@ final class Yoast_ACF_Analysis_Dependency_ACF implements Yoast_ACF_Analysis_Depe
 
 		printf( '<div class="error"><p>%s</p></div>', esc_html( $message ) );
 	}
-
 }

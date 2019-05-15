@@ -34,7 +34,7 @@
     &:nth-child(4n) {
       clear: none;
     }
-    &:nth-child(5n) {
+    &:nth-child(4n+5) {
       clear: left;
     }
   }

@@ -6,7 +6,7 @@
  */
 
 /**
- * Class WPSEO_How_To_Block
+ * Class WPSEO_How_To_Block.
  */
 class WPSEO_How_To_Block implements WPSEO_WordPress_Integration {
 
@@ -20,15 +20,17 @@ class WPSEO_How_To_Block implements WPSEO_WordPress_Integration {
 			return;
 		}
 
-		register_block_type( 'yoast/how-to-block', array(
-			'render_callback' => array( $this, 'render' ),
-		) );
+		register_block_type(
+			'yoast/how-to-block',
+			array( 'render_callback' => array( $this, 'render' ) )
+		);
 	}
 
 	/**
 	 * Renders the block.
 	 *
-	 * Because we can't save script tags in Gutenberg without sufficient user permissions, we render these server-side.
+	 * Because we can't save script tags in Gutenberg without sufficient user permissions,
+	 * we render these server-side.
 	 *
 	 * @param array  $attributes The attributes of the block.
 	 * @param string $content    The HTML content of the block.
@@ -42,7 +44,7 @@ class WPSEO_How_To_Block implements WPSEO_WordPress_Integration {
 
 		$json_ld = $this->get_json_ld( $attributes );
 
-		return '<script type="application/ld+json">' . wp_json_encode( $json_ld ) . '</script>' . $content;
+		return '<script type="application/ld+json">' . WPSEO_Utils::format_json_encode( $json_ld ) . '</script>' . $content;
 	}
 
 	/**

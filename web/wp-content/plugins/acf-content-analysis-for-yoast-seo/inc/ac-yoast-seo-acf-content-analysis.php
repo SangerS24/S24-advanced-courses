@@ -14,13 +14,17 @@ class AC_Yoast_SEO_ACF_Content_Analysis {
 	 * Yoast_ACF_Analysis init.
 	 *
 	 * Add hooks and filters.
+	 *
+	 * @return void
 	 */
 	public function init() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 	}
 
 	/**
-	 * Check if all requirements are met and boot plugin if so
+	 * Check if all requirements are met and boot plugin if so.
+	 *
+	 * @return void
 	 */
 	public function admin_init() {
 		$dependencies = new Yoast_ACF_Analysis_Requirements();
@@ -41,6 +45,8 @@ class AC_Yoast_SEO_ACF_Content_Analysis {
 
 	/**
 	 * Boots the plugin.
+	 *
+	 * @return void
 	 */
 	public function boot() {
 		$registry = Yoast_ACF_Analysis_Facade::get_registry();
@@ -79,6 +85,8 @@ class AC_Yoast_SEO_ACF_Content_Analysis {
 
 	/**
 	 * Filters the Scraper Configuration to add the headlines configuration for the text scraper.
+	 *
+	 * @return void
 	 */
 	protected function register_config_filters() {
 		add_filter(
@@ -90,9 +98,9 @@ class AC_Yoast_SEO_ACF_Content_Analysis {
 	/**
 	 * Enhances the scraper config with headlines configuration.
 	 *
-	 * @param array $scraper_config Scraper configuration.
+	 * @param array $scraper_config The scraper configuration.
 	 *
-	 * @return array Enhanched scraper config.
+	 * @return array The enhanched scraper config.
 	 */
 	public function filter_scraper_config( $scraper_config ) {
 		$scraper_config['text'] = array(
@@ -124,7 +132,7 @@ class AC_Yoast_SEO_ACF_Content_Analysis {
 	/**
 	 * Retrieves the default field selectors for ACF4.
 	 *
-	 * @return Yoast_ACF_Analysis_String_Store
+	 * @return Yoast_ACF_Analysis_String_Store The blacklist string store.
 	 */
 	protected function get_field_selectors() {
 		$field_selectors = new Yoast_ACF_Analysis_String_Store();
@@ -162,7 +170,7 @@ class AC_Yoast_SEO_ACF_Content_Analysis {
 	/**
 	 * Retrieves the default blacklist.
 	 *
-	 * @return Yoast_ACF_Analysis_String_Store
+	 * @return Yoast_ACF_Analysis_String_Store The blacklist string store.
 	 */
 	protected function get_blacklist_type() {
 
@@ -215,7 +223,9 @@ class AC_Yoast_SEO_ACF_Content_Analysis {
 	}
 
 	/**
-	 * @return Yoast_ACF_Analysis_String_Store
+	 * Gets a new string store.
+	 *
+	 * @return Yoast_ACF_Analysis_String_Store A new blacklist string store.
 	 */
 	protected function get_blacklist_name() {
 		return new Yoast_ACF_Analysis_String_Store();

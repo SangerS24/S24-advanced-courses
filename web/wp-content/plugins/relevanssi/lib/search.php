@@ -137,12 +137,13 @@ function relevanssi_search( $args ) {
 	$by_date             = $filtered_args['by_date'];
 	$admin_search        = $filtered_args['admin_search'];
 	$include_attachments = $filtered_args['include_attachments'];
+	$meta_query          = $filtered_args['meta_query'];
 
 	$hits               = array();
 	$query_restrictions = '';
 
 	if ( ! isset( $tax_query_relation ) ) {
-		$tax_query_relation = 'or';
+		$tax_query_relation = 'and';
 	}
 	$tax_query_relation = relevanssi_strtolower( $tax_query_relation );
 	$term_tax_id        = array();
@@ -153,7 +154,7 @@ function relevanssi_search( $args ) {
 	if ( is_array( $tax_query ) ) {
 		$is_sub_row = false;
 		foreach ( $tax_query as $row ) {
-			if ( isset( $row['terms'] ) ) {
+			if ( isset( $row['terms'] ) || ( isset( $row['operator'] ) && ( 'not exists' === strtolower( $row['operator'] ) || 'exists' === strtolower( $row['operator'] ) ) ) ) {
 				list( $query_restrictions, $term_tax_ids, $not_term_tax_ids, $and_term_tax_ids ) =
 				relevanssi_process_tax_query_row( $row, $is_sub_row, $tax_query_relation, $query_restrictions, $tax_query_relation, $term_tax_ids, $not_term_tax_ids, $and_term_tax_ids );
 			} else {
@@ -629,6 +630,7 @@ function relevanssi_search( $args ) {
 	$include_these_posts = array();
 	$include_these_items = array();
 	$df_counts           = array();
+	$doc_weight          = array();
 
 	do {
 		foreach ( $terms as $term ) {
@@ -701,6 +703,7 @@ function relevanssi_search( $args ) {
 					foreach ( $matches as $match ) {
 						$existing_ids[] = $match->doc;
 					}
+					$existing_ids = array_keys( array_flip( $existing_ids ) );
 					$existing_ids = implode( ',', $existing_ids );
 					$query        = "SELECT relevanssi.*, relevanssi.title * $title_boost +
 					relevanssi.content * $content_boost + relevanssi.comment * $comment_boost +
@@ -722,6 +725,7 @@ function relevanssi_search( $args ) {
 							$existing_items[] = $match->item;
 						}
 					}
+					$existing_items = array_keys( array_flip( $existing_items ) );
 					$existing_items = implode( ',', $existing_items );
 					if ( ! empty( $existing_items ) ) {
 						$existing_items = "AND relevanssi.item NOT IN ($existing_items) ";
@@ -918,10 +922,12 @@ function relevanssi_search( $args ) {
 						$scores[ $match->doc ] = 0;
 					}
 					$scores[ $match->doc ] += $match->weight;
-					if ( is_numeric( $match->doc ) ) {
+					// For AND searches, add the posts to the $include_these lists, so that
+					// nothing is missed.
+					if ( is_numeric( $match->doc ) && 'AND' === $operator ) {
 						// This is to weed out taxonomies and users (t_XXX, u_XXX).
 						$include_these_posts[ $match->doc ] = true;
-					} elseif ( 0 !== intval( $match->item ) ) {
+					} elseif ( 0 !== intval( $match->item ) && 'AND' === $operator ) {
 						$include_these_items[ $match->item ] = true;
 					}
 				}
@@ -1074,7 +1080,6 @@ function relevanssi_search( $args ) {
 	if ( empty( $orderby ) ) {
 		$orderby = $default_order;
 	}
-
 	if ( is_array( $orderby ) ) {
 		/**
 		 * Filters the 'orderby' value just before sorting.
@@ -1087,7 +1092,7 @@ function relevanssi_search( $args ) {
 		 * @param string The 'orderby' parameter.
 		 */
 		$orderby = apply_filters( 'relevanssi_orderby', $orderby );
-		relevanssi_object_sort( $hits, $orderby );
+		relevanssi_object_sort( $hits, $orderby, $meta_query );
 	} else {
 		if ( empty( $order ) ) {
 			$order = 'desc';
@@ -1110,7 +1115,7 @@ function relevanssi_search( $args ) {
 
 		if ( 'relevance' !== $orderby ) {
 			$orderby_array = array( $orderby => $order );
-			relevanssi_object_sort( $hits, $orderby_array );
+			relevanssi_object_sort( $hits, $orderby_array, $meta_query );
 		}
 	}
 	$return = array(
@@ -1494,10 +1499,10 @@ function relevanssi_do_query( &$query ) {
 		if ( isset( $query->query_vars['page_id'] ) ) {
 			$post_query = array( 'in' => array( $query->query_vars['page_id'] ) );
 		}
-		if ( isset( $query->query_vars['post__in'] ) ) {
+		if ( isset( $query->query_vars['post__in'] ) && is_array( $query->query_vars['post__in'] ) && ! empty( $query->query_vars['post__in'] ) ) {
 			$post_query = array( 'in' => $query->query_vars['post__in'] );
 		}
-		if ( isset( $query->query_vars['post__not_in'] ) ) {
+		if ( isset( $query->query_vars['post__not_in'] ) && is_array( $query->query_vars['post__not_in'] ) && ! empty( $query->query_vars['post__not_in'] ) ) {
 			$post_query = array( 'not in' => $query->query_vars['post__not_in'] );
 		}
 
@@ -1505,10 +1510,10 @@ function relevanssi_do_query( &$query ) {
 		if ( isset( $query->query_vars['post_parent'] ) ) {
 			$parent_query = array( 'parent in' => array( $query->query_vars['post_parent'] ) );
 		}
-		if ( is_array( $query->query_vars['post_parent__in'] ) && ! empty( $query->query_vars['post_parent__in'] ) ) {
+		if ( isset( $query->query_vars['post_parent__in'] ) && is_array( $query->query_vars['post_parent__in'] ) && ! empty( $query->query_vars['post_parent__in'] ) ) {
 			$parent_query = array( 'parent in' => $query->query_vars['post_parent__in'] );
 		}
-		if ( is_array( $query->query_vars['post_parent__not_in'] ) && ! empty( $query->query_vars['post_parent__not_in'] ) ) {
+		if ( isset( $query->query_vars['post_parent__not_in'] ) && is_array( $query->query_vars['post_parent__not_in'] ) && ! empty( $query->query_vars['post_parent__not_in'] ) ) {
 			$parent_query = array( 'parent not in' => $query->query_vars['post_parent__not_in'] );
 		}
 
@@ -1688,6 +1693,7 @@ function relevanssi_do_query( &$query ) {
 			'by_date'             => $by_date,
 			'admin_search'        => $admin_search,
 			'include_attachments' => $include_attachments,
+			'meta_query'          => $meta_query,
 		);
 
 		$return = relevanssi_search( $search_params );
@@ -1920,11 +1926,21 @@ function relevanssi_process_tax_query_row( $row, $is_sub_row, $global_relation, 
 	$local_term_tax_ids     = array();
 	$local_not_term_tax_ids = array();
 	$local_and_term_tax_ids = array();
+	$term_tax_id            = array();
+
+	$exists_query = false;
+	if ( isset( $row['operator'] ) && ( 'exists' === strtolower( $row['operator'] ) || 'not exists' === strtolower( $row['operator'] ) ) ) {
+		$exists_query = true;
+	}
 
 	$using_term_tax_id = false;
+	if ( $exists_query ) {
+		$row['field'] = 'exists';
+	}
 	if ( ! isset( $row['field'] ) ) {
 		$row['field'] = 'term_id'; // In case 'field' is not set, go with the WP default of 'term_id'.
 	}
+	$row['field'] = strtolower( $row['field'] ); // In some cases, you can get 'ID' instead of 'id'.
 	if ( 'slug' === $row['field'] ) {
 		$slug          = $row['terms'];
 		$numeric_slugs = array();
@@ -1982,7 +1998,7 @@ function relevanssi_process_tax_query_row( $row, $is_sub_row, $global_relation, 
 			$term_id = array();
 			foreach ( $name as $t_name ) {
 				$term = get_term_by( 'name', $t_name, $row['taxonomy'] );
-				if ( ! $term && is_numeric( $t_names ) ) {
+				if ( ! $term && is_numeric( $t_name ) ) {
 					$numeric_names[] = "'$t_name'";
 				} else {
 					if ( isset( $term->term_id ) ) {
@@ -2064,7 +2080,7 @@ function relevanssi_process_tax_query_row( $row, $is_sub_row, $global_relation, 
 		}
 	}
 
-	if ( ! isset( $row['include_children'] ) || true === $row['include_children'] ) {
+	if ( ! $exists_query && ( ! isset( $row['include_children'] ) || true === $row['include_children'] ) ) {
 		if ( ! $using_term_tax_id && isset( $term_id ) ) {
 			if ( ! is_array( $term_id ) ) {
 				$term_id = array( $term_id );
@@ -2186,6 +2202,16 @@ function relevanssi_process_tax_query_row( $row, $is_sub_row, $global_relation, 
 		$term_tax_ids     = array_merge( $term_tax_ids, $local_term_tax_ids );
 		$not_term_tax_ids = array_merge( $not_term_tax_ids, $local_not_term_tax_ids );
 		$and_term_tax_ids = array_merge( $and_term_tax_ids, $local_and_term_tax_ids );
+	}
+
+	if ( $exists_query ) {
+		$taxonomy = $row['taxonomy'];
+		$operator = 'IN';
+		if ( 'not exists' === strtolower( $row['operator'] ) ) {
+			$operator = 'NOT IN';
+		}
+		$query_restrictions .= " AND relevanssi.doc $operator (SELECT DISTINCT(tr.object_id) FROM $wpdb->term_relationships AS tr,
+			$wpdb->term_taxonomy AS tt WHERE tr.term_taxonomy_id = tt.term_taxonomy_id AND tt.taxonomy = '$taxonomy')";
 	}
 
 	return array( $query_restrictions, $term_tax_ids, $not_term_tax_ids, $and_term_tax_ids );

@@ -458,6 +458,7 @@ function wgcacsc_pre_get_posts( $query ) {
 		$query->set( 'orderby', 'meta_value_num date' );
 		$query->set( 'meta_key', 'start_date' );
 		$query->set( 'order', 'DESC' );
+/**
 		$new_tax_query = array(
 			array(
 				'taxonomy' => 'event-category',
@@ -467,6 +468,7 @@ function wgcacsc_pre_get_posts( $query ) {
 			)
 		);
 		$query->set( 'tax_query', $new_tax_query );
+**/
 	}
 	//event cat pages
 	if ( is_tax( 'event-category' ) && ! is_tax( 'event-category', 'past-events' ) ) {

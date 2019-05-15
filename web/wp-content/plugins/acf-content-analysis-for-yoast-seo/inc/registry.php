@@ -37,5 +37,4 @@ class Yoast_ACF_Analysis_Registry {
 	public function get( $id ) {
 		return array_key_exists( $id, $this->storage ) ? $this->storage[ $id ] : null;
 	}
-
 }

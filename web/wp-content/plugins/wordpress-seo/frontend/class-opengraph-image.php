@@ -6,9 +6,13 @@
  */
 
 /**
- * Class WPSEO_OpenGraph_Image
+ * Class WPSEO_OpenGraph_Image.
  */
 class WPSEO_OpenGraph_Image {
+
+	/**
+	 * @var string
+	 */
 	const EXTERNAL_IMAGE_ID = '-1';
 
 	/**
@@ -26,6 +30,13 @@ class WPSEO_OpenGraph_Image {
 	private $opengraph;
 
 	/**
+	 * Holds the WPSEO_Frontend_Page_Type instance.
+	 *
+	 * @var WPSEO_Frontend_Page_Type
+	 */
+	private $frontend_page_type;
+
+	/**
 	 * Image tags that we output for each image.
 	 *
 	 * @var array
@@ -33,7 +44,6 @@ class WPSEO_OpenGraph_Image {
 	private $image_tags = array(
 		'width'     => 'width',
 		'height'    => 'height',
-		'alt'       => 'alt',
 		'mime-type' => 'type',
 	);
 
@@ -90,6 +100,19 @@ class WPSEO_OpenGraph_Image {
 		if ( ! post_password_required() ) {
 			$this->set_images();
 		}
+	}
+
+	/**
+	 * Gets the class for determine the current page type.
+	 *
+	 * @return WPSEO_Frontend_Page_Type
+	 */
+	protected function get_frontend_page_type() {
+		if ( ! isset( $this->frontend_page_type ) ) {
+			$this->frontend_page_type = new WPSEO_Frontend_Page_Type();
+		}
+
+		return $this->frontend_page_type;
 	}
 
 	/**
@@ -254,7 +277,7 @@ class WPSEO_OpenGraph_Image {
 
 
 		$frontpage_image_url = WPSEO_Options::get( 'og_frontpage_image' );
-		$frontpage_image_id = WPSEO_Options::get( 'og_frontpage_image_id' );
+		$frontpage_image_id  = WPSEO_Options::get( 'og_frontpage_image_id' );
 
 		$this->add_image_by_id_or_url( $frontpage_image_id, $frontpage_image_url, array( $this, 'save_frontpage_image_id' ) );
 	}
@@ -285,7 +308,7 @@ class WPSEO_OpenGraph_Image {
 	 */
 	private function set_singular_image( $post_id = null ) {
 		if ( $post_id === null ) {
-			$post_id = $this->get_queried_object_id();
+			$post_id = $this->get_post_id();
 		}
 
 		$this->set_user_defined_image( $post_id );
@@ -306,7 +329,7 @@ class WPSEO_OpenGraph_Image {
 	 */
 	private function set_user_defined_image( $post_id = null ) {
 		if ( $post_id === null ) {
-			$post_id = $this->get_queried_object_id();
+			$post_id = $this->get_post_id();
 		}
 
 		$this->set_image_post_meta( $post_id );
@@ -357,7 +380,7 @@ class WPSEO_OpenGraph_Image {
 	 * @return void
 	 */
 	private function save_opengraph_image_id_meta( $attachment_id ) {
-		$post_id = $this->get_queried_object_id();
+		$post_id = $this->get_post_id();
 
 		WPSEO_Meta::set_value( 'opengraph-image-id', (string) $attachment_id, $post_id );
 	}
@@ -370,7 +393,7 @@ class WPSEO_OpenGraph_Image {
 	 * @return void
 	 */
 	private function set_image_post_meta( $post_id = 0 ) {
-		$image_id = WPSEO_Meta::get_value( 'opengraph-image-id', $post_id );
+		$image_id  = WPSEO_Meta::get_value( 'opengraph-image-id', $post_id );
 		$image_url = WPSEO_Meta::get_value( 'opengraph-image', $post_id );
 
 		$this->add_image_by_id_or_url( $image_id, $image_url, array( $this, 'save_opengraph_image_id_meta' ) );
@@ -406,7 +429,7 @@ class WPSEO_OpenGraph_Image {
 	 * @return void
 	 */
 	private function set_attachment_page_image() {
-		$post_id = $this->get_queried_object_id();
+		$post_id = $this->get_post_id();
 		if ( wp_attachment_is_image( $post_id ) ) {
 			$this->add_image_by_id( $post_id );
 		}
@@ -417,7 +440,8 @@ class WPSEO_OpenGraph_Image {
 	 *
 	 * @param string $url The given URL.
 	 *
-	 * @return null|number Returns the found attachment ID if it exists. Otherwise -1. If the URL is empty we return null.
+	 * @return null|number Returns the found attachment ID if it exists. Otherwise -1.
+	 *                     If the URL is empty we return null.
 	 */
 	public function add_image_by_url( $url ) {
 		if ( empty( $url ) ) {
@@ -452,7 +476,7 @@ class WPSEO_OpenGraph_Image {
 		 *
 		 * Use the `wpseo_image_sizes` filter if you want to use our logic. That filter
 		 * can be used to add an image size that needs to be taken into consideration
-		 * within our own logic
+		 * within our own logic.
 		 *
 		 * @api string $size Size string.
 		 */
@@ -541,7 +565,7 @@ class WPSEO_OpenGraph_Image {
 			case is_attachment():
 				$this->set_attachment_page_image();
 				break;
-			case is_singular():
+			case $this->get_frontend_page_type()->is_simple_page():
 				$this->set_singular_image();
 				break;
 			case is_category():
@@ -602,7 +626,16 @@ class WPSEO_OpenGraph_Image {
 
 		$image_extension = $this->get_extension_from_url( $url );
 
-		return in_array( $image_extension, $this->valid_image_extensions, true );
+		$is_valid = in_array( $image_extension, $this->valid_image_extensions, true );
+
+		/**
+		 * Filter: 'wpseo_opengraph_is_valid_image_url' - Allows extra validation for an image url.
+		 *
+		 * @api bool - Current validation result.
+		 *
+		 * @param string $url The image url to validate.
+		 */
+		return apply_filters( 'wpseo_opengraph_is_valid_image_url', $is_valid, $url );
 	}
 
 	/**
@@ -641,12 +674,12 @@ class WPSEO_OpenGraph_Image {
 	}
 
 	/**
-	 * Gets the queried object ID.
+	 * Gets the post ID.
 	 *
-	 * @return int The queried object ID.
+	 * @return int The post ID.
 	 */
-	protected function get_queried_object_id() {
-		return get_queried_object_id();
+	protected function get_post_id() {
+		return $this->get_frontend_page_type()->get_simple_page_id();
 	}
 
 	/**
